@@ -37,4 +37,4 @@ ENV DB_PASS ttrss
 ADD configure-db.php /configure-db.php
 ADD s6/ /etc/s6/
 
-CMD php /configure-db.php && s6-svscan /etc/s6/
+CMD php /configure-db.php && exec s6-svscan /etc/s6/
