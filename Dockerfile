@@ -1,7 +1,7 @@
 FROM alpine:3.4
 
 RUN apk add --update nginx s6 php5-fpm php5-cli php5-curl php5-gd php5-json php5-dom php5-pcntl php5-posix \
-  php5-pgsql php5-mysql php5-mcrypt php5-pdo php5-pdo_pgsql php5-pdo_mysql ca-certificates && \
+  php5-pgsql php5-mysql php5-mysqli php5-mcrypt php5-pdo php5-pdo_pgsql php5-pdo_mysql ca-certificates && \
   rm -rf /var/cache/apk/*
 
 # add ttrss as the only nginx site
