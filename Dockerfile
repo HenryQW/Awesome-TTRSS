@@ -14,7 +14,7 @@ ADD https://github.com/levito/tt-rss-feedly-theme/archive/master.tar.gz /var/www
 # install ttrss and patch configuration
 WORKDIR /var/www
 RUN apk add --update --virtual build-dependencies curl tar \
-    && curl -SL https://tt-rss.org/gitlab/fox/tt-rss/repository/archive.tar.gz?ref=master | tar xzC /var/www --strip-components 1 \
+    && curl -SL https://git.tt-rss.org/git/tt-rss/archive/master.tar.gz | tar xzC /var/www --strip-components 1 \
     && tar xzvpf /var/www/plugins/master.tar.gz --strip-components=1 -C /var/www/plugins/ tinytinyrss-fever-plugin-master/fever && rm /var/www/plugins/master.tar.gz \
     && tar xzvpf /var/www/themes/master.tar.gz --strip-components=1 -C /var/www/themes/ tt-rss-feedly-theme-master/feedly tt-rss-feedly-theme-master/feedly.css && rm /var/www/themes/master.tar.gz \
     && apk del build-dependencies \
