@@ -27,11 +27,37 @@ docker run -it --name ttrss --restart=always \
 
 ### Recommendation
 
-Strongly recommend to use postgresql. 
+- Strongly recommend to use postgresql. 
 
-For iOS user, Fever plugin supplies **[Reeder iOS](http://reederapp.com/ios/)** (THE RSS READER) backend support.
+- For web interface, recommend to use **[Stylish plugin](https://userstyles.org/)** to customise your own CSS style.
 
-For Android user, strongly recommend an iPhone.
+  ```css
+  .postContent {
+      font-size: 16px;
+  }
+
+  .hlContent {
+      font-size: 15px;
+  }
+
+  html, button, input, select, textarea {
+      font: 13px/1.5 Helvetica sans-serif, Arial, "Microsoft Yahei";
+  }
+
+  #floatingTitle > *, .cdm.expandable:not(.active) .cdmHeader > *, .hl > * {
+      padding: 5px 5px;
+      order: 3;
+  }
+
+  #floatingTitle .title, .postHeader .postTitle a {
+      font-weight: bold;
+      font-size: 16px;
+  ```
+
+- For iOS user, Fever plugin supplies **[Reeder iOS](http://reederapp.com/ios/)** (THE RSS READER) backend support.
+
+- For Android user, strongly recommend an iPhone.
+
 
 
 ### [Author's GitHub](https://github.com/WangQiru/docker-ttrss-plugins)
@@ -69,10 +95,39 @@ docker run -it --name ttrss --restart=always \
 
 ### 使用建议
 
-强烈建议使用postgresql. 
+- 强烈建议使用postgresql. 
 
-对于iOS用户, Fever模拟插件提供 **[Reeder iOS](http://reederapp.com/ios/)** (最强RSS阅读器, 没有之一) 后端支持.
+- Web端推荐使用 **[Stylish 插件](https://userstyles.org/)** 来定制自己的 CSS 风格, 尤其是中文字体.
 
-对于安卓用户, 强烈推荐一部iPhone.
+  ```css
+  .postContent {
+      font-size: 16px;
+  }
+
+  .hlContent {
+      font-size: 15px;
+  }
+
+  html, button, input, select, textarea {
+      font: 13px/1.5 Helvetica sans-serif, Arial, "Microsoft Yahei";
+  }
+
+  #floatingTitle > *, .cdm.expandable:not(.active) .cdmHeader > *, .hl > * {
+      padding: 5px 5px;
+      order: 3;
+  }
+
+  #floatingTitle .title, .postHeader .postTitle a {
+      font-weight: bold;
+      font-size: 16px;
+  ```
+
+- 对于iOS用户, Fever模拟插件提供 **[Reeder iOS](http://reederapp.com/ios/)** (最强RSS阅读器, 没有之一) 后端支持.
+
+- 对于安卓用户, 强烈推荐一部iPhone.
 
 ### [作者的GitHub](https://github.com/WangQiru/docker-ttrss-plugins)
+
+
+
+### 
