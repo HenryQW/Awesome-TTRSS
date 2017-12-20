@@ -2,7 +2,7 @@
 
 ## Tiny Tiny RSS feed reader as a docker image, forked from [rubenv/docker-ttrss-plugins](https://github.com/rubenv/docker-ttrss-plugins)
 
-With [Mercury_fulltext](https://github.com/WangQiru/mercury_fulltext) and [updated Fever plugins](https://github.com/WangQiru/tinytinyrss-fever-plugin).
+With [Mercury_fulltext](https://github.com/WangQiru/mercury_fulltext) and [updated Fever plugins](https://github.com/WangQiru/tinytinyrss-fever-plugin) that solves compatibility issue (since repo owner is MIA).
 
 With [Feedly](https://github.com/levito/tt-rss-feedly-theme) theme.
 
@@ -23,13 +23,14 @@ docker run -it --name ttrss --restart=always \
 - ENV DB_NAME
 - ENV DB_USER
 - ENV DB_PASS
-- ENV MYSQL_CHARSET
+- ~~ENV MYSQL_CHARSET~~ see [Recommendation](#recommendation)
 
 ### Recommendation
 
-- Strongly recommend to use postgresql. 
+- Strongly recommend to use postgresql, as mysql produces funny bugs for me. It's not recommended by [the author of TTRSS](https://tt-rss.org/) too:
+    > **Important**: only InnoDB database engine is supported on MySQL. While you technically can force tt-rss schema under MyISAM you will experience various glitches due to missing functionality (foreign keys, cascade deletes, etc.) that tt-rss actively uses. 
 
-- For web interface, recommend to use **[Stylish plugin](https://userstyles.org/)** to customise your own CSS style.
+- For web interface, recommend to use **[Stylish plugin](https://userstyles.org/)** to customise your own CSS style, especially for non-western languages.
 
   ```css
   .postContent {
@@ -69,7 +70,7 @@ docker run -it --name ttrss --restart=always \
 # 简体中文说明
 ## Tiny Tiny RSS 容器镜像，forked自[rubenv/docker-ttrss-plugins](https://github.com/rubenv/docker-ttrss-plugins)
 
-内置 [Mercury_fulltext](https://github.com/WangQiru/mercury_fulltext) 全文提取插件以及修复了一个小bug的 [Fever模拟插件](https://github.com/WangQiru/tinytinyrss-fever-plugin).
+内置 [Mercury_fulltext](https://github.com/WangQiru/mercury_fulltext) 全文提取插件以及修复了（由于原基主已跑路）兼容性问题的 [Fever模拟插件](https://github.com/WangQiru/tinytinyrss-fever-plugin).
 
 内置 [Feedly](https://github.com/levito/tt-rss-feedly-theme) 主题.
 
@@ -90,12 +91,13 @@ docker run -it --name ttrss --restart=always \
 - ENV DB_NAME
 - ENV DB_USER
 - ENV DB_PASS
-- ENV MYSQL_CHARSET
+- ~~ENV MYSQL_CHARSET~~ 参照 [Recommendation](#recommendation)
 
 
 ### 使用建议
 
-- 强烈建议使用postgresql. 
+- 强烈建议使用 postgresql, mysql 会造成奇奇怪怪的问题. [TTRSS作者](https://tt-rss.org/)也同样建议避免使用 mysql:
+    > **Important**: only InnoDB database engine is supported on MySQL. While you technically can force tt-rss schema under MyISAM you will experience various glitches due to missing functionality (foreign keys, cascade deletes, etc.) that tt-rss actively uses. 
 
 - Web端推荐使用 **[Stylish 插件](https://userstyles.org/)** 来定制自己的 CSS 风格, 尤其是中文字体.
 
