@@ -10,11 +10,11 @@ With [Feedly](https://github.com/levito/tt-rss-feedly-theme) theme.
 
 ```
 docker run -it --name ttrss --restart=always \
---link [your DB container]:db  \
--e SELF_URL_PATH=[your URL]  \
--e DB_USER=[your DB user]  \
--e DB_PASS=[your DB password]  \
--p [your port]:80  \
+--link [ your DB container ]:db  \
+-e SELF_URL_PATH = [ your URL ]  \
+-e DB_USER = [ your DB user ]  \
+-e DB_PASS = [ your DB password ]  \
+-p [ your port ]:80  \
 -d wangqiru/ttrss
 ```
 
@@ -70,7 +70,7 @@ docker run -it --name ttrss --restart=always \
 # 简体中文说明
 ## Tiny Tiny RSS 容器镜像，forked自[rubenv/docker-ttrss-plugins](https://github.com/rubenv/docker-ttrss-plugins)
 
-内置 [Mercury_fulltext](https://github.com/WangQiru/mercury_fulltext) 全文提取插件以及修复了（由于原基主已跑路）兼容性问题的 [Fever模拟插件](https://github.com/WangQiru/tinytinyrss-fever-plugin).
+内置 [Mercury_fulltext](https://github.com/WangQiru/mercury_fulltext) 全文提取插件以及修复了（由于原基主已跑路）兼容性问题的 [Fever 模拟插件](https://github.com/WangQiru/tinytinyrss-fever-plugin).
 
 内置 [Feedly](https://github.com/levito/tt-rss-feedly-theme) 主题.
 
@@ -78,11 +78,11 @@ docker run -it --name ttrss --restart=always \
 
 ```
 docker run -it --name ttrss --restart=always \
---link [你的数据库容器名]:db  \
--e SELF_URL_PATH=[你的URL地址]  \
--e DB_USER=[你的数据库用户名]  \
--e DB_PASS=[你的数据库密码]  \
--p [容器对外映射端口]:80  \
+--link [ 你的数据库容器名 ] : db  \
+-e SELF_URL_PATH = [ 你的URL地址 ]  \
+-e DB_USER = [ 你的数据库用户名 ]  \
+-e DB_PASS = [ 你的数据库密码 ]  \
+-p [ 容器对外映射端口 ]:80  \
 -d wangqiru/ttrss
 ```
 
@@ -96,10 +96,10 @@ docker run -it --name ttrss --restart=always \
 
 ### 使用建议
 
-- 强烈建议使用 postgresql, mysql 会造成奇奇怪怪的问题. [TTRSS作者](https://tt-rss.org/)也同样建议避免使用 mysql:
+- 强烈建议使用 postgresql, mysql 会造成奇奇怪怪的问题. [TTRSS 作者](https://tt-rss.org/)也同样建议避免使用 mysql:
     > **Important**: only InnoDB database engine is supported on MySQL. While you technically can force tt-rss schema under MyISAM you will experience various glitches due to missing functionality (foreign keys, cascade deletes, etc.) that tt-rss actively uses. 
 
-- Web端推荐使用 **[Stylish 插件](https://userstyles.org/)** 来定制自己的 CSS 风格, 尤其是中文字体.
+- Web 端推荐使用 **[Stylish 插件](https://userstyles.org/)** 来定制自己的 CSS 风格, 尤其是中文字体.
 
   ```css
   .postContent {
@@ -124,11 +124,11 @@ docker run -it --name ttrss --restart=always \
       font-size: 16px;
   ```
 
-- 对于iOS用户, Fever模拟插件提供 **[Reeder iOS](http://reederapp.com/ios/)** (最强RSS阅读器, 没有之一) 后端支持.
+- 对于 iOS 用户, Fever 模拟插件提供 **[Reeder iOS](http://reederapp.com/ios/)** (最强 RSS 阅读器, 没有之一) 后端支持.
 
-- 对于安卓用户, 强烈推荐一部iPhone.
+- 对于安卓用户, 强烈推荐一部 iPhone.
 
-### [作者的GitHub](https://github.com/WangQiru/docker-ttrss-plugins)
+### [作者的 GitHub](https://github.com/WangQiru/docker-ttrss-plugins)
 
 
 
