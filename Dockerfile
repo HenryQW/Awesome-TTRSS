@@ -1,7 +1,7 @@
 FROM alpine:edge
 
-RUN apk add --update nginx s6 php5 php5-fpm php5-cli php5-curl php5-gd php5-json php5-dom php5-pcntl php5-posix \
-  php5-pgsql php5-mcrypt php5-pdo php5-pdo_pgsql ca-certificates && \
+RUN apk add --update --no-cache nginx s6 php7 php7-fpm php7-cli php7-curl php7-fileinfo php7-mbstring php7-gd php7-json php7-dom php7-pcntl php7-posix \
+  php7-pgsql php7-mcrypt php7-session php7-pdo php7-pdo_pgsql ca-certificates && \
   rm -rf /var/cache/apk/*
 
 # add ttrss as the only nginx site
@@ -22,8 +22,7 @@ RUN apk add --update --virtual build-dependencies curl tar \
   && apk del build-dependencies \
   && rm -rf /var/cache/apk/* \
   && cp config.php-dist config.php \
-  && chown nobody:nginx -R /var/www \
-  && ln -s /usr/bin/php5 /usr/bin/php
+  && chown nobody:nginx -R /var/www
 
 # expose only nginx HTTP port
 EXPOSE 80

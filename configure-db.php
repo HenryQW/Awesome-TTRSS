@@ -8,17 +8,8 @@ $config = array();
 // path to ttrss
 $config['SELF_URL_PATH'] = env('SELF_URL_PATH', 'http://localhost');
 
-if (getenv('DB_TYPE') !== false) {
-    $config['DB_TYPE'] = getenv('DB_TYPE');
-} elseif (getenv('DB_PORT_5432_TCP_ADDR') !== false) {
-    // postgres container linked
-    $config['DB_TYPE'] = 'pgsql';
-    $eport = 5432;
-} elseif (getenv('DB_PORT_3306_TCP_ADDR') !== false) {
-    // mysql container linked
-    $config['DB_TYPE'] = 'mysql';
-    $eport = 3306;
-}
+$config['DB_TYPE'] = 'pgsql';
+$eport = 5432;
 
 if (!empty($eport)) {
     $config['DB_HOST'] = env('DB_PORT_' . $eport . '_TCP_ADDR');
@@ -29,19 +20,6 @@ if (!empty($eport)) {
     // numeric DB_PORT provided; assume port number passed directly
     $config['DB_HOST'] = env('DB_HOST');
     $config['DB_PORT'] = env('DB_PORT');
-
-    if (empty($config['DB_TYPE'])) {
-        switch ($config['DB_PORT']) {
-            case 3306:
-                $config['DB_TYPE'] = 'mysql';
-                break;
-            case 5432:
-                $config['DB_TYPE'] = 'pgsql';
-                break;
-            default:
-                error('Database on non-standard port ' . $config['DB_PORT'] . ' and env DB_TYPE not present');
-        }
-    }
 }
 
 // database credentials for this instance
@@ -66,14 +44,9 @@ if (!dbcheck($config)) {
     $super['DB_PASS'] = env('DB_ENV_PASS', $super['DB_USER']);
     
     $pdo = dbconnect($super);
-
-    if ($super['DB_TYPE'] === 'mysql') {
-        $pdo->exec('CREATE DATABASE ' . ($config['DB_NAME']));
-        $pdo->exec('GRANT ALL PRIVILEGES ON ' . ($config['DB_NAME']) . '.* TO ' . $pdo->quote($config['DB_USER']) . '@"%" IDENTIFIED BY ' . $pdo->quote($config['DB_PASS']));
-    } else {
-        $pdo->exec('CREATE ROLE ' . ($config['DB_USER']) . ' WITH LOGIN PASSWORD ' . $pdo->quote($config['DB_PASS']));
-        $pdo->exec('CREATE DATABASE ' . ($config['DB_NAME']) . ' WITH OWNER ' . ($config['DB_USER']));
-    }
+    $pdo->exec('CREATE ROLE ' . ($config['DB_USER']) . ' WITH LOGIN PASSWORD ' . $pdo->quote($config['DB_PASS']));
+    $pdo->exec('CREATE DATABASE ' . ($config['DB_NAME']) . ' WITH OWNER ' . ($config['DB_USER']));
+    
 
     unset($pdo);
     

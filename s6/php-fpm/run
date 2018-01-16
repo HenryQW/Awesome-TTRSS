@@ -1,3 +1,3 @@
 #!/bin/sh
 
-exec /usr/bin/php-fpm5 --nodaemonize
+exec /usr/sbin/php-fpm7 --nodaemonize
