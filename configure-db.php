@@ -52,8 +52,6 @@ $config['DB_NAME'] = env('DB_NAME', 'ttrss');
 $config['DB_USER'] = env('DB_USER', $config['DB_NAME']);
 $config['DB_PASS'] = env('DB_PASS', $config['DB_USER']);
 
-//  default MySQL charset.
-$config['MYSQL_CHARSET'] = env('MYSQL_CHARSET', 'UTF8MB4');
 
 if (!dbcheck($config)) {
     echo 'Database login failed, trying to create...' . PHP_EOL;
@@ -150,4 +148,3 @@ function dbcheck($config)
         return false;
     }
 }
-
