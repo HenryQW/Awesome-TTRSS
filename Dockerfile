@@ -9,7 +9,7 @@ ADD ttrss.nginx.conf /etc/nginx/nginx.conf
 
 # Download plugins
 ADD https://github.com/WangQiru/tinytinyrss-fever-plugin/archive/dev.tar.gz /var/www/plugins/
-ADD https://github.com/WangQiru/mercury_fulltext/archive/master.tar.gz /var/www/plugins/mercury_fulltext/
+ADD https://github.com/WangQiru/mercury_fulltext/archive/dev.tar.gz /var/www/plugins/mercury_fulltext/
 ADD https://github.com/levito/tt-rss-feedly-theme/archive/master.tar.gz /var/www/themes/
 
 # install ttrss and patch configuration
@@ -17,7 +17,7 @@ WORKDIR /var/www
 RUN apk add --update --virtual build-dependencies curl tar \
     && curl -SL https://git.tt-rss.org/git/tt-rss/archive/master.tar.gz | tar xzC /var/www --strip-components 1 \
     && tar xzvpf /var/www/plugins/dev.tar.gz --strip-components=1 -C /var/www/plugins/ tinytinyrss-fever-plugin-dev/fever && rm /var/www/plugins/dev.tar.gz \
-    && tar xzvpf /var/www/plugins/mercury_fulltext/master.tar.gz --strip-components=1 -C /var/www/plugins/mercury_fulltext/ mercury_fulltext-master && rm /var/www/plugins/mercury_fulltext/master.tar.gz \
+    && tar xzvpf /var/www/plugins/mercury_fulltext/dev.tar.gz --strip-components=1 -C /var/www/plugins/mercury_fulltext/ mercury_fulltext-dev && rm /var/www/plugins/mercury_fulltext/dev.tar.gz \
     && tar xzvpf /var/www/themes/master.tar.gz --strip-components=1 -C /var/www/themes/ tt-rss-feedly-theme-master/feedly tt-rss-feedly-theme-master/feedly.css && rm /var/www/themes/master.tar.gz \
     && apk del build-dependencies \
     && rm -rf /var/cache/apk/* \
