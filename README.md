@@ -6,7 +6,7 @@ With [Mercury_fulltext](https://github.com/WangQiru/mercury_fulltext) and [updat
 
 With [Feedly](https://github.com/levito/tt-rss-feedly-theme) theme.
 
-**Support postgres only.**
+**Support postgres only.** mysql support is dropped since [tag 3.5_mysql_php5](https://github.com/WangQiru/docker-ttrss-plugins/tree/3.5_mysql_php5).
 
 ### Example usage:
 
@@ -121,7 +121,3 @@ docker run -it --name ttrss --restart=always \
 - 对于安卓用户, 强烈推荐一部 iPhone.
 
 ### [作者的 GitHub](https://github.com/WangQiru/docker-ttrss-plugins)
-
-
-
-### 
