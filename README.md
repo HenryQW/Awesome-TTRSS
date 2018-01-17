@@ -6,7 +6,7 @@ With [Mercury_fulltext](https://github.com/WangQiru/mercury_fulltext) and [updat
 
 With [Feedly](https://github.com/levito/tt-rss-feedly-theme) theme.
 
-**Support postgres only.**
+**Support postgres only.** mysql support is dropped since [tag 3.5_mysql_php5](https://github.com/WangQiru/docker-ttrss-plugins/tree/3.5_mysql_php5).
 
 ### Example usage:
 
@@ -27,7 +27,6 @@ docker run -it --name ttrss --restart=always \
 - ENV DB_PASS
 
 ### Recommendation
-
 - For web interface, recommend to use **[Stylish plugin](https://userstyles.org/)** to customise your own CSS style, especially for non-western languages.
 
   ```css
@@ -92,7 +91,6 @@ docker run -it --name ttrss --restart=always \
 
 
 ### 使用建议
-
 - Web 端推荐使用 **[Stylish 插件](https://userstyles.org/)** 来定制自己的 CSS 风格, 尤其是中文字体.
 
   ```css
@@ -123,7 +121,3 @@ docker run -it --name ttrss --restart=always \
 - 对于安卓用户, 强烈推荐一部 iPhone.
 
 ### [作者的 GitHub](https://github.com/WangQiru/docker-ttrss-plugins)
-
-
-
-### 
