@@ -1,6 +1,7 @@
 [简体中文说明在这里](#简体中文说明)
 
-## Tiny Tiny RSS feed reader as a docker image, forked from [rubenv/docker-ttrss-plugins](https://github.com/rubenv/docker-ttrss-plugins)
+#### Tiny Tiny RSS feed reader as a docker image.
+#### Modified(heavily) from [rubenv/docker-ttrss-plugins](https://github.com/rubenv/docker-ttrss-plugins)
 
 With [Mercury_fulltext](https://github.com/WangQiru/mercury_fulltext) and [updated Fever plugins](https://github.com/WangQiru/tinytinyrss-fever-plugin) that solves compatibility issue (since repo owner is MIA).
 
@@ -65,7 +66,8 @@ docker run -it --name ttrss --restart=always \
 
 
 # 简体中文说明
-## Tiny Tiny RSS 容器镜像，forked自[rubenv/docker-ttrss-plugins](https://github.com/rubenv/docker-ttrss-plugins)
+#### Tiny Tiny RSS 容器镜像
+#### 魔改自 [rubenv/docker-ttrss-plugins](https://github.com/rubenv/docker-ttrss-plugins)
 
 内置 [Mercury_fulltext](https://github.com/WangQiru/mercury_fulltext) 全文提取插件以及修复了（由于原基主已跑路）兼容性问题的 [Fever 模拟插件](https://github.com/WangQiru/tinytinyrss-fever-plugin).
 
