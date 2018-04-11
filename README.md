@@ -3,7 +3,7 @@
 #### Tiny Tiny RSS feed reader as a docker image.
 #### Modified(heavily) from [rubenv/docker-ttrss-plugins](https://github.com/rubenv/docker-ttrss-plugins)
 
-With [Mercury_fulltext](https://github.com/WangQiru/mercury_fulltext) and [updated Fever plugins](https://github.com/WangQiru/tinytinyrss-fever-plugin) that solves compatibility issue (since repo owner is MIA).
+With [Mercury_fulltext](https://github.com/WangQiru/mercury_fulltext) and [updated Fever plugin](https://github.com/WangQiru/tinytinyrss-fever-plugin) that solves compatibility issue (since repo owner is MIA).
 
 With [Feedly](https://github.com/levito/tt-rss-feedly-theme) theme.
 
@@ -53,7 +53,7 @@ docker run -it --name ttrss --restart=always \
       font-size: 16px;
   ```
 
-- For iOS user, Fever plugin supplies **[Reeder iOS](http://reederapp.com/ios/)** (THE RSS READER) backend support.
+- For iOS user,  [Fever plugin](https://github.com/WangQiru/tinytinyrss-fever-plugin) supplies **[Reeder iOS](http://reederapp.com/ios/)** (THE RSS READER) backend support.
 
 - For Android user, strongly recommend an iPhone.
 
@@ -118,7 +118,7 @@ docker run -it --name ttrss --restart=always \
       font-size: 16px;
   ```
 
-- 对于 iOS 用户, Fever 模拟插件提供 **[Reeder iOS](http://reederapp.com/ios/)** (最强 RSS 阅读器, 没有之一) 后端支持.
+- 对于 iOS 用户, [Fever 模拟插件](https://github.com/WangQiru/tinytinyrss-fever-plugin)提供 **[Reeder iOS](http://reederapp.com/ios/)** (最强 RSS 阅读器, 没有之一) 后端支持.
 
 - 对于安卓用户, 强烈推荐一部 iPhone.
 
