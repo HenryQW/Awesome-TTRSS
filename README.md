@@ -1,3 +1,9 @@
+![Docker Pulls](https://img.shields.io/docker/pulls/wangqiru/ttrss.svg)
+![Docker Stars](https://img.shields.io/docker/stars/wangqiru/ttrss.svg)
+
+![Docker Automated build](https://img.shields.io/docker/automated/wangqiru/ttrss.svg)
+![Docker Build Status](https://img.shields.io/docker/build/wangqiru/ttrss.svg)
+
 [简体中文说明在这里](#简体中文说明)
 
 #### Tiny Tiny RSS feed reader as a docker image.
