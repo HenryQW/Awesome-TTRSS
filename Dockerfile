@@ -8,7 +8,7 @@ RUN apk add --update --no-cache nginx s6 php7 php7-fpm php7-cli php7-curl php7-f
 ADD ttrss.nginx.conf /etc/nginx/nginx.conf
 
 # Download plugins
-ADD https://github.com/WangQiru/tinytinyrss-fever-plugin/archive/dev.tar.gz /var/www/plugins/
+ADD https://github.com/WangQiru/tinytinyrss-fever-plugin/archive/master.tar.gz /var/www/plugins/
 ADD https://github.com/WangQiru/mercury_fulltext/archive/master.tar.gz /var/www/plugins/mercury_fulltext/
 ADD https://github.com/levito/tt-rss-feedly-theme/archive/master.tar.gz /var/www/themes/
 
@@ -16,7 +16,7 @@ ADD https://github.com/levito/tt-rss-feedly-theme/archive/master.tar.gz /var/www
 WORKDIR /var/www
 RUN apk add --update --virtual build-dependencies curl tar \
   && curl -SL https://git.tt-rss.org/git/tt-rss/archive/master.tar.gz | tar xzC /var/www --strip-components 1 \
-  && tar xzvpf /var/www/plugins/dev.tar.gz --strip-components=1 -C /var/www/plugins/ tinytinyrss-fever-plugin-dev/fever && rm /var/www/plugins/dev.tar.gz \
+  && tar xzvpf /var/www/plugins/master.tar.gz --strip-components=1 -C /var/www/plugins/ tinytinyrss-fever-plugin-master/fever && rm /var/www/plugins/master.tar.gz \
   && tar xzvpf /var/www/plugins/mercury_fulltext/master.tar.gz --strip-components=1 -C /var/www/plugins/mercury_fulltext/ mercury_fulltext-master && rm /var/www/plugins/mercury_fulltext/master.tar.gz \
   && tar xzvpf /var/www/themes/master.tar.gz --strip-components=1 -C /var/www/themes/ tt-rss-feedly-theme-master/feedly tt-rss-feedly-theme-master/feedly.css && rm /var/www/themes/master.tar.gz \
   && apk del build-dependencies \
