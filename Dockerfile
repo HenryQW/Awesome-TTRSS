@@ -8,8 +8,8 @@ RUN apk add --update --no-cache nginx s6 php7 php7-fpm php7-cli php7-curl php7-f
 ADD ttrss.nginx.conf /etc/nginx/nginx.conf
 
 # Download plugins
-ADD https://github.com/WangQiru/tinytinyrss-fever-plugin/archive/master.tar.gz /var/www/plugins/
-ADD https://github.com/WangQiru/mercury_fulltext/archive/master.tar.gz /var/www/plugins/mercury_fulltext/
+ADD https://github.com/HenryQW/tinytinyrss-fever-plugin/archive/master.tar.gz /var/www/plugins/
+ADD https://github.com/HenryQW/mercury_fulltext/archive/master.tar.gz /var/www/plugins/mercury_fulltext/
 ADD https://github.com/levito/tt-rss-feedly-theme/archive/master.tar.gz /var/www/themes/
 
 # install ttrss and patch configuration
