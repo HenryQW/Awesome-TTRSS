@@ -11,7 +11,7 @@
 #### Plugins
 
 1.  [Mercury_fulltext](https://github.com/HenryQW/mercury_fulltext): fetches fulltext of articles via Mercury API.
-2.  [updated Fever plugin](https://github.com/HenryQW/tinytinyrss-fever-plugin): simulates Fever API。
+2.  [Fever plugin](https://github.com/HenryQW/tinytinyrss-fever-plugin): simulates Fever API.
 3.  [Feediron](https://github.com/feediron/ttrss_plugin-feediron): enables modification of article's DOM.
 
 #### Theme
@@ -78,9 +78,9 @@ docker run -it --name ttrss --restart=always \
 
 #### 插件
 
-1.  [Mercury](https://github.com/HenryQW/mercury_fulltext): 全文提取插件（Mercury API）.
-2.  [Fever](https://github.com/HenryQW/tinytinyrss-fever-plugin): Fever API 模拟.
-3.  [Feediron](https://github.com/feediron/ttrss_plugin-feediron): 文章 DOM 操纵.
+1.  [Mercury](https://github.com/HenryQW/mercury_fulltext): 全文内容提取插件（Mercury API）.
+2.  [Fever](https://github.com/HenryQW/tinytinyrss-fever-plugin): Fever API 模拟插件.
+3.  [Feediron](https://github.com/feediron/ttrss_plugin-feediron): 提供文章 DOM 操控能力的插件.
 
 #### 主题
 
