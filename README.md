@@ -32,6 +32,9 @@ docker run -it --name ttrss --restart=always \
 -d wangqiru/ttrss
 ```
 
+A full setup using docker-compose is on the way, when the summer vacation ends. 
+https://github.com/HenryQW/docker-ttrss-plugins/issues/2
+
 ### List of Docker ENV
 
 * ENV SELF_URL_PATH
@@ -78,9 +81,9 @@ docker run -it --name ttrss --restart=always \
 
 #### 插件
 
-1.  [Mercury](https://github.com/HenryQW/mercury_fulltext): 全文内容提取插件（Mercury API）.
-2.  [Fever](https://github.com/HenryQW/tinytinyrss-fever-plugin): Fever API 模拟插件.
-3.  [Feediron](https://github.com/feediron/ttrss_plugin-feediron): 提供文章 DOM 操控能力的插件.
+1. [Mercury](https://github.com/HenryQW/mercury_fulltext): 全文内容提取插件（Mercury API）.
+2. [Fever](https://github.com/HenryQW/tinytinyrss-fever-plugin): Fever API 模拟插件.
+3. [Feediron](https://github.com/feediron/ttrss_plugin-feediron): 提供文章 DOM 操控能力的插件.
 
 #### 主题
 
@@ -99,6 +102,9 @@ docker run -it --name ttrss --restart=always \
 -p [ 容器对外映射端口 ]:80  \
 -d wangqiru/ttrss
 ```
+
+度假回来后着手实施 docker-compose 一键部署。
+https://github.com/HenryQW/docker-ttrss-plugins/issues/2
 
 ### Docker ENV 变量列表
 
