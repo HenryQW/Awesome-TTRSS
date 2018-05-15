@@ -8,15 +8,13 @@
 
 #### Tiny Tiny RSS feed reader as a docker image.
 
-#### Plugins
+#### Plugins:
 
 1.  [Mercury_fulltext](https://github.com/HenryQW/mercury_fulltext): fetches fulltext of articles via Mercury API.
 2.  [Fever plugin](https://github.com/HenryQW/tinytinyrss-fever-plugin): simulates Fever API (please read the configuration [here](https://tt-rss.org/oldforum/viewtopic.php?f=22&t=1981)).
 3.  [Feediron](https://github.com/feediron/ttrss_plugin-feediron): enables modification of article's DOM.
 
-#### Theme
-
-[Feedly](https://github.com/levito/tt-rss-feedly-theme)
+#### Theme: [Feedly](https://github.com/levito/tt-rss-feedly-theme)
 
 **Support postgres only for better user experience.** mysql support is dropped since [tag 3.5_mysql_php5](https://github.com/HenryQW/docker-ttrss-plugins/tree/3.5_mysql_php5).
 
@@ -28,6 +26,7 @@
 docker run -it --name ttrss --restart=always \
 --link [ your DB container ]:db  \
 -e SELF_URL_PATH = [ your URL ]  \
+-e DB_NAME = [ your DB name ]  \
 -e DB_USER = [ your DB user ]  \
 -e DB_PASS = [ your DB password ]  \
 -p [ your port ]:80  \
@@ -45,10 +44,10 @@ docker run -it --name ttrss --restart=always \
 
 `docker-compose.yml` contains ttrss and postgres images.
 
-1.  Download `docker-compose.yml` to any directory
-2.  Read `docker-compose.yml` and change the settings (please ensure you change user and password for postgres)
-3.  Run `docker-compose up -d` and wait for the deployment to finish
-4.  Access ttrss via port 81，with default credentials `admin` and `password`, please change them asap
+1.  Download `docker-compose.yml` to any directory.
+2.  Read `docker-compose.yml` and change the settings (please ensure you change user and password for postgres).
+3.  Run `docker-compose up -d` and wait for the deployment to finish.
+4.  Access ttrss via port 81，with default credentials `admin` and `password`, please change them asap.
 
 ### Recommendation
 
@@ -87,15 +86,13 @@ docker run -it --name ttrss --restart=always \
 
 #### Tiny Tiny RSS 容器镜像
 
-#### 插件
+#### 插件:
 
-1.  [Mercury](https://github.com/HenryQW/mercury_fulltext): 全文内容提取插件（Mercury API）.
-2.  [Fever](https://github.com/HenryQW/tinytinyrss-fever-plugin): Fever API 模拟插件(请参照[这里](https://tt-rss.org/oldforum/viewtopic.php?f=22&t=1981)进行设置).
+1.  [Mercury](https://github.com/HenryQW/mercury_fulltext): 全文内容提取插件 (Mercury API) .
+2.  [Fever](https://github.com/HenryQW/tinytinyrss-fever-plugin): Fever API 模拟插件（请参照[这里](https://tt-rss.org/oldforum/viewtopic.php?f=22&t=1981)进行设置）.
 3.  [Feediron](https://github.com/feediron/ttrss_plugin-feediron): 提供文章 DOM 操控能力的插件.
 
-#### 主题
-
-[Feedly](https://github.com/levito/tt-rss-feedly-theme)
+#### 主题: [Feedly](https://github.com/levito/tt-rss-feedly-theme)
 
 **为了更好的用户体验，此镜像仅支持 postgres 数据库.** 自 [tag 3.5_mysql_php5](https://github.com/HenryQW/docker-ttrss-plugins/tree/3.5_mysql_php5) 起停止支持 mysql.
 
@@ -107,6 +104,7 @@ docker run -it --name ttrss --restart=always \
 docker run -it --name ttrss --restart=always \
 --link [ 你的数据库容器名 ] : db  \
 -e SELF_URL_PATH = [ 你的URL地址 ]  \
+-e DB_NAME = [ 你的数据库名称 ]  \
 -e DB_USER = [ 你的数据库用户名 ]  \
 -e DB_PASS = [ 你的数据库密码 ]  \
 -p [ 容器对外映射端口 ]:80  \
@@ -124,10 +122,10 @@ docker run -it --name ttrss --restart=always \
 
 `docker-compose.yml` 包含了 ttrss 与 postgres 镜像.
 
-1.  下载 `docker-compose.yml` 至任意目录
-2.  更改 `docker-compose.yml` 中的设置（务必更改 postgres 用户密码）
-3.  运行 `docker-compose up -d` 后等待部署完成
-4.  默认通过 81 端口访问 ttrss，默认账户: `admin` 密码: `password`，请第一时间更改
+1.  下载 `docker-compose.yml` 至任意目录.
+2.  更改 `docker-compose.yml` 中的设置（务必更改 postgres 用户密码）.
+3.  运行 `docker-compose up -d` 后等待部署完成.
+4.  默认通过 81 端口访问 ttrss，默认账户: `admin` 密码: `password`，请第一时间更改.
 
 ### 使用建议
 
