@@ -20,7 +20,7 @@ services:
         - 181:80
       network_mode: "bridge"
       environment: 
-        - SELF_URL_PATH=http://212.47.229.69:181  # please change to your own domain
+        - SELF_URL_PATH=https://ttrssdev.henry.wang  # please change to your own domain
         - DB_NAME=ttrss
         - DB_USER=postgres
         - DB_PASS=ttrss # please change the password
