@@ -1,0 +1,31 @@
+version: "3"  
+services:
+    db:
+      container_name: postgres
+      image: sameersbn/postgresql:latest
+      ports:
+        - 5432:5432
+      environment: 
+        - PG_USER=postgres
+        - PG_PASSWORD=mira_pastoral_beer_columbus # please change the password
+        - DB_EXTENSION=pg_trgm
+      volumes:
+        - /docker/postgres/data:/var/lib/postgresql # This is to persistt the data on the host machine
+      restart: always
+
+    rss:
+      image: wangqiru/ttrss
+      container_name: ttrss
+      links:
+        - db:db
+      ports:
+        - 81:80
+      environment: 
+        - SELF_URL_PATH=https://rss.henry.wang/  # please change to your own domain
+        - DB_PORT=5432
+        - DB_NAME=ttrss
+        - DB_USER=postgres
+        - DB_PASS=mira_pastoral_beer_columbus # please change the password
+      stdin_open: true
+      tty: true
+      restart: always
