@@ -20,7 +20,9 @@
 
 **Support postgres only for better user experience.** mysql support is dropped since [tag 3.5_mysql_php5](https://github.com/HenryQW/docker-ttrss-plugins/tree/3.5_mysql_php5).
 
-### Example usage:
+### Deployment example:
+
+#### Deployment via docker
 
 ```
 docker run -it --name ttrss --restart=always \
@@ -32,15 +34,21 @@ docker run -it --name ttrss --restart=always \
 -d wangqiru/ttrss
 ```
 
-A full setup using docker-compose is on the way, when the summer vacation ends. 
-https://github.com/HenryQW/docker-ttrss-plugins/issues/2
-
-### List of Docker ENV
+##### List of Docker ENV variables
 
 * ENV SELF_URL_PATH
 * ENV DB_NAME
 * ENV DB_USER
 * ENV DB_PASS
+
+#### Deployment via docker-compose
+
+`docker-compose.yml` contains ttrss and postgres images.
+
+1.  Download `docker-compose.yml` to any directory
+2.  Read `docker-compose.yml` and change the settings (please ensure you change user and password for postgres)
+3.  Run `docker-compose up -d` and wait for the deployment to finish
+4.  Access ttrss via port 81，with default credentials `admin` and `password`, please change them asap
 
 ### Recommendation
 
@@ -81,9 +89,9 @@ https://github.com/HenryQW/docker-ttrss-plugins/issues/2
 
 #### 插件
 
-1. [Mercury](https://github.com/HenryQW/mercury_fulltext): 全文内容提取插件（Mercury API）.
-2. [Fever](https://github.com/HenryQW/tinytinyrss-fever-plugin): Fever API 模拟插件(请参照[这里](https://tt-rss.org/oldforum/viewtopic.php?f=22&t=1981)进行设置).
-3. [Feediron](https://github.com/feediron/ttrss_plugin-feediron): 提供文章 DOM 操控能力的插件.
+1.  [Mercury](https://github.com/HenryQW/mercury_fulltext): 全文内容提取插件（Mercury API）.
+2.  [Fever](https://github.com/HenryQW/tinytinyrss-fever-plugin): Fever API 模拟插件(请参照[这里](https://tt-rss.org/oldforum/viewtopic.php?f=22&t=1981)进行设置).
+3.  [Feediron](https://github.com/feediron/ttrss_plugin-feediron): 提供文章 DOM 操控能力的插件.
 
 #### 主题
 
@@ -91,7 +99,9 @@ https://github.com/HenryQW/docker-ttrss-plugins/issues/2
 
 **为了更好的用户体验，此镜像仅支持 postgres 数据库.** 自 [tag 3.5_mysql_php5](https://github.com/HenryQW/docker-ttrss-plugins/tree/3.5_mysql_php5) 起停止支持 mysql.
 
-### 使用样例:
+### 部署样例:
+
+#### 通过 docker 部署
 
 ```
 docker run -it --name ttrss --restart=always \
@@ -103,15 +113,21 @@ docker run -it --name ttrss --restart=always \
 -d wangqiru/ttrss
 ```
 
-度假回来后着手实施 docker-compose 一键部署.
-https://github.com/HenryQW/docker-ttrss-plugins/issues/2
-
-### Docker ENV 变量列表
+##### Docker ENV 环境变量列表
 
 * ENV SELF_URL_PATH
 * ENV DB_NAME
 * ENV DB_USER
 * ENV DB_PASS
+
+#### 通过 docker-compose 部署
+
+`docker-compose.yml` 包含了 ttrss 与 postgres 镜像.
+
+1.  下载 `docker-compose.yml` 至任意目录
+2.  更改 `docker-compose.yml` 中的设置（务必更改 postgres 用户密码）
+3.  运行 `docker-compose up -d` 后等待部署完成
+4.  默认通过 81 端口访问 ttrss，默认账户: `admin` 密码: `password`，请第一时间更改
 
 ### 使用建议
 

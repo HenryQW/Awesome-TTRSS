@@ -1,0 +1,34 @@
+version: "3"  
+services:
+    db:
+      container_name: postgres22
+      image: sameersbn/postgresql:latest
+      network_mode: "bridge"
+      ports:
+        - 5433:5432
+      environment: 
+        - PG_PASSWORD=ttrss # please change the password
+        - DB_EXTENSION=pg_trgm
+      restart: always
+
+    rss:
+      image: ttest
+      container_name: ttrss22
+      links:
+        - db:db
+      ports:
+        - 181:80
+      network_mode: "bridge"
+      environment: 
+        - SELF_URL_PATH=http://212.47.229.69:181  # please change to your own domain
+        - DB_NAME=ttrss
+        - DB_USER=postgres
+        - DB_PASS=ttrss # please change the password
+      stdin_open: true
+      tty: true
+      restart: always
+      command: sh -c 'sh /wait-for db:5432 -- php /configure-db.php && exec s6-svscan /etc/s6/'
+networks:
+  default:
+    external:
+      name: bridge
