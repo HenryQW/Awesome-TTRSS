@@ -1,31 +1,34 @@
 version: "3"  
 services:
     db:
-      container_name: postgres
+      container_name: postgres22
       image: sameersbn/postgresql:latest
+      network_mode: "bridge"
       ports:
-        - 5432:5432
+        - 5433:5432
       environment: 
-        - PG_USER=postgres
-        - PG_PASSWORD=mira_pastoral_beer_columbus # please change the password
+        - PG_PASSWORD=ttrss # please change the password
         - DB_EXTENSION=pg_trgm
-      volumes:
-        - /docker/postgres/data:/var/lib/postgresql # This is to persistt the data on the host machine
       restart: always
 
     rss:
-      image: wangqiru/ttrss
-      container_name: ttrss
+      image: ttest
+      container_name: ttrss22
       links:
         - db:db
       ports:
-        - 81:80
+        - 181:80
+      network_mode: "bridge"
       environment: 
-        - SELF_URL_PATH=https://rss.henry.wang/  # please change to your own domain
-        - DB_PORT=5432
+        - SELF_URL_PATH=http://212.47.229.69:181  # please change to your own domain
         - DB_NAME=ttrss
         - DB_USER=postgres
-        - DB_PASS=mira_pastoral_beer_columbus # please change the password
+        - DB_PASS=ttrss # please change the password
       stdin_open: true
       tty: true
       restart: always
+      
+networks:
+  default:
+    external:
+      name: bridge
