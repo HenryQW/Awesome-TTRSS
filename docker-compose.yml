@@ -1,8 +1,8 @@
 version: "3"  
 services:
     db:
-      container_name: postgres22
       image: sameersbn/postgresql:latest
+      container_name: postgres
       network_mode: "bridge"
       ports:
         - 5433:5432
@@ -12,8 +12,8 @@ services:
       restart: always
 
     rss:
-      image: ttest
-      container_name: ttrss22
+      image: wangqiru/ttrss:latest
+      container_name: ttrss
       links:
         - db:db
       ports:
