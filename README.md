@@ -14,7 +14,7 @@
 2.  [Fever plugin](https://github.com/HenryQW/tinytinyrss-fever-plugin): simulates Fever API (please read the configuration [here](https://tt-rss.org/oldforum/viewtopic.php?f=22&t=1981)).
 3.  [Feediron](https://github.com/feediron/ttrss_plugin-feediron): enables modification of article's DOM.
 
-#### Theme: [Feedly](https://github.com/levito/tt-rss-feedly-theme)
+#### Theme: [nextcloud](https://github.com/dugite-code/tt-rss-nextcloud-theme)
 
 **Support postgres only for better user experience.** mysql support is dropped since [tag 3.5_mysql_php5](https://github.com/HenryQW/docker-ttrss-plugins/tree/3.5_mysql_php5).
 
@@ -58,25 +58,27 @@ docker run -it --name ttrss --restart=always \
 
   ```css
   .postContent {
-      font-size: 16px;
+    font-size: 16px;
   }
-
   .hlContent {
-      font-size: 15px;
+    font-size: 15px;
   }
-
   html, button, input, select, textarea {
-      font: 13px/1.5 Helvetica sans-serif, Arial, "Microsoft Yahei";
+    font: 13px/1.5 Helvetica sans-serif, Arial, "Microsoft Yahei";
   }
-
-  #floatingTitle > *, .cdm.expandable:not(.active) .cdmHeader > *, .hl > * {
-      padding: 5px 5px;
-      order: 3;
+  .cdm.expandable:not(.active) .cdmHeader > *, .hl > * {
+    padding: 5px 5px;
+    order: 3;
   }
-
-  #floatingTitle .title, .postHeader .postTitle a {
-      font-weight: bold;
-      font-size: 16px;
+  .cdm.expandable:not(.active) .cdmHeader, .hl {
+    margin-bottom: 10px;
+  }
+  .cdm.expandable, .hl {
+    border-top:0 solid #eee;
+  }
+  .title, .postHeader .postTitle a {
+    font-weight: bold;
+    font-size: 16px;	
   ```
 
 * For iOS user, [Fever plugin](https://github.com/HenryQW/tinytinyrss-fever-plugin) supplies **[Reeder iOS](http://reederapp.com/ios/)** (THE RSS READER) backend support.
@@ -95,7 +97,7 @@ docker run -it --name ttrss --restart=always \
 2.  [Fever](https://github.com/HenryQW/tinytinyrss-fever-plugin): Fever API 模拟插件（请参照[这里](https://tt-rss.org/oldforum/viewtopic.php?f=22&t=1981)进行设置）.
 3.  [Feediron](https://github.com/feediron/ttrss_plugin-feediron): 提供文章 DOM 操控能力的插件.
 
-#### 主题: [Feedly](https://github.com/levito/tt-rss-feedly-theme)
+#### 主题: [nextcloud](https://github.com/dugite-code/tt-rss-nextcloud-theme)
 
 **为了更好的用户体验，此镜像仅支持 postgres 数据库.** 自 [tag 3.5_mysql_php5](https://github.com/HenryQW/docker-ttrss-plugins/tree/3.5_mysql_php5) 起停止支持 mysql.
 
@@ -138,25 +140,27 @@ docker run -it --name ttrss --restart=always \
 
   ```css
   .postContent {
-      font-size: 16px;
+    font-size: 16px;
   }
-
   .hlContent {
-      font-size: 15px;
+    font-size: 15px;
   }
-
   html, button, input, select, textarea {
-      font: 13px/1.5 Helvetica sans-serif, Arial, "Microsoft Yahei";
+    font: 13px/1.5 Helvetica sans-serif, Arial, "Microsoft Yahei";
   }
-
-  #floatingTitle > *, .cdm.expandable:not(.active) .cdmHeader > *, .hl > * {
-      padding: 5px 5px;
-      order: 3;
+  .cdm.expandable:not(.active) .cdmHeader > *, .hl > * {
+    padding: 5px 5px;
+    order: 3;
   }
-
-  #floatingTitle .title, .postHeader .postTitle a {
-      font-weight: bold;
-      font-size: 16px;
+  .cdm.expandable:not(.active) .cdmHeader, .hl {
+    margin-bottom: 10px;
+  }
+  .cdm.expandable, .hl {
+    border-top:0 solid #eee;
+  }
+  .title, .postHeader .postTitle a {
+    font-weight: bold;
+    font-size: 16px;	
   ```
 
 * 对于 iOS 用户, [Fever 模拟插件](https://github.com/HenryQW/tinytinyrss-fever-plugin)提供 **[Reeder iOS](http://reederapp.com/ios/)** (最强 RSS 阅读器, 没有之一) 后端支持.
