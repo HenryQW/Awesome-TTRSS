@@ -54,32 +54,7 @@ docker run -it --name ttrss --restart=always \
 
 ### Recommendation
 
-* For web interface, recommend to use **[Stylish plugin](https://userstyles.org/)** to customise your own CSS style, especially for non-western languages.
-
-  ```css
-  .postContent {
-    font-size: 16px;
-  }
-  .hlContent {
-    font-size: 15px;
-  }
-  html, button, input, select, textarea {
-    font: 13px/1.5 Helvetica sans-serif, Arial, "Microsoft Yahei";
-  }
-  .cdm.expandable:not(.active) .cdmHeader > *, .hl > * {
-    padding: 5px 5px;
-    order: 3;
-  }
-  .cdm.expandable:not(.active) .cdmHeader, .hl {
-    margin-bottom: 10px;
-  }
-  .cdm.expandable, .hl {
-    border-top:0 solid #eee;
-  }
-  .title, .postHeader .postTitle a {
-    font-weight: bold;
-    font-size: 16px;	
-  ```
+* For web interface, recommend to use **[freestyler plugin](http://freestyler.ws)** to customise your own CSS style, especially for non-western languages. Some [sample code](https://github.com/HenryQW/Stylish/blob/master/ttrss.css), please [replace it with your own ttrss domain](https://github.com/HenryQW/Stylish/blob/08923469377a974d66f8d2c767e6b6a69616a688/ttrss.css#L1).
 
 * For iOS user, [Fever plugin](https://github.com/HenryQW/tinytinyrss-fever-plugin) supplies **[Reeder iOS](http://reederapp.com/ios/)** (THE RSS READER) backend support.
 
@@ -136,32 +111,8 @@ docker run -it --name ttrss --restart=always \
 
 ### 使用建议
 
-* Web 端推荐使用 **[Stylish 插件](https://userstyles.org/)** 来定制自己的 CSS 风格, 尤其是中文字体.
+* Web 端推荐使用 **[freestyler 插件](http://freestyler.ws)** 来定制自己的 CSS 风格, 尤其是中文字体. 一些样式[代码](https://github.com/HenryQW/Stylish/blob/master/ttrss.css), 请[替换自己的ttrss域名](https://github.com/HenryQW/Stylish/blob/08923469377a974d66f8d2c767e6b6a69616a688/ttrss.css#L1).
 
-  ```css
-  .postContent {
-    font-size: 16px;
-  }
-  .hlContent {
-    font-size: 15px;
-  }
-  html, button, input, select, textarea {
-    font: 13px/1.5 Helvetica sans-serif, Arial, "Microsoft Yahei";
-  }
-  .cdm.expandable:not(.active) .cdmHeader > *, .hl > * {
-    padding: 5px 5px;
-    order: 3;
-  }
-  .cdm.expandable:not(.active) .cdmHeader, .hl {
-    margin-bottom: 10px;
-  }
-  .cdm.expandable, .hl {
-    border-top:0 solid #eee;
-  }
-  .title, .postHeader .postTitle a {
-    font-weight: bold;
-    font-size: 16px;	
-  ```
 
 * 对于 iOS 用户, [Fever 模拟插件](https://github.com/HenryQW/tinytinyrss-fever-plugin)提供 **[Reeder iOS](http://reederapp.com/ios/)** (最强 RSS 阅读器, 没有之一) 后端支持.
 
