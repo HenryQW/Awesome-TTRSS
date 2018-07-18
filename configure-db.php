@@ -7,10 +7,9 @@ $config = array();
 
 $config['SELF_URL_PATH'] = env('SELF_URL_PATH', 'http://localhost');
 $config['DB_TYPE'] = 'pgsql';
-$eport = 5432;
-$config['DB_HOST'] = env('DB_PORT_' . $eport . '_TCP_ADDR');
-$config['DB_PORT'] = env('DB_PORT_' . $eport . '_TCP_PORT');
-$config['DB_NAME'] = env('DB_NAME');
+$config['DB_HOST'] = env('DB_HOST', 'postgres');
+$config['DB_PORT'] = env('DB_PORT', 5432);
+$config['DB_NAME'] = env('DB_NAME', 'ttrss');
 $config['DB_USER'] = env('DB_USER');
 $config['DB_PASS'] = env('DB_PASS');
 
