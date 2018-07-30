@@ -27,8 +27,8 @@
 
 ```
 docker run -it --name ttrss --restart=always \
---link [ your DB container ]:db  \
 -e SELF_URL_PATH = [ your URL ]  \
+-e DB_HOST = [ your DB address ]  \
 -e DB_NAME = [ your DB name ]  \
 -e DB_USER = [ your DB user ]  \
 -e DB_PASS = [ your DB password ]  \
@@ -39,6 +39,7 @@ docker run -it --name ttrss --restart=always \
 ##### List of Docker ENV variables
 
 * ENV SELF_URL_PATH
+* ENV DB_HOST
 * ENV DB_NAME
 * ENV DB_USER
 * ENV DB_PASS
@@ -84,8 +85,8 @@ docker run -it --name ttrss --restart=always \
 
 ```
 docker run -it --name ttrss --restart=always \
---link [ 你的数据库容器名 ] : db  \
 -e SELF_URL_PATH = [ 你的URL地址 ]  \
+-e DB_HOST = [ 你的数据库地址 ]  \
 -e DB_NAME = [ 你的数据库名称 ]  \
 -e DB_USER = [ 你的数据库用户名 ]  \
 -e DB_PASS = [ 你的数据库密码 ]  \
@@ -96,6 +97,7 @@ docker run -it --name ttrss --restart=always \
 ##### Docker ENV 环境变量列表
 
 * ENV SELF_URL_PATH
+* ENV DB_HOST
 * ENV DB_NAME
 * ENV DB_USER
 * ENV DB_PASS
