@@ -11,8 +11,6 @@ services:
     rss:
       image: wangqiru/ttrss:latest
       container_name: ttrss
-      links:
-        - database.postgres:db
       ports:
         - 80:80
       environment: 
