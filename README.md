@@ -29,6 +29,7 @@
 docker run -it --name ttrss --restart=always \
 -e SELF_URL_PATH = [ your URL ]  \
 -e DB_HOST = [ your DB address ]  \
+-e DB_PORT= [ your DB port ]  \
 -e DB_NAME = [ your DB name ]  \
 -e DB_USER = [ your DB user ]  \
 -e DB_PASS = [ your DB password ]  \
@@ -40,6 +41,7 @@ docker run -it --name ttrss --restart=always \
 
 * ENV SELF_URL_PATH
 * ENV DB_HOST
+* ENV DB_PORT
 * ENV DB_NAME
 * ENV DB_USER
 * ENV DB_PASS
@@ -87,6 +89,7 @@ docker run -it --name ttrss --restart=always \
 docker run -it --name ttrss --restart=always \
 -e SELF_URL_PATH = [ 你的URL地址 ]  \
 -e DB_HOST = [ 你的数据库地址 ]  \
+-e DB_PORT= [ 你的数据库端口 ]  \
 -e DB_NAME = [ 你的数据库名称 ]  \
 -e DB_USER = [ 你的数据库用户名 ]  \
 -e DB_PASS = [ 你的数据库密码 ]  \
@@ -98,6 +101,7 @@ docker run -it --name ttrss --restart=always \
 
 * ENV SELF_URL_PATH
 * ENV DB_HOST
+* ENV DB_PORT
 * ENV DB_NAME
 * ENV DB_USER
 * ENV DB_PASS
