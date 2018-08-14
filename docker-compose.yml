@@ -12,7 +12,7 @@ services:
       image: wangqiru/ttrss:latest
       container_name: ttrss
       ports:
-        - 80:80
+        - 181:80
       environment: 
         - SELF_URL_PATH=https://ttrssdev.henry.wang  # please change to your own domain
         - DB_HOST=database.postgres
