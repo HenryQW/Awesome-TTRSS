@@ -68,7 +68,7 @@ function error($text)
 
 function dbconnect($config)
 {
-    $map = array('host' => 'HOST', 'port' => 'PORT');
+    $map = array('host' => 'HOST', 'port' => 'PORT', 'dbname' => 'NAME');
     $dsn = $config['DB_TYPE'] . ':';
     foreach ($map as $d => $h) {
         if (isset($config['DB_' . $h])) {
