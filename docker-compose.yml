@@ -4,7 +4,7 @@ services:
     image: sameersbn/postgresql:latest
     container_name: postgres
     environment:
-      - PG_PASSWORD=ttrss # please change the password
+      - PG_PASSWORD=admin5120
       - DB_EXTENSION=pg_trgm
     restart: always
 
@@ -14,12 +14,12 @@ services:
     ports:
       - 181:80
     environment:
-      - SELF_URL_PATH=http://localhost:181/ # please change to your own domain
+      - SELF_URL_PATH=http://104.245.45.112:181/
       - DB_HOST=database.postgres
       - DB_PORT=5432
       - DB_NAME=ttrss
       - DB_USER=postgres
-      - DB_PASS=ttrss # please change the password
+      - DB_PASS=admin5120
     stdin_open: true
     tty: true
     restart: always

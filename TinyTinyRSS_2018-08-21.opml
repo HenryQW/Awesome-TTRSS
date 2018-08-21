@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<opml version="1.0">
+  <head>
+    <dateCreated>Tue, 21 Aug 2018 14:21:08 +0000</dateCreated>
+    <title>Tiny Tiny RSS Feed Export</title>
+  </head>
+  <body>
+    <outline text="🍎 Apple">
+      <outline type="rss" text="512 Pixels" xmlUrl="https://512pixels.net/feed/" htmlUrl="http://512pixels.net/"/>
+      <outline type="rss" text="Above Avalon" xmlUrl="https://www.aboveavalon.com/notes?format=RSS" htmlUrl="https://www.aboveavalon.com/"/>
+      <outline type="rss" text="And now it’s all this" xmlUrl="http://leancrew.com/all-this/feed/" htmlUrl="http://leancrew.com/all-this"/>
+      <outline type="rss" text="Daring Fireball" xmlUrl="https://daringfireball.net/feeds/main" htmlUrl="http://daringfireball.net/"/>
+      <outline type="rss" text="Engadget" xmlUrl="http://www.engadget.com/rss-full.xml" htmlUrl="http://www.engadget.com/"/>
+      <outline type="rss" text="iDownloadBlog" xmlUrl="http://www.idownloadblog.com/feed/" htmlUrl="http://www.idownloadblog.com/"/>
+      <outline type="rss" text="iMore" xmlUrl="https://www.imore.com/rss.xml" htmlUrl="https://www.imore.com/"/>
+      <outline type="rss" text="Macdrifter" xmlUrl="http://www.macdrifter.com/feeds/all.atom.xml" htmlUrl="http://www.macdrifter.com/"/>
+      <outline type="rss" text="MacRumors" xmlUrl="http://www.macrumors.com/macrumors.xml" htmlUrl="http://www.macrumors.com/"/>
+      <outline type="rss" text="MacStories" xmlUrl="http://feeds.feedburner.com/macstoriesnet" htmlUrl="http://www.macstories.net/"/>
+      <outline type="rss" text="Mac 玩儿法" xmlUrl="http://www.waerfa.com/feed" htmlUrl="http://www.waerfa.com/"/>
+      <outline type="rss" text="Marco.org" xmlUrl="http://marco.org/rss" htmlUrl="http://www.marco.org/"/>
+      <outline type="rss" text="Monday Note" xmlUrl="https://mondaynote.com/feed" htmlUrl="https://mondaynote.com/?source=rss----c537d80ed0a---4"/>
+      <outline type="rss" text="Six Colors" xmlUrl="http://feedpress.me/sixcolors?type=xml" htmlUrl="http://www.sixcolors.com/"/>
+      <outline type="rss" text="Stratechery" xmlUrl="https://stratechery.com/feed/" htmlUrl="https://stratechery.com/"/>
+      <outline type="rss" text="The Information" xmlUrl="https://www.theinformation.com/feed" htmlUrl="https://www.theinformation.com/"/>
+      <outline type="rss" text="The Loop" xmlUrl="http://www.loopinsight.com/feed/" htmlUrl="http://www.loopinsight.com/"/>
+      <outline type="rss" text="The Sweet Setup" xmlUrl="http://thesweetsetup.com/feed/" htmlUrl="http://thesweetsetup.com/"/>
+      <outline type="rss" text="The Verge" xmlUrl="http://ftr.fivefilters.org/makefulltextfeed.php?url=www.theverge.com/rss/frontpage&amp;max=3&amp;links=preserve" htmlUrl="http://www.theverge.com/rss/frontpage"/>
+      <outline type="rss" text="少数派" xmlUrl="http://sspai.com/feed" htmlUrl="http://sspai.com/feed"/>
+    </outline>
+    <outline text="✍️ Blog">
+      <outline type="rss" text="61's life" xmlUrl="https://61.life/rss/" htmlUrl="http://61.life/"/>
+      <outline type="rss" text="Bates' Blog" xmlUrl="http://feed43.com/8400672652840414.xml" htmlUrl="https://blog.batesma.com"/>
+      <outline type="rss" text="Cobalt Blue" xmlUrl="http://yuezhu.org/feed/" htmlUrl="http://yuezhu.org"/>
+      <outline type="rss" text="GFW Blog" xmlUrl="http://www.chinagfw.org/feeds/posts/default" htmlUrl="http://www.chinagfw.org/"/>
+      <outline type="rss" text="Hello World" xmlUrl="https://yorkchou.com/feed/" htmlUrl="https://yorkchou.com/"/>
+      <outline type="rss" text="iTimothy" xmlUrl="https://xiaozhou.net/atom.xml" htmlUrl="http://www.xiaozhou.net/"/>
+      <outline type="rss" text="IVY SEEDS" xmlUrl="https://www.ivyseeds.cf/feed/" htmlUrl="https://www.ivyseeds.cf/"/>
+      <outline type="rss" text="Neverland" xmlUrl="http://cyhsu.xyz/atom.xml" htmlUrl="http://cyhsu.xyz/"/>
+      <outline type="rss" text="OS X Daily" xmlUrl="http://osxdaily.com/feed/" htmlUrl="http://osxdaily.com/"/>
+      <outline type="rss" text="ServerCat 主机喵" xmlUrl="https://servercat.me/feed/" htmlUrl="https://servercat.me/"/>
+      <outline type="rss" text="Sunnyyoung's Blog" xmlUrl="https://blog.sunnyyoung.net/atom.xml" htmlUrl="https://blog.sunnyyoung.net/"/>
+      <outline type="rss" text="VINGA'S Blog" xmlUrl="https://vinga.tech/index.xml" htmlUrl="https://vinga.tech/"/>
+      <outline type="rss" text="wzyboy’s blog" xmlUrl="https://wzyboy.im/feed.xml" htmlUrl="https://wzyboy.im/"/>
+      <outline type="rss" text="YALV" xmlUrl="https://yalv.me/feed/" htmlUrl="https://yalv.me/"/>
+      <outline type="rss" text="ZC的个人小站" xmlUrl="http://gggggo.com/index.php/feed/" htmlUrl="http://gggggo.com/"/>
+      <outline type="rss" text="可能吧" xmlUrl="http://feeds.kenengba.com/kenengbarss" htmlUrl="https://kenengba.com/"/>
+      <outline type="rss" text="壹页单章" xmlUrl="https://scomper.me/feed/" htmlUrl="http://scomper.me/"/>
+      <outline type="rss" text="好奇心研究所" xmlUrl="https://api.prprpr.me/weibo/rss/5587974982" htmlUrl="http://weibo.com/5587974982/"/>
+      <outline type="rss" text="数字移民" xmlUrl="https://digitalimmigrant.org/feed" htmlUrl="https://digitalimmigrant.org"/>
+      <outline type="rss" text="梁杰的博客" xmlUrl="http://numbbbbb.com/atom.xml" htmlUrl="http://yoursite.com/"/>
+      <outline type="rss" text="混乱博物馆" xmlUrl="https://rss.lilydjwg.me/zhihuzhuanlan/chaosmuseum" htmlUrl="https://zhuanlan.zhihu.com/chaosmuseum"/>
+      <outline type="rss" text="白板报" xmlUrl="http://www.baibanbao.net/feed/" htmlUrl="http://www.baibanbao.net/"/>
+      <outline type="rss" text="编程随想的博客" xmlUrl="http://feeds2.feedburner.com/programthink" htmlUrl="http://program-think.blogspot.com/"/>
+      <outline type="rss" text="老道消息" xmlUrl="https://api.prprpr.me/weibo/rss/6196848335%201001030101" htmlUrl="http://weibo.com/6196848335 1001030101/"/>
+      <outline type="rss" text="读立写生" xmlUrl="http://cnfeat.com/feed.xml" htmlUrl="http://cnfeat/"/>
+      <outline type="rss" text="迟早更新" xmlUrl="https://rss.lilydjwg.me/zhihuzhuanlan/chizaogengxin" htmlUrl="https://zhuanlan.zhihu.com/chizaogengxin"/>
+      <outline type="rss" text="郝海龙的博客" xmlUrl="http://haohailong.net/feed/" htmlUrl="http://haohailong.net/"/>
+      <outline type="rss" text="阮一峰的网络日志" xmlUrl="http://feeds.feedburner.com/ruanyifeng" htmlUrl="http://www.ruanyifeng.com/blog/"/>
+    </outline>
+    <outline text="💎 Design">
+      <outline type="rss" text="Be For Web" xmlUrl="http://beforweb.com/rss.xml" htmlUrl="http://beforweb.com/"/>
+      <outline type="rss" text="InVision Blog" xmlUrl="http://blog.invisionapp.com/feed/" htmlUrl="http://blog.invisionapp.com/"/>
+      <outline type="rss" text="Stories by Julie Zhuo on Medium" xmlUrl="https://medium.com/feed/@joulee" htmlUrl="https://medium.com/@joulee"/>
+      <outline type="rss" text="Type is Beautiful" xmlUrl="http://www.typeisbeautiful.com/feed/" htmlUrl="http://www.typeisbeautiful.com/"/>
+      <outline type="rss" text="优设网" xmlUrl="http://www.uisdc.com/feed" htmlUrl="http://www.uisdc.com/"/>
+    </outline>
+    <outline text="📚 Knowledge">
+      <outline type="rss" text="果壳网" xmlUrl="http://www.rssmaker.cc/rss/site/58c76da80cf2105154adeed3.xml" htmlUrl="http://www.rssmaker.cc/"/>
+      <outline type="rss" text="知乎日报" xmlUrl="http://feeds.feedburner.com/zhihu-daily" htmlUrl="http://daily.zhihu.com/"/>
+      <outline type="rss" text="科学松鼠会" xmlUrl="http://songshuhui.net/feed" htmlUrl="http://songshuhui.net/"/>
+    </outline>
+    <outline text="🏠 Life">
+      <outline type="rss" text="器物与我" xmlUrl="http://qwme.org/feed" htmlUrl="http://qwme.org/wordpress"/>
+      <outline type="rss" text="理想生活实验室" xmlUrl="http://www.toodaylab.com/feed" htmlUrl="http://www.toodaylab.com/"/>
+    </outline>
+    <outline text="🌐 News">
+      <outline type="rss" text="36 氪" xmlUrl="http://36kr.com/feed" htmlUrl="http://www.36kr.com/"/>
+      <outline type="rss" text="Junyu" xmlUrl="http://reads.wangjunyu.net/rss" htmlUrl="http://reads.wangjunyu.net/"/>
+      <outline type="rss" text="PingWest" xmlUrl="http://www.pingwest.com/feed/" htmlUrl="http://www.pingwest.com/"/>
+      <outline type="rss" text="Solidot" xmlUrl="http://www.solidot.org/index.rss" htmlUrl="http://www.solidot.org/"/>
+      <outline type="rss" text="The Atlantic" xmlUrl="http://feeds.feedburner.com/TheAtlantic" htmlUrl="http://www.theatlantic.com/"/>
+      <outline type="rss" text="The Verge" xmlUrl="http://www.theverge.com/rss/frontpage" htmlUrl="http://www.theverge.com/"/>
+      <outline type="rss" text="北大新媒体" xmlUrl="http://www.looooker.com/feed" htmlUrl="http://www.looooker.com/"/>
+      <outline type="rss" text="墙外楼" xmlUrl="http://feeds.feedburner.com/letscorp/aDmw" htmlUrl="http://www.letscorp.net/"/>
+      <outline type="rss" text="好奇心日报" xmlUrl="http://www.qdaily.cn/feed.xml" htmlUrl="http://www.qdaily.com/"/>
+      <outline type="rss" text="湾区日报" xmlUrl="http://wanqu.co/feed" htmlUrl="http://wanqu.co/"/>
+      <outline type="rss" text="端傳媒" xmlUrl="https://theinitium.com/newsfeed/" htmlUrl="https://theinitium.com/newsfeed/"/>
+      <outline type="rss" text="钛媒体" xmlUrl="http://www.tmtpost.com/rss.xml" htmlUrl="http://www.tmtpost.com/"/>
+    </outline>
+    <outline text="📰 Press">
+      <outline type="rss" text="BBC News" xmlUrl="http://newsrss.bbc.co.uk/rss/newsonline_world_edition/front_page/rss.xml" htmlUrl="http://www.bbc.co.uk/news/#sa-ns_mchannel=rss&amp;ns_source=PublicRSS20-sa"/>
+      <outline type="rss" text="BBC 中文" xmlUrl="http://www.bbc.co.uk/zhongwen/simp/index.xml" htmlUrl="http://www.bbc.co.uk/zhongwen/simp/index.xml"/>
+      <outline type="rss" text="FT 中文" xmlUrl="http://www.ftchinese.com/rss/feed" htmlUrl="http://www.ftchinese.com/"/>
+      <outline type="rss" text="NY Times" xmlUrl="http://www.nytimes.com/services/xml/rss/nyt/HomePage.xml" htmlUrl="http://www.nytimes.com/pages/index.html?partner=rss&amp;emc=rss"/>
+      <outline type="rss" text="Reuters - Company News" xmlUrl="http://feeds.reuters.com/reuters/companyNews" htmlUrl="http://www.reuters.com/"/>
+      <outline type="rss" text="Reuters - Health News" xmlUrl="http://feeds.reuters.com/reuters/healthNews" htmlUrl="http://www.reuters.com/"/>
+      <outline type="rss" text="Reuters - Oddly Enough" xmlUrl="http://feeds.reuters.com/reuters/oddlyEnoughNews" htmlUrl="http://www.reuters.com/"/>
+      <outline type="rss" text="Reuters - Top News" xmlUrl="http://feeds.reuters.com/reuters/topNews" htmlUrl="http://www.reuters.com/"/>
+      <outline type="rss" text="The New Yorker" xmlUrl="http://www.newyorker.com/services/rss/feeds/everything.xml" htmlUrl="http://www.newyorker.com/mrss/feeds/everything.xml"/>
+      <outline type="rss" text="Wired" xmlUrl="https://www.wired.com/feed/rss" htmlUrl="http://www.wired.com/"/>
+      <outline type="rss" text="WP - Opinions" xmlUrl="http://feeds.washingtonpost.com/rss/opinions" htmlUrl="http://www.washingtonpost.com/opinions?wprss=rss_opinions"/>
+      <outline type="rss" text="WP - Politics" xmlUrl="http://feeds.washingtonpost.com/rss/politics" htmlUrl="http://www.washingtonpost.com/politics?wprss=rss_politics"/>
+      <outline type="rss" text="WSJ - China Real Time Report" xmlUrl="http://blogs.wsj.com/chinarealtime/feed/" htmlUrl="http://blogs.wsj.com/chinarealtime"/>
+      <outline type="rss" text="WSJ - Markets" xmlUrl="http://www.wsj.com/xml/rss/3_7031.xml" htmlUrl="http://online.wsj.com"/>
+      <outline type="rss" text="WSJ - Opinion" xmlUrl="http://www.wsj.com/xml/rss/3_7041.xml" htmlUrl="http://online.wsj.com/opinion"/>
+      <outline type="rss" text="WSJ - The Daily Fix" xmlUrl="http://feeds.wsjonline.com/wsj/dailyfix/feed/" htmlUrl="http://blogs.wsj.com/dailyfix"/>
+      <outline type="rss" text="WSJ - US Business" xmlUrl="http://www.wsj.com/xml/rss/3_7014.xml" htmlUrl="http://online.wsj.com/"/>
+      <outline type="rss" text="纽约时报" xmlUrl="http://cn.nytimes.com/rss/news.xml" htmlUrl="http://cn.nytimes.com/"/>
+    </outline>
+    <outline text="📣 Release">
+      <outline type="rss" text="Alfred Blog" xmlUrl="https://www.alfredapp.com/blog/feed.xml" htmlUrl="https://www.alfredapp.com/blog/"/>
+      <outline type="rss" text="Devonian Times" xmlUrl="http://blog.devontechnologies.com/feed/" htmlUrl="http://blog.devontechnologies.com/"/>
+      <outline type="rss" text="DigitalOcean Tutorials" xmlUrl="https://www.digitalocean.com/community/tutorials/feed" htmlUrl="https://www.digitalocean.com/community/tutorials"/>
+      <outline type="rss" text="Dropbox Blog" xmlUrl="http://blog.getdropbox.com/?feed=rss2" htmlUrl="https://blog.dropbox.com/"/>
+      <outline type="rss" text="Google Blog" xmlUrl="http://googleblog.blogspot.com/atom.xml" htmlUrl="http://googleblog.blogspot.com/"/>
+      <outline type="rss" text="The Omni Group" xmlUrl="https://www.omnigroup.com/blog/rss/" htmlUrl="https://www.omnigroup.com/"/>
+      <outline type="rss" text="Ulysses Blog" xmlUrl="https://ulyssesapp.com/blog/feed/" htmlUrl="https://ulyssesapp.com/blog"/>
+      <outline type="rss" text="Zapier Blog" xmlUrl="https://zapier.com/engine/rss/1705272/zapierblog/" htmlUrl="https://zapier.com/"/>
+    </outline>
+    <outline type="rss" text="Tiny Tiny RSS: Forum" xmlUrl="http://tt-rss.org/forum/rss.php"/>
+    <outline text="tt-rss-prefs" schema-version="131">
+      <outline pref-name="ALLOW_DUPLICATE_POSTS" value="false"/>
+      <outline pref-name="AUTO_ASSIGN_LABELS" value="false"/>
+      <outline pref-name="BLACKLISTED_TAGS" value="main, generic, misc, uncategorized, blog, blogroll, general, news"/>
+      <outline pref-name="CDM_AUTO_CATCHUP" value="false"/>
+      <outline pref-name="CDM_EXPANDED" value="true"/>
+      <outline pref-name="_COLLAPSED_FEEDLIST" value="false"/>
+      <outline pref-name="_COLLAPSED_LABELS" value="false"/>
+      <outline pref-name="_COLLAPSED_SPECIAL" value="false"/>
+      <outline pref-name="_COLLAPSED_UNCAT" value="false"/>
+      <outline pref-name="COMBINED_DISPLAY_MODE" value="true"/>
+      <outline pref-name="CONFIRM_FEED_CATCHUP" value="true"/>
+      <outline pref-name="DEFAULT_ARTICLE_LIMIT" value="30"/>
+      <outline pref-name="_DEFAULT_INCLUDE_CHILDREN" value="false"/>
+      <outline pref-name="DEFAULT_UPDATE_INTERVAL" value="30"/>
+      <outline pref-name="_DEFAULT_VIEW_LIMIT" value="30"/>
+      <outline pref-name="_DEFAULT_VIEW_MODE" value="adaptive"/>
+      <outline pref-name="_DEFAULT_VIEW_ORDER_BY" value="default"/>
+      <outline pref-name="DIGEST_CATCHUP" value="false"/>
+      <outline pref-name="DIGEST_ENABLE" value="false"/>
+      <outline pref-name="DIGEST_PREFERRED_TIME" value="00:00"/>
+      <outline pref-name="ENABLE_API_ACCESS" value="false"/>
+      <outline pref-name="_ENABLED_PLUGINS" value="fever,mercury_fulltext"/>
+      <outline pref-name="ENABLE_FEED_CATS" value="true"/>
+      <outline pref-name="FEEDS_SORT_BY_UNREAD" value="false"/>
+      <outline pref-name="FRESH_ARTICLE_MAX_AGE" value="24"/>
+      <outline pref-name="HIDE_READ_FEEDS" value="false"/>
+      <outline pref-name="HIDE_READ_SHOWS_SPECIAL" value="true"/>
+      <outline pref-name="LONG_DATE_FORMAT" value="D, M d Y - G:i"/>
+      <outline pref-name="_MOBILE_BROWSE_CATS" value="true"/>
+      <outline pref-name="_MOBILE_ENABLE_CATS" value="false"/>
+      <outline pref-name="_MOBILE_HIDE_READ" value="false"/>
+      <outline pref-name="_MOBILE_REVERSE_HEADLINES" value="false"/>
+      <outline pref-name="_MOBILE_SHOW_IMAGES" value="false"/>
+      <outline pref-name="_MOBILE_SORT_FEEDS_UNREAD" value="false"/>
+      <outline pref-name="ON_CATCHUP_SHOW_NEXT_FEED" value="false"/>
+      <outline pref-name="_PREFS_ACTIVE_TAB" value=""/>
+      <outline pref-name="_PREFS_SHOW_EMPTY_CATS" value="false"/>
+      <outline pref-name="PURGE_OLD_DAYS" value="60"/>
+      <outline pref-name="PURGE_UNREAD_ARTICLES" value="true"/>
+      <outline pref-name="REVERSE_HEADLINES" value="false"/>
+      <outline pref-name="SHORT_DATE_FORMAT" value="M d, G:i"/>
+      <outline pref-name="SHOW_CONTENT_PREVIEW" value="true"/>
+      <outline pref-name="SORT_HEADLINES_BY_FEED_DATE" value="false"/>
+      <outline pref-name="SSL_CERT_SERIAL" value=""/>
+      <outline pref-name="STRIP_IMAGES" value="false"/>
+      <outline pref-name="STRIP_UNSAFE_TAGS" value="true"/>
+      <outline pref-name="_THEME_ID" value="0"/>
+      <outline pref-name="USER_CSS_THEME" value="feedly.css"/>
+      <outline pref-name="USER_LANGUAGE" value="en_US"/>
+      <outline pref-name="USER_STYLESHEET" value=""/>
+      <outline pref-name="USER_TIMEZONE" value="Asia/Hong_Kong"/>
+      <outline pref-name="VFEED_GROUP_BY_FEED" value="false"/>
+    </outline>
+    <outline text="tt-rss-labels" schema-version="131"/>
+    <outline text="tt-rss-filters" schema-version="131"/>
+  </body>
+</opml>
