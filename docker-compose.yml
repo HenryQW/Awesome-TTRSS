@@ -14,7 +14,7 @@ services:
     ports:
       - 181:80
     environment:
-      - SELF_URL_PATH=http://ttrss.changzhiga.xyz:181/
+      - SELF_URL_PATH=https://ttrss.changzhiga.xyz/
       - DB_HOST=database.postgres
       - DB_PORT=5432
       - DB_NAME=ttrss
