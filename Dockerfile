@@ -29,7 +29,7 @@ RUN apk add --update --virtual build-dependencies curl tar \
   && tar xzvpf /var/www/plugins/feediron/master.tar.gz --strip-components=1 -C /var/www/plugins/feediron/ ttrss_plugin-feediron-master && rm /var/www/plugins/feediron/master.tar.gz \
   \
   \
-  && tar xzvpf /var/www/themes/v1.4.0.tar.gz --strip-components=1 -C /var/www/themes/ tt-rss-feedly-theme-1.4.0/feedly tt-rss-feedly-theme-1.4.0/feedly.css tt-rss-feedly-theme-1.4.0/feedly-night.css && rm /var/www/themes/v1.4.0.tar.gz \
+  && tar xzvpf /var/www/themes/v1.4.0.tar.gz --strip-components=1 -C /var/www/themes/ tt-rss-feedly-theme-1.4.0/feedly tt-rss-feedly-theme-1.4.0/feedly.css && rm /var/www/themes/v1.4.0.tar.gz \
   \
   \
   && apk del build-dependencies \
