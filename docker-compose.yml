@@ -9,7 +9,7 @@ services:
     restart: always
 
   rss:
-    image: fischerman/docker-ttrss:latest
+    image: wangqiru/ttrss:latest
     container_name: ttrss
     ports:
       - 181:80
