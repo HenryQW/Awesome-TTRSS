@@ -11,7 +11,7 @@ ADD ttrss.nginx.conf /etc/nginx/nginx.conf
 
 
 # Download plugins
-ADD https://github.com/HenryQW/tinytinyrss-fever-plugin/archive/master.tar.gz /var/www/plugins/
+ADD https://github.com/DigitalDJ/tinytinyrss-fever-plugin/archive/master.tar.gz /var/www/plugins/
 ADD https://github.com/HenryQW/mercury_fulltext/archive/master.tar.gz /var/www/plugins/mercury_fulltext/
 ADD https://github.com/feediron/ttrss_plugin-feediron/archive/master.tar.gz /var/www/plugins/feediron/ 
 ADD https://github.com/dugite-code/tt-rss-nextcloud-theme/archive/master.tar.gz /var/www/themes/
