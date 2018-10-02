@@ -14,6 +14,7 @@ ADD ttrss.nginx.conf /etc/nginx/nginx.conf
 ADD https://github.com/HenryQW/tinytinyrss-fever-plugin/archive/master.tar.gz /var/www/plugins/
 ADD https://github.com/HenryQW/mercury_fulltext/archive/master.tar.gz /var/www/plugins/mercury_fulltext/
 ADD https://github.com/feediron/ttrss_plugin-feediron/archive/master.tar.gz /var/www/plugins/feediron/ 
+ADD https://github.com/HenryQW/ttrss_opencc/archive/master.tar.gz /var/www/plugins/opencc/ 
 ADD https://github.com/dugite-code/tt-rss-nextcloud-theme/archive/master.tar.gz /var/www/themes/
 
 # install ttrss and patch configuration
@@ -27,6 +28,9 @@ RUN apk add --update --virtual build-dependencies curl tar \
   \
   \
   && tar xzvpf /var/www/plugins/feediron/master.tar.gz --strip-components=1 -C /var/www/plugins/feediron/ ttrss_plugin-feediron-master && rm /var/www/plugins/feediron/master.tar.gz \
+  \
+  \
+  && tar xzvpf /var/www/plugins/opencc/master.tar.gz --strip-components=1 -C /var/www/plugins/opencc/ ttrss_opencc-master && rm /var/www/plugins/opencc/master.tar.gz \
   \
   \
   && tar xzvpf /var/www/themes/master.tar.gz --strip-components=1 -C /var/www/themes/ tt-rss-nextcloud-theme-master/nextcloud tt-rss-nextcloud-theme-master/nextcloud.css && rm /var/www/themes/master.tar.gz \
