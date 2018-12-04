@@ -15,7 +15,8 @@ ADD https://github.com/HenryQW/tinytinyrss-fever-plugin/archive/master.tar.gz /v
 ADD https://github.com/HenryQW/mercury_fulltext/archive/master.tar.gz /var/www/plugins/mercury_fulltext/
 ADD https://github.com/feediron/ttrss_plugin-feediron/archive/master.tar.gz /var/www/plugins/feediron/ 
 ADD https://github.com/HenryQW/ttrss_opencc/archive/master.tar.gz /var/www/plugins/opencc/ 
-ADD https://github.com/dugite-code/tt-rss-nextcloud-theme/archive/master.tar.gz /var/www/themes/
+# ADD https://github.com/dugite-code/tt-rss-nextcloud-theme/archive/master.tar.gz /var/www/themes/
+ADD https://github.com/levito/tt-rss-feedly-theme/archive/master.tar.gz /var/www/themes/
 
 # install ttrss and patch configuration
 WORKDIR /var/www
@@ -33,7 +34,8 @@ RUN apk add --update --virtual build-dependencies curl tar \
   && tar xzvpf /var/www/plugins/opencc/master.tar.gz --strip-components=1 -C /var/www/plugins/opencc/ ttrss_opencc-master && rm /var/www/plugins/opencc/master.tar.gz \
   \
   \
-  && tar xzvpf /var/www/themes/master.tar.gz --strip-components=1 -C /var/www/themes/ tt-rss-nextcloud-theme-master/nextcloud tt-rss-nextcloud-theme-master/nextcloud.css && rm /var/www/themes/master.tar.gz \
+  #&& tar xzvpf /var/www/themes/master.tar.gz --strip-components=1 -C /var/www/themes/ tt-rss-nextcloud-theme-master/nextcloud tt-rss-nextcloud-theme-master/nextcloud.css && rm /var/www/themes/master.tar.gz \
+  && tar xzvpf /var/www/themes/master.tar.gz --strip-components=1 -C /var/www/themes/ tt-rss-feedly-theme-master/feedly tt-rss-feedly-theme-master/feedly.css && rm /var/www/themes/master.tar.gz \
   \
   \
   && apk del build-dependencies \
