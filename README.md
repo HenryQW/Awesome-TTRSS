@@ -15,7 +15,7 @@
 3.  [Feediron](https://github.com/feediron/ttrss_plugin-feediron): enables modification of article's DOM.
 4.  [ttrss_opencc](https://github.com/HenryQW/ttrss_opencc): Conversion between Traditional and Simplified Chinese via OpenCC for ttrss. Set the [OpenCC API Server](https://github.com/HenryQW/OpenCC.henry.wang) address in plugin setting page. Demo instances (availability is not guaranteed): https://opencc.henry.wang (Google Cloud) or http://opencc2.henry.wang (Heroku)
 
-#### Theme: [nextcloud](https://github.com/dugite-code/tt-rss-nextcloud-theme)
+#### Theme: [Feedly](https://github.com/levito/tt-rss-feedly-theme)
 
 **Support postgres only for better user experience.** mysql support is dropped since [tag 3.5_mysql_php5](https://github.com/HenryQW/docker-ttrss-plugins/tree/3.5_mysql_php5).
 
@@ -78,7 +78,7 @@ docker run -it --name ttrss --restart=always \
 4.  [ttrss_opencc](https://github.com/HenryQW/ttrss_opencc): 使用 OpenCC 为 ttrss 提供中文繁转简的插件. 插件设置中填写 [OpenCC API 服务器](https://github.com/HenryQW/OpenCC.henry.wang)地址. Demo 服务器(可用性不做任何保证): https://opencc.henry.wang (Google Cloud) or http://opencc2.henry.wang (Heroku)
 
 
-#### 主题: [nextcloud](https://github.com/dugite-code/tt-rss-nextcloud-theme)
+#### 主题: [Feedly](https://github.com/levito/tt-rss-feedly-theme)
 
 **为了更好的用户体验，此镜像仅支持 postgres 数据库.** 自 [tag 3.5_mysql_php5](https://github.com/HenryQW/docker-ttrss-plugins/tree/3.5_mysql_php5) 起停止支持 mysql.
 
