@@ -10,7 +10,7 @@ services:
       - ~/postgres/data/:/var/lib/postgresql/ # persist postgres data to ~/postgres/data/ on the host
     restart: always
 
-  rss:
+  service.rss:
     image: wangqiru/ttrss:latest
     container_name: ttrss
     ports:
@@ -26,3 +26,19 @@ services:
     tty: true
     restart: always
     command: sh -c 'sh /wait-for database.postgres:5432 -- php /configure-db.php && exec s6-svscan /etc/s6/'
+
+  service.mercury: # set Mercury Parser API endpoint to `service.mercury:3000` on TTRSS plugin setting page
+    image: wangqiru/mercury-parser-api:latest
+    container_name: mercury
+    expose:
+      - 3000
+    restart: always
+
+  service.opencc: # set OpenCC API endpoint to `service.opencc:3000` on TTRSS plugin setting page
+    image: wangqiru/opencc-api-server:latest
+    container_name: mercury
+    environment:
+      NODE_ENV: production
+    expose:
+      - 3000
+    restart: always

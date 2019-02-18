@@ -10,7 +10,7 @@
 
 #### Plugins:
 
-1.  [Mercury_fulltext](https://github.com/HenryQW/mercury_fulltext): fetches fulltext of articles via Mercury API.
+1.  [Mercury_fulltext](https://github.com/HenryQW/mercury_fulltext): fetches fulltext of articles via self-hosted Mercury Parser API, see [HenryQW/mercury-parser-api](https://github.com/HenryQW/mercury-parser-api).
 2.  [Fever plugin](https://github.com/HenryQW/tinytinyrss-fever-plugin): simulates Fever API (please read the configuration [here](https://tt-rss.org/oldforum/viewtopic.php?f=22&t=1981)).
 3.  [Feediron](https://github.com/feediron/ttrss_plugin-feediron): enables modification of article's DOM.
 4.  [ttrss_opencc](https://github.com/HenryQW/ttrss_opencc): Conversion between Traditional and Simplified Chinese via OpenCC for ttrss. Set the [OpenCC API Server](https://github.com/HenryQW/OpenCC.henry.wang) address in plugin setting page. Demo instances (availability is not guaranteed): https://opencc.henry.wang (Google Cloud) or http://opencc2.henry.wang (Heroku)
@@ -55,6 +55,7 @@ docker run -it --name ttrss --restart=always \
 2.  Read `docker-compose.yml` and change the settings (please ensure you change user and password for postgres).
 3.  Run `docker-compose up -d` and wait for the deployment to finish.
 4.  Access ttrss via port 181，with default credentials `admin` and `password`, please change them asap.
+5.  `wangqiru/mercury-parser-api` and `wangqiru/opencc-api-server` are optional service containers to support additional features, removing them will not affect TTRSS's basic functionalities.
 
 ### Recommendation
 
@@ -72,7 +73,7 @@ docker run -it --name ttrss --restart=always \
 
 #### 插件:
 
-1.  [Mercury](https://github.com/HenryQW/mercury_fulltext): 全文内容提取插件 (Mercury API) .
+1.  [Mercury](https://github.com/HenryQW/mercury_fulltext): 全文内容提取插件, 需要配合自建 Mercury Parser API, 参见[HenryQW/mercury-parser-api](https://github.com/HenryQW/mercury-parser-api).
 2.  [Fever](https://github.com/HenryQW/tinytinyrss-fever-plugin): Fever API 模拟插件（请参照[这里](https://tt-rss.org/oldforum/viewtopic.php?f=22&t=1981)进行设置）.
 3.  [Feediron](https://github.com/feediron/ttrss_plugin-feediron): 提供文章 DOM 操控能力的插件.
 4.  [ttrss_opencc](https://github.com/HenryQW/ttrss_opencc): 使用 OpenCC 为 ttrss 提供中文繁转简的插件. 插件设置中填写 [OpenCC API 服务器](https://github.com/HenryQW/OpenCC.henry.wang)地址. Demo 服务器(可用性不做任何保证): https://opencc.henry.wang (Google Cloud) or http://opencc2.henry.wang (Heroku)
@@ -117,6 +118,7 @@ docker run -it --name ttrss --restart=always \
 2.  更改 `docker-compose.yml` 中的设置（务必更改 postgres 用户密码）.
 3.  运行 `docker-compose up -d` 后等待部署完成.
 4.  默认通过 181 端口访问 ttrss，默认账户: `admin` 密码: `password`，请第一时间更改.
+5.  `wangqiru/mercury-parser-api` 及 `wangqiru/opencc-api-server` 为支持高级功能而加入的可选服务类容器, 删除不会影响 TTRSS 基础功能.
 
 ### 使用建议
 
