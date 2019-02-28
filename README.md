@@ -22,6 +22,7 @@
 ### Deployment example:
 
 #### A more detailed guide is available [here](https://henry.wang/2018/04/25/ttrss-docker-plugins-guide.html) [![forthebadge](https://forthebadge.com/images/badges/check-it-out.svg)](https://henry.wang/2018/04/25/ttrss-docker-plugins-guide.html)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FHenryQW%2Fdocker-ttrss-plugins.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FHenryQW%2Fdocker-ttrss-plugins?ref=badge_shield)
 
 
 #### Deployment via docker
@@ -130,3 +131,7 @@ docker run -it --name ttrss --restart=always \
 * 对于安卓用户, 强烈推荐一部 iPhone.
 
 ### [作者的 GitHub](https://github.com/HenryQW/docker-ttrss-plugins)
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FHenryQW%2Fdocker-ttrss-plugins.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FHenryQW%2Fdocker-ttrss-plugins?ref=badge_large)
