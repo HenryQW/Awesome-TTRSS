@@ -4,6 +4,9 @@
 ![Docker Automated build](https://img.shields.io/docker/automated/wangqiru/ttrss.svg)
 ![Docker Build Status](https://img.shields.io/docker/build/wangqiru/ttrss.svg)
 
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FHenryQW%2Fdocker-ttrss-plugins.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FHenryQW%2Fdocker-ttrss-plugins?ref=badge_shield)
+
 [简体中文说明在这里](#简体中文说明)
 
 #### Tiny Tiny RSS feed reader as a docker image.
@@ -22,7 +25,6 @@
 ### Deployment example:
 
 #### A more detailed guide is available [here](https://henry.wang/2018/04/25/ttrss-docker-plugins-guide.html) [![forthebadge](https://forthebadge.com/images/badges/check-it-out.svg)](https://henry.wang/2018/04/25/ttrss-docker-plugins-guide.html)
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FHenryQW%2Fdocker-ttrss-plugins.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FHenryQW%2Fdocker-ttrss-plugins?ref=badge_shield)
 
 
 #### Deployment via docker
