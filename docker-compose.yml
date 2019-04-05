@@ -22,6 +22,7 @@ services:
       - DB_NAME=ttrss
       - DB_USER=postgres
       - DB_PASS=ttrss # please change the password
+      # - FETCH_TIMEOUT=60 #optional
     stdin_open: true
     tty: true
     restart: always

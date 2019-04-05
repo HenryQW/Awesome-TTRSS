@@ -2,6 +2,7 @@
 <?php
 
 $confpath = '/var/www/config.php';
+$function_path = '/var/www/include/functions.php';
 
 $config = array();
 
@@ -12,6 +13,7 @@ $config['DB_PORT'] = env('DB_PORT', 5432);
 $config['DB_NAME'] = env('DB_NAME', 'ttrss');
 $config['DB_USER'] = env('DB_USER');
 $config['DB_PASS'] = env('DB_PASS');
+$fetch_timeout = env('FETCH_TIMEOUT',60);
 
 if(dbcheckconn($config)){
     $pdo = dbconnect($config);
@@ -46,6 +48,11 @@ if(dbcheckconn($config)){
         $contents = preg_replace('/(define\s*\(\'' . $name . '\',\s*)(.*)(\);)/', '$1"' . $value . '"$3', $contents);
     }
     file_put_contents($confpath, $contents);
+
+    $contents = file_get_contents($function_path);
+    $contents = preg_replace('/(define_default\(\'FILE_FETCH_CONNECT_TIMEOUT\',\s*)(\d+)(\);)/','${1}'.$fetch_timeout.'${3}',$contents);
+    $contents = preg_replace('/(define_default\(\'FEED_FETCH_NO_CACHE_TIMEOUT\',\s*)(\d+)(\);)/','${1}'.$fetch_timeout.'${3}',$contents);
+    file_put_contents($function_path, $contents);
 }
 
 

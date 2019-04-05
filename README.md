@@ -37,6 +37,7 @@ docker run -it --name ttrss --restart=always \
 -e DB_NAME = [ your DB name ]  \
 -e DB_USER = [ your DB user ]  \
 -e DB_PASS = [ your DB password ]  \
+-e FETCH_TIMEOUT = [ max time in seconds to fetch feeds, default 60 ] \
 -p [ your port ]:80  \
 -d wangqiru/ttrss
 ```
@@ -49,6 +50,7 @@ docker run -it --name ttrss --restart=always \
 * ENV DB_NAME
 * ENV DB_USER
 * ENV DB_PASS
+* ENV FETCH_TIMEOUT
 
 #### Deployment via docker-compose
 
@@ -100,6 +102,7 @@ docker run -it --name ttrss --restart=always \
 -e DB_NAME = [ 你的数据库名称 ]  \
 -e DB_USER = [ 你的数据库用户名 ]  \
 -e DB_PASS = [ 你的数据库密码 ]  \
+-e FETCH_TIMEOUT = [ 更新FEED的超时时间，默认60秒 ]
 -p [ 容器对外映射端口 ]:80  \
 -d wangqiru/ttrss
 ```
@@ -112,6 +115,7 @@ docker run -it --name ttrss --restart=always \
 * ENV DB_NAME
 * ENV DB_USER
 * ENV DB_PASS
+* ENV FETCH_TIMEOUT
 
 #### 通过 docker-compose 部署
 
