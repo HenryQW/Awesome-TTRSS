@@ -64,7 +64,7 @@ docker run -it --name ttrss --restart=always \
 
 * For web interface, recommend to use **[freestyler plugin](http://freestyler.ws)** to customise your own CSS style, especially for non-western languages. Some [sample code](https://github.com/HenryQW/Stylish/blob/master/ttrss.css), please [replace it with your own ttrss domain](https://github.com/HenryQW/Stylish/blob/08923469377a974d66f8d2c767e6b6a69616a688/ttrss.css#L1).
 
-* For iOS user, [Fever plugin](https://github.com/HenryQW/tinytinyrss-fever-plugin) supplies **[Reeder iOS](http://reederapp.com/ios/)** (THE RSS READER) backend support.
+* For iOS and macOS user, [Fever plugin](https://github.com/HenryQW/tinytinyrss-fever-plugin) supplies **[Reeder 3](http://reederapp.com/)** (THE RSS READER) backend support. **Reeder 4's fever syncronsation is broken, please use Reeder 3 for the time being.**
 
 * For Android user, strongly recommend an iPhone.
 
@@ -128,7 +128,7 @@ docker run -it --name ttrss --restart=always \
 * Web 端推荐使用 **[freestyler 插件](http://freestyler.ws)** 来定制自己的 CSS 风格, 尤其是中文字体. 一些样式[代码](https://github.com/HenryQW/Stylish/blob/master/ttrss.css), 请[替换自己的ttrss域名](https://github.com/HenryQW/Stylish/blob/08923469377a974d66f8d2c767e6b6a69616a688/ttrss.css#L1).
 
 
-* 对于 iOS 用户, [Fever 模拟插件](https://github.com/HenryQW/tinytinyrss-fever-plugin)提供 **[Reeder iOS](http://reederapp.com/ios/)** (最强 RSS 阅读器, 没有之一) 后端支持.
+* 对于 iOS 和 macOS 用户, [Fever 模拟插件](https://github.com/HenryQW/tinytinyrss-fever-plugin)提供 **[Reeder 3](http://reederapp.com/)** (最强 RSS 阅读器, 没有之一) 后端支持. **由于 Reeder 4 无法与 fever 同步的 bug, 目前推荐使用 Reeder 3**.
 
 * 对于安卓用户, 强烈推荐一部 iPhone.
 
