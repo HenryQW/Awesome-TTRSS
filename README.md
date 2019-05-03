@@ -125,8 +125,8 @@ docker run -it --name ttrss --restart=always \
 
 ### 使用建议
 
-* 推荐使用[RSSHub](https://docs.rsshub.app/)来发现更多有趣的订阅源.
-* Web 端推荐使用 **[freestyler 插件](http://freestyler.ws)** 来定制自己的 CSS 风格, 尤其是中文字体. 一些样式[代码](https://github.com/HenryQW/Stylish/blob/master/ttrss.css), 请[替换自己的ttrss域名](https://github.com/HenryQW/Stylish/blob/08923469377a974d66f8d2c767e6b6a69616a688/ttrss.css#L1).
+* 推荐使用 [RSSHub](https://docs.rsshub.app/) 来发现更多有趣的订阅源.
+* Web 端推荐使用 **[freestyler 插件](http://freestyler.ws)** 来定制自己的 CSS 风格, 尤其是中文字体. 一些样式[代码](https://github.com/HenryQW/Stylish/blob/master/ttrss.css), 请[替换自己的 ttrss 域名](https://github.com/HenryQW/Stylish/blob/08923469377a974d66f8d2c767e6b6a69616a688/ttrss.css#L1).
 * 对于 iOS 和 macOS 用户, [Fever 模拟插件](https://github.com/HenryQW/tinytinyrss-fever-plugin)提供 **[Reeder 3](http://reederapp.com/)** (最强 RSS 阅读器, 没有之一) 后端支持. **由于 Reeder 4（截止至 4.0.2）无法与 fever 同步的 bug, 目前推荐使用 Reeder 3**.
 * 对于安卓用户, 强烈推荐一部 iPhone.
 
