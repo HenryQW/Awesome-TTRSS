@@ -2,7 +2,7 @@ FROM alpine:latest
 
 ADD wait-for /wait-for
 
-RUN chmod -x /wait-for && apk add --update --no-cache nginx s6 php7 php7-fpm php7-cli php7-curl php7-fileinfo php7-mbstring php7-gd php7-json php7-dom php7-pcntl php7-posix \
+RUN chmod -x /wait-for && apk add --update --no-cache nginx s6 php7 php7-intl php7-fpm php7-cli php7-curl php7-fileinfo php7-mbstring php7-gd php7-json php7-dom php7-pcntl php7-posix \
   php7-pgsql php7-mcrypt php7-session php7-pdo php7-pdo_pgsql ca-certificates && \
   rm -rf /var/cache/apk/*
 
