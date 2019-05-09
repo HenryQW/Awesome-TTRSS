@@ -13,9 +13,10 @@
 ### Plugins
 
 1. [Mercury_fulltext](https://github.com/HenryQW/mercury_fulltext): fetches fulltext of articles via self-hosted Mercury Parser API, see [HenryQW/mercury-parser-api](https://github.com/HenryQW/mercury-parser-api).
-1. [Fever plugin](https://github.com/HenryQW/tinytinyrss-fever-plugin): simulates Fever API (please read the configuration [here](https://tt-rss.org/oldforum/viewtopic.php?f=22&t=1981)).
+1. [Fever API](https://github.com/HenryQW/tinytinyrss-fever-plugin): simulates Fever API (please read the configuration [here](https://tt-rss.org/oldforum/viewtopic.php?f=22&t=1981)).
 1. [Feediron](https://github.com/feediron/ttrss_plugin-feediron): enables modification of article's DOM.
 1. [ttrss_opencc](https://github.com/HenryQW/ttrss_opencc): Conversion between Traditional and Simplified Chinese via OpenCC for ttrss. Set the [OpenCC API Server](https://github.com/HenryQW/OpenCC.henry.wang) address in plugin setting page. Demo instances (availability is not guaranteed): https://opencc.henry.wang (Google Cloud) or http://opencc2.henry.wang (Heroku)
+1. [FeedReader API](https://github.com/jangernert/FeedReader/tree/master/data/tt-rss-feedreader-plugin): FeedReader API support. Enable by adding 'api_feedreader' to ENABLE_PLUGINS env.
 
 ### Theme
 
@@ -50,6 +51,7 @@ docker run -it --name ttrss --restart=always \
 * ENV DB_NAME
 * ENV DB_USER
 * ENV DB_PASS
+* ENV ENABLE_PLUGINS
 
 #### Deployment via docker-compose
 
@@ -64,8 +66,8 @@ docker run -it --name ttrss --restart=always \
 ### Recommendation
 
 * [RSSHub](https://docs.rsshub.app/en/) is an interesting place for discovering RSS feeds.
-* For web interface, recommend to use **[freestyler plugin](http://freestyler.ws)** to customise your own CSS style, especially for non-western languages. Some [sample code](https://github.com/HenryQW/Stylish/blob/master/ttrss.css), please [replace it with your own ttrss domain](https://github.com/HenryQW/Stylish/blob/08923469377a974d66f8d2c767e6b6a69616a688/ttrss.css#L1).
-* For iOS and macOS user, [Fever plugin](https://github.com/HenryQW/tinytinyrss-fever-plugin) supplies **[Reeder 4](http://reederapp.com/)** (THE RSS READER) backend support.
+* For iOS and macOS user, the integrated [Fever plugin](https://github.com/HenryQW/tinytinyrss-fever-plugin) supplies [Reeder 4](http://reederapp.com/) backend support.
+* For Linux user，the integrated [FeedReader API](https://github.com/jangernert/FeedReader/tree/master/data/tt-rss-feedreader-plugin) supplies [FeedReader](https://jangernert.github.io/FeedReader/) backend support.
 * For Android user, strongly recommend an iPhone.
 
 ### [Author's GitHub](https://github.com/HenryQW/docker-ttrss-plugins)
@@ -74,17 +76,18 @@ docker run -it --name ttrss --restart=always \
 
 ### 插件
 
-1. [Mercury](https://github.com/HenryQW/mercury_fulltext): 全文内容提取插件, 需要配合自建 Mercury Parser API, 参见[HenryQW/mercury-parser-api](https://github.com/HenryQW/mercury-parser-api).
-1. [Fever](https://github.com/HenryQW/tinytinyrss-fever-plugin): Fever API 模拟插件（请参照[这里](https://tt-rss.org/oldforum/viewtopic.php?f=22&t=1981)进行设置）.
-1. [Feediron](https://github.com/feediron/ttrss_plugin-feediron): 提供文章 DOM 操控能力的插件.
-1. [ttrss_opencc](https://github.com/HenryQW/ttrss_opencc): 使用 OpenCC 为 ttrss 提供中文繁转简的插件. 插件设置中填写 [OpenCC API 服务器](https://github.com/HenryQW/OpenCC.henry.wang)地址. Demo 服务器(可用性不做任何保证): https://opencc.henry.wang (Google Cloud) or http://opencc2.henry.wang (Heroku)
+1. [Mercury](https://github.com/HenryQW/mercury_fulltext)：全文内容提取插件，需要配合自建 Mercury Parser API，参见[HenryQW/mercury-parser-api](https://github.com/HenryQW/mercury-parser-api)。
+1. [Fever API](https://github.com/HenryQW/tinytinyrss-fever-plugin)：Fever API 模拟插件（请参照[这里](https://tt-rss。org/oldforum/viewtopic。php?f=22&t=1981)进行设置）。
+1. [Feediron](https://github.com/feediron/ttrss_plugin-feediron)：提供文章 DOM 操控能力的插件。
+1. [ttrss_opencc](https://github.com/HenryQW/ttrss_opencc)：使用 OpenCC 为 ttrss 提供中文繁转简的插件。插件设置中填写 [OpenCC API 服务器](https://github.com/HenryQW/OpenCC.henry.wang)地址。 Demo 服务器(可用性不做任何保证)：https://opencc.henry.wang (Google Cloud) or http://opencc2.henry.wang (Heroku)
+1. [FeedReader API](https://github.com/jangernert/FeedReader/tree/master/data/tt-rss-feedreader-plugin)：提供 FeedReader API 支持。 将 'api_feedreader' 添加到 **ENABLE_PLUGINS** 环境变量。
 
 ### 主题
 
 1. [Feedly](https://github.com/levito/tt-rss-feedly-theme)
 1. [RSSHub](https://github.com/DIYgod/ttrss-theme-rsshub)
 
-**为了更好的用户体验，此镜像仅支持 postgres 数据库.** 自 [tag 3.5_mysql_php5](https://github.com/HenryQW/docker-ttrss-plugins/tree/3.5_mysql_php5) 起停止支持 mysql.
+**为了更好的用户体验，此镜像仅支持 postgres 数据库。** 自 [tag 3.5_mysql_php5](https://github.com/HenryQW/docker-ttrss-plugins/tree/3.5_mysql_php5) 起停止支持 mysql。
 
 ### 部署样例
 
@@ -112,23 +115,24 @@ docker run -it --name ttrss --restart=always \
 * ENV DB_NAME
 * ENV DB_USER
 * ENV DB_PASS
+* ENV ENABLE_PLUGINS
 
 #### 通过 docker-compose 部署
 
-`docker-compose.yml` 包含了 ttrss 与 postgres 镜像.
+`docker-compose.yml` 包含了 ttrss 与 postgres 镜像。
 
-1. 下载 `docker-compose.yml` 至任意目录.
-1. 更改 `docker-compose.yml` 中的设置（务必更改 postgres 用户密码）.
-1. 运行 `docker-compose up -d` 后等待部署完成.
-1. 默认通过 181 端口访问 ttrss，默认账户: `admin` 密码: `password`，请第一时间更改.
-1. `wangqiru/mercury-parser-api` 及 `wangqiru/opencc-api-server` 为支持高级功能而加入的可选服务类容器, 删除不会影响 TTRSS 基础功能.
+1. 下载 `docker-compose.yml` 至任意目录。
+1. 更改 `docker-compose.yml` 中的设置（务必更改 postgres 用户密码）。
+1. 运行 `docker-compose up -d` 后等待部署完成。
+1. 默认通过 181 端口访问 ttrss，默认账户：`admin` 密码：`password`，请第一时间更改。
+1. `wangqiru/mercury-parser-api` 及 `wangqiru/opencc-api-server` 为支持高级功能而加入的可选服务类容器，删除不会影响 TTRSS 基础功能。
 
 ### 使用建议
 
-* 推荐使用 [RSSHub](https://docs.rsshub.app/) 来发现更多有趣的订阅源.
-* Web 端推荐使用 **[freestyler 插件](http://freestyler.ws)** 来定制自己的 CSS 风格, 尤其是中文字体. 一些样式[代码](https://github.com/HenryQW/Stylish/blob/master/ttrss.css), 请[替换自己的 ttrss 域名](https://github.com/HenryQW/Stylish/blob/08923469377a974d66f8d2c767e6b6a69616a688/ttrss.css#L1).
-* 对于 iOS 和 macOS 用户, [Fever 模拟插件](https://github.com/HenryQW/tinytinyrss-fever-plugin)提供 **[Reeder 4](http://reederapp.com/)** (最强 RSS 阅读器, 没有之一) 后端支持.
-* 对于安卓用户, 强烈推荐一部 iPhone.
+* 推荐使用 [RSSHub](https://docs。rsshub。app/) 来发现更多有趣的订阅源。
+* 对于 iOS 和 macOS 用户，内置的[Fever 模拟插件](https://github.com/HenryQW/tinytinyrss-fever-plugin)提供[Reeder 4](http://reederapp.com/)后端支持。
+* 对于 Linux 用户，内置的[FeedReader API](https://github.com/jangernert/FeedReader/tree/master/data/tt-rss-feedreader-plugin)提供[FeedReader](https://jangernert.github.io/FeedReader/) 后端支持。
+* 对于安卓用户，强烈推荐一部 iPhone。
 
 ### [作者的 GitHub](https://github.com/HenryQW/docker-ttrss-plugins)
 
