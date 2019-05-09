@@ -3,6 +3,7 @@
         "ja-space-between-half-and-full-width": {
             "space": "always",
             "exceptPunctuation": true
-        }
+        },
+        "en-capitalization": true
     }
 }

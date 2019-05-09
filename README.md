@@ -80,7 +80,7 @@ docker run -it --name ttrss --restart=always \
 1. [Fever API](https://github.com/HenryQW/tinytinyrss-fever-plugin)：Fever API 模拟插件（请参照[这里](https://tt-rss。org/oldforum/viewtopic。php?f=22&t=1981)进行设置）。
 1. [Feediron](https://github.com/feediron/ttrss_plugin-feediron)：提供文章 DOM 操控能力的插件。
 1. [ttrss_opencc](https://github.com/HenryQW/ttrss_opencc)：使用 OpenCC 为 ttrss 提供中文繁转简的插件。插件设置中填写 [OpenCC API 服务器](https://github.com/HenryQW/OpenCC.henry.wang)地址。 Demo 服务器(可用性不做任何保证)：https://opencc.henry.wang (Google Cloud) or http://opencc2.henry.wang (Heroku)
-1. [FeedReader API](https://github.com/jangernert/FeedReader/tree/master/data/tt-rss-feedreader-plugin)：提供 FeedReader API 支持。 将 'api_feedreader' 添加到 **ENABLE_PLUGINS** 环境变量。
+1. [FeedReader API](https://github.com/jangernert/FeedReader/tree/master/data/tt-rss-feedreader-plugin)：提供 FeedReader API 支持。将 'api_feedreader' 添加到 **ENABLE_PLUGINS** 环境变量。
 
 ### 主题
 
