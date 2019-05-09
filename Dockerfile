@@ -18,6 +18,9 @@ ADD https://github.com/HenryQW/mercury_fulltext/archive/master.tar.gz /var/www/p
 ADD https://github.com/feediron/ttrss_plugin-feediron/archive/master.tar.gz /var/www/plugins/feediron/ 
 ADD https://github.com/HenryQW/ttrss_opencc/archive/master.tar.gz /var/www/plugins/opencc/ 
 
+# FeedReader API
+ADD https://raw.githubusercontent.com/jangernert/FeedReader/master/data/tt-rss-feedreader-plugin/api_feedreader/init.php /var/www/plugins/api_feedreader/
+
 # Download themes
 ADD https://github.com/levito/tt-rss-feedly-theme/archive/master.tar.gz /var/www/themes/feedly/
 ADD https://github.com/DIYgod/ttrss-theme-rsshub/archive/master.tar.gz /var/www/themes/rsshub/
