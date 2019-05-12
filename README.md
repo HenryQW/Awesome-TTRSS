@@ -17,6 +17,7 @@
 1. [Feediron](https://github.com/feediron/ttrss_plugin-feediron): enables modification of article's DOM.
 1. [ttrss_opencc](https://github.com/HenryQW/ttrss_opencc): Conversion between Traditional and Simplified Chinese via OpenCC for ttrss. Set the [OpenCC API Server](https://github.com/HenryQW/OpenCC.henry.wang) address in plugin setting page. Demo instances (availability is not guaranteed): https://opencc.henry.wang (Google Cloud) or http://opencc2.henry.wang (Heroku)
 1. [FeedReader API](https://github.com/jangernert/FeedReader/tree/master/data/tt-rss-feedreader-plugin): FeedReader API support. Enable by adding 'api_feedreader' to ENABLE_PLUGINS env.
+1. [News+ API](https://github.com/voidstern/tt-rss-newsplus-plugin/): Faster two-way synchronzation for the [News+](http://github.com/noinnion/newsplus/) Android app or [Fiery Feeds](http://cocoacake.net/apps/fiery/) on iOS. Enable by adding 'api_newsplus' to ENABLE_PLUGINS env.
 
 ### Theme
 
@@ -81,6 +82,7 @@ docker run -it --name ttrss --restart=always \
 1. [Feediron](https://github.com/feediron/ttrss_plugin-feediron)：提供文章 DOM 操控能力的插件。
 1. [ttrss_opencc](https://github.com/HenryQW/ttrss_opencc)：使用 OpenCC 为 ttrss 提供中文繁转简的插件。插件设置中填写 [OpenCC API 服务器](https://github.com/HenryQW/OpenCC.henry.wang)地址。 Demo 服务器(可用性不做任何保证)：https://opencc.henry.wang (Google Cloud) or http://opencc2.henry.wang (Heroku)
 1. [FeedReader API](https://github.com/jangernert/FeedReader/tree/master/data/tt-rss-feedreader-plugin)：提供 FeedReader API 支持。将 'api_feedreader' 添加到 **ENABLE_PLUGINS** 环境变量。
+1. [News+ API](https://github.com/voidstern/tt-rss-newsplus-plugin/)：为Android APP [News+](http://github.com/noinnion/newsplus/)和 iOS APP [Fiery Feeds](http://cocoacake.net/apps/fiery/)提供更快的同步速度。将 'api_newsplus' 添加到 **ENABLE_PLUGINS** 环境变量。
 
 ### 主题
 
