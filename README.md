@@ -32,7 +32,7 @@
 
 #### Deployment via docker
 
-```
+```dockerfile
 docker run -it --name ttrss --restart=always \
 -e SELF_URL_PATH = [ your URL ]  \
 -e DB_HOST = [ your DB address ]  \
@@ -46,14 +46,14 @@ docker run -it --name ttrss --restart=always \
 
 ##### List of Docker ENV variables
 
-* ENV SELF_URL_PATH
-* ENV DB_HOST
-* ENV DB_PORT
-* ENV DB_NAME
-* ENV DB_USER
-* ENV DB_PASS
-* ENV ENABLE_PLUGINS
-* ENV SESSION_COOKIE_LIFETIME
+* SELF_URL_PATH: the url to your TTRSS instance
+* DB_HOST: the address of your database
+* DB_PORT: the port of your database
+* DB_NAME: the name of your database
+* DB_USER: the user of your database
+* DB_PASS: the password of your database
+* ENABLE_PLUGINS: the plugins you'd like to enable at system level
+* SESSION_COOKIE_LIFETIME: the expiry time for your login session cookie in hours, default to 24 hours
 
 #### Deployment via docker-compose
 
@@ -98,7 +98,7 @@ docker run -it --name ttrss --restart=always \
 
 #### 通过 docker 部署
 
-```
+```dockerfile
 docker run -it --name ttrss --restart=always \
 -e SELF_URL_PATH = [ 你的URL地址 ]  \
 -e DB_HOST = [ 你的数据库地址 ]  \
@@ -112,14 +112,14 @@ docker run -it --name ttrss --restart=always \
 
 ##### Docker ENV 环境变量列表
 
-* ENV SELF_URL_PATH
-* ENV DB_HOST
-* ENV DB_PORT
-* ENV DB_NAME
-* ENV DB_USER
-* ENV DB_PASS
-* ENV ENABLE_PLUGINS
-* ENV SESSION_COOKIE_LIFETIME
+* SELF_URL_PATH: 你的 TTRSS 实例 URL
+* DB_HOST: 你的数据库地址
+* DB_PORT: 你的数据库端口
+* DB_NAME: 你的数据库名字
+* DB_USER: 你的数据库用户名
+* DB_PASS: 你的数据库密码
+* ENABLE_PLUGINS: 在系统层面启用的插件名称
+* SESSION_COOKIE_LIFETIME: 你的登陆 session cookie 过期时间，单位为小时，默认为 24 小时
 
 #### 通过 docker-compose 部署
 
