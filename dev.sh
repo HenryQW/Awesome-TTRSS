@@ -2,8 +2,8 @@
 
 # For dev use
 
-dkb . -t wangqiru/ttrss
+docker build . -t wangqiru/ttrss
 
-dcup -d
+docker-compose up -d
 
-dkE ttrss sh
+# docker ec -it ttrss sh

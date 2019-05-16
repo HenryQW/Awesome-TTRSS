@@ -1,16 +1,16 @@
 FROM alpine:latest
 
-ADD wait-for /wait-for
+ADD src/wait-for.sh /wait-for.sh
 
 # Install dependencies
-RUN chmod -x /wait-for && apk add --update --no-cache nginx s6 \
+RUN chmod -x /wait-for.sh && apk add --update --no-cache nginx s6 \
   php7 php7-intl php7-fpm php7-cli php7-curl php7-fileinfo \
   php7-mbstring php7-gd php7-json php7-dom php7-pcntl php7-posix \
   php7-pgsql php7-mcrypt php7-session php7-pdo php7-pdo_pgsql \
   ca-certificates && rm -rf /var/cache/apk/*
 
 # Add ttrss nginx config
-ADD ttrss.nginx.conf /etc/nginx/nginx.conf
+ADD src/ttrss.nginx.conf /etc/nginx/nginx.conf
 
 # Download plugins
 ADD https://github.com/HenryQW/tinytinyrss-fever-plugin/archive/master.tar.gz /var/www/plugins/fever/
@@ -52,7 +52,7 @@ RUN apk add --update --virtual build-dependencies curl tar \
 EXPOSE 80
 
 # complete path to ttrss
-ENV SELF_URL_PATH http://localhost
+ENV SELF_URL_PATH http://localhost:181
 
 # Expose default database credentials via ENV in order to ease overwriting
 ENV DB_NAME ttrss
@@ -60,7 +60,7 @@ ENV DB_USER ttrss
 ENV DB_PASS ttrss
 
 # Always re-configure database with current ENV when running container, then monitor all services
-ADD configure-db.php /configure-db.php
-ADD s6/ /etc/s6/
+ADD src/configure-db.php /configure-db.php
+ADD src/s6/ /etc/s6/
 
 CMD php /configure-db.php && exec s6-svscan /etc/s6/
