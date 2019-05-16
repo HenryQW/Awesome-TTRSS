@@ -13,6 +13,7 @@ $config['DB_NAME'] = env('DB_NAME', 'ttrss');
 $config['DB_USER'] = env('DB_USER');
 $config['DB_PASS'] = env('DB_PASS');
 $config['PLUGINS'] = env('ENABLE_PLUGINS','auth_internal,fever');
+$config['SESSION_COOKIE_LIFETIME'] = env('SESSION_COOKIE_LIFETIME',86400 * 365);
 
 if(dbcheckconn($config)){
     $pdo = dbconnect($config);
