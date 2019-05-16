@@ -53,6 +53,7 @@ docker run -it --name ttrss --restart=always \
 * ENV DB_USER
 * ENV DB_PASS
 * ENV ENABLE_PLUGINS
+* ENV SESSION_COOKIE_LIFETIME
 
 #### Deployment via docker-compose
 
@@ -118,6 +119,7 @@ docker run -it --name ttrss --restart=always \
 * ENV DB_USER
 * ENV DB_PASS
 * ENV ENABLE_PLUGINS
+* ENV SESSION_COOKIE_LIFETIME
 
 #### 通过 docker-compose 部署
 
