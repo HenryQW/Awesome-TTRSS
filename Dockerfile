@@ -1,4 +1,6 @@
-FROM alpine:latest
+FROM alpine:3.9
+
+LABEL maintainer="Henry<hi@henry.wang>"
 
 ADD src/wait-for.sh /wait-for.sh
 
