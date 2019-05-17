@@ -42,7 +42,7 @@ module.exports = {
     sidebar: "auto",
     sidebarDepth: 1,
     docsDir: "site",
-    repo: "HenryQW/docker-ttrss-plugins",
+    repo: "HenryQW/Awesome-TTRSS",
     locales: {
       "/zh/": {
         lang: "zh-CN",
