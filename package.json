@@ -1,0 +1,15 @@
+{
+  "name": "docker-ttrss-plugins",
+  "version": "1.0.0",
+  "repository": "git@github.com:HenryQW/docker-ttrss-plugins.git",
+  "author": "Henry <hi@henry.wang>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "devDependencies": {
+    "vuepress": "^1.0.0-alpha.48"
+  }
+}

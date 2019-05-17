@@ -1,0 +1,16 @@
+.github/
+.vscode/
+vuepress/
+node_modules/
+docs/
+yarn.lock
+package.json
+renovate.json
+dev.sh
+CNAME
+.textlintrc
+.gitignore
+.dockerignore
+_config.yml
+Dockerfile
+docker-compose.yml
