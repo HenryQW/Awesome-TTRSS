@@ -1,12 +1,10 @@
 # 🐋 Awesome TTRSS
 
-[![Docker Pulls](https://img.shields.io/docker/pulls/wangqiru/ttrss.svg)](https://hub.docker.com/r/wangqiru/ttrss)
-[![Docker Stars](https://img.shields.io/docker/stars/wangqiru/ttrss.svg)](https://hub.docker.com/r/wangqiru/ttrss)
-
-[![Docker Automated build](https://img.shields.io/docker/automated/wangqiru/ttrss.svg)](https://hub.docker.com/r/wangqiru/ttrss/builds)
-[![Docker Build Status](https://img.shields.io/docker/build/wangqiru/ttrss.svg)](https://hub.docker.com/r/wangqiru/ttrss/builds)
-
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FHenryQW%2Fdocker-ttrss-plugins.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FHenryQW%2Fdocker-ttrss-plugins?ref=badge_shield)
+![Docker Pulls](https://img.shields.io/docker/pulls/wangqiru/ttrss.svg)
+![Docker Stars](https://img.shields.io/docker/stars/wangqiru/ttrss.svg)
+![Docker Automated build](https://img.shields.io/docker/automated/wangqiru/ttrss.svg)
+![Docker Build Status](https://img.shields.io/docker/build/wangqiru/ttrss.svg)
+![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FHenryQW%2Fdocker-ttrss-plugins.svg?type=shield)
 
 ## 关于
 

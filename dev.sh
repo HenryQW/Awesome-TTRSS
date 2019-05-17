@@ -6,4 +6,4 @@ docker build . -t wangqiru/ttrss
 
 docker-compose up -d
 
-# docker ec -it ttrss sh
+# docker exec -it ttrss sh
