@@ -10,6 +10,8 @@
     "docs:build": "vuepress build docs"
   },
   "devDependencies": {
+    "@vuepress/plugin-back-to-top": "^1.0.0-alpha.0",
+    "@vuepress/plugin-google-analytics": "^1.0.0-alpha.0",
     "vuepress": "1.0.0-alpha.48"
   }
 }

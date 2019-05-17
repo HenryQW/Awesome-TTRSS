@@ -21,9 +21,9 @@ module.exports = {
   base: "/",
   dest: "./docs/.vuepress/dist",
   plugins: {
-    // "@vuepress/google-analytics": {
-    //   ga: ""
-    // },
+    "@vuepress/google-analytics": {
+      ga: "UA-77456302-4"
+    },
     "@vuepress/back-to-top": true
   },
   locales: {

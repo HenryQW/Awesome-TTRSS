@@ -4,7 +4,7 @@
 ![Docker Stars](https://img.shields.io/docker/stars/wangqiru/ttrss.svg)
 ![Docker Automated build](https://img.shields.io/docker/automated/wangqiru/ttrss.svg)
 ![Docker Build Status](https://img.shields.io/docker/build/wangqiru/ttrss.svg)
-![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FHenryQW%2Fdocker-ttrss-plugins.svg?type=shield)
+![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FHenryQW%2FAwesome-TTRSS.svg?type=shield)
 
 ## 关于
 
@@ -12,7 +12,7 @@
 
 ## 部署
 
-**为了更好的用户体验，此镜像仅支持 postgres 数据库。** 自 [tag 3.5_mysql_php5](https://github.com/HenryQW/docker-ttrss-plugins/tree/3.5_mysql_php5) 起停止支持 mysql。
+**为了更好的用户体验，此镜像仅支持 postgres 数据库。** 自 [tag 3.5_mysql_php5](https://github.com/HenryQW/Awesome-TTRSS/tree/3.5_mysql_php5) 起停止支持 mysql。
 
 ### 通过 Docker 部署
 
@@ -30,7 +30,7 @@ docker run -it --name ttrss --restart=always \
 
 ### 通过 docker-compose 部署
 
-[docker-compose.yml](https://github.com/HenryQW/docker-ttrss-plugins/blob/master/docker-compose.yml) 包含了 4 个镜像:
+[docker-compose.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/master/docker-compose.yml) 包含了 4 个镜像:
 
 1. [TTRSS](https://hub.docker.com/r/wangqiru/ttrss)
 1. [PostgreSQL](https://hub.docker.com/r/sameersbn/postgresql)
@@ -39,7 +39,7 @@ docker run -it --name ttrss --restart=always \
 
 #### 步骤
 
-1. 下载 [docker-compose.yml](https://github.com/HenryQW/docker-ttrss-plugins/blob/master/docker-compose.yml) 至任意目录。
+1. 下载 [docker-compose.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/master/docker-compose.yml) 至任意目录。
 1. 更改 `docker-compose.yml` 中的设置，请务必更改 postgres 用户密码。
 1. 通过终端在同目录下运行 `docker-compose up -d` 后等待部署完成。
 1. 默认通过 181 端口访问 TTRSS，默认账户：`admin` 密码：`password`，请第一时间更改。
@@ -137,10 +137,10 @@ Demo 服务器，可用性不做任何保证：[https://opencc.henry.wang](https
 
 ## 支持与帮助
 
-通过 [GitHub issue](https://github.com/HenryQW/docker-ttrss-plugins/issues) 提交问题，我会尽快答复。
+通过 [GitHub issue](https://github.com/HenryQW/Awesome-TTRSS/issues) 提交问题，我会尽快答复。
 
 ## 许可
 
 MIT
 
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FHenryQW%2Fdocker-ttrss-plugins.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FHenryQW%2Fdocker-ttrss-plugins?ref=badge_large)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FHenryQW%2FAwesome-TTRSS.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FHenryQW%2FAwesome-TTRSS?ref=badge_large)

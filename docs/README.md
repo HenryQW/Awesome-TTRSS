@@ -4,7 +4,7 @@
 ![Docker Stars](https://img.shields.io/docker/stars/wangqiru/ttrss.svg)
 ![Docker Automated build](https://img.shields.io/docker/automated/wangqiru/ttrss.svg)
 ![Docker Build Status](https://img.shields.io/docker/build/wangqiru/ttrss.svg)
-![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FHenryQW%2Fdocker-ttrss-plugins.svg?type=shield)
+![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FHenryQW%2FAwesome-TTRSS.svg?type=shield)
 
 ## About
 
@@ -12,7 +12,7 @@
 
 ## Deployment
 
-**Support postgres only for a better user experience.** mysql support is dropped since [tag 3.5_mysql_php5](https://github.com/HenryQW/docker-ttrss-plugins/tree/3.5_mysql_php5).
+**Support postgres only for a better user experience.** mysql support is dropped since [tag 3.5_mysql_php5](https://github.com/HenryQW/Awesome-TTRSS/tree/3.5_mysql_php5).
 
 ### Deployment via docker
 
@@ -30,7 +30,7 @@ docker run -it --name ttrss --restart=always \
 
 ### Deployment via docker-compose
 
-[docker-compose.yml](https://github.com/HenryQW/docker-ttrss-plugins/blob/master/docker-compose.yml) include 4 docker images:
+[docker-compose.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/master/docker-compose.yml) include 4 docker images:
 
 1. [TTRSS](https://hub.docker.com/r/wangqiru/ttrss)
 1. [PostgreSQL](https://hub.docker.com/r/sameersbn/postgresql)
@@ -39,7 +39,7 @@ docker run -it --name ttrss --restart=always \
 
 #### Steps
 
-1. Download [docker-compose.yml](https://github.com/HenryQW/docker-ttrss-plugins/blob/master/docker-compose.yml) to any directory.
+1. Download [docker-compose.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/master/docker-compose.yml) to any directory.
 1. Read `docker-compose.yml` and change the settings (please ensure you have changed the password for postgres).
 1. Run `docker-compose up -d` and wait for the deployment to finish.
 1. Access ttrss via port 181, with default credentials `admin` and `password`, please change them asap.
@@ -138,10 +138,10 @@ Refer to [Feediron](https://github.com/feediron/ttrss_plugin-feediron) for more 
 
 ## Support and Help
 
-Open an issue via [GitHub issue](https://github.com/HenryQW/docker-ttrss-plugins/issues), I will try to respond ASAP.
+Open an issue via [GitHub issue](https://github.com/HenryQW/Awesome-TTRSS/issues), I will try to respond ASAP.
 
 ## License
 
 MIT
 
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FHenryQW%2Fdocker-ttrss-plugins.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FHenryQW%2Fdocker-ttrss-plugins?ref=badge_large)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FHenryQW%2FAwesome-TTRSS.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FHenryQW%2FAwesome-TTRSS?ref=badge_large)

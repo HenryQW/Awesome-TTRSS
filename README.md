@@ -6,7 +6,7 @@
 [![Docker Automated build](https://img.shields.io/docker/automated/wangqiru/ttrss.svg)](https://hub.docker.com/r/wangqiru/ttrss/builds)
 [![Docker Build Status](https://img.shields.io/docker/build/wangqiru/ttrss.svg)](https://hub.docker.com/r/wangqiru/ttrss/builds)
 
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FHenryQW%2Fdocker-ttrss-plugins.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FHenryQW%2Fdocker-ttrss-plugins?ref=badge_shield)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FHenryQW%2FAwesome-TTRSS.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FHenryQW%2FAwesome-TTRSS?ref=badge_shield)
 
 [Tiny Tiny RSS](https://tt-rss.org/) is an open source RSS feed reader and aggregator written in PHP. 🐋 Awesome TTRSS aims to provide a powerful [Dockerised] all-in-one solution, with enhanced user experience via simplified deployment and a list of curated plugins.
 
