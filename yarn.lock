@@ -879,17 +879,17 @@
   dependencies:
     lodash.throttle "^4.1.1"
 
-"@vuepress/plugin-back-to-top@^1.0.0-alpha.48":
-  version "1.0.0-alpha.48"
-  resolved "https://registry.yarnpkg.com/@vuepress/plugin-back-to-top/-/plugin-back-to-top-1.0.0-alpha.48.tgz#27ce281cd2ad3eafb1fe820156ae483af731c509"
-  integrity sha512-rJYBtl7QNjLmNMNZOa4BMTlU4m76koNSQEjLZlVyTLYrGDqP5yY7Stv5QcNeJrDfsHO9ZjJEIvwKHUjE6u/0zg==
+"@vuepress/plugin-back-to-top@1.0.0-alpha.49":
+  version "1.0.0-alpha.49"
+  resolved "https://registry.yarnpkg.com/@vuepress/plugin-back-to-top/-/plugin-back-to-top-1.0.0-alpha.49.tgz#1564541f3f3c9f7c880d17a1b602f55bd4184a2d"
+  integrity sha512-wdEDElajpBI5RuwnAYyORtimE68qUiTQMjYWS43BbUXT+nG1vAKjRT2J5YF7mdtsgerjj6wUyzLtrmvbOpLTdw==
   dependencies:
     lodash.debounce "^4.0.8"
 
-"@vuepress/plugin-google-analytics@^1.0.0-alpha.48":
-  version "1.0.0-alpha.48"
-  resolved "https://registry.yarnpkg.com/@vuepress/plugin-google-analytics/-/plugin-google-analytics-1.0.0-alpha.48.tgz#1fbc06ebe88501ba443dd5e6196a0e32a1afa525"
-  integrity sha512-4cv39L8iGGi1Txt8rQCJG9jaWI3gN/kivRgfVwRU7BbQ9Dr8pqVpZI9Znn8gJl1BKq0v2bdCMORhFh/pvhj4yw==
+"@vuepress/plugin-google-analytics@1.0.0-alpha.49":
+  version "1.0.0-alpha.49"
+  resolved "https://registry.yarnpkg.com/@vuepress/plugin-google-analytics/-/plugin-google-analytics-1.0.0-alpha.49.tgz#d4b53b987501af1e4760e0b5ca7e4d16471d189f"
+  integrity sha512-4g+uhK5Zkl6U02wnsQThDY5i7I87ZehXuQAyXvq8cveUumMSBy9D7n/Vc9RMcxlqhfH4AMcuQj5lowE/A6wicg==
 
 "@vuepress/plugin-last-updated@^1.0.0-alpha.48":
   version "1.0.0-alpha.48"
@@ -6971,10 +6971,10 @@ vuepress-plugin-container@^2.0.0:
   dependencies:
     markdown-it-container "^2.0.0"
 
-vuepress@1.0.0-alpha.48:
-  version "1.0.0-alpha.48"
-  resolved "https://registry.yarnpkg.com/vuepress/-/vuepress-1.0.0-alpha.48.tgz#485b908c246297d4210999d7a010105447a6c3f0"
-  integrity sha512-rvEh4xS1Jp7/dC1YsT0VRmn+cP2BLn4KXSKKt9LFnUPgDwi80zARaSIN0NrpaADPQqKb2OxUY1fNV9ectzZ+QA==
+vuepress@1.0.0-alpha.49:
+  version "1.0.0-alpha.49"
+  resolved "https://registry.yarnpkg.com/vuepress/-/vuepress-1.0.0-alpha.49.tgz#dcb5f69c943a9c51baf36c21b14a42acf1bd123d"
+  integrity sha512-koOEkMQ9et5isqk3JxfaD4ieWRqJBORTbLFhgZBZS3c3S/Jt2DZBw9cM5mR3sfRLYo9QaX+rmfGUAtaIoyNVnw==
   dependencies:
     "@vuepress/core" "^1.0.0-alpha.48"
     "@vuepress/theme-default" "^1.0.0-alpha.48"
