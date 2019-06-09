@@ -56,6 +56,54 @@ docker run -it --name ttrss --restart=always \
 * ENABLE_PLUGINS: the plugins you'd like to enable at system level
 * SESSION_COOKIE_LIFETIME: the expiry time for your login session cookie in hours, default to 24 hours
 
+### Configure HTTPS
+
+TTRSS container itself doesn't handle HTTPS traffic. An example of configuring an Nginx reverse proxy with free SSL certificate from [Let's Encrypt](https://letsencrypt.org/) is shown below:
+
+```nginx
+upstream ttrssdev {
+    server 127.0.0.1:181;
+}
+
+server {
+    listen 80;
+    server_name  ttrssdev.henry.wang;
+    return 301 https://ttrssdev.henry.wang$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    gzip on;
+    server_name  ttrssdev.henry.wang;
+
+    ssl_certificate /etc/letsencrypt/live/ttrssdev.henry.wang/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/ttrssdev.henry.wang/privkey.pem;
+
+    access_log /var/log/nginx/ttrssdev_access.log combined;
+    error_log  /var/log/nginx/ttrssdev_error.log;
+
+    location / {
+        proxy_redirect off;
+        proxy_pass http://ttrssdev;
+
+        proxy_set_header  Host                $http_host;
+        proxy_set_header  X-Real-IP           $remote_addr;
+        proxy_set_header  X-Forwarded-Ssl     on;
+        proxy_set_header  X-Forwarded-For     $proxy_add_x_forwarded_for;
+        proxy_set_header  X-Forwarded-Proto   $scheme;
+        proxy_set_header  X-Frame-Options     SAMEORIGIN;
+
+        client_max_body_size        100m;
+        client_body_buffer_size     128k;
+
+        proxy_buffer_size           4k;
+        proxy_buffers               4 32k;
+        proxy_busy_buffers_size     64k;
+        proxy_temp_file_write_size  64k;
+    }
+}
+```
+
 ## Plugins
 
 ### [Mercury Fulltext Extraction](https://github.com/HenryQW/mercury_fulltext)
@@ -82,7 +130,7 @@ Provide Fever API simulate.
 1. Enter a password for Fever in preference
     ![enter a Fever password](https://share.henry.wang/HspODo/xRSbZQheVN+)
 1. In supported RSS readers, use `https://[your url]/plugins/fever` as the target server address, with your account and the password set in Step 2.
-1. The plugin communicates with TTRSS using an unsalted MD5 hash, using https is strongly recommended. [Let's Encrypt](https://letsencrypt.org/) provides SSL certificates for free.
+1. The plugin communicates with TTRSS using an unsalted MD5 hash, [using HTTPS](#configure-https) is strongly recommended.
 
 ### [OpenCC Simp-Trad Chinese Conversion](https://github.com/HenryQW/ttrss_opencc)
 

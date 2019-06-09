@@ -6,7 +6,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "docs:dev": "vuepress dev docs",
+    "dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
   },
   "devDependencies": {

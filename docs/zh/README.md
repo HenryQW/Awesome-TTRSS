@@ -56,6 +56,54 @@ docker run -it --name ttrss --restart=always \
 * ENABLE_PLUGINS: 在系统层面启用的插件名称，其中 `auth_internal` 为必须启用的登录插件
 * SESSION_COOKIE_LIFETIME: 使用网页版登陆时 cookie 过期时间，单位为小时，默认为 24 小时
 
+### 配置 HTTPS
+
+TTRSS 容器自身不负责使用 HTTPS 加密通信。参见下方的样例自行配置 Nginx 反向代理。使用 [Let's Encrypt](https://letsencrypt.org/) 可以获取免费 SSL 证书。
+
+```nginx
+upstream ttrssdev {
+    server 127.0.0.1:181;
+}
+
+server {
+    listen 80;
+    server_name  ttrssdev.henry.wang;
+    return 301 https://ttrssdev.henry.wang$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    gzip on;
+    server_name  ttrssdev.henry.wang;
+
+    ssl_certificate /etc/letsencrypt/live/ttrssdev.henry.wang/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/ttrssdev.henry.wang/privkey.pem;
+
+    access_log /var/log/nginx/ttrssdev_access.log combined;
+    error_log  /var/log/nginx/ttrssdev_error.log;
+
+    location / {
+        proxy_redirect off;
+        proxy_pass http://ttrssdev;
+
+        proxy_set_header  Host                $http_host;
+        proxy_set_header  X-Real-IP           $remote_addr;
+        proxy_set_header  X-Forwarded-Ssl     on;
+        proxy_set_header  X-Forwarded-For     $proxy_add_x_forwarded_for;
+        proxy_set_header  X-Forwarded-Proto   $scheme;
+        proxy_set_header  X-Frame-Options     SAMEORIGIN;
+
+        client_max_body_size        100m;
+        client_body_buffer_size     128k;
+
+        proxy_buffer_size           4k;
+        proxy_buffers               4 32k;
+        proxy_busy_buffers_size     64k;
+        proxy_temp_file_write_size  64k;
+    }
+}
+```
+
 ## 插件
 
 ### [Mercury 全文获取](https://github.com/HenryQW/mercury_fulltext)
@@ -82,7 +130,7 @@ docker run -it --name ttrss --restart=always \
 1. 在插件设置中设置 Fever 密码。
     ![设置 Fever 密码](https://share.henry.wang/HspODo/xRSbZQheVN+)
 1. 在支持 Fever 的阅读器用，使用 `https://[你的地址]/plugins/fever` 作为服务器地址。使用你的账号和步骤 2 中的密码登录。
-1. 由于该插件使用未加盐的 MD5 加密密码进行通信，强烈建议开启 https，使用 [Let's Encrypt](https://letsencrypt.org/) 可以获取免费 SSL 证书。
+1. 由于该插件使用未加盐的 MD5 加密密码进行通信，强烈建议[开启 HTTPS](#配置-https)。
 
 ### [OpenCC 繁简转换](https://github.com/HenryQW/ttrss_opencc)
 
