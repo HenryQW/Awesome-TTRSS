@@ -53,6 +53,10 @@ module.exports = {
           {
             text: "首页",
             link: "/zh/"
+          },
+          {
+            text: "赞助",
+            link: "https://opencollective.com/Awesome-TTRSS/"
           }
         ]
       },
@@ -65,6 +69,10 @@ module.exports = {
           {
             text: "Home",
             link: "/"
+          },
+          {
+            text: "Sponsor",
+            link: "https://opencollective.com/Awesome-TTRSS/"
           }
         ]
       }

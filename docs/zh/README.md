@@ -12,7 +12,7 @@
 
 ## 部署
 
-**为了更好的用户体验，此镜像仅支持 postgres 数据库。** 自 [tag 3.5_mysql_php5](https://github.com/HenryQW/Awesome-TTRSS/tree/3.5_mysql_php5) 起停止支持 mysql。
+推荐使用一台 VPS 来部署您的 Awesome TTRSS 实例，[DigitalOcean](https://m.do.co/c/d6ef3c80105c) 提供高性价比的 VPS 仅需 \$5/月。除此之外，通过 Awesome TTRSS 的 [💰OpenCollective 页面](https://opencollective.com/Awesome-TTRSS/) 进行赞助，即可获得定制支持，全托管服务，全托管 VPS 等私人服务。
 
 ### 通过 Docker 部署
 
@@ -47,14 +47,14 @@ docker run -it --name ttrss --restart=always \
 
 ### 支持的环境变量列表
 
-* SELF_URL_PATH: TTRSS 实例地址
-* DB_HOST: 数据库地址
-* DB_PORT: 数据库端口
-* DB_NAME: 数据库名字
-* DB_USER: 数据库用户名
-* DB_PASS: 数据库密码
-* ENABLE_PLUGINS: 在系统层面启用的插件名称，其中 `auth_internal` 为必须启用的登录插件
-* SESSION_COOKIE_LIFETIME: 使用网页版登陆时 cookie 过期时间，单位为小时，默认为 24 小时
+- SELF_URL_PATH: TTRSS 实例地址
+- DB_HOST: 数据库地址
+- DB_PORT: 数据库端口
+- DB_NAME: 数据库名字
+- DB_USER: 数据库用户名
+- DB_PASS: 数据库密码
+- ENABLE_PLUGINS: 在系统层面启用的插件名称，其中 `auth_internal` 为必须启用的登录插件
+- SESSION_COOKIE_LIFETIME: 使用网页版登陆时 cookie 过期时间，单位为小时，默认为 24 小时
 
 ### 配置 HTTPS
 
@@ -113,9 +113,9 @@ server {
 #### 设置步骤
 
 1. 在设置中启用 `mercury-fulltext` 插件
-    ![启用 Mercury](https://share.henry.wang/92AGp5/x9xYB93cnX+)
+   ![启用 Mercury](https://share.henry.wang/92AGp5/x9xYB93cnX+)
 1. 在设置中填入 Mercury Parser API 地址
-    ![填入 Mercury Parser API 地址](https://share.henry.wang/KFrzMD/O2xonuy9ta+)
+   ![填入 Mercury Parser API 地址](https://share.henry.wang/KFrzMD/O2xonuy9ta+)
 
 ### [Fever API](https://github.com/HenryQW/tinytinyrss-fever-plugin)
 
@@ -126,10 +126,10 @@ server {
 #### 设置步骤
 
 1. 在设置中启用 API。
-    ![启用 API](https://share.henry.wang/X2AnXi/bVVDg9mGDm+)
+   ![启用 API](https://share.henry.wang/X2AnXi/bVVDg9mGDm+)
 1. 在插件设置中设置 Fever 密码。
-    ![设置 Fever 密码](https://share.henry.wang/HspODo/xRSbZQheVN+)
-1. 在支持 Fever 的阅读器用，使用 `https://[你的地址]/plugins/fever` 作为服务器地址。使用你的账号和步骤 2 中的密码登录。
+   ![设置 Fever 密码](https://share.henry.wang/HspODo/xRSbZQheVN+)
+1. 在支持 Fever 的阅读器用，使用 `https://[您的地址]/plugins/fever` 作为服务器地址。使用您的账号和步骤 2 中的密码登录。
 1. 由于该插件使用未加盐的 MD5 加密密码进行通信，强烈建议[开启 HTTPS](#配置-https)。
 
 ### [OpenCC 繁简转换](https://github.com/HenryQW/ttrss_opencc)
@@ -139,9 +139,9 @@ server {
 #### 设置步骤
 
 1. 在设置中启用 `opencc` 插件
-    ![启用 opencc](https://share.henry.wang/EvN5Nl/2RHNnMV2iP+)
+   ![启用 opencc](https://share.henry.wang/EvN5Nl/2RHNnMV2iP+)
 1. 在设置中填入 OpenCC API 地址
-    ![填入 OpenCC API 地址](https://share.henry.wang/JdJeUB/vIsRBk3EXn+)
+   ![填入 OpenCC API 地址](https://share.henry.wang/JdJeUB/vIsRBk3EXn+)
 
 Demo 服务器，可用性不做任何保证：[https://opencc.henry.wang](https://opencc.henry.wang) or [http://opencc2.henry.wang](http://opencc2.henry.wang)。
 
@@ -179,14 +179,21 @@ Demo 服务器，可用性不做任何保证：[https://opencc.henry.wang](https
 
 ## 使用建议
 
-* 推荐使用 [RSSHub](https://docs。rsshub。app/) 来发现更多有趣的订阅源。
-* 对于 iOS 和 macOS 用户，内置的 [Fever API 模拟插件](#fever-api) 提供 [Reeder 4](http://reederapp.com/) 后端支持。
-* 对于 Linux 用户，内置的 [FeedReader API](#feedreader-api) 提供 [FeedReader](https://jangernert.github.io/FeedReader/) 后端支持。
+- 推荐使用 [RSSHub](https://docs。rsshub。app/) 来发现更多有趣的订阅源。
+- 对于 iOS 和 macOS 用户，内置的 [Fever API 模拟插件](#fever-api) 提供 [Reeder 4](http://reederapp.com/) 后端支持。
+- 对于 Linux 用户，内置的 [FeedReader API](#feedreader-api) 提供 [FeedReader](https://jangernert.github.io/FeedReader/) 后端支持。
 
 ## 支持与帮助
 
-* 阅读此[指南](https://henry.wang/2018/04/25/ttrss-docker-plugins-guide.html)可能会有帮助。
-* 通过 [GitHub issue](https://github.com/HenryQW/Awesome-TTRSS/issues) 提交问题，我会尽快答复。
+- 通过 Awesome TTRSS 的 [💰OpenCollective 页面](https://opencollective.com/Awesome-TTRSS/) 进行赞助，即可获得私人定制支持。
+- 阅读此[指南](https://henry.wang/2018/04/25/ttrss-docker-plugins-guide.html)可能会有帮助。
+- 通过 [GitHub issue](https://github.com/HenryQW/Awesome-TTRSS/issues) 提交问题。
+
+## 捐赠
+
+| PayPal                                                                                                                                                                       | 微信赞赏                                                            | OpenCollective                                                     |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| [![paypal](https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MTM5L6T4PHRQS&source=url) | <img src="https://share.henry.wang/IKaxAW/duFgAuOnmk+" width="200"> | [💰OpenCollective page](https://opencollective.com/Awesome-TTRSS/) |
 
 ## 许可
 

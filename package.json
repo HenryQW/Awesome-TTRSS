@@ -7,7 +7,8 @@
   "private": true,
   "scripts": {
     "dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "docs:build": "vuepress build docs",
+    "format": "prettier \"**/*.{js,json,md}\" --write"
   },
   "devDependencies": {
     "@vuepress/plugin-back-to-top": "1.0.2",

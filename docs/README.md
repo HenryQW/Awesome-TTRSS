@@ -8,11 +8,11 @@
 
 ## About
 
-[Tiny Tiny RSS](https://tt-rss.org/) is an open source RSS feed reader and aggregator written in PHP. 🐋 Awesome TTRSS aims to provide a powerful **Dockerised all-in-one** solution, with enhanced user experience via simplified deployment and a list of curated plugins.
+🐋 Awesome TTRSS aims to provide a powerful **Dockerized all-in-one** solution for [Tiny Tiny RSS](https://tt-rss.org/), an open source RSS feed reader and aggregator written in PHP, with enhanced user experience via simplified deployment and a list of curated plugins.
 
 ## Deployment
 
-**Support postgres only for a better user experience.** mysql support is dropped since [tag 3.5_mysql_php5](https://github.com/HenryQW/Awesome-TTRSS/tree/3.5_mysql_php5).
+A VPS is highly recommended to host your Awesome TTRSS instance, a VPS can be obtained from as little as \$5/month at [DigitalOcean](https://m.do.co/c/d6ef3c80105c). Alternatively, you may request for personalized support, fully-managed service or fully-managed VPS via sponsoring Awesome TTRSS on its [💰OpenCollective page](https://opencollective.com/Awesome-TTRSS/).
 
 ### Deployment via docker
 
@@ -47,14 +47,14 @@ docker run -it --name ttrss --restart=always \
 
 #### Supported Environment Variables
 
-* SELF_URL_PATH: the url to your TTRSS instance
-* DB_HOST: the address of your database
-* DB_PORT: the port of your database
-* DB_NAME: the name of your database
-* DB_USER: the user of your database
-* DB_PASS: the password of your database
-* ENABLE_PLUGINS: the plugins you'd like to enable at system level
-* SESSION_COOKIE_LIFETIME: the expiry time for your login session cookie in hours, default to 24 hours
+- SELF_URL_PATH: the url to your TTRSS instance
+- DB_HOST: the address of your database
+- DB_PORT: the port of your database
+- DB_NAME: the name of your database
+- DB_USER: the user of your database
+- DB_PASS: the password of your database
+- ENABLE_PLUGINS: the plugins you'd like to enable at system level
+- SESSION_COOKIE_LIFETIME: the expiry time for your login session cookie in hours, default to 24 hours
 
 ### Configure HTTPS
 
@@ -113,9 +113,9 @@ Fetch fulltext of articles via a self-hosted Mercury Parser API. A separate Merc
 #### Steps
 
 1. Enable `mercury-fulltext` plugin in preference
-    ![enable Mercury](https://share.henry.wang/92AGp5/x9xYB93cnX+)
+   ![enable Mercury](https://share.henry.wang/92AGp5/x9xYB93cnX+)
 1. Enter Mercury Parser API endpoint
-    ![enter Mercury Parser API endpoint](https://share.henry.wang/KFrzMD/O2xonuy9ta+)
+   ![enter Mercury Parser API endpoint](https://share.henry.wang/KFrzMD/O2xonuy9ta+)
 
 ### [Fever API](https://github.com/HenryQW/tinytinyrss-fever-plugin)
 
@@ -126,9 +126,9 @@ Provide Fever API simulate.
 #### Steps
 
 1. Enable API in preference
-    ![enable API](https://share.henry.wang/X2AnXi/bVVDg9mGDm+)
+   ![enable API](https://share.henry.wang/X2AnXi/bVVDg9mGDm+)
 1. Enter a password for Fever in preference
-    ![enter a Fever password](https://share.henry.wang/HspODo/xRSbZQheVN+)
+   ![enter a Fever password](https://share.henry.wang/HspODo/xRSbZQheVN+)
 1. In supported RSS readers, use `https://[your url]/plugins/fever` as the target server address, with your account and the password set in Step 2.
 1. The plugin communicates with TTRSS using an unsalted MD5 hash, [using HTTPS](#configure-https) is strongly recommended.
 
@@ -139,9 +139,9 @@ Conversion between Traditional and Simplified Chinese via [OpenCC](https://githu
 #### Steps
 
 1. Enable `opencc` plugin in preference
-    ![enable opencc](https://share.henry.wang/EvN5Nl/2RHNnMV2iP+)
+   ![enable opencc](https://share.henry.wang/EvN5Nl/2RHNnMV2iP+)
 1. Enter OpenCC API endpoint
-    ![enter OpenCC API endpoint](https://share.henry.wang/JdJeUB/vIsRBk3EXn+)
+   ![enter OpenCC API endpoint](https://share.henry.wang/JdJeUB/vIsRBk3EXn+)
 
 Demo instances, availability is not guaranteed: [https://opencc.henry.wang](https://opencc.henry.wang) or [http://opencc2.henry.wang](http://opencc2.henry.wang).
 
@@ -179,15 +179,22 @@ Refer to [Feediron](https://github.com/feediron/ttrss_plugin-feediron) for more 
 
 ## Recommendation
 
-* [RSSHub](https://docs.rsshub.app/en/) is an interesting place for discovering RSS feeds.
-* For iOS and macOS user, the integrated [Fever plugin](https://github.com/HenryQW/tinytinyrss-fever-plugin) supplies [Reeder 4](http://reederapp.com/) backend support.
-* For Android user, the integrated [Fever plugin](https://github.com/HenryQW/tinytinyrss-fever-plugin) supplies [News+](http://github.com/noinnion/newsplus/) backend support.
-* For Linux user, the integrated [FeedReader API](https://github.com/jangernert/FeedReader/tree/master/data/tt-rss-feedreader-plugin) supplies [FeedReader](https://jangernert.github.io/FeedReader/) backend support.
+- [RSSHub](https://docs.rsshub.app/en/) is an interesting place for discovering RSS feeds.
+- For iOS and macOS user, the integrated [Fever plugin](https://github.com/HenryQW/tinytinyrss-fever-plugin) supplies [Reeder 4](http://reederapp.com/) backend support.
+- For Android user, the integrated [Fever plugin](https://github.com/HenryQW/tinytinyrss-fever-plugin) supplies [News+](http://github.com/noinnion/newsplus/) backend support.
+- For Linux user, the integrated [FeedReader API](https://github.com/jangernert/FeedReader/tree/master/data/tt-rss-feedreader-plugin) supplies [FeedReader](https://jangernert.github.io/FeedReader/) backend support.
 
 ## Support and Help
 
-* Read [this guide](https://henry.wang/2018/04/25/ttrss-docker-plugins-guide.html) might help.
-* Open an issue via [GitHub issue](https://github.com/HenryQW/Awesome-TTRSS/issues), I will try to respond ASAP.
+- You may request for personalized support via sponsoring Awesome TTRSS on its [💰OpenCollective page](https://opencollective.com/Awesome-TTRSS/).
+- Read [this guide](https://henry.wang/2018/04/25/ttrss-docker-plugins-guide.html) might help.
+- Open an issue via [GitHub issue](https://github.com/HenryQW/Awesome-TTRSS/issues).
+
+## Donation
+
+| PayPal                                                                                                                                                                       | WeChat Pay                                                          | OpenCollective                                                      |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| [![paypal](https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MTM5L6T4PHRQS&source=url) | <img src="https://share.henry.wang/IKaxAW/duFgAuOnmk+" width="200"> | [💰OpenCollective page](https://opencollective.com/Awesome-TTRSS/) |
 
 ## License
 
