@@ -24,6 +24,10 @@ ADD https://github.com/voidstern/tt-rss-newsplus-plugin/archive/master.tar.gz /v
 # FeedReader API
 ADD https://raw.githubusercontent.com/jangernert/FeedReader/master/data/tt-rss-feedreader-plugin/api_feedreader/init.php /var/www/plugins/api_feedreader/
 
+# Options per feed
+ADD https://github.com/sergey-dryabzhinsky/options_per_feed/archive/master.tar.gz /var/www/plugins/options_per_feed/ 
+
+
 # Download themes
 ADD https://github.com/levito/tt-rss-feedly-theme/archive/master.tar.gz /var/www/themes/feedly/
 ADD https://github.com/DIYgod/ttrss-theme-rsshub/archive/master.tar.gz /var/www/themes/rsshub/
@@ -41,6 +45,8 @@ RUN apk add --update --virtual build-dependencies curl tar \
   && tar xzvpf /var/www/plugins/opencc/master.tar.gz --strip-components=1 -C /var/www/plugins/opencc/ ttrss_opencc-master && rm /var/www/plugins/opencc/master.tar.gz \
   \
   && tar xzvpf /var/www/plugins/api_newsplus/master.tar.gz --strip-components=2 -C /var/www/plugins/api_newsplus tt-rss-newsplus-plugin-master/api_newsplus && rm /var/www/plugins/api_newsplus/master.tar.gz \
+  \
+  && tar xzvpf /var/www/plugins/options_per_feed/master.tar.gz --strip-components=1 -C /var/www/plugins/options_per_feed options_per_feed-master && rm /var/www/plugins/options_per_feed/master.tar.gz \
   \
   && tar xzvpf /var/www/themes/feedly/master.tar.gz --strip-components=1 -C /var/www/themes/ tt-rss-feedly-theme-master/feedly tt-rss-feedly-theme-master/feedly.css && rm -rf /var/www/themes/feedly \
   \
