@@ -15,21 +15,35 @@ RUN chmod -x /wait-for.sh && apk add --update --no-cache nginx s6 \
 ADD src/ttrss.nginx.conf /etc/nginx/nginx.conf
 
 # Download plugins
+
+## Fever
 ADD https://github.com/HenryQW/tinytinyrss-fever-plugin/archive/master.tar.gz /var/www/plugins/fever/
+
+## Mercury Fulltext
 ADD https://github.com/HenryQW/mercury_fulltext/archive/master.tar.gz /var/www/plugins/mercury_fulltext/
+
+## Feediron
 ADD https://github.com/feediron/ttrss_plugin-feediron/archive/master.tar.gz /var/www/plugins/feediron/ 
+
+## OpenCC
 ADD https://github.com/HenryQW/ttrss_opencc/archive/master.tar.gz /var/www/plugins/opencc/ 
+
+## News+ API
 ADD https://github.com/voidstern/tt-rss-newsplus-plugin/archive/master.tar.gz /var/www/plugins/api_newsplus/ 
 
-# FeedReader API
+## FeedReader API
 ADD https://raw.githubusercontent.com/jangernert/FeedReader/master/data/tt-rss-feedreader-plugin/api_feedreader/init.php /var/www/plugins/api_feedreader/
 
-# Options per feed
+## Options per feed
 ADD https://github.com/sergey-dryabzhinsky/options_per_feed/archive/master.tar.gz /var/www/plugins/options_per_feed/ 
 
 
 # Download themes
+
+## Feedly
 ADD https://github.com/levito/tt-rss-feedly-theme/archive/master.tar.gz /var/www/themes/feedly/
+
+## RSSHub
 ADD https://github.com/DIYgod/ttrss-theme-rsshub/archive/master.tar.gz /var/www/themes/rsshub/
 
 # Install ttrss and patch configuration
