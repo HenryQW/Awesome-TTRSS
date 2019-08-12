@@ -14,7 +14,6 @@ $config['DB_USER'] = env('DB_USER');
 $config['DB_PASS'] = env('DB_PASS');
 $config['PLUGINS'] = env('ENABLE_PLUGINS','auth_internal,fever');
 $config['SESSION_COOKIE_LIFETIME'] = env('SESSION_COOKIE_LIFETIME', 24) * 3600;
-$config['_HTTP_PROXY'] = env('HTTP_PROXY');
 
 if(dbcheckconn($config)){
     $pdo = dbconnect($config);
@@ -48,6 +47,12 @@ if(dbcheckconn($config)){
     foreach ($config as $name => $value) {
         $contents = preg_replace('/(define\s*\(\'' . $name . '\',\s*)(.*)(\);)/', '$1"' . $value . '"$3', $contents);
     }
+
+    if (getenv('HTTP_PROXY') !== false) {
+        $contents .= "\r\n\t";
+        $contents .= "define('_HTTP_PROXY', '"  . env('HTTP_PROXY') . "');";
+    }
+
     file_put_contents($confpath, $contents);
 }
 
