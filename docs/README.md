@@ -45,7 +45,7 @@ docker run -it --name ttrss --restart=always \
 1. Access ttrss via port 181, with default credentials `admin` and `password`, please change them asap.
 1. `wangqiru/mercury-parser-api` and `wangqiru/opencc-api-server` are optional service containers to support additional features, removing them will not affect TTRSS's basic functionalities.
 
-#### Supported Environment Variables
+### Supported Environment Variables
 
 - SELF_URL_PATH: the url to your TTRSS instance
 - DB_HOST: the address of your database
@@ -53,8 +53,9 @@ docker run -it --name ttrss --restart=always \
 - DB_NAME: the name of your database
 - DB_USER: the user of your database
 - DB_PASS: the password of your database
-- ENABLE_PLUGINS: the plugins you'd like to enable at system level
-- SESSION_COOKIE_LIFETIME: the expiry time for your login session cookie in hours, default to 24 hours
+- ENABLE_PLUGINS: the plugins you'd like to enable at system level, note that `auth_internal` is required
+- SESSION_COOKIE_LIFETIME: the expiry time for your login session cookie in hours, default to `24` hours
+- HTTP_PROXY: `ip:port`, the global proxy for your TTRSS instance, to set proxy on a per feed basis, use [Options per Feed](#options-per-feed)
 
 ### Configure HTTPS
 
@@ -166,6 +167,12 @@ Refer to [News+ API](https://github.com/voidstern/tt-rss-newsplus-plugin/) for m
 Provide the ability to manipulate article DOMs.
 
 Refer to [Feediron](https://github.com/feediron/ttrss_plugin-feediron) for more details.
+
+### [Options per Feed](https://github.com/sergey-dryabzhinsky/options_per_feed)
+
+Provide the ability to configure proxy, user-agent and SSL certificate verification on a per feed basis.
+
+Refer to [Options per Feed](https://github.com/sergey-dryabzhinsky/options_per_feed) for more details.
 
 ## Themes
 

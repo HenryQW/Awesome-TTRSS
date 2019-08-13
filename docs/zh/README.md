@@ -54,7 +54,8 @@ docker run -it --name ttrss --restart=always \
 - DB_USER: 数据库用户名
 - DB_PASS: 数据库密码
 - ENABLE_PLUGINS: 在系统层面启用的插件名称，其中 `auth_internal` 为必须启用的登录插件
-- SESSION_COOKIE_LIFETIME: 使用网页版登陆时 cookie 过期时间，单位为小时，默认为 24 小时
+- SESSION_COOKIE_LIFETIME: 使用网页版登陆时 cookie 过期时间，单位为小时，默认为 `24` 小时
+- HTTP_PROXY: `ip:port`, TTRSS 实例的全局代理, 为源地址添加单独代理请使用 [Options per Feed](#options-per-feed)
 
 ### 配置 HTTPS
 
@@ -166,6 +167,12 @@ Demo 服务器，可用性不做任何保证：[https://opencc.henry.wang](https
 提供文章 DOM 操控能力的插件。
 
 使用指南见 [Feediron](https://github.com/feediron/ttrss_plugin-feediron)。
+
+### [Options per Feed](https://github.com/sergey-dryabzhinsky/options_per_feed)
+
+提供单独为源地址配置代理、user-agent 以及 SSL 证书验证的能力。
+
+使用指南见 [Options per Feed](https://github.com/sergey-dryabzhinsky/options_per_feed)。
 
 ## 主题
 

@@ -47,6 +47,12 @@ if(dbcheckconn($config)){
     foreach ($config as $name => $value) {
         $contents = preg_replace('/(define\s*\(\'' . $name . '\',\s*)(.*)(\);)/', '$1"' . $value . '"$3', $contents);
     }
+
+    if (getenv('HTTP_PROXY') !== false) {
+        $contents .= "\r\n\t";
+        $contents .= "define('_HTTP_PROXY', '"  . env('HTTP_PROXY') . "');";
+    }
+
     file_put_contents($confpath, $contents);
 }
 
