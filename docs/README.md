@@ -10,6 +10,10 @@
 
 🐋 Awesome TTRSS aims to provide a powerful **Dockerized all-in-one** solution for [Tiny Tiny RSS](https://tt-rss.org/), an open source RSS feed reader and aggregator written in PHP, with enhanced user experience via simplified deployment and a list of curated plugins.
 
+## Special Thanks
+
+[![Backers](https://opencollective.com/awesome-ttrss/backers.svg)](https://opencollective.com/awesome-ttrss#support)
+
 ## Deployment
 
 A VPS is highly recommended to host your Awesome TTRSS instance, a VPS can be obtained from as little as \$5/month at [DigitalOcean](https://m.do.co/c/d6ef3c80105c). Alternatively, you may request for personalized support, fully-managed service or fully-managed VPS via sponsoring Awesome TTRSS on its [💰OpenCollective page](https://opencollective.com/Awesome-TTRSS/).

@@ -10,6 +10,10 @@
 
 [Tiny Tiny RSS](https://tt-rss.org/) 是一款基于 PHP 的免费开源 RSS 聚合阅读器。🐋 Awesome TTRSS 旨在提供一个 **「一站式容器化」** 的 Tiny Tiny RSS 解决方案，通过提供简易的部署方式以及一些额外插件，以提升用户体验。
 
+## 鸣谢
+
+[![赞助者](https://opencollective.com/awesome-ttrss/backers.svg)](https://opencollective.com/awesome-ttrss#support)
+
 ## 部署
 
 推荐使用一台 VPS 来部署您的 Awesome TTRSS 实例，[DigitalOcean](https://m.do.co/c/d6ef3c80105c) 提供高性价比的 VPS 仅需 \$5/月。除此之外，通过 Awesome TTRSS 的 [💰OpenCollective 页面](https://opencollective.com/Awesome-TTRSS/) 进行赞助，即可获得定制支持，全托管服务，全托管 VPS 等私人服务。
