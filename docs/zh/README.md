@@ -109,6 +109,39 @@ server {
 }
 ```
 
+## 更新
+
+Awesome-TTRSS 会自动监控 TTRSS 官方更新并与之同步，这意味着更新会比较频繁。
+
+### 手动更新
+
+通过以下命令进行手动更新:
+
+```shell
+    docker pull wangqiru/ttrss:latest
+    # docker pull wangqiru/mercury-parser-api:latest
+    # docker pull wangqiru/opencc-api-server:latest
+    docker-compose up -d # 如果您没有使用 docker-compose，我确信您知道该怎么做。
+```
+
+### 自动更新
+
+[样例 docker-compose](#通过-docker-compose-部署) 中包含了 [Watchtower](https://github.com/containrrr/watchtower)，它会自动拉取并更新您所有的服务容器 (包括当前系统上运行的非 Awesome-TTRSS 服务的容器）。该服务默认关闭，**启用前请确认它将不会影响您其他的服务容器。**
+
+您也可以设置 watchtower 忽略您的其他容器：
+
+```yml
+  service.mercury:
+    image: wangqiru/mercury-parser-api:latest
+    container_name: mercury
+    expose:
+      - 3000
+    restart: always
+    # ⬇️ 这将使 Watchtower 跳过对 mercury-parser-api 的更新检测
+    labels:
+        - com.centurylinklabs.watchtower.enable=false
+```
+
 ## 插件
 
 ### [Mercury 全文获取](https://github.com/HenryQW/mercury_fulltext)

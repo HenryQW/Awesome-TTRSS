@@ -109,6 +109,39 @@ server {
 }
 ```
 
+## Update
+
+Awesome-TTRSS automatically keeps up with TTRSS by mirroring the official releases, this means update can be issued frequently.
+
+### Manual Update
+
+You can fetch the latest image manually:
+
+```shell
+    docker pull wangqiru/ttrss:latest
+    # docker pull wangqiru/mercury-parser-api:latest
+    # docker pull wangqiru/opencc-api-server:latest
+    docker-compose up -d # If you didn't use docker-compose, I'm sure you know what to do.
+```
+
+### Auto Update
+
+The example [docker-compose](#deployment-via-docker-compose) includes [Watchtower](https://github.com/containrrr/watchtower), which automatically pulls all containers included in Awesome-TTRSS (and other containers running on your system) and refreshes your running services. By default, it's disabled, **make sure it will not affect your other service containers before enabling this.**
+
+To exclude images, check the following for disabling auto update for containers:
+
+```yml
+  service.mercury:
+    image: wangqiru/mercury-parser-api:latest
+    container_name: mercury
+    expose:
+      - 3000
+    restart: always
+    # ⬇️ this prevents Watchtower from auto updating mercury-parser-api
+    labels:
+        - com.centurylinklabs.watchtower.enable=false
+```
+
 ## Plugins
 
 ### [Mercury Fulltext Extraction](https://github.com/HenryQW/mercury_fulltext)
