@@ -60,6 +60,7 @@ docker run -it --name ttrss --restart=always \
 - ENABLE_PLUGINS: 在系统层面启用的插件名称，其中 `auth_internal` 为必须启用的登录插件
 - SESSION_COOKIE_LIFETIME: 使用网页版登陆时 cookie 过期时间，单位为小时，默认为 `24` 小时
 - HTTP_PROXY: `ip:port`, TTRSS 实例的全局代理, 为源地址添加单独代理请使用 [Options per Feed](#options-per-feed)
+- SINGLE_USER_MODE: `true` 为开启单用户模式，同时关闭用户认证，无需登录即可使用。**请仅在安全环境下开启**
 
 ### 配置 HTTPS
 
