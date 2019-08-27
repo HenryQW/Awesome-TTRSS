@@ -1,6 +1,5 @@
 {
   "extends": [
     "config:base"
-  ],
-  "includeForks": true
+  ]
 }
