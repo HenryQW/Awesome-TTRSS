@@ -113,7 +113,7 @@ server {
 
 Awesome-TTRSS 会自动监控 TTRSS 官方更新并与之同步，这意味着更新会比较频繁。
 
-默认使用 `wangqiru/ttrss:latest` 版本，该版本包含了 [TTRSS 官方](https://git.tt-rss.org/fox/tt-rss/releases)的稳定发行版。 `wangqiru/ttrss:nightly` 包含了含有最新功能的尝鲜版，但可能包含 bug。旧版本请参照 [此页面](https://cloud.docker.com/repository/docker/wangqiru/ttrss/tags)。
+默认使用 `wangqiru/ttrss:latest` 版本，该版本包含了 [TTRSS 官方](https://git.tt-rss.org/fox/tt-rss/releases)的稳定发行版。 `wangqiru/ttrss:nightly` 包含了含有最新功能的尝鲜版，但可能包含 bug。旧版本请参照 [此页面](https://hub.docker.com/r/wangqiru/ttrss/tags)。
 
 ### 手动更新
 
