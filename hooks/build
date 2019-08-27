@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ $SOURCE_BRANCH == "dev" ]; then
+    BRANCH="master"
+else
+    BRANCH=$SOURCE_BRANCH
+fi
+
+docker build --build-arg branch=$BRANCH -t $IMAGE_NAME .
