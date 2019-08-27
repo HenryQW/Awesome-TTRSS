@@ -113,7 +113,7 @@ server {
 
 Awesome-TTRSS automatically keeps up with TTRSS by mirroring the official releases, this means update can be issued frequently.
 
-By default `wangqiru/ttrss:latest` version is used, which contains the stable release from [the official TTRSS repository](https://git.tt-rss.org/fox/tt-rss/releases). `wangqiru/ttrss:nightly` is also available if you want to try out the latest commits, however this may contain bugs. For older versions, please check [this page](https://cloud.docker.com/repository/docker/wangqiru/ttrss/tags).
+By default `wangqiru/ttrss:latest` version is used, which contains the stable release from [the official TTRSS repository](https://git.tt-rss.org/fox/tt-rss/releases). `wangqiru/ttrss:nightly` is also available if you want to try out the latest features, however this may contain bugs. For older versions, please check [this page](https://cloud.docker.com/repository/docker/wangqiru/ttrss/tags).
 
 ### Manual Update
 
