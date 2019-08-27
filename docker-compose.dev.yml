@@ -13,7 +13,7 @@ services:
       context: .
       dockerfile: Dockerfile.dev
       args:
-        branch: dev
+        branch: master
     # image: wangqiru/ttrss:dev
     container_name: ttrss
     ports:
@@ -26,6 +26,7 @@ services:
       - DB_USER=postgres
       - DB_PASS=ttrss # please change the password
       - ENABLE_PLUGINS=auth_internal,fever # auth_internal is required. Plugins enabled here will be enabled for all users as system plugins
+      - SINGLE_USER_MODE=true
     stdin_open: true
     tty: true
     restart: always
