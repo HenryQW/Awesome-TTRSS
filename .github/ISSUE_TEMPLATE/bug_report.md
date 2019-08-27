@@ -1,14 +1,25 @@
 ---
-name: Bug report
+name: 🐞 Bug report
 about: Create a report to help us improve
-title: ''
-labels: ''
+title: "[BUG]"
+labels: bug
 assignees: ''
 
 ---
 
 **Describe the bug**
 A clear and concise description of what the bug is.
+
+**Have you googled?**
+Please google it now.
+
+**Deployment method**
+ - Docker or docker-compose
+ - Version of the image used [e.g. latest, nightly, 19.8]
+
+**Deployment environment**
+ - OS: [e.g. Ubuntu 18.04]
+ - Browser: [e.g. chrome, safari]
 
 **To Reproduce**
 Steps to reproduce the behavior:
@@ -23,16 +34,8 @@ A clear and concise description of what you expected to happen.
 **Screenshots**
 If applicable, add screenshots to help explain your problem.
 
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
-
-**Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
- - Version [e.g. 22]
+**Error logs**
+When the error occurs, execute `docker logs ttrss --tail 100` to obtain the error logs and paste **the relevant logs** here.
 
 **Additional context**
 Add any other context about the problem here.
