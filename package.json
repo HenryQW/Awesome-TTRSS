@@ -8,11 +8,19 @@
   "scripts": {
     "dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
-    "format": "prettier \"**/*.{js,json,md}\" --write"
+    "format": "prettier \"**/*.{js,json,md}\" --write",
+    "postinstall": "opencollective-postinstall || true"
   },
   "devDependencies": {
     "@vuepress/plugin-back-to-top": "1.0.4",
     "@vuepress/plugin-google-analytics": "1.0.4",
     "vuepress": "1.0.4"
+  },
+  "dependencies": {
+    "opencollective-postinstall": "^2.0.2"
+  },
+  "collective": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/Awesome-TTRSS"
   }
 }
