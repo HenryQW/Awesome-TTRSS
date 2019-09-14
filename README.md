@@ -1,6 +1,6 @@
 # 🐋 Awesome TTRSS
 
-[![Docker Pulls](https://img.shields.io/docker/pulls/wangqiru/ttrss.svg)](https://hub.docker.com/r/wangqiru/ttrss)
+[![Financial Contributors on Open Collective](https://opencollective.com/Awesome-TTRSS/all/badge.svg?label=financial+contributors)](https://opencollective.com/Awesome-TTRSS) [![Docker Pulls](https://img.shields.io/docker/pulls/wangqiru/ttrss.svg)](https://hub.docker.com/r/wangqiru/ttrss)
 [![Docker Stars](https://img.shields.io/docker/stars/wangqiru/ttrss.svg)](https://hub.docker.com/r/wangqiru/ttrss)
 
 [![Docker Automated build](https://img.shields.io/docker/automated/wangqiru/ttrss.svg)](https://hub.docker.com/r/wangqiru/ttrss/builds)
@@ -21,3 +21,33 @@
 | PayPal                                                                                                                                                                       | 微信赞赏 WeChat Pay                                                 | OpenCollective                                                     |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------ |
 | [![paypal](https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MTM5L6T4PHRQS&source=url) | <img src="https://share.henry.wang/IKaxAW/duFgAuOnmk+" width="200"> | [💰OpenCollective page](https://opencollective.com/Awesome-TTRSS/) |
+
+## Contributors
+
+### Code Contributors
+
+This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
+<a href="https://github.com/HenryQW/Awesome-TTRSS/graphs/contributors"><img src="https://opencollective.com/Awesome-TTRSS/contributors.svg?width=890&button=false" /></a>
+
+### Financial Contributors
+
+Become a financial contributor and help us sustain our community. [[Contribute](https://opencollective.com/Awesome-TTRSS/contribute)]
+
+#### Individuals
+
+<a href="https://opencollective.com/Awesome-TTRSS"><img src="https://opencollective.com/Awesome-TTRSS/individuals.svg?width=890"></a>
+
+#### Organizations
+
+Support this project with your organization. Your logo will show up here with a link to your website. [[Contribute](https://opencollective.com/Awesome-TTRSS/contribute)]
+
+<a href="https://opencollective.com/Awesome-TTRSS/organization/0/website"><img src="https://opencollective.com/Awesome-TTRSS/organization/0/avatar.svg"></a>
+<a href="https://opencollective.com/Awesome-TTRSS/organization/1/website"><img src="https://opencollective.com/Awesome-TTRSS/organization/1/avatar.svg"></a>
+<a href="https://opencollective.com/Awesome-TTRSS/organization/2/website"><img src="https://opencollective.com/Awesome-TTRSS/organization/2/avatar.svg"></a>
+<a href="https://opencollective.com/Awesome-TTRSS/organization/3/website"><img src="https://opencollective.com/Awesome-TTRSS/organization/3/avatar.svg"></a>
+<a href="https://opencollective.com/Awesome-TTRSS/organization/4/website"><img src="https://opencollective.com/Awesome-TTRSS/organization/4/avatar.svg"></a>
+<a href="https://opencollective.com/Awesome-TTRSS/organization/5/website"><img src="https://opencollective.com/Awesome-TTRSS/organization/5/avatar.svg"></a>
+<a href="https://opencollective.com/Awesome-TTRSS/organization/6/website"><img src="https://opencollective.com/Awesome-TTRSS/organization/6/avatar.svg"></a>
+<a href="https://opencollective.com/Awesome-TTRSS/organization/7/website"><img src="https://opencollective.com/Awesome-TTRSS/organization/7/avatar.svg"></a>
+<a href="https://opencollective.com/Awesome-TTRSS/organization/8/website"><img src="https://opencollective.com/Awesome-TTRSS/organization/8/avatar.svg"></a>
+<a href="https://opencollective.com/Awesome-TTRSS/organization/9/website"><img src="https://opencollective.com/Awesome-TTRSS/organization/9/avatar.svg"></a>
