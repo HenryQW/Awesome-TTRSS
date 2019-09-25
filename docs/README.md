@@ -54,7 +54,7 @@ docker run -it --name ttrss --restart=always \
 - SELF_URL_PATH: the url to your TTRSS instance
 - DB_HOST: the address of your database
 - DB_PORT: the port of your database
-- DB_NAME: the name of your database
+- DB_NAME: the name of your database, please keep the variable consistent in both `database.postgres` and `service.rss`
 - DB_USER: the user of your database
 - DB_PASS: the password of your database
 - ENABLE_PLUGINS: the plugins you'd like to enable at system level, note that `auth_internal` is required

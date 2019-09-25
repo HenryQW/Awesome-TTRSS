@@ -54,7 +54,7 @@ docker run -it --name ttrss --restart=always \
 - SELF_URL_PATH: TTRSS 实例地址
 - DB_HOST: 数据库地址
 - DB_PORT: 数据库端口
-- DB_NAME: 数据库名字
+- DB_NAME: 数据库名字，请保持该变量在 `database.postgres` 和 `service.rss` 中一致
 - DB_USER: 数据库用户名
 - DB_PASS: 数据库密码
 - ENABLE_PLUGINS: 在系统层面启用的插件名称，其中 `auth_internal` 为必须启用的登录插件
