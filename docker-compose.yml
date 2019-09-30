@@ -5,7 +5,6 @@ services:
     container_name: postgres
     environment:
       - PG_PASSWORD=ttrss # please change the password
-      - DB_NAME=ttrss # please make sure the database name is consistent with the one defined in service.rss below
       - DB_EXTENSION=pg_trgm
     volumes:
       - ~/postgres/data/:/var/lib/postgresql/ # persist postgres data to ~/postgres/data/ on the host
@@ -20,7 +19,7 @@ services:
       - SELF_URL_PATH=http://localhost:181/ # please change to your own domain
       - DB_HOST=database.postgres
       - DB_PORT=5432
-      - DB_NAME=ttrss # please make sure the database name is consistent with the one defined in database.postgres above
+      - DB_NAME=ttrss
       - DB_USER=postgres
       - DB_PASS=ttrss # please change the password
       - ENABLE_PLUGINS=auth_internal,fever # auth_internal is required. Plugins enabled here will be enabled for all users as system plugins
