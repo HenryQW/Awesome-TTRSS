@@ -27,7 +27,7 @@ services:
     stdin_open: true
     tty: true
     restart: always
-    command: sh -c 'sh /wait-for.sh database.postgres:5432 -- php /configure-db.php && exec s6-svscan /etc/s6/'
+    command: sh -c 'sh /wait-for.sh $$DB_HOST:$$DB_PORT -- php /configure-db.php && exec s6-svscan /etc/s6/'
 
   service.mercury: # set Mercury Parser API endpoint to `service.mercury:3000` on TTRSS plugin setting page
     image: wangqiru/mercury-parser-api:latest
