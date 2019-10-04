@@ -6,7 +6,6 @@ $confpath = '/var/www/config.php';
 $config = array();
 
 $config['SELF_URL_PATH'] = env('SELF_URL_PATH', 'http://localhost');
-$config['DB_TYPE'] = 'pgsql';
 $config['DB_HOST'] = env('DB_HOST', 'postgres');
 $config['DB_PORT'] = env('DB_PORT', 5432);
 $config['DB_NAME'] = env('DB_NAME', 'ttrss');
@@ -34,13 +33,15 @@ if(dbcheckconn($config)){
         }
         catch (PDOException $e) {
             echo 'Database table not found, applying schema... ' . PHP_EOL;
-            $schema = file_get_contents('schema/ttrss_schema_' . $config['DB_TYPE'] . '.sql');
+            $schema = file_get_contents('schema/ttrss_schema_pgsql.sql');
             $schema = preg_replace('/--(.*?);/', '', $schema);
             $schema = preg_replace('/[\r\n]/', ' ', $schema);
             $schema = trim($schema, ' ;');
             foreach (explode(';', $schema) as $stm) {
                 $pdo->exec($stm);
             }
+
+            $pdo->exec("CREATE EXTENSION IF NOT EXISTS pg_trgm");
             unset($pdo);
         }
     }
@@ -78,7 +79,7 @@ function error($text)
 function dbconnect($config)
 {
     $map = array('host' => 'HOST', 'port' => 'PORT');
-    $dsn = $config['DB_TYPE'] . ':';
+    $dsn = 'pgsql:';
     foreach ($map as $d => $h) {
         if (isset($config['DB_' . $h])) {
             $dsn .= $d . '=' . $config['DB_' . $h] . ';';
@@ -103,7 +104,7 @@ function dbcheckconn($config)
 function dbexist($config)
 {
     $map = array('host' => 'HOST', 'port' => 'PORT' , 'dbname' =>'NAME');
-    $dsn = $config['DB_TYPE'] . ':';
+    $dsn = 'pgsql:';
     foreach ($map as $d => $h) {
         if (isset($config['DB_' . $h])) {
             $dsn .= $d . '=' . $config['DB_' . $h] . ';';
