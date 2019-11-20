@@ -38,7 +38,7 @@ services:
     image: wangqiru/opencc-api-server:latest
     container_name: opencc
     environment:
-      NODE_ENV: production
+      - NODE_ENV=production
     expose:
       - 3000
     restart: always
