@@ -1,21 +1,21 @@
 version: "3"
 services:
   database.postgres:
-    image: sameersbn/postgresql:latest
+    image: arm32v7/postgres
     container_name: postgres
     ports:
       - 5432:5432
     environment:
-      - PG_PASSWORD=ttrss # please change the password
+      - POSTGRES_PASSWORD=ttrss # please change the password
     restart: always
 
   service.rss:
     build:
       context: .
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile.arm32v7
       args:
         branch: master
-    # image: wangqiru/ttrss:dev
+    # image: wangqiru/ttrss
     container_name: ttrss
     ports:
       - 181:80
