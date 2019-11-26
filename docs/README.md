@@ -18,11 +18,11 @@
 
 A VPS is highly recommended to host your Awesome TTRSS instance, a VPS can be obtained from as little as \$5/month at [DigitalOcean](https://m.do.co/c/d6ef3c80105c). Alternatively, you may request for personalized support, fully-managed service or fully-managed VPS via sponsoring Awesome TTRSS on its [💰OpenCollective page](https://opencollective.com/Awesome-TTRSS/).
 
-Awesome-TTRSS provides support for the  <Badge text="arm32v7 ✓" vertical="middle" type="tip"/> architecture, except the OpenCC API. Please see [docker-compose.arm32v7.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/master/docker-compose.arm32v7.yml).
+Awesome TTRSS provides support for the <Badge text="arm32v7 ✓" vertical="middle" type="tip"/> architecture, except the OpenCC API. Please see [docker-compose.arm32v7.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/master/docker-compose.arm32v7.yml).
 
 ### Deployment via docker
 
-```dockerfile
+```bash
 docker run -it --name ttrss --restart=always \
 -e SELF_URL_PATH = [ your public URL ]  \
 -e DB_HOST = [ your DB address ]  \
@@ -114,7 +114,7 @@ server {
 
 ## Update
 
-Awesome-TTRSS automatically keeps up with TTRSS by mirroring the official releases, this means update can be issued frequently.
+Awesome TTRSS automatically keeps up with TTRSS by mirroring the official releases, this means update can be issued frequently.
 
 By default `wangqiru/ttrss:latest` version is used, which contains the stable release from [the official TTRSS repository](https://git.tt-rss.org/fox/tt-rss/releases). `wangqiru/ttrss:nightly` is also available if you want to try out the latest features, however this may contain bugs. For older versions, please check [this page](https://hub.docker.com/r/wangqiru/ttrss/tags).
 
@@ -122,30 +122,68 @@ By default `wangqiru/ttrss:latest` version is used, which contains the stable re
 
 You can fetch the latest image manually:
 
-```shell
-    docker pull wangqiru/ttrss:latest
-    # docker pull wangqiru/mercury-parser-api:latest
-    # docker pull wangqiru/opencc-api-server:latest
-    docker-compose up -d # If you didn't use docker-compose, I'm sure you know what to do.
+```bash
+docker pull wangqiru/ttrss:latest
+# docker pull wangqiru/mercury-parser-api:latest
+# docker pull wangqiru/opencc-api-server:latest
+docker-compose up -d # If you didn't use docker-compose, I'm sure you know what to do.
 ```
 
 ### Auto Update
 
-The example [docker-compose](#deployment-via-docker-compose) includes [Watchtower](https://github.com/containrrr/watchtower), which automatically pulls all containers included in Awesome-TTRSS (and other containers running on your system) and refreshes your running services. By default, it's disabled, **make sure it will not affect your other service containers before enabling this.**
+The example [docker-compose](#deployment-via-docker-compose) includes [Watchtower](https://github.com/containrrr/watchtower), which automatically pulls all containers included in Awesome TTRSS (and other containers running on your system) and refreshes your running services. By default, it's disabled, **make sure it will not affect your other service containers before enabling this.**
 
 To exclude images, check the following for disabling auto update for containers:
 
 ```yml
-  service.mercury:
-    image: wangqiru/mercury-parser-api:latest
-    container_name: mercury
-    expose:
-      - 3000
-    restart: always
-    # ⬇️ this prevents Watchtower from auto updating mercury-parser-api
-    labels:
-        - com.centurylinklabs.watchtower.enable=false
+service.mercury:
+  image: wangqiru/mercury-parser-api:latest
+  container_name: mercury
+  expose:
+    - 3000
+  restart: always
+  # ⬇️ this prevents Watchtower from auto updating mercury-parser-api
+  labels:
+    - com.centurylinklabs.watchtower.enable=false
 ```
+
+## Migration
+
+To further optimize Awesome TTRSS, sometimes breaking changes will be introduced.
+
+### Postgres Migration
+
+Migrate from sameersbn/postgresql to postgres:alpine.
+
+| Image            | sameersbn/postgresql | postgres:alpine                         |
+| ---------------- | -------------------- | --------------------------------------- |
+| Postgres version | 10.2                 | latest (12.1 as of the time of writing) |
+| Size             | 176MB                | 72.8MB                                  |
+
+Since sameersbn/postgresql is no longer needed for enabling the pg_trgm extension, switching to postgres:alpine will benefit Awesome TTRSS from latest updates of Postgres and also be able to reduce the deployment size by over 100MB.
+
+To begin the migration:
+
+1. Stop all the service containers:
+   ```bash
+   docker-compose stop
+   ```
+1. Move the Postgres data volume `~/postgres/data/`, or the location specified in your docker-compose file, to somewhere else as a backup, THIS IS IMPORTANT.
+1. Use the following command to dump all your data:
+   ```bash
+   docker exec postgres pg_dumpall -c -U postgres > export.sql
+   ```
+1. Update your docker-compose file with `database.postgres` section in the the latest [docker-compose.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/master/docker-compose.yml), and bring it up:
+   ```bash
+   docker-compose up -d
+   ```
+1. Use the following command to restore all your data:
+   ```bash
+   cat export.sql | docker exec -i postgres psql -U postgres
+   ```
+1. Test if everything works fine, and now you may remove the backup in step 2.
+
+The legacy docker-compose file is [archived as docker-compose.legacy.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/master/docker-compose.legacy.yml).
 
 ## Plugins
 
@@ -241,12 +279,12 @@ Refer to [Options per Feed](https://github.com/sergey-dryabzhinsky/options_per_f
 
 ## Donation
 
-| PayPal                                                                                                                                                                       | WeChat Pay                                                          | OpenCollective                                                      |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| PayPal                                                                                                                                                                       | WeChat Pay                                                          | OpenCollective                                                     |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------ |
 | [![paypal](https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MTM5L6T4PHRQS&source=url) | <img src="https://share.henry.wang/IKaxAW/duFgAuOnmk+" width="200"> | [💰OpenCollective page](https://opencollective.com/Awesome-TTRSS/) |
 
 ## License
 
 MIT
 
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FHenryQW%2FAwesome-TTRSS.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FHenryQW%2FAwesome-TTRSS?ref=badge_large)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FHenryQW%2FAwesome TTRSS.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FHenryQW%2FAwesome TTRSS?ref=badge_large)
