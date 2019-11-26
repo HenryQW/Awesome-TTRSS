@@ -18,11 +18,11 @@
 
 推荐使用一台 VPS 来部署您的 Awesome TTRSS 实例，[DigitalOcean](https://m.do.co/c/d6ef3c80105c) 提供高性价比的 VPS 仅需 \$5/月。除此之外，通过 Awesome TTRSS 的 [💰OpenCollective 页面](https://opencollective.com/Awesome-TTRSS/) 进行赞助，即可获得定制支持，全托管服务，全托管 VPS 等私人服务。
 
-Awesome-TTRSS 支持 <Badge text="arm32v7 ✓" vertical="middle" type="tip"/> 架构（暂不包括 OpenCC API）。请参见 [docker-compose.arm32v7.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/master/docker-compose.arm32v7.yml)。
+Awesome TTRSS 支持 <Badge text="arm32v7 ✓" vertical="middle" type="tip"/> 架构（暂不包括 OpenCC API）。请参见 [docker-compose.arm32v7.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/master/docker-compose.arm32v7.yml)。
 
 ### 通过 Docker 部署
 
-```dockerfile
+```bash
 docker run -it --name ttrss --restart=always \
 -e SELF_URL_PATH = [ TTRSS 实例地址 ]  \
 -e DB_HOST = [ 数据库地址 ]  \
@@ -42,7 +42,6 @@ docker run -it --name ttrss --restart=always \
 1. [PostgreSQL](https://hub.docker.com/r/sameersbn/postgresql) <Badge text="arm32v7 ✓" vertical="top" type="tip"/>
 1. [Mercury Parser API](https://hub.docker.com/r/wangqiru/mercury-parser-api) <Badge text="arm32v7 ✓" vertical="top" type="tip"/>
 1. [OpenCC API](https://hub.docker.com/r/wangqiru/opencc-api-server) <Badge text="arm32v7 ✗" vertical="top" type="error"/>
-
 
 #### 步骤
 
@@ -115,7 +114,7 @@ server {
 
 ## 更新
 
-Awesome-TTRSS 会自动监控 TTRSS 官方更新并与之同步，这意味着更新会比较频繁。
+Awesome TTRSS 会自动监控 TTRSS 官方更新并与之同步，这意味着更新会比较频繁。
 
 默认使用 `wangqiru/ttrss:latest` 版本，该版本包含了 [TTRSS 官方](https://git.tt-rss.org/fox/tt-rss/releases)的稳定发行版。 `wangqiru/ttrss:nightly` 包含了含有最新功能的尝鲜版，但可能包含 bug。旧版本请参照 [此页面](https://hub.docker.com/r/wangqiru/ttrss/tags)。
 
@@ -123,7 +122,7 @@ Awesome-TTRSS 会自动监控 TTRSS 官方更新并与之同步，这意味着�
 
 通过以下命令进行手动更新:
 
-```shell
+```bash
     docker pull wangqiru/ttrss:latest
     # docker pull wangqiru/mercury-parser-api:latest
     # docker pull wangqiru/opencc-api-server:latest
@@ -132,21 +131,59 @@ Awesome-TTRSS 会自动监控 TTRSS 官方更新并与之同步，这意味着�
 
 ### 自动更新
 
-[样例 docker-compose](#通过-docker-compose-部署) 中包含了 [Watchtower](https://github.com/containrrr/watchtower)，它会自动拉取并更新您所有的服务容器 (包括当前系统上运行的非 Awesome-TTRSS 服务的容器）。该服务默认关闭，**启用前请确认它将不会影响您其他的服务容器。**
+[样例 docker-compose](#通过-docker-compose-部署) 中包含了 [Watchtower](https://github.com/containrrr/watchtower)，它会自动拉取并更新您所有的服务容器 (包括当前系统上运行的非 Awesome TTRSS 服务的容器）。该服务默认关闭，**启用前请确认它将不会影响您其他的服务容器。**
 
 您也可以设置 watchtower 忽略您的其他容器：
 
 ```yml
-  service.mercury:
-    image: wangqiru/mercury-parser-api:latest
-    container_name: mercury
-    expose:
-      - 3000
-    restart: always
-    # ⬇️ 这将使 Watchtower 跳过对 mercury-parser-api 的更新检测
-    labels:
-        - com.centurylinklabs.watchtower.enable=false
+service.mercury:
+  image: wangqiru/mercury-parser-api:latest
+  container_name: mercury
+  expose:
+    - 3000
+  restart: always
+  # ⬇️ 这将使 Watchtower 跳过对 mercury-parser-api 的更新检测
+  labels:
+    - com.centurylinklabs.watchtower.enable=false
 ```
+
+## 迁移
+
+为了更好地优化 Awesome TTRSS，有时候可能会推出一些破坏性更新。
+
+### Postgres 数据库迁移
+
+从 sameersbn/postgresql 迁移至 postgres:alpine。
+
+| 容器镜像      | sameersbn/postgresql | postgres:alpine             |
+| ------------- | -------------------- | --------------------------- |
+| Postgres 版本 | 10.2                 | latest (文档更新时为 12.1 ) |
+| 大小          | 176MB                | 72.8MB                      |
+
+sameersbn/postgresql 已经完成了它的使命，pg_trgm 扩展已经不再需要通过它来开启，迁移至 postgres:alpine 可以让 Awesome TTRSS 获得 Postgres 的最新更新，以及节约超过 100MB 的部署空间。
+
+开始迁移：
+
+1. 停止所有服务容器：
+   ```bash
+   docker-compose stop
+   ```
+1. 移动 Postgres 数据卷 `~/postgres/data/`（或者你在 docker-compose 中指定的目录）至其他任何地方作为备份，这非常重要！
+1. 执行如下命令来导出所有数据：
+   ```bash
+   docker exec postgres pg_dumpall -c -U postgres > export.sql
+   ```
+1. 根据最新 [docker-compose.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/master/docker-compose.yml) 中的`database.postgres` 部份来更新你的 docker-compose 文件，并启动:
+   ```bash
+   docker-compose up -d
+   ```
+1. 执行如下命令来导入所有数据：
+   ```bash
+   cat export.sql | docker exec -i postgres psql -U postgres
+   ```
+1. 测试所有服务是否正常工作，现在你可以移除步骤二中的备份了。
+
+旧版 docker-compose 文件已经被[归档为 docker-compose.legacy.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/master/docker-compose.legacy.yml)。
 
 ## 插件
 
@@ -249,4 +286,4 @@ Demo 服务器，可用性不做任何保证：[https://opencc.henry.wang](https
 
 MIT
 
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FHenryQW%2FAwesome-TTRSS.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FHenryQW%2FAwesome-TTRSS?ref=badge_large)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FHenryQW%2FAwesome TTRSS.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FHenryQW%2FAwesome TTRSS?ref=badge_large)
