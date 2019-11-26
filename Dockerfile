@@ -39,6 +39,8 @@ ADD https://raw.githubusercontent.com/jangernert/FeedReader/master/data/tt-rss-f
 ## Options per feed
 ADD https://github.com/sergey-dryabzhinsky/options_per_feed/archive/master.tar.gz /var/www/plugins/options_per_feed/ 
 
+## Remove iframe sandbox
+ADD https://github.com/DIYgod/ttrss-plugin-remove-iframe-sandbox/archive/master.tar.gz /var/www/plugins/remove_iframe_sandbox/
 
 # Download themes
 
@@ -63,6 +65,8 @@ RUN apk add --update --virtual build-dependencies curl tar \
   && tar xzvpf /var/www/plugins/api_newsplus/master.tar.gz --strip-components=2 -C /var/www/plugins/api_newsplus tt-rss-newsplus-plugin-master/api_newsplus && rm /var/www/plugins/api_newsplus/master.tar.gz \
   \
   && tar xzvpf /var/www/plugins/options_per_feed/master.tar.gz --strip-components=1 -C /var/www/plugins/options_per_feed options_per_feed-master && rm /var/www/plugins/options_per_feed/master.tar.gz \
+  \
+  && tar xzvpf /var/www/plugins/remove_iframe_sandbox/master.tar.gz --strip-components=1 -C /var/www/plugins/remove_iframe_sandbox remove_iframe_sandbox-master && rm /var/www/plugins/remove_iframe_sandbox/master.tar.gz \
   \
   && tar xzvpf /var/www/themes/feedly/master.tar.gz --strip-components=1 -C /var/www/themes/ tt-rss-feedly-theme-master/feedly tt-rss-feedly-theme-master/feedly.css && rm -rf /var/www/themes/feedly \
   \
