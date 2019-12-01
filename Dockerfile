@@ -1,4 +1,4 @@
-FROM alpine:3.10
+FROM alpine:3
 
 LABEL maintainer="Henry<hi@henry.wang>"
 
