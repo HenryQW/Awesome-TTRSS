@@ -1,6 +1,6 @@
 FROM arm64v8/alpine:3
 
-COPY qemu-arm-static /usr/bin
+# COPY qemu-arm-static /usr/bin
 
 LABEL maintainer="Henry<hi@henry.wang>"
 
