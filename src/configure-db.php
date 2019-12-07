@@ -79,7 +79,7 @@ function error($text)
 function dbconnect($config)
 {
     $map = array('host' => 'HOST', 'port' => 'PORT');
-    $dsn = 'pgsql:';
+    $dsn = 'pgsql:dbname=postgres;';
     foreach ($map as $d => $h) {
         if (isset($config['DB_' . $h])) {
             $dsn .= $d . '=' . $config['DB_' . $h] . ';';
@@ -97,6 +97,7 @@ function dbcheckconn($config)
         return true;
     }
     catch (PDOException $e) {
+        echo $e;
         return false;
     }
 }
