@@ -202,8 +202,6 @@ sameersbn/postgresql 已经完成了它的使命，pg_trgm 扩展已经不再需
 
 提供 Fever API 支持。
 
-**该插件默认作为系统插件启用。**
-
 #### 设置步骤
 
 1. 在设置中启用 API。
@@ -253,6 +251,12 @@ Demo 服务器，可用性不做任何保证：[https://opencc.henry.wang](https
 提供单独为源地址配置代理、user-agent 以及 SSL 证书验证的能力。
 
 使用指南见 [Options per Feed](https://github.com/sergey-dryabzhinsky/options_per_feed)。
+
+### [Remove iframe sandbox](https://github.com/DIYgod/ttrss-plugin-remove-iframe-sandbox)
+
+移除 iframe 上的 sandbox 属性，以支持 feed 中直接播放嵌入视频。
+
+使用指南见 [Remove iframe sandbox](https://github.com/DIYgod/ttrss-plugin-remove-iframe-sandbox)。
 
 ## 主题
 
