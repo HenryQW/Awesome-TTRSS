@@ -254,7 +254,7 @@ Refer to [Options per Feed](https://github.com/sergey-dryabzhinsky/options_per_f
 
 ### [Remove iframe sandbox](https://github.com/DIYgod/ttrss-plugin-remove-iframe-sandbox)
 
-Remove sandbox attribute on iframes, to support embed video in feeds.
+Remove the sandbox attribute on iframes, thus enabling playback of embedded video in feeds.
 
 Refer to [Remove iframe sandbox](https://github.com/DIYgod/ttrss-plugin-remove-iframe-sandbox)。
 
