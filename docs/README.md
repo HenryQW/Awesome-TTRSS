@@ -202,8 +202,6 @@ Fetch fulltext of articles via a self-hosted Mercury Parser API. A separate Merc
 
 Provide Fever API simulate.
 
-**Plugin is enabled as a system plugin by default.**
-
 #### Steps
 
 1. Enable API in preference
@@ -253,6 +251,12 @@ Refer to [Feediron](https://github.com/feediron/ttrss_plugin-feediron) for more 
 Provide the ability to configure proxy, user-agent and SSL certificate verification on a per feed basis.
 
 Refer to [Options per Feed](https://github.com/sergey-dryabzhinsky/options_per_feed) for more details.
+
+### [Remove iframe sandbox](https://github.com/DIYgod/ttrss-plugin-remove-iframe-sandbox)
+
+Remove the sandbox attribute on iframes, thus enabling playback of embedded video in feeds.
+
+Refer to [Remove iframe sandbox](https://github.com/DIYgod/ttrss-plugin-remove-iframe-sandbox)。
 
 ## Themes
 
