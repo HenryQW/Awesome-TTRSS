@@ -254,6 +254,12 @@ Refer to [Options per Feed](https://github.com/sergey-dryabzhinsky/options_per_f
 
 ### [Remove iframe sandbox](https://github.com/DIYgod/ttrss-plugin-remove-iframe-sandbox)
 
+::: warning
+
+If you are getting data via fever api, enable it by adding `remove_iframe_sandbox` to the environment variable **ENABLE_PLUGINS**.
+
+:::
+
 Remove the sandbox attribute on iframes, thus enabling playback of embedded video in feeds.
 
 Refer to [Remove iframe sandbox](https://github.com/DIYgod/ttrss-plugin-remove-iframe-sandbox)。

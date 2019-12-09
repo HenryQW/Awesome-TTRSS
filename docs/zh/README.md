@@ -254,6 +254,12 @@ Demo 服务器，可用性不做任何保证：[https://opencc.henry.wang](https
 
 ### [Remove iframe sandbox](https://github.com/DIYgod/ttrss-plugin-remove-iframe-sandbox)
 
+::: warning 注意
+
+如果你正在使用 fever api 获取数据，将 `remove_iframe_sandbox` 加到环境变量 `ENABLE_PLUGINS` 中以启用。
+
+:::
+
 移除 iframe 上的 sandbox 属性，以支持 feed 中直接播放嵌入视频。
 
 使用指南见 [Remove iframe sandbox](https://github.com/DIYgod/ttrss-plugin-remove-iframe-sandbox)。
