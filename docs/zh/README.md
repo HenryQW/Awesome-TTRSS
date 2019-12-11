@@ -18,7 +18,12 @@
 
 推荐使用一台 VPS 来部署您的 Awesome TTRSS 实例，[DigitalOcean](https://m.do.co/c/d6ef3c80105c) 提供高性价比的 VPS 仅需 \$5/月。除此之外，通过 Awesome TTRSS 的 [💰OpenCollective 页面](https://opencollective.com/Awesome-TTRSS/) 进行赞助，即可获得定制支持，全托管服务，全托管 VPS 等私人服务。
 
-Awesome TTRSS 支持 <Badge text="arm32v7 ✓" vertical="middle" type="tip"/> 架构（暂不包括 OpenCC API）。请参见 [docker-compose.arm32v7.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/master/docker-compose.arm32v7.yml)。
+Awesome TTRSS 支持 arm 架构 <Badge text="arm32v7 ✓" vertical="top" type="tip"/><Badge text="arm64v8 ✓" vertical="top" type="tip"/>（暂不包括 OpenCC API），请参见：
+
+- [Dockerfile.arm32v7](https://github.com/HenryQW/Awesome-TTRSS/blob/master/Dockerfile.arm32v7)
+- [docker-compose.arm32v7.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/master/docker-compose.arm32v7.yml)
+- [Dockerfile.arm64v8](https://github.com/HenryQW/Awesome-TTRSS/blob/master/Dockerfile.arm32v7)
+- [docker-compose.arm64v8.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/master/docker-compose.arm64v8.yml)
 
 ### 通过 Docker 部署
 
@@ -38,10 +43,10 @@ docker run -it --name ttrss --restart=always \
 
 [docker-compose.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/master/docker-compose.yml) 包含了 4 个镜像:
 
-1. [TTRSS](https://hub.docker.com/r/wangqiru/ttrss) <Badge text="arm32v7 ✓" vertical="top" type="tip"/>
-1. [PostgreSQL](https://hub.docker.com/r/sameersbn/postgresql) <Badge text="arm32v7 ✓" vertical="top" type="tip"/>
-1. [Mercury Parser API](https://hub.docker.com/r/wangqiru/mercury-parser-api) <Badge text="arm32v7 ✓" vertical="top" type="tip"/>
-1. [OpenCC API](https://hub.docker.com/r/wangqiru/opencc-api-server) <Badge text="arm32v7 ✗" vertical="top" type="error"/>
+1. [TTRSS](https://hub.docker.com/r/wangqiru/ttrss) <Badge text="arm32v7 ✓" vertical="top" type="tip"/><Badge text="arm64v8 ✓" vertical="top" type="tip"/>
+1. [PostgreSQL](https://hub.docker.com/r/sameersbn/postgresql) <Badge text="arm32v7 ✓" vertical="top" type="tip"/><Badge text="arm64v8 ✓" vertical="top" type="tip"/>
+1. [Mercury Parser API](https://hub.docker.com/r/wangqiru/mercury-parser-api) <Badge text="arm32v7 ✓" vertical="top" type="tip"/><Badge text="arm64v8 ✓" vertical="top" type="tip"/>
+1. [OpenCC API](https://hub.docker.com/r/wangqiru/opencc-api-server) <Badge text="arm32v7 ✗" vertical="top" type="error"/><Badge text="arm64v8 ✗" vertical="top" type="error"/>
 
 #### 步骤
 
