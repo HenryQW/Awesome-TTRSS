@@ -5,13 +5,16 @@ LABEL maintainer="Henry<hi@henry.wang>"
 ADD src/wait-for.sh /wait-for.sh
 
 # Install dependencies
-RUN chmod -x /wait-for.sh && apk add --update --no-cache nginx s6 curl \
+RUN chmod -x /wait-for.sh && apk add --update --no-cache git nginx s6 curl \
   php7 php7-intl php7-fpm php7-cli php7-curl php7-fileinfo \
   php7-mbstring php7-gd php7-json php7-dom php7-pcntl php7-posix \
   php7-pgsql php7-mcrypt php7-session php7-pdo php7-pdo_pgsql \
   ca-certificates && rm -rf /var/cache/apk/* \
   # Update libiconv as the default version is too low
-  && apk add gnu-libiconv --update-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ --allow-untrusted
+  && apk add gnu-libiconv --update-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ --allow-untrusted && \
+  # Download ttrss via git
+  rm -rf /var/www && \
+  git clone https://git.tt-rss.org/fox/tt-rss --depth=1 /var/www
 
 ENV LD_PRELOAD /usr/lib/preloadable_libiconv.so php
 
@@ -52,10 +55,9 @@ ADD https://github.com/levito/tt-rss-feedly-theme/archive/master.tar.gz /var/www
 ## RSSHub
 ADD https://github.com/DIYgod/ttrss-theme-rsshub/archive/master.tar.gz /var/www/themes/rsshub/
 
-# Install ttrss and patch configuration
+# Untar ttrss plugins
 WORKDIR /var/www
-RUN apk add --update --virtual build-dependencies curl tar \
-  && curl -SL https://git.tt-rss.org/git/tt-rss/archive/master.tar.gz | tar xzC /var/www --strip-components 1 \
+RUN apk add --update --virtual build-dependencies tar \
   && tar xzvpf /var/www/plugins/fever/master.tar.gz --strip-components=1 -C /var/www/plugins/fever tinytinyrss-fever-plugin-master && rm /var/www/plugins/fever/master.tar.gz \
   \
   && tar xzvpf /var/www/plugins/mercury_fulltext/master.tar.gz --strip-components=1 -C /var/www/plugins/mercury_fulltext/ mercury_fulltext-master && rm /var/www/plugins/mercury_fulltext/master.tar.gz \
