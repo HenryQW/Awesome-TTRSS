@@ -116,7 +116,7 @@ server {
 
 Awesome TTRSS automatically keeps up with TTRSS by mirroring the official releases, this means update can be issued frequently.
 
-By default `wangqiru/ttrss:latest` version is used, which contains the stable release from [the official TTRSS repository](https://git.tt-rss.org/fox/tt-rss/releases). `wangqiru/ttrss:nightly` is also available if you want to try out the latest features, however this may contain bugs. For older versions, please check [this page](https://hub.docker.com/r/wangqiru/ttrss/tags).
+[TTRSS stopped releasing tags](https://community.tt-rss.org/t/versioning-changes-for-trunk/2974). `wangqiru/ttrss:latest` will sync with [TTRSS' master branch](https://git.tt-rss.org/fox/tt-rss) periodically.
 
 ### Manual Update
 
@@ -280,6 +280,7 @@ Refer to [Remove iframe sandbox](https://github.com/DIYgod/ttrss-plugin-remove-i
 - You may request for personalized support via sponsoring Awesome TTRSS on its [💰OpenCollective page](https://opencollective.com/Awesome-TTRSS/).
 - Read [this guide](https://henry.wang/2018/04/25/ttrss-docker-plugins-guide.html) might help.
 - Open an issue via [GitHub issue](https://github.com/HenryQW/Awesome-TTRSS/issues).
+- [Direct donation to TTRSS](https://tt-rss.org/).
 
 ## Donation
 

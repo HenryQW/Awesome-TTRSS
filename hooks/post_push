@@ -1,6 +1,0 @@
-#!/bin/bash
-
-if [ $SOURCE_BRANCH != "master" ] && [ $SOURCE_BRANCH != "dev" ]; then
-    docker tag $IMAGE_NAME $DOCKER_REPO:latest
-    docker push $DOCKER_REPO:latest
-fi
