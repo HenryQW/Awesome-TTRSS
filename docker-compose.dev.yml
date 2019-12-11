@@ -1,7 +1,7 @@
 version: "3"
 services:
   database.postgres:
-    image: arm64v8/postgres
+    image: postgres:alpine
     container_name: postgres
     ports:
       - 5432:5432
@@ -12,7 +12,7 @@ services:
   service.rss:
     build:
       context: .
-      dockerfile: Dockerfile.arm64v8
+      dockerfile: Dockerfile.dev
       args:
         branch: master
     # image: wangqiru/ttrss
