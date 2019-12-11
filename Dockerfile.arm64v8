@@ -1,10 +1,8 @@
 FROM arm64v8/alpine:3
 
-# COPY qemu-arm-static /usr/bin
+COPY qemu-arm-static /usr/bin
 
 LABEL maintainer="Henry<hi@henry.wang>"
-
-ARG branch
 
 ADD src/wait-for.sh /wait-for.sh
 
@@ -36,7 +34,7 @@ ADD https://github.com/DIYgod/ttrss-theme-rsshub/archive/master.tar.gz /var/www/
 # Install ttrss and patch configuration
 WORKDIR /var/www
 RUN apk add --update --virtual build-dependencies curl tar \
-  && curl -SL https://git.tt-rss.org/git/tt-rss/archive/${branch}.tar.gz | tar xzC /var/www --strip-components 1 \
+  && curl -SL https://git.tt-rss.org/git/tt-rss/archive/master.tar.gz | tar xzC /var/www --strip-components 1 \
   && tar xzvpf /var/www/plugins/fever/dev.tar.gz --strip-components=1 -C /var/www/plugins/fever tinytinyrss-fever-plugin-dev && rm /var/www/plugins/fever/dev.tar.gz \
   \
   && tar xzvpf /var/www/plugins/mercury_fulltext/master.tar.gz --strip-components=1 -C /var/www/plugins/mercury_fulltext/ mercury_fulltext-master && rm /var/www/plugins/mercury_fulltext/master.tar.gz \
