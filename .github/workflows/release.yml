@@ -42,5 +42,5 @@ jobs:
         -
             name: Build vuepress docs
             env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+                CI_TOKEN: ${{ secrets.CI_TOKEN }} 
             run: npm install && npm run docs:build && bash deploy-doc.sh
