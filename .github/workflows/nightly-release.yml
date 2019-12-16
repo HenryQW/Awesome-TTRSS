@@ -1,0 +1,33 @@
+name: CI for nightly build releases
+
+on:
+    schedule:
+      - cron:  '0 0 * * *'
+
+jobs:
+    release:
+        runs-on: ubuntu-latest
+        steps:
+        -
+            name: Checkout
+            uses: actions/checkout@v1
+        -
+            name: Dockerhub login
+            env:
+                DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+            run: |
+                echo "${DOCKER_PASSWORD}" | docker login --username wangqiru --password-stdin
+        -
+            name: Set up Docker Buildx
+            id: buildx
+            uses: crazy-max/ghaction-docker-buildx@v1
+            with:
+                version: latest
+        -
+            name: Build dockerfile (with push)
+            run: |
+                docker buildx build \
+                --platform=linux/amd64,linux/arm/v7,linux/arm64 \
+                --output "type=image,push=true" \
+                --file ./Dockerfile . \
+                --tag wangqiru/ttrss:nightly
