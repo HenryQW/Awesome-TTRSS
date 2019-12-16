@@ -59,7 +59,7 @@ docker run -it --name ttrss --restart=always \
 - DB_NAME: 数据库名字
 - DB_USER: 数据库用户名
 - DB_PASS: 数据库密码
-- ENABLE_PLUGINS: 在系统层面启用的插件名称，其中 `auth_internal` 为必须启用的登录插件
+- ENABLE_PLUGINS: 全局启用的插件名称，其中 `auth_internal` 为必须启用的登录插件
 - SESSION_COOKIE_LIFETIME: 使用网页版登陆时 cookie 过期时间，单位为小时，默认为 `24` 小时
 - HTTP_PROXY: `ip:port`, TTRSS 实例的全局代理, 为源地址添加单独代理请使用 [Options per Feed](#options-per-feed)
 - SINGLE_USER_MODE: `true` 为开启单用户模式，同时关闭用户认证，无需登录即可使用。**请仅在安全环境下开启**
@@ -253,6 +253,15 @@ Demo 服务器，可用性不做任何保证：[https://opencc.henry.wang](https
 使用指南见 [Options per Feed](https://github.com/sergey-dryabzhinsky/options_per_feed)。
 
 ### [Remove iframe sandbox](https://github.com/DIYgod/ttrss-plugin-remove-iframe-sandbox)
+
+::: warning 注意
+
+该插件与 `Fever API` 不能同时作为全局插件启用。如果您同时需要两者：
+
+1. 在环境变量 `ENABLE_PLUGINS` 中移除 `fever` 并添加 `remove_iframe_sandbox` 作为全局插件启用。
+1. 在登陆 TTRSS 后，通过设置将 `Fever API` 作为本地插件启用。
+
+:::
 
 移除 iframe 上的 sandbox 属性，以支持 feed 中直接播放嵌入视频。
 
