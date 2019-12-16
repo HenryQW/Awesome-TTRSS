@@ -1,14 +1,9 @@
-name: CI for docs
+name: '[doc] CI for docs'
 
 on:
-    pull_request:
-        branches: master
-        paths:
-            - 'docs/**'
     push:
         branches:
-            - '*'
-            - '!master'
+            - master
         paths:
             - 'docs/**'
 
@@ -26,4 +21,6 @@ jobs:
                 node-version: '13.x'
         -
             name: Build vuepress docs
-            run: npm install && npm run docs:build
+            env:
+                CI_TOKEN: ${{ secrets.CI_TOKEN }} 
+            run: npm install && npm run docs:build && bash deploy-doc.sh

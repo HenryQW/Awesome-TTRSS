@@ -1,14 +1,8 @@
-name: CI for releases
+name: '[builder] CI for nightly build releases'
 
 on:
-    repository_dispatch:
-        types: build
-    push:
-        branches:
-            - master
-        paths:
-            - 'src/**'
-            - 'Dockerfile'
+    schedule:
+      - cron:  '0 0 * * *'
 
 jobs:
     release:
@@ -36,14 +30,4 @@ jobs:
                 --platform=linux/amd64,linux/arm/v7,linux/arm64 \
                 --output "type=image,push=true" \
                 --file ./Dockerfile . \
-                --tag wangqiru/ttrss:latest
-        -
-            name: Set up node
-            uses: actions/setup-node@v1
-            with:
-                node-version: '13.x'
-        -
-            name: Build vuepress docs
-            env:
-                CI_TOKEN: ${{ secrets.CI_TOKEN }} 
-            run: npm install && npm run docs:build && bash deploy-doc.sh
+                --tag wangqiru/ttrss:nightly
