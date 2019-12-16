@@ -1,12 +1,14 @@
 name: CI for releases
 
 on:
+    repository_dispatch:
+        types: build
     push:
         branches:
             - master
 
 jobs:
-    build:
+    release:
         runs-on: ubuntu-latest
         steps:
         -
