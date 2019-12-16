@@ -18,12 +18,7 @@
 
 A VPS is highly recommended to host your Awesome TTRSS instance, a VPS can be obtained from as little as \$5/month at [DigitalOcean](https://m.do.co/c/d6ef3c80105c). Alternatively, you may request for personalized support, fully-managed service or fully-managed VPS via sponsoring Awesome TTRSS on its [💰OpenCollective page](https://opencollective.com/Awesome-TTRSS/).
 
-Awesome TTRSS provides support for the ARM architecture <Badge text="arm32v7 ✓" vertical="top" type="tip"/><Badge text="arm64v8 ✓" vertical="top" type="tip"/>, except the OpenCC API. Please refer to:
-
-- [Dockerfile.arm32v7](https://github.com/HenryQW/Awesome-TTRSS/blob/master/Dockerfile.arm32v7)
-- [docker-compose.arm32v7.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/master/docker-compose.arm32v7.yml)
-- [Dockerfile.arm64v8](https://github.com/HenryQW/Awesome-TTRSS/blob/master/Dockerfile.arm32v7)
-- [docker-compose.arm64v8.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/master/docker-compose.arm64v8.yml)
+Awesome TTRSS supports multiple architectures <Badge text="x86 ✓" vertical="top" type="tip"/><Badge text="arm32v7 ✓" vertical="top" type="tip"/><Badge text="arm64v8 ✓" vertical="top" type="tip"/>, except the OpenCC API.
 
 ### Deployment via docker
 
@@ -43,9 +38,9 @@ docker run -it --name ttrss --restart=always \
 
 [docker-compose.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/master/docker-compose.yml) include 4 docker images:
 
-1. [TTRSS](https://hub.docker.com/r/wangqiru/ttrss) <Badge text="arm32v7 ✓" vertical="top" type="tip"/><Badge text="arm64v8 ✓" vertical="top" type="tip"/>
-1. [PostgreSQL](https://hub.docker.com/r/sameersbn/postgresql) <Badge text="arm32v7 ✓" vertical="top" type="tip"/><Badge text="arm64v8 ✓" vertical="top" type="tip"/>
-1. [Mercury Parser API](https://hub.docker.com/r/wangqiru/mercury-parser-api) <Badge text="arm32v7 ✓" vertical="top" type="tip"/><Badge text="arm64v8 ✓" vertical="top" type="tip"/>
+1. [TTRSS](https://hub.docker.com/r/wangqiru/ttrss)
+1. [PostgreSQL](https://hub.docker.com/_/postgres)
+1. [Mercury Parser API](https://hub.docker.com/r/wangqiru/mercury-parser-api)
 1. [OpenCC API](https://hub.docker.com/r/wangqiru/opencc-api-server) <Badge text="arm32v7 ✗" vertical="top" type="error"/><Badge text="arm64v8 ✗" vertical="top" type="error"/>
 
 #### Steps
