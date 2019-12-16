@@ -211,7 +211,7 @@ sameersbn/postgresql 已经完成了它的使命，pg_trgm 扩展已经不再需
 1. 在支持 Fever 的阅读器用，使用 `https://[您的地址]/plugins/fever` 作为服务器地址。使用您的账号和步骤 2 中的密码登录。
 1. 由于该插件使用未加盐的 MD5 加密密码进行通信，强烈建议[开启 HTTPS](#配置-https)。
 
-### [OpenCC 繁简转换](https://github.com/HenryQW/ttrss_opencc)
+### [OpenCC 繁简转换](https://github.com/HenryQW/ttrss_opencc) <Badge text="arm32v7 ✗" vertical="top" type="error"/><Badge text="arm64v8 ✗" vertical="top" type="error"/>
 
 使用 [OpenCC](https://github.com/BYVoid/OpenCC) 为 TTRSS 提供中文繁转简的插件，需要配合单独的 OpenCC API 服务器使用。[样例 docker-compose](#通过-docker-compose-部署) 中已经包含了 [HenryQW/OpenCC.henry.wang](https://github.com/HenryQW/OpenCC.henry.wang) 服务器。
 
