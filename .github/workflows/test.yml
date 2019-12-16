@@ -3,10 +3,16 @@ name: CI for tests
 on:
     pull_request:
         branches: master
+        paths:
+            - 'src/**'
+            - 'Dockerfile'
     push:
         branches:
             - '*'
             - '!master'
+        paths:
+            - 'src/**'
+            - 'Dockerfile'
 
 jobs:
     test:
