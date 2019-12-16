@@ -1,0 +1,46 @@
+name: CI for releases
+
+on:
+    repository_dispatch:
+        types: build
+    push:
+        branches:
+            - master
+
+jobs:
+    release:
+        runs-on: ubuntu-latest
+        steps:
+        -
+            name: Checkout
+            uses: actions/checkout@v1
+        -
+            name: Dockerhub login
+            env:
+                DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+            run: |
+                echo "${DOCKER_PASSWORD}" | docker login --username wangqiru --password-stdin
+        -
+            name: Set up Docker Buildx
+            id: buildx
+            uses: crazy-max/ghaction-docker-buildx@v1
+            with:
+                version: latest
+        -
+            name: Build dockerfile (with push)
+            run: |
+                docker buildx build \
+                --platform=linux/amd64,linux/arm/v7,linux/arm64 \
+                --output "type=image,push=true" \
+                --file ./Dockerfile . \
+                --tag wangqiru/ttrss:latest
+        -
+            name: Set up node
+            uses: actions/setup-node@v1
+            with:
+                node-version: '13.x'
+        -
+            name: Build vuepress docs
+            env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+            run: npm install && npm run docs:build && bash deploy-doc.sh
