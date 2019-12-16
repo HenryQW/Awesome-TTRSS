@@ -6,6 +6,9 @@ on:
     push:
         branches:
             - master
+        paths:
+            - 'src/**'
+            - 'Dockerfile'
 
 jobs:
     release:
