@@ -34,3 +34,13 @@ jobs:
                 --output "type=image,push=true" \
                 --file ./Dockerfile . \
                 --tag wangqiru/ttrss:latest
+        -
+            name: Set up node
+            uses: actions/setup-node@v1
+            with:
+                node-version: '13.x'
+        -
+            name: Build vuepress docs
+            env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+            run: npm install && npm run docs:build && bash deploy-doc.sh
