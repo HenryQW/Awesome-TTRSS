@@ -59,7 +59,7 @@ docker run -it --name ttrss --restart=always \
 - DB_NAME: the name of your database
 - DB_USER: the user of your database
 - DB_PASS: the password of your database
-- ENABLE_PLUGINS: the plugins you'd like to enable at system level, note that `auth_internal` is required
+- ENABLE_PLUGINS: the plugins you'd like to enable as global plugins, note that `auth_internal` is required
 - SESSION_COOKIE_LIFETIME: the expiry time for your login session cookie in hours, default to `24` hours
 - HTTP_PROXY: `ip:port`, the global proxy for your TTRSS instance, to set proxy on a per feed basis, use [Options per Feed](#options-per-feed)
 - SINGLE_USER_MODE: `true` will enable single user mode and disable user authentication, which means login will not be required. **Please only enable this under a secure environment**
@@ -257,6 +257,11 @@ Refer to [Options per Feed](https://github.com/sergey-dryabzhinsky/options_per_f
 ::: warning
 
 If you are getting data via fever api, enable it by adding `remove_iframe_sandbox` to the environment variable **ENABLE_PLUGINS**.
+
+This plugin cannot be enabled in conjunction with `Fever API` as global plugins, if you require both plugins:
+
+1. In `ENABLE_PLUGINS` replace `fever` with `remove_iframe_sandbox` to enable this as a global plugin.
+1. Enable `Fever API` in the TTRSS preferences panel after login, as a local plugin.
 
 :::
 
