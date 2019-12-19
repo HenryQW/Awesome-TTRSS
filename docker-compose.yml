@@ -16,6 +16,7 @@ services:
       - 181:80
     environment:
       - SELF_URL_PATH=http://localhost:181/ # please change to your own domain
+      - SKIP_SELF_URL_PATH_CHECKS=true #Url check flag.
       - DB_HOST=database.postgres
       - DB_PORT=5432
       - DB_NAME=ttrss
