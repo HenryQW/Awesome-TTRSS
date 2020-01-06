@@ -32,6 +32,8 @@ jobs:
                 version: latest
         -
             name: Build dockerfile (with push)
+            env:
+                DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
             run: |
                 docker buildx build \
                 --platform=linux/amd64,linux/arm/v7,linux/arm64 \
