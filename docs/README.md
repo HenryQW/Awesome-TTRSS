@@ -53,7 +53,7 @@ docker run -it --name ttrss --restart=always \
 
 ### Supported Environment Variables
 
-- SELF_URL_PATH: the url to your TTRSS instance
+- SELF_URL_PATH: the url to your TTRSS instance. **🔴 Please note that this value should be consistent with the URL you see in your browser address bar, otherwise TTRSS will not start.**
 - DB_HOST: the address of your database
 - DB_PORT: the port of your database
 - DB_NAME: the name of your database
@@ -111,6 +111,8 @@ server {
     }
 }
 ```
+
+**🔴 Please note that [the value in you `SELF_URL_PATH` should be changed as well.](#supported-environment-variables)**
 
 ## Update
 
