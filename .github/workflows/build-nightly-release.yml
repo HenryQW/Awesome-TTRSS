@@ -10,7 +10,7 @@ jobs:
         steps:
         -
             name: Checkout
-            uses: actions/checkout@v1
+            uses: actions/checkout@master
         -
             name: Dockerhub login
             env:
@@ -20,7 +20,7 @@ jobs:
         -
             name: Set up Docker Buildx
             id: buildx
-            uses: crazy-max/ghaction-docker-buildx@v1
+            uses: crazy-max/ghaction-docker-buildx@master
             with:
                 version: latest
         -
