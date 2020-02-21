@@ -6,6 +6,7 @@ on:
     push:
         branches:
             - master
+            - dev
         paths:
             - 'src/**'
             - 'Dockerfile'
@@ -17,6 +18,10 @@ jobs:
         -
             name: Checkout
             uses: actions/checkout@master
+        -
+            name: Set vars
+            id: vars
+            run: if [ "${GITHUB_REF#refs/*/}" == "master" ]; then echo ::set-output name=branch::latest; else echo ::set-output name=branch::${GITHUB_REF#refs/*/}; fi
         -
             name: Dockerhub login
             env:
@@ -39,4 +44,4 @@ jobs:
                 --platform=linux/amd64,linux/arm/v7,linux/arm64 \
                 --output "type=image,push=true" \
                 --file ./Dockerfile . \
-                --tag $(echo "${DOCKER_USERNAME}" | tr '[:upper:]' '[:lower:]')/ttrss:latest
+                --tag $(echo "${DOCKER_USERNAME}" | tr '[:upper:]' '[:lower:]')/ttrss:${{ steps.vars.outputs.branch }}
