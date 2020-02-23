@@ -173,7 +173,7 @@ To begin the migration:
 1. Move the Postgres data volume `~/postgres/data/`, or the location specified in your docker-compose file, to somewhere else as a backup, THIS IS IMPORTANT.
 1. Use the following command to dump all your data:
    ```bash
-   docker exec postgres pg_dumpall -c -U postgres > export.sql
+   docker exec postgres pg_dumpall -c -U YourUsername > export.sql
    ```
 1. Update your docker-compose file with `database.postgres` section in the the latest [docker-compose.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/master/docker-compose.yml), and bring it up:
    ```bash
@@ -181,7 +181,7 @@ To begin the migration:
    ```
 1. Use the following command to restore all your data:
    ```bash
-   cat export.sql | docker exec -i postgres psql -U postgres
+   cat export.sql | docker exec -i postgres psql -U YourUsername
    ```
 1. Test if everything works fine, and now you may remove the backup in step 2.
 
