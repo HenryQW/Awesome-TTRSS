@@ -175,7 +175,7 @@ To begin the migration:
    ```bash
    docker exec postgres pg_dumpall -c -U YourUsername > export.sql
    ```
-1. Update your docker-compose file with `database.postgres` section in the the latest [docker-compose.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/master/docker-compose.yml), and bring it up:
+1. Update your docker-compose file (**Note that the `DB_NAME` must not be changed**) with `database.postgres` section in the the latest [docker-compose.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/master/docker-compose.yml), and bring it up:
    ```bash
    docker-compose up -d
    ```
