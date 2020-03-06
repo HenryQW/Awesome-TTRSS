@@ -50,10 +50,10 @@ ADD https://github.com/DIYgod/ttrss-plugin-remove-iframe-sandbox/archive/master.
 # Download themes
 
 ## Feedly
-ADD https://github.com/levito/tt-rss-feedly-theme/archive/master.tar.gz /var/www/themes/feedly/
+ADD https://github.com/levito/tt-rss-feedly-theme/archive/master.tar.gz /var/www/themes.local/feedly/
 
 ## RSSHub
-ADD https://github.com/DIYgod/ttrss-theme-rsshub/archive/master.tar.gz /var/www/themes/rsshub/
+ADD https://github.com/DIYgod/ttrss-theme-rsshub/archive/master.tar.gz /var/www/themes.local/rsshub/
 
 # Untar ttrss plugins
 WORKDIR /var/www
@@ -72,9 +72,9 @@ RUN apk add --update --virtual build-dependencies tar \
   \
   && tar xzvpf /var/www/plugins/remove_iframe_sandbox/master.tar.gz --strip-components=1 -C /var/www/plugins/remove_iframe_sandbox ttrss-plugin-remove-iframe-sandbox-master && rm /var/www/plugins/remove_iframe_sandbox/master.tar.gz \
   \
-  && tar xzvpf /var/www/themes/feedly/master.tar.gz --strip-components=1 -C /var/www/themes/ tt-rss-feedly-theme-master/feedly tt-rss-feedly-theme-master/feedly.css && rm -rf /var/www/themes/feedly \
+  && tar xzvpf /var/www/themes.local/feedly/master.tar.gz --strip-components=1 -C /var/www/themes.local/ tt-rss-feedly-theme-master/feedly tt-rss-feedly-theme-master/feedly.css && rm -rf /var/www/themes.local/feedly \
   \
-  && tar xzvpf /var/www/themes/rsshub/master.tar.gz --strip-components=2 -C /var/www/themes/ ttrss-theme-rsshub-master/dist/rsshub.css && rm -rf /var/www/themes/rsshub \
+  && tar xzvpf /var/www/themes.local/rsshub/master.tar.gz --strip-components=2 -C /var/www/themes.local/ ttrss-theme-rsshub-master/dist/rsshub.css && rm -rf /var/www/themes.local/rsshub \
   \
   && apk del build-dependencies \
   && rm -rf /var/cache/apk/* \
