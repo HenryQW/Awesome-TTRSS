@@ -30,19 +30,19 @@ ADD https://github.com/HenryQW/tinytinyrss-fever-plugin/archive/master.tar.gz /v
 ADD https://github.com/HenryQW/mercury_fulltext/archive/master.tar.gz /var/www/plugins/mercury_fulltext/
 
 ## Feediron
-ADD https://github.com/feediron/ttrss_plugin-feediron/archive/master.tar.gz /var/www/plugins/feediron/ 
+ADD https://github.com/feediron/ttrss_plugin-feediron/archive/master.tar.gz /var/www/plugins/feediron/
 
 ## OpenCC
-ADD https://github.com/HenryQW/ttrss_opencc/archive/master.tar.gz /var/www/plugins/opencc/ 
+ADD https://github.com/HenryQW/ttrss_opencc/archive/master.tar.gz /var/www/plugins/opencc/
 
 ## News+ API
-ADD https://github.com/voidstern/tt-rss-newsplus-plugin/archive/master.tar.gz /var/www/plugins/api_newsplus/ 
+ADD https://github.com/voidstern/tt-rss-newsplus-plugin/archive/master.tar.gz /var/www/plugins/api_newsplus/
 
 ## FeedReader API
 ADD https://raw.githubusercontent.com/jangernert/FeedReader/master/data/tt-rss-feedreader-plugin/api_feedreader/init.php /var/www/plugins/api_feedreader/
 
 ## Options per feed
-ADD https://github.com/sergey-dryabzhinsky/options_per_feed/archive/master.tar.gz /var/www/plugins/options_per_feed/ 
+ADD https://github.com/sergey-dryabzhinsky/options_per_feed/archive/master.tar.gz /var/www/plugins/options_per_feed/
 
 ## Remove iframe sandbox
 ADD https://github.com/DIYgod/ttrss-plugin-remove-iframe-sandbox/archive/master.tar.gz /var/www/plugins/remove_iframe_sandbox/
@@ -50,10 +50,10 @@ ADD https://github.com/DIYgod/ttrss-plugin-remove-iframe-sandbox/archive/master.
 # Download themes
 
 ## Feedly
-ADD https://github.com/levito/tt-rss-feedly-theme/archive/master.tar.gz /var/www/themes/feedly/
+ADD https://github.com/levito/tt-rss-feedly-theme/archive/master.tar.gz /var/www/themes.local/feedly.tar.gz
 
 ## RSSHub
-ADD https://github.com/DIYgod/ttrss-theme-rsshub/archive/master.tar.gz /var/www/themes/rsshub/
+ADD https://github.com/DIYgod/ttrss-theme-rsshub/archive/master.tar.gz /var/www/themes.local/rsshub.tar.gz
 
 # Untar ttrss plugins
 WORKDIR /var/www
@@ -72,9 +72,9 @@ RUN apk add --update --virtual build-dependencies tar \
   \
   && tar xzvpf /var/www/plugins/remove_iframe_sandbox/master.tar.gz --strip-components=1 -C /var/www/plugins/remove_iframe_sandbox ttrss-plugin-remove-iframe-sandbox-master && rm /var/www/plugins/remove_iframe_sandbox/master.tar.gz \
   \
-  && tar xzvpf /var/www/themes/feedly/master.tar.gz --strip-components=1 -C /var/www/themes/ tt-rss-feedly-theme-master/feedly tt-rss-feedly-theme-master/feedly.css && rm -rf /var/www/themes/feedly \
+  && tar xzvpf /var/www/themes.local/feedly.tar.gz --strip-components=1 --wildcards -C /var/www/themes.local/ tt-rss-feedly-theme-master/feedly tt-rss-feedly-theme-master/feedly*.css && rm -rf /var/www/themes.local/feedly.tar.gz \
   \
-  && tar xzvpf /var/www/themes/rsshub/master.tar.gz --strip-components=2 -C /var/www/themes/ ttrss-theme-rsshub-master/dist/rsshub.css && rm -rf /var/www/themes/rsshub \
+  && tar xzvpf /var/www/themes.local/rsshub.tar.gz --strip-components=2 -C /var/www/themes.local/ ttrss-theme-rsshub-master/dist/rsshub.css && rm -rf /var/www/themes.local/rsshub.tar.gz \
   \
   && apk del build-dependencies \
   && rm -rf /var/cache/apk/* \
