@@ -60,9 +60,10 @@ docker run -it --name ttrss --restart=always \
 - DB_USER: the user of your database
 - DB_PASS: the password of your database
 - ENABLE_PLUGINS: the plugins you'd like to enable as global plugins, note that `auth_internal` is required
-- SESSION_COOKIE_LIFETIME: the expiry time for your login session cookie in hours, default to `24` hours
+- SESSION_COOKIE_LIFETIME: the expiry time in hours for your login session cookie in hours, default to `24` hours
 - HTTP_PROXY: `ip:port`, the global proxy for your TTRSS instance, to set proxy on a per feed basis, use [Options per Feed](#options-per-feed)
 - SINGLE_USER_MODE: `true` will enable single user mode and disable user authentication, which means login will not be required. **Please only enable this under a secure environment**
+- LOG_DESTINATION: error log destination to use, either `sql` (uses internal logging you can read in Preferences -> System), or `syslog`
 
 ### Configure HTTPS
 

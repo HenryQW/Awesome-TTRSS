@@ -14,6 +14,7 @@ $config['DB_PASS'] = env('DB_PASS');
 $config['PLUGINS'] = env('ENABLE_PLUGINS', 'auth_internal');
 $config['SESSION_COOKIE_LIFETIME'] = env('SESSION_COOKIE_LIFETIME', 24) * 3600;
 $config['SINGLE_USER_MODE'] = env('SINGLE_USER_MODE', false);
+$config['LOG_DESTINATION'] = env('LOG_DESTINATION', 'sql');
 
 if(dbcheckconn($config)){
     $pdo = dbconnect($config);
@@ -62,11 +63,11 @@ if(dbcheckconn($config)){
 function env($name, $default = null)
 {
     $v = getenv($name) ?: $default;
-    
+
     if ($v === null) {
         error('The env ' . $name . ' does not exist'). PHP_EOL ;
     }
-    
+
     return $v;
 }
 
