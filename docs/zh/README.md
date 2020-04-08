@@ -112,6 +112,31 @@ server {
 }
 ```
 
+如果你想启用子目录，`https://mydomain.com/ttrss`，请参考如下配置：
+
+```nginx
+    location /ttrss/ {
+        rewrite /ttrss/(.*) $1 break
+        proxy_redirect https://$http_host https://$http_host/ttrss
+        proxy_pass http://ttrssdev;
+
+        proxy_set_header  Host                $http_host;
+        proxy_set_header  X-Real-IP           $remote_addr;
+        proxy_set_header  X-Forwarded-Ssl     on;
+        proxy_set_header  X-Forwarded-For     $proxy_add_x_forwarded_for;
+        proxy_set_header  X-Forwarded-Proto   $scheme;
+        proxy_set_header  X-Frame-Options     SAMEORIGIN;
+
+        client_max_body_size        100m;
+        client_body_buffer_size     128k;
+
+        proxy_buffer_size           4k;
+        proxy_buffers               4 32k;
+        proxy_busy_buffers_size     64k;
+        proxy_temp_file_write_size  64k;
+    }
+```
+
 **🔴 请注意， [你需要更新 `SELF_URL_PATH` 环境变量。](#supported-environment-variables)**
 
 ## 更新
