@@ -1,26 +1,23 @@
-name: '[doc] CI for docs'
+name: "[doc] CI for docs"
 
 on:
-    push:
-        branches:
-            - master
-        paths:
-            - 'docs/**'
+  push:
+    branches:
+      - master
+    paths:
+      - "docs/**"
 
 jobs:
-    test:
-        runs-on: ubuntu-latest
-        steps:
-        -
-            name: Checkout
-            uses: actions/checkout@master
-        -
-            name: Set up node
-            uses: actions/setup-node@master
-            with:
-                node-version: '13.x'
-        -
-            name: Build vuepress docs
-            env:
-                CI_TOKEN: ${{ secrets.CI_TOKEN }} 
-            run: npm install && npm run docs:build && bash deploy-doc.sh
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up node
+        uses: actions/setup-node@v1
+        with:
+          node-version: "13.x"
+      - name: Build vuepress docs
+        env:
+          CI_TOKEN: ${{ secrets.CI_TOKEN }}
+        run: npm install && npm run docs:build && bash deploy-doc.sh

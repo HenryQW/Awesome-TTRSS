@@ -1,29 +1,26 @@
-name: '[tester] CI for docs'
+name: "[tester] CI for docs"
 
 on:
-    pull_request:
-        branches: master
-        paths:
-            - 'docs/**'
-    push:
-        branches:
-            - '*'
-            - '!master'
-        paths:
-            - 'docs/**'
+  pull_request:
+    branches: master
+    paths:
+      - "docs/**"
+  push:
+    branches:
+      - "*"
+      - "!master"
+    paths:
+      - "docs/**"
 
 jobs:
-    test:
-        runs-on: ubuntu-latest
-        steps:
-        -
-            name: Checkout
-            uses: actions/checkout@master
-        -
-            name: Set up node
-            uses: actions/setup-node@master
-            with:
-                node-version: '13.x'
-        -
-            name: Build vuepress docs
-            run: npm install && npm run docs:build
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up node
+        uses: actions/setup-node@v1
+        with:
+          node-version: "13.x"
+      - name: Build vuepress docs
+        run: npm install && npm run docs:build
