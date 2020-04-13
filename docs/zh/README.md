@@ -63,6 +63,8 @@ docker run -it --name ttrss --restart=always \
 - SESSION_COOKIE_LIFETIME: 使用网页版登陆时 cookie 过期时间，单位为小时，默认为 `24` 小时
 - HTTP_PROXY: `ip:port`, TTRSS 实例的全局代理, 为源地址添加单独代理请使用 [Options per Feed](#options-per-feed)
 - SINGLE_USER_MODE: `true` 为开启单用户模式，同时关闭用户认证，无需登录即可使用。**请仅在安全环境下开启**
+- LOG_DESTINATION: 日志路径，`sql` 日志存入数据库，可在 偏好设置 --> 系统 中查看，`syslog` 日志存入系统日志，空值为使用 PHP 日志。默认为 `sql`
+- FEED_LOG_QUIET: `true` 禁用订阅源更新所产生的日志打印
 
 ### 配置 HTTPS
 
