@@ -22,6 +22,7 @@ services:
       - DB_USER=postgres
       - DB_PASS=ttrss # please change the password
       - ENABLE_PLUGINS=auth_internal,fever # auth_internal is required. Plugins enabled here will be enabled for all users as system plugins
+      - FEED_LOG_QUIET=true
     stdin_open: true
     tty: true
     restart: always

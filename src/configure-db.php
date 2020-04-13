@@ -15,6 +15,17 @@ $config['PLUGINS'] = env('ENABLE_PLUGINS', 'auth_internal');
 $config['SESSION_COOKIE_LIFETIME'] = env('SESSION_COOKIE_LIFETIME', 24) * 3600;
 $config['SINGLE_USER_MODE'] = env('SINGLE_USER_MODE', false);
 $config['LOG_DESTINATION'] = env('LOG_DESTINATION', 'sql');
+$config['FEED_LOG_QUIET'] = env('FEED_LOG_QUIET', false);
+
+$log_daemon = '/etc/s6/update-daemon/run';
+
+if($config['FEED_LOG_QUIET'] === "true"){
+    $str = preg_replace('/.php$/m', '.php --quiet', file_get_contents($log_daemon));
+} else {
+    $str = preg_replace('/.php --quiet$/m', '.php', file_get_contents($log_daemon));
+}
+
+file_put_contents($log_daemon, $str);
 
 if(dbcheckconn($config)){
     $pdo = dbconnect($config);
