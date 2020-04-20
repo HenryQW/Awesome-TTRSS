@@ -6,7 +6,8 @@ $confpath = '/var/www/config.php';
 $config = array();
 
 $config['SELF_URL_PATH'] = env('SELF_URL_PATH', 'http://localhost');
-$config['DB_HOST'] = env('DB_HOST', 'postgres');
+$config['DB_TYPE'] = 'pgsql';
+$config['DB_HOST'] = env('DB_HOST', 'database.postgres');
 $config['DB_PORT'] = env('DB_PORT', 5432);
 $config['DB_NAME'] = env('DB_NAME', 'ttrss');
 $config['DB_USER'] = env('DB_USER');
