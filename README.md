@@ -10,11 +10,11 @@
 
 🐋 Awesome TTRSS aims to provide a powerful **Dockerized all-in-one** solution for [Tiny Tiny RSS](https://tt-rss.org/), an open source RSS feed reader and aggregator written in PHP, with enhanced user experience via simplified deployment and a list of curated plugins. You may sponsor Awesome TTRSS via its [💰OpenCollective page](https://opencollective.com/Awesome-TTRSS/).
 
-📖 [Docs](https://ttrss.henry.wang)
+📖 [Docs](http://ttrss.henry.wang)
 
 🐋 Awesome TTRSS 旨在提供一个「容器化」的 [Tiny Tiny RSS](https://tt-rss.org/)（一款基于 PHP 的免费开源 RSS 聚合阅读器）的一站式解决方案，通过提供简易的部署方式以及一些额外插件，以提升用户体验。您可以通过 Awesome TTRSS 的 [💰OpenCollective 页面](https://opencollective.com/Awesome-TTRSS/) 进行赞助。
 
-📖 [文档](https://ttrss.henry.wang/zh/)
+📖 [文档](http://ttrss.henry.wang/zh/)
 
 ## Donation 捐赠
 
