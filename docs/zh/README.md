@@ -225,7 +225,13 @@ sameersbn/postgresql 已经完成了它的使命，pg_trgm 扩展已经不再需
 1. 在设置中启用 `mercury-fulltext` 插件
    ![启用 Mercury](https://share.henry.wang/92AGp5/x9xYB93cnX+)
 1. 在设置中填入 Mercury Parser API 地址
-   ![填入 Mercury Parser API 地址](https://share.henry.wang/KFrzMD/O2xonuy9ta+)
+   ![填入 Mercury Parser API 地址](https://share.henry.wang/9HJemY/BlTnDhuUGC+)
+
+使用 Awesome-TTRSS 部署的 OpenCC 可填写`service.mercury:3000`。
+
+#### 全文提取按钮
+
+<img src="https://share.henry.wang/ubHtDz/uxyKk68jqY+" width="400">
 
 ### [Fever API](https://github.com/HenryQW/tinytinyrss-fever-plugin)
 
@@ -249,13 +255,13 @@ sameersbn/postgresql 已经完成了它的使命，pg_trgm 扩展已经不再需
 1. 在设置中启用 `opencc` 插件
    ![启用 opencc](https://share.henry.wang/EvN5Nl/2RHNnMV2iP+)
 1. 在设置中填入 OpenCC API 地址
-   ![填入 OpenCC API 地址](https://share.henry.wang/JdJeUB/vIsRBk3EXn+)
+   ![填入 OpenCC API 地址](https://share.henry.wang/pePHAz/oWXX3I18hW+)
 
 使用 Awesome-TTRSS 部署的 OpenCC 可填写`service.opencc:3000`。
 
-<img src="https://share.henry.wang/30kbTr/lSaHKXk5NT+" width="400">
+#### 转换按钮
 
-<img src="https://share.henry.wang/pePHAz/oWXX3I18hW+" width="400">
+<img src="https://share.henry.wang/30kbTr/lSaHKXk5NT+" width="400">
 
 ### [FeedReader API](https://github.com/jangernert/FeedReader/tree/master/data/tt-rss-feedreader-plugin)
 
@@ -333,4 +339,4 @@ sameersbn/postgresql 已经完成了它的使命，pg_trgm 扩展已经不再需
 
 MIT
 
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FHenryQW%2FAwesome TTRSS.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FHenryQW%2FAwesome TTRSS?ref=badge_large)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FHenryQW%2FAwesome-TTRSS.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FHenryQW%2FAwesome-TTRSS?ref=badge_large)

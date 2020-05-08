@@ -225,7 +225,13 @@ Fetch fulltext of articles via a self-hosted Mercury Parser API. A separate Merc
 1. Enable `mercury-fulltext` plugin in preference
    ![enable Mercury](https://share.henry.wang/92AGp5/x9xYB93cnX+)
 1. Enter Mercury Parser API endpoint
-   ![enter Mercury Parser API endpoint](https://share.henry.wang/KFrzMD/O2xonuy9ta+)
+   ![enter Mercury Parser API endpoint](https://share.henry.wang/9HJemY/BlTnDhuUGC+)
+
+Use `service.mercury:3000` for Mercury instance deployed via Awesome-TTRSS.
+
+#### Extraction Button
+
+<img src="https://share.henry.wang/ubHtDz/uxyKk68jqY+" width="400">
 
 ### [Fever API](https://github.com/HenryQW/tinytinyrss-fever-plugin)
 
@@ -249,13 +255,13 @@ Conversion between Traditional and Simplified Chinese via [OpenCC](https://githu
 1. Enable `opencc` plugin in preference
    ![enable opencc](https://share.henry.wang/EvN5Nl/2RHNnMV2iP+)
 1. Enter OpenCC API endpoint
-   ![enter OpenCC API endpoint](https://share.henry.wang/JdJeUB/vIsRBk3EXn+)
+   ![enter OpenCC API endpoint](https://share.henry.wang/pePHAz/oWXX3I18hW+)
 
 Use `service.opencc:3000` for OpenCC instance deployed via Awesome-TTRSS.
 
-<img src="https://share.henry.wang/30kbTr/lSaHKXk5NT+" width="400">
+#### Conversion Button
 
-<img src="https://share.henry.wang/pePHAz/oWXX3I18hW+" width="400">
+<img src="https://share.henry.wang/30kbTr/lSaHKXk5NT+" width="400">
 
 ### [FeedReader API](https://github.com/jangernert/FeedReader/tree/master/data/tt-rss-feedreader-plugin)
 
@@ -336,4 +342,4 @@ Refer to [Remove iframe sandbox](https://github.com/DIYgod/ttrss-plugin-remove-i
 
 MIT
 
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FHenryQW%2FAwesome TTRSS.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FHenryQW%2FAwesome TTRSS?ref=badge_large)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FHenryQW%2FAwesome-TTRSS.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FHenryQW%2FAwesome-TTRSS?ref=badge_large)
