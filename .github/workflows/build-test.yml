@@ -24,7 +24,7 @@ jobs:
         id: buildx
         uses: crazy-max/ghaction-docker-buildx@master
         with:
-          version: latest
+          buildx-version: latest
       - name: Build dockerfile (without push)
         run: |
           docker buildx build \
