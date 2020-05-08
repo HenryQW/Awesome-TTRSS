@@ -251,7 +251,11 @@ Conversion between Traditional and Simplified Chinese via [OpenCC](https://githu
 1. Enter OpenCC API endpoint
    ![enter OpenCC API endpoint](https://share.henry.wang/JdJeUB/vIsRBk3EXn+)
 
-Demo instances, availability is not guaranteed: [https://opencc.henry.wang](https://opencc.henry.wang) or [http://opencc2.henry.wang](http://opencc2.henry.wang).
+Use `service.opencc:3000` for OpenCC instance deployed via Awesome-TTRSS.
+
+<img src="https://share.henry.wang/30kbTr/lSaHKXk5NT+" width="400">
+
+<img src="https://share.henry.wang/pePHAz/oWXX3I18hW+" width="400">
 
 ### [FeedReader API](https://github.com/jangernert/FeedReader/tree/master/data/tt-rss-feedreader-plugin)
 
