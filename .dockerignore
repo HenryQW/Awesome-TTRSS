@@ -6,7 +6,7 @@ docs/
 yarn.lock
 package.json
 renovate.json
-dev.sh
+deploy-doc.sh
 CNAME
 .textlintrc
 .gitignore
