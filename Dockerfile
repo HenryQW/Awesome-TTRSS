@@ -11,9 +11,9 @@ RUN apk add --update tar curl git \
 WORKDIR /var/www/plugins.local
 
 ## Fever
-RUN mkdir fever && \
+RUN mkdir /var/www/plugins/fever && \
   curl -sL https://github.com/HenryQW/tinytinyrss-fever-plugin/archive/master.tar.gz | \
-  tar xzvpf - --strip-components=1 -C fever tinytinyrss-fever-plugin-master
+  tar xzvpf - --strip-components=1 -C /var/www/plugins/fever tinytinyrss-fever-plugin-master
 
 ## Mercury Fulltext
 RUN mkdir mercury_fulltext && \
