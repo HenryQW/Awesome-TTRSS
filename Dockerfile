@@ -7,60 +7,62 @@ RUN apk add --update tar curl git \
   && git clone https://git.tt-rss.org/fox/tt-rss --depth=1 /var/www \
   && cp config.php-dist config.php
 
-
 # Download plugins
-WORKDIR /var/temp
+WORKDIR /var/www/plugins.local
 
 ## Fever
-RUN mkdir /var/www/plugins/fever && \
+RUN mkdir fever && \
   curl -sL https://github.com/HenryQW/tinytinyrss-fever-plugin/archive/master.tar.gz | \
-  tar xzvpf - --strip-components=1 -C /var/www/plugins/fever tinytinyrss-fever-plugin-master
+  tar xzvpf - --strip-components=1 -C fever tinytinyrss-fever-plugin-master
 
 ## Mercury Fulltext
-RUN mkdir /var/www/plugins/mercury_fulltext && \
+RUN mkdir mercury_fulltext && \
   curl -sL https://github.com/HenryQW/mercury_fulltext/archive/master.tar.gz | \
-  tar xzvpf - --strip-components=1 -C /var/www/plugins/mercury_fulltext mercury_fulltext-master
+  tar xzvpf - --strip-components=1 -C mercury_fulltext mercury_fulltext-master
 
 ## Feediron
-RUN mkdir /var/www/plugins/feediron && \
+RUN mkdir feediron && \
   curl -sL https://github.com/feediron/ttrss_plugin-feediron/archive/master.tar.gz | \
-  tar xzvpf - --strip-components=1 -C /var/www/plugins/feediron ttrss_plugin-feediron-master
+  tar xzvpf - --strip-components=1 -C feediron ttrss_plugin-feediron-master
 
 ## OpenCC
-RUN mkdir /var/www/plugins/opencc && \
+RUN mkdir opencc && \
   curl -sL https://github.com/HenryQW/ttrss_opencc/archive/master.tar.gz | \
-  tar xzvpf - --strip-components=1 -C /var/www/plugins/opencc ttrss_opencc-master
+  tar xzvpf - --strip-components=1 -C opencc ttrss_opencc-master
 
-# ## News+ API
-RUN mkdir /var/www/plugins/api_newsplus && \
+## News+ API
+RUN mkdir api_newsplus && \
   curl -sL https://github.com/voidstern/tt-rss-newsplus-plugin/archive/master.tar.gz | \
-  tar xzvpf - --strip-components=2 -C /var/www/plugins/api_newsplus  tt-rss-newsplus-plugin-master/api_newsplus
+  tar xzvpf - --strip-components=2 -C api_newsplus  tt-rss-newsplus-plugin-master/api_newsplus
 
 ## FeedReader API
-ADD https://raw.githubusercontent.com/jangernert/FeedReader/master/data/tt-rss-feedreader-plugin/api_feedreader/init.php /var/www/plugins/api_feedreader/
+ADD https://raw.githubusercontent.com/jangernert/FeedReader/master/data/tt-rss-feedreader-plugin/api_feedreader/init.php api_feedreader/
 
 ## Options per feed
-RUN mkdir /var/www/plugins/options_per_feed && \
+RUN mkdir options_per_feed && \
   curl -sL https://github.com/sergey-dryabzhinsky/options_per_feed/archive/master.tar.gz | \
-  tar xzvpf - --strip-components=1 -C /var/www/plugins/options_per_feed options_per_feed-master
+  tar xzvpf - --strip-components=1 -C options_per_feed options_per_feed-master
 
 ## Remove iframe sandbox
-RUN mkdir /var/www/plugins/remove_iframe_sandbox && \
+RUN mkdir remove_iframe_sandbox && \
   curl -sL https://github.com/DIYgod/ttrss-plugin-remove-iframe-sandbox/archive/master.tar.gz | \
-  tar xzvpf - --strip-components=1 -C /var/www/plugins/remove_iframe_sandbox ttrss-plugin-remove-iframe-sandbox-master
+  tar xzvpf - --strip-components=1 -C remove_iframe_sandbox ttrss-plugin-remove-iframe-sandbox-master
 
 ## Wallabag
-RUN mkdir /var/www/plugins/wallabag_v2 && \
+RUN mkdir wallabag_v2 && \
   curl -sL https://github.com/joshp23/ttrss-to-wallabag-v2/archive/master.tar.gz | \
-  tar xzvpf - --strip-components=2 -C /var/www/plugins/wallabag_v2 ttrss-to-wallabag-v2-master/wallabag_v2
+  tar xzvpf - --strip-components=2 -C wallabag_v2 ttrss-to-wallabag-v2-master/wallabag_v2
+
+# Download themes
+WORKDIR /var/www/themes.local
 
 ## Feedly
 RUN curl -sL https://github.com/levito/tt-rss-feedly-theme/archive/master.tar.gz | \
-  tar xzvpf - --strip-components=1 --wildcards -C /var/www/themes.local tt-rss-feedly-theme-master/feedly*.css
+  tar xzvpf - --strip-components=1 --wildcards -C . tt-rss-feedly-theme-master/feedly*.css
 
 ## RSSHub
 RUN curl -sL https://github.com/DIYgod/ttrss-theme-rsshub/archive/master.tar.gz | \
-  tar xzvpf - --strip-components=2 -C /var/www/themes.local ttrss-theme-rsshub-master/dist/rsshub.css
+  tar xzvpf - --strip-components=2 -C . ttrss-theme-rsshub-master/dist/rsshub.css
 
 FROM alpine:3
 
