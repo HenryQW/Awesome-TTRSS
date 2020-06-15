@@ -308,6 +308,12 @@ Remove the sandbox attribute on iframes, thus enabling playback of embedded vide
 
 Refer to [Remove iframe sandbox](https://github.com/DIYgod/ttrss-plugin-remove-iframe-sandbox)。
 
+### [Wallabag v2](https://github.com/joshp23/ttrss-to-wallabag-v2)
+
+Save articles to Wallabag.
+
+Refer to [Wallabag v2](https://github.com/joshp23/ttrss-to-wallabag-v2)。
+
 ## Themes
 
 ### [Feedly](https://github.com/levito/tt-rss-feedly-theme)

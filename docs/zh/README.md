@@ -291,6 +291,12 @@ sameersbn/postgresql 已经完成了它的使命，pg_trgm 扩展已经不再需
 
 使用指南见 [Options per Feed](https://github.com/sergey-dryabzhinsky/options_per_feed)。
 
+### [Wallabag v2](https://github.com/joshp23/ttrss-to-wallabag-v2)
+
+保存文章至 Wallabag。
+
+使用指南见 [Wallabag v2](https://github.com/joshp23/ttrss-to-wallabag-v2)。
+
 ### [Remove iframe sandbox](https://github.com/DIYgod/ttrss-plugin-remove-iframe-sandbox)
 
 ::: warning 注意
