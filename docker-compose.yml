@@ -1,7 +1,7 @@
 version: "3"
 services:
   database.postgres:
-    image: postgres:alpine
+    image: hoilc/postgres-chinese-textsearch:latest
     container_name: postgres
     environment:
       - POSTGRES_PASSWORD=ttrss # please change the password
@@ -22,6 +22,7 @@ services:
       - DB_USER=postgres
       - DB_PASS=ttrss # please change the password
       - ENABLE_PLUGINS=auth_internal,fever # auth_internal is required. Plugins enabled here will be enabled for all users as system plugins
+      - TEXTSEARCH_EXTENSION=pg_jieba # add support for chinese fulltext search (pg_jieba, zhparser, or both two)
     stdin_open: true
     tty: true
     restart: always
