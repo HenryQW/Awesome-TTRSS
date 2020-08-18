@@ -30,6 +30,7 @@ docker run -it --name ttrss --restart=always \
 -e DB_NAME = [ your DB name ]  \
 -e DB_USER = [ your DB user ]  \
 -e DB_PASS = [ your DB password ]  \
+-v ttrss_plugins:/var/www/plugins.local \
 -p [ public port ]:80  \
 -d wangqiru/ttrss
 ```
@@ -65,6 +66,10 @@ docker run -it --name ttrss --restart=always \
 - SINGLE_USER_MODE: `true` will enable single user mode and disable user authentication, which means login will not be required. **Please only enable this under a secure environment**
 - LOG_DESTINATION: error log destination to use, `sql` uses internal logging that can be read in Preferences -> System, `syslog` uses system log, blank value uses PHP logging. default to `sql`
 - FEED_LOG_QUIET: `true` will disable the printing of feed updating logs
+
+### Add custom plugins
+
+You can add your own plugins by installing them in `/var/www/plugins.local` inside the container. This is made persistent by mounting a Docker volume.
 
 ### Configure HTTPS
 

@@ -7,8 +7,11 @@ RUN apk add --update tar curl git \
   && git clone https://git.tt-rss.org/fox/tt-rss --depth=1 /var/www \
   && cp config.php-dist config.php
 
+# Add a volume for custom plugins
+VOLUME /var/www/plugins.local
+
 # Download plugins
-WORKDIR /var/www/plugins.local
+WORKDIR /var/www/plugins
 
 ## Fever
 RUN mkdir /var/www/plugins/fever && \
