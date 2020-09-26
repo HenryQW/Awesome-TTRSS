@@ -205,7 +205,7 @@ Postgres 大版本更新需要额外的步骤来确保服务正常运行。
    ```
 1. 测试所有服务是否正常工作，现在你可以移除步骤二中的备份了。
 
-旧版 docker-compose 文件已经被 [归档为 docker-compose.legacy.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/master/docker-compose.legacy.yml)。
+旧版 docker-compose（支持 Postgres 12）已经被 [归档为 docker-compose.pg12.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/master/docker-compose.pg12.yml)，且不再维护。
 
 ## 插件
 
