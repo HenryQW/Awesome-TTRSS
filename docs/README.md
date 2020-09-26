@@ -176,32 +176,25 @@ service.mercury:
     - com.centurylinklabs.watchtower.enable=false
 ```
 
-## Migration
+## Database Upgrade or Migration
 
-To further optimize Awesome TTRSS, sometimes breaking changes will be introduced.
+Postgres major upgrades will require some manual operations.
+Sometimes breaking changes will be introduced to further optimize Awesome TTRSS.
 
-### Postgres Migration
+### Steps
 
-Migrate from sameersbn/postgresql to postgres:alpine.
-
-| Image            | sameersbn/postgresql | postgres:alpine                         |
-| ---------------- | -------------------- | --------------------------------------- |
-| Postgres version | 10.2                 | latest (12.1 as of the time of writing) |
-| Size             | 176MB                | 72.8MB                                  |
-
-Since sameersbn/postgresql is no longer needed for enabling the pg_trgm extension, switching to postgres:alpine will benefit Awesome TTRSS from latest updates of Postgres and also be able to reduce the deployment size by over 100MB.
-
-To begin the migration:
+This section demonstrates the steps to upgrade Postgres major version (from 12.x to 13.x) or migrate from other images to postgres:alpine.
 
 1. Stop all the service containers:
    ```bash
    docker-compose stop
    ```
-1. Move the Postgres data volume `~/postgres/data/`, or the location specified in your docker-compose file, to somewhere else as a backup, THIS IS IMPORTANT.
+1. Copy the Postgres data volume `~/postgres/data/` (or the location specified in your docker-compose file) to somewhere else as a backup, **THIS IS IMPORTANT**.
 1. Use the following command to dump all your data:
    ```bash
    docker exec postgres pg_dumpall -c -U YourUsername > export.sql
    ```
+1. Delete the Postgres data volume `~/postgres/data/`.
 1. Update your docker-compose file (**Note that the `DB_NAME` must not be changed**) with `database.postgres` section in the the latest [docker-compose.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/master/docker-compose.yml), and bring it up:
    ```bash
    docker-compose up -d
@@ -212,7 +205,7 @@ To begin the migration:
    ```
 1. Test if everything works fine, and now you may remove the backup in step 2.
 
-The legacy docker-compose file is [archived as docker-compose.legacy.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/master/docker-compose.legacy.yml).
+The legacy docker-compose file (supports Postgres 12) is [archived as docker-compose.pg12.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/master/docker-compose.pg12.yml), and will no longer be maintained.
 
 ## Plugins
 

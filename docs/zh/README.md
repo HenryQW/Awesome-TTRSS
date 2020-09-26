@@ -176,22 +176,14 @@ service.mercury:
     - com.centurylinklabs.watchtower.enable=false
 ```
 
-## 迁移
+## 数据库更新或迁移
 
+Postgres 大版本更新需要额外的步骤来确保服务正常运行。
 为了更好地优化 Awesome TTRSS，有时候可能会推出一些破坏性更新。
 
-### Postgres 数据库迁移
+### 步骤
 
-从 sameersbn/postgresql 迁移至 postgres:alpine。
-
-| 容器镜像      | sameersbn/postgresql | postgres:alpine              |
-| ------------- | -------------------- | ---------------------------- |
-| Postgres 版本 | 10.2                 | latest （文档更新时为 12.1 ) |
-| 大小          | 176MB                | 72.8MB                       |
-
-sameersbn/postgresql 已经完成了它的使命，pg_trgm 扩展已经不再需要通过它来开启，迁移至 postgres:alpine 可以让 Awesome TTRSS 获得 Postgres 的最新更新，以及节约超过 100MB 的部署空间。
-
-开始迁移：
+这些步骤演示了如何进行 Postgres 大版本更新（从 12.x 至 13.x），或者从其他镜像迁移至 postgres:alpine。
 
 1. 停止所有服务容器：
    ```bash
@@ -202,6 +194,7 @@ sameersbn/postgresql 已经完成了它的使命，pg_trgm 扩展已经不再需
    ```bash
    docker exec postgres pg_dumpall -c -U 数据库用户名 > export.sql
    ```
+1. 删除 Postgres 数据卷 `~/postgres/data/`。
 1. 根据最新 [docker-compose.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/master/docker-compose.yml) 中的`database.postgres` 部份来更新你的 docker-compose 文件（**注意 `DB_NAME` 不可更改**），并启动：
    ```bash
    docker-compose up -d
