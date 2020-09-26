@@ -1,7 +1,7 @@
 version: "3"
 services:
   database.postgres:
-    image: postgres:alpine
+    image: postgres:13-alpine
     container_name: postgres
     environment:
       - POSTGRES_PASSWORD=ttrss # please change the password
