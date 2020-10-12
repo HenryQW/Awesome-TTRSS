@@ -58,7 +58,9 @@ docker run -it --name ttrss --restart=always \
 - DB_PORT: the port of your database
 - DB_NAME: the name of your database
 - DB_USER: the user of your database
+- DB_USER_FILE: (alternative to DB_USER) the file containing the user of your database
 - DB_PASS: the password of your database
+- DB_PASS_FILE: (alternative to DB_PASS) the file containing the password of your database
 - ENABLE_PLUGINS: the plugins you'd like to enable as global plugins, note that `auth_internal` is required
 - ALLOW_PORTS: comma-separated port numbers, eg:`1200,3000`. Allow subscription of non-'80,443' port feed. **🔴 Use with caution.**
 - SESSION_COOKIE_LIFETIME: the expiry time in hours for your login session cookie in hours, default to `24` hours
@@ -66,6 +68,12 @@ docker run -it --name ttrss --restart=always \
 - SINGLE_USER_MODE: `true` will enable single user mode and disable user authentication, which means login will not be required. **Please only enable this under a secure environment**
 - LOG_DESTINATION: error log destination to use, `sql` uses internal logging that can be read in Preferences -> System, `syslog` uses system log, blank value uses PHP logging. default to `sql`
 - FEED_LOG_QUIET: `true` will disable the printing of feed updating logs
+
+### Docker Secrets
+
+If you want to use Docker Secrets, use the `DB_USER_FILE` and `DB_PASS_FILE` environment variables.
+
+See `docker-compose.secrets.yml` for example.
 
 ### Configure HTTPS
 

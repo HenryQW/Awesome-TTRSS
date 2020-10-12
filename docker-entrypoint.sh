@@ -16,6 +16,10 @@ if [ "$ALLOW_PORTS" != "80,443" ]; then
     sed -i -r "s/\]\ \.\ \\\$parts\['path'\]/\]/" /var/www/classes/urlhelper.php
 fi
 
+if [ -n "$DB_USER_FILE" ]; then DB_USER="$(cat $DB_USER_FILE)"; fi;
+
+if [ -n "$DB_PASS_FILE" ]; then DB_PASS="$(cat $DB_PASS_FILE)"; fi;
+
 sh /wait-for.sh $DB_HOST:$DB_PORT -- php /configure-db.php && exec s6-svscan /etc/s6/
 
 exec "$@"
