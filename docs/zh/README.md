@@ -118,8 +118,8 @@ server {
 
 ```nginx
     location /ttrss/ {
-        rewrite /ttrss/(.*) $1 break
-        proxy_redirect https://$http_host https://$http_host/ttrss
+        rewrite /ttrss/(.*) /$1 break;
+        proxy_redirect https://$http_host https://$http_host/ttrss;
         proxy_pass http://ttrssdev;
 
         proxy_set_header  Host                $http_host;
