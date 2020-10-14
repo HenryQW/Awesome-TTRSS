@@ -14,6 +14,6 @@
   "devDependencies": {
     "@vuepress/plugin-back-to-top": "1.6.0",
     "@vuepress/plugin-google-analytics": "1.6.0",
-    "vuepress": "1.6.0"
+    "vuepress": "1.7.0"
   }
 }
