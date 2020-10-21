@@ -70,18 +70,21 @@ LABEL maintainer="Henry<hi@henry.wang>"
 
 WORKDIR /var/www
 
+COPY ./docker-entrypoint.sh /docker-entrypoint.sh
 COPY src/wait-for.sh /wait-for.sh
 COPY src/ttrss.nginx.conf /etc/nginx/nginx.conf
 COPY src/configure-db.php /configure-db.php
 COPY src/s6/ /etc/s6/
 
+# Open up ports to bypass ttrss strict port checks, USE WITH CAUTION
+ENV ALLOW_PORTS="80,443"
 ENV SELF_URL_PATH http://localhost:181
 ENV DB_NAME ttrss
 ENV DB_USER ttrss
 ENV DB_PASS ttrss
 
 # Install dependencies
-RUN chmod -x /wait-for.sh && apk add --update --no-cache git nginx s6 curl \
+RUN chmod -x /wait-for.sh && chmod -x /docker-entrypoint.sh && apk add --update --no-cache git nginx s6 curl \
   php7 php7-intl php7-fpm php7-cli php7-curl php7-fileinfo \
   php7-mbstring php7-gd php7-json php7-dom php7-pcntl php7-posix \
   php7-pgsql php7-mcrypt php7-session php7-pdo php7-pdo_pgsql \
@@ -133,4 +136,4 @@ RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases
 
 EXPOSE 80
 
-CMD php /configure-db.php && exec s6-svscan /etc/s6/
+ENTRYPOINT ["sh", "/docker-entrypoint.sh"]
