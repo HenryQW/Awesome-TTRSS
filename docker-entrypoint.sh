@@ -2,8 +2,8 @@
 
 set -e
 
-    # reset previously modified urlhelper.php, in case ALLOW_PORTS is updated
-    git checkout -- /var/www/classes/urlhelper.php
+# reset previously modified urlhelper.php, in case ALLOW_PORTS is updated
+git checkout -- /var/www/classes/urlhelper.php
 
 if [ "$ALLOW_PORTS" != "80,443" ]; then
     # open ports in the env

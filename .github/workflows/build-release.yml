@@ -17,8 +17,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Set vars
-        id: vars
+      - name: Set date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+      - name: Set tag
+        id: tag
         run: if [ "${GITHUB_REF#refs/*/}" == "master" ]; then echo ::set-output name=branch::latest; else echo ::set-output name=branch::${GITHUB_REF#refs/*/}; fi
       - name: Dockerhub login
         env:
@@ -39,4 +42,5 @@ jobs:
           --platform=linux/amd64,linux/arm/v7,linux/arm64 \
           --output "type=image,push=true" \
           --file ./Dockerfile . \
-          --tag $(echo "${DOCKER_USERNAME}" | tr '[:upper:]' '[:lower:]')/ttrss:${{ steps.vars.outputs.branch }}
+          --tag $(echo "${DOCKER_USERNAME}" | tr '[:upper:]' '[:lower:]')/ttrss:${{ steps.tag.outputs.branch }} \
+          --tag $(echo "${DOCKER_USERNAME}" | tr '[:upper:]' '[:lower:]')/ttrss:${{ steps.tag.outputs.branch }}-${{ steps.date.outputs.date }}
