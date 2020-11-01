@@ -5,18 +5,22 @@ $confpath = '/var/www/config.php';
 
 $config = array();
 
-$config['SELF_URL_PATH'] = env('SELF_URL_PATH', 'http://localhost');
+$config['SELF_URL_PATH'] = env('SELF_URL_PATH');
+
 $config['DB_TYPE'] = 'pgsql';
-$config['DB_HOST'] = env('DB_HOST', 'database.postgres');
-$config['DB_PORT'] = env('DB_PORT', 5432);
-$config['DB_NAME'] = env('DB_NAME', 'ttrss');
+$config['DB_HOST'] = env('DB_HOST');
+$config['DB_PORT'] = env('DB_PORT');
+$config['DB_NAME'] = env('DB_NAME');
+
 $config['DB_USER'] = env('DB_USER');
 $config['DB_PASS'] = env('DB_PASS');
-$config['PLUGINS'] = env('ENABLE_PLUGINS', 'auth_internal');
-$config['SESSION_COOKIE_LIFETIME'] = env('SESSION_COOKIE_LIFETIME', 24) * 3600;
-$config['SINGLE_USER_MODE'] = env('SINGLE_USER_MODE', false);
-$config['LOG_DESTINATION'] = env('LOG_DESTINATION', 'sql');
-$config['FEED_LOG_QUIET'] = env('FEED_LOG_QUIET', false);
+
+$config['PLUGINS'] = env('ENABLE_PLUGINS');
+$config['SESSION_COOKIE_LIFETIME'] = env('SESSION_COOKIE_LIFETIME') * 3600;
+$config['SINGLE_USER_MODE'] = env('SINGLE_USER_MODE');
+$config['LOG_DESTINATION'] = env('LOG_DESTINATION');
+$config['FEED_LOG_QUIET'] = env('FEED_LOG_QUIET');
+
 
 $log_daemon = '/etc/s6/update-daemon/run';
 
