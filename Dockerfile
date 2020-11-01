@@ -136,4 +136,19 @@ RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases
 
 EXPOSE 80
 
+# Database default settings
+ENV DB_HOST=database.postgres
+ENV DB_PORT=5432
+ENV DB_USER=postgres
+ENV DB_PASS=ttrss
+ENV DB_NAME=ttrss
+
+# Some default settings
+ENV SELF_URL_PATH=http://localhost:181/
+ENV ENABLE_PLUGINS=auth_internal,fever
+ENV SESSION_COOKIE_LIFETIME=24
+ENV SINGLE_USER_MODE=false
+ENV LOG_DESTINATION=sql
+ENV FEED_LOG_QUIET=false
+
 ENTRYPOINT ["sh", "/docker-entrypoint.sh"]
