@@ -5,8 +5,8 @@ services:
     container_name: postgres
     environment:
       - POSTGRES_PASSWORD=ttrss # please change the password
-    volumes:
-      - ~/postgres/data/:/var/lib/postgresql/data # persist postgres data to ~/postgres/data/ on the host
+    networks:
+      - database_only
     restart: always
 
   service.rss:
@@ -23,6 +23,10 @@ services:
       - DB_PASS=ttrss # please change the password
       - ENABLE_PLUGINS=auth_internal,fever # auth_internal is required. Plugins enabled here will be enabled for all users as system plugins
       - FEED_LOG_QUIET=true
+    networks:
+      - public_access
+      - service_only
+      - database_only
     stdin_open: true
     tty: true
     restart: always
@@ -30,8 +34,8 @@ services:
   service.mercury: # set Mercury Parser API endpoint to `service.mercury:3000` on TTRSS plugin setting page
     image: wangqiru/mercury-parser-api:latest
     container_name: mercury
-    expose:
-      - 3000
+    networks:
+      - service_only
     restart: always
 
   service.opencc: # set OpenCC API endpoint to `service.opencc:3000` on TTRSS plugin setting page
@@ -39,8 +43,8 @@ services:
     container_name: opencc
     environment:
       - NODE_ENV=production
-    expose:
-      - 3000
+    networks:
+      - service_only
     restart: always
 
   # utility.watchtower:
@@ -52,3 +56,10 @@ services:
   #     - WATCHTOWER_CLEANUP=true
   #     - WATCHTOWER_POLL_INTERVAL=86400
   #   restart: always
+
+networks:
+  public_access: # Provide the access for ttrss UI
+  service_only: # Provide the communication network between services only
+    internal: true
+  database_only: # Provide the communication between ttrss and database only
+    internal: true
