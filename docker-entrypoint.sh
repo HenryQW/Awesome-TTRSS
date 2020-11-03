@@ -16,6 +16,6 @@ if [ "$ALLOW_PORTS" != "80,443" ]; then
     sed -i -r "s/\]\ \.\ \\\$parts\['path'\]/\]/" /var/www/classes/urlhelper.php
 fi
 
-sh /wait-for.sh $DB_HOST:$DB_PORT -- php /configure-db.php && exec s6-svscan /etc/s6/
+sh /wait-for.sh $DB_HOST:$DB_PORT -- php /initialize.php && exec s6-svscan /etc/s6/
 
 exec "$@"

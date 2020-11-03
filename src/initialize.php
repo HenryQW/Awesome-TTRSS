@@ -17,26 +17,24 @@ $config['DB_PASS'] = env('DB_PASS');
 
 $config['PLUGINS'] = env('ENABLE_PLUGINS');
 $config['SESSION_COOKIE_LIFETIME'] = env('SESSION_COOKIE_LIFETIME') * 3600;
-$config['SINGLE_USER_MODE'] = env('SINGLE_USER_MODE');
+$config['SINGLE_USER_MODE'] = filter_var(env('SINGLE_USER_MODE'), FILTER_VALIDATE_BOOLEAN);
+
 $config['LOG_DESTINATION'] = env('LOG_DESTINATION');
-$config['FEED_LOG_QUIET'] = env('FEED_LOG_QUIET');
+$config['FEED_LOG_QUIET'] = filter_var(env('FEED_LOG_QUIET'), FILTER_VALIDATE_BOOLEAN);
+
 
 
 $log_daemon = '/etc/s6/update-daemon/run';
 
-if($config['FEED_LOG_QUIET'] === "true"){
-    $str = preg_replace('/.php$/m', '.php --quiet', file_get_contents($log_daemon));
-} else {
-    $str = preg_replace('/.php --quiet$/m', '.php', file_get_contents($log_daemon));
-}
+$str = $config['FEED_LOG_QUIET'] ? preg_replace('/.php$/m', '.php --quiet', file_get_contents($log_daemon)) : preg_replace('/.php --quiet$/m', '.php', file_get_contents($log_daemon));
+
 
 file_put_contents($log_daemon, $str);
 
-if(dbcheckconn($config)){
+if (dbcheckconn($config)) {
     $pdo = dbconnect($config);
 
-    if(!dbcheckdb($config)){
-
+    if (!dbcheckdb($config)) {
         echo 'Database not found, creating.'. PHP_EOL ;
 
         $pdo = dbconnect($config);
@@ -47,8 +45,7 @@ if(dbcheckconn($config)){
         $pdo = dbexist($config);
         try {
             $pdo->query('SELECT 1 FROM ttrss_feeds');
-        }
-        catch (PDOException $e) {
+        } catch (PDOException $e) {
             echo 'Database table not found, applying schema... ' . PHP_EOL;
             $schema = file_get_contents('schema/ttrss_schema_pgsql.sql');
             $schema = preg_replace('/--(.*?);/', '', $schema);
@@ -112,8 +109,7 @@ function dbcheckconn($config)
     try {
         dbconnect($config);
         return true;
-    }
-    catch (PDOException $e) {
+    } catch (PDOException $e) {
         echo $e;
         return false;
     }
@@ -138,8 +134,7 @@ function dbcheckdb($config)
     try {
         dbexist($config);
         return true;
-    }
-    catch (PDOException $e) {
+    } catch (PDOException $e) {
         echo $e;
         return false;
     }
