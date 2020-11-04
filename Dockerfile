@@ -73,7 +73,7 @@ WORKDIR /var/www
 COPY ./docker-entrypoint.sh /docker-entrypoint.sh
 COPY src/wait-for.sh /wait-for.sh
 COPY src/ttrss.nginx.conf /etc/nginx/nginx.conf
-COPY src/configure-db.php /configure-db.php
+COPY src/initialize.php /initialize.php
 COPY src/s6/ /etc/s6/
 
 # Open up ports to bypass ttrss strict port checks, USE WITH CAUTION
@@ -135,5 +135,20 @@ RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases
   chown nobody:nginx -R /var/www
 
 EXPOSE 80
+
+# Database default settings
+ENV DB_HOST=database.postgres
+ENV DB_PORT=5432
+ENV DB_USER=postgres
+ENV DB_PASS=ttrss
+ENV DB_NAME=ttrss
+
+# Some default settings
+ENV SELF_URL_PATH=http://localhost:181/
+ENV ENABLE_PLUGINS=auth_internal,fever
+ENV SESSION_COOKIE_LIFETIME=24
+ENV SINGLE_USER_MODE=false
+ENV LOG_DESTINATION=sql
+ENV FEED_LOG_QUIET=false
 
 ENTRYPOINT ["sh", "/docker-entrypoint.sh"]
