@@ -59,6 +59,8 @@ docker run -it --name ttrss --restart=always \
 - DB_NAME: 数据库名字
 - DB_USER: 数据库用户名
 - DB_PASS: 数据库密码
+- DB_USER_FILE: Docker Secrets 支持（替代 DB_USE），包含数据库用户名的文件
+- DB_PASS_FILE: Docker Secrets 支持（替代 DB_PASS），包含数据库密码的文件
 - ENABLE_PLUGINS: 全局启用的插件名称，其中 `auth_internal` 为必须启用的登录插件
 - ALLOW_PORTS: 逗号分隔端口号，如`1200,3000`。允许订阅非 80,443 端口的源。**🔴 谨慎使用。**
 - SESSION_COOKIE_LIFETIME: 使用网页版登陆时 cookie 过期时间，单位为小时，默认为 `24` 小时
