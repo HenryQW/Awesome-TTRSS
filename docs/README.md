@@ -69,12 +69,6 @@ docker run -it --name ttrss --restart=always \
 - LOG_DESTINATION: error log destination to use, `sql` uses internal logging that can be read in Preferences -> System, `syslog` uses system log, blank value uses PHP logging. default to `sql`
 - FEED_LOG_QUIET: `true` will disable the printing of feed updating logs
 
-### Docker Secrets
-
-If you want to use Docker Secrets, use the `DB_USER_FILE` and `DB_PASS_FILE` environment variables.
-
-See `docker-compose.secrets.yml` for example.
-
 ### Configure HTTPS
 
 TTRSS container itself doesn't handle HTTPS traffic. An example of configuring an Nginx reverse proxy with free SSL certificate from [Let's Encrypt](https://letsencrypt.org/) is shown below:
