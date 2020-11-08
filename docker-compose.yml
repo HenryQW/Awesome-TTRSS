@@ -8,6 +8,8 @@ services:
     environment:
       - SELF_URL_PATH=http://localhost:181/ # please change to your own domain
       - DB_PASS=ttrss # use the same password defined in `database.postgres`
+    volumes:
+      - feed-icons:/var/www/feed-icons/
     networks:
       - public_access
       - service_only
@@ -54,10 +56,12 @@ services:
   #     - WATCHTOWER_POLL_INTERVAL=86400
   #   restart: always
 
+volumes:
+  feed-icons:
+
 networks:
   public_access: # Provide the access for ttrss UI
   service_only: # Provide the communication network between services only
     internal: true
   database_only: # Provide the communication between ttrss and database only
     internal: true
-  
