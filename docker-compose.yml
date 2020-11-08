@@ -20,6 +20,7 @@ services:
     image: wangqiru/mercury-parser-api:latest
     container_name: mercury
     networks:
+      - public_access
       - service_only
     restart: always
 
@@ -59,3 +60,4 @@ networks:
     internal: true
   database_only: # Provide the communication between ttrss and database only
     internal: true
+  
