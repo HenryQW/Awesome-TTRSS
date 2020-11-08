@@ -55,10 +55,10 @@ services:
   #     - WATCHTOWER_CLEANUP=true
   #     - WATCHTOWER_POLL_INTERVAL=86400
   #   restart: always
-  
+
 volumes:
   feed-icons:
-  
+
 networks:
   public_access: # Provide the access for ttrss UI
   service_only: # Provide the communication network between services only
