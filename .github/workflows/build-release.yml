@@ -10,6 +10,7 @@ on:
     paths:
       - "src/**"
       - "Dockerfile"
+      - "docker-entrypoint.sh"
 
 jobs:
   release:

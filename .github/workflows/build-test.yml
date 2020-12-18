@@ -6,6 +6,7 @@ on:
     paths:
       - "src/**"
       - "Dockerfile"
+      - "docker-entrypoint.sh"
   push:
     branches:
       - "*"
@@ -13,6 +14,7 @@ on:
     paths:
       - "src/**"
       - "Dockerfile"
+      - "docker-entrypoint.sh"
 
 jobs:
   test:
