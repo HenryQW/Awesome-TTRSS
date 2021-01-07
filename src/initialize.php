@@ -22,7 +22,7 @@ $config['SINGLE_USER_MODE'] = filter_var(env('SINGLE_USER_MODE'), FILTER_VALIDAT
 $config['LOG_DESTINATION'] = env('LOG_DESTINATION');
 $config['FEED_LOG_QUIET'] = filter_var(env('FEED_LOG_QUIET'), FILTER_VALIDATE_BOOLEAN);
 
-
+$config['DAEMON_UPDATE_LOGIN_LIMIT'] = env('DISABLE_USER_IN_DAYS');
 
 $log_daemon = '/etc/s6/update-daemon/run';
 
@@ -68,6 +68,12 @@ if (dbcheckconn($config)) {
         $contents .= "\r\n\t";
         $contents .= "define('_HTTP_PROXY', '"  . env('HTTP_PROXY') . "');";
     }
+
+    if (getenv('DISABLE_USER_IN_DAYS') !== false) {
+        $contents .= "\r\n\t";
+        $contents .= "define('DAEMON_UPDATE_LOGIN_LIMIT', "  . env('DISABLE_USER_IN_DAYS') . ");";
+    }
+
 
     file_put_contents($confpath, $contents);
 }
