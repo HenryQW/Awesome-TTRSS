@@ -1,4 +1,4 @@
-FROM alpine:3 AS builder
+FROM docker.io/alpine:3 AS builder
 
 # Download ttrss via git
 WORKDIR /var/www
@@ -64,7 +64,7 @@ RUN curl -sL https://github.com/levito/tt-rss-feedly-theme/archive/master.tar.gz
 RUN curl -sL https://github.com/DIYgod/ttrss-theme-rsshub/archive/master.tar.gz | \
   tar xzvpf - --strip-components=2 -C . ttrss-theme-rsshub-master/dist/rsshub.css
 
-FROM alpine:3.12
+FROM docker.io/php:8-fpm-alpine
 
 LABEL maintainer="Henry<hi@henry.wang>"
 
@@ -82,21 +82,26 @@ ENV SELF_URL_PATH http://localhost:181
 ENV DB_NAME ttrss
 ENV DB_USER ttrss
 ENV DB_PASS ttrss
+ENV PHP_EXTENTIONS intl curl fileinfo mbstring dom pcntl posix \
+  pgsql session pdo pdo_pgsql zip
 
 # Install dependencies
-RUN chmod -x /wait-for.sh && chmod -x /docker-entrypoint.sh && apk add --update --no-cache git nginx s6 curl \
-  php7 php7-intl php7-fpm php7-cli php7-curl php7-fileinfo \
-  php7-mbstring php7-gd php7-json php7-dom php7-pcntl php7-posix \
-  php7-pgsql php7-mcrypt php7-session php7-pdo php7-pdo_pgsql \
-  ca-certificates && rm -rf /var/cache/apk/* \
+RUN chmod -x /wait-for.sh && chmod -x /docker-entrypoint.sh \
+  && apk add --update --no-cache nginx s6 git icu-libs libpq libzip \
+  # https://github.com/docker-php/issues/1055#issuecomment-693370957
+  && apk add --virtual=.build-dependencies --update --no-cache icu-dev curl-dev \
+  oniguruma-dev libpng-dev postgresql-dev libzip-dev libxml2-dev \
+  && NPROC=$(getconf _NPROCESSORS_ONLN) \
+  && docker-php-ext-configure gd --enable-gd \
+  && docker-php-ext-install -j${NPROC} ${PHP_EXTENTIONS} \
+  && apk del .build-dependencies \
+  && rm -rf /var/cache/apk/* \
   # Update libiconv as the default version is too low
-  && apk add gnu-libiconv --update-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ --allow-untrusted \
-  && rm -rf /var/www 
+  && apk add gnu-libiconv --update --no-cache --repository https://dl-cdn.alpinelinux.org/alpine/edge/community/ \
+  && rm -rf /var/www
 
 # Copy TTRSS and plugins
 COPY --from=builder /var/www /var/www
-
-ENV LD_PRELOAD /usr/lib/preloadable_libiconv.so php
 
 # Install GNU libc (aka glibc) and set C.UTF-8 locale as default.
 # https://github.com/Docker-Hub-frolvlad/docker-alpine-glibc/blob/master/Dockerfile
