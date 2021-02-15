@@ -2,7 +2,7 @@ name: "[tester] CI for tests"
 
 on:
   pull_request:
-    branches: master
+    branches: main
     paths:
       - "src/**"
       - "Dockerfile"
@@ -10,7 +10,7 @@ on:
   push:
     branches:
       - "*"
-      - "!master"
+      - "!main"
     paths:
       - "src/**"
       - "Dockerfile"

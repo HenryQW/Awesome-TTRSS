@@ -36,7 +36,7 @@ docker run -it --name ttrss --restart=always \
 
 ### Deployment via docker-compose
 
-[docker-compose.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/master/docker-compose.yml) include 4 docker images:
+[docker-compose.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.yml) include 4 docker images:
 
 1. [TTRSS](https://hub.docker.com/r/wangqiru/ttrss)
 1. [PostgreSQL](https://hub.docker.com/_/postgres)
@@ -45,7 +45,7 @@ docker run -it --name ttrss --restart=always \
 
 #### Steps
 
-1. Download [docker-compose.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/master/docker-compose.yml) to any directory.
+1. Download [docker-compose.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.yml) to any directory.
 1. Read `docker-compose.yml` and change the settings (please ensure you have changed the password for postgres).
 1. Run `docker-compose up -d` and wait for the deployment to finish.
 1. Access ttrss via port 181, with default credentials `admin` and `password`, please change them asap.
@@ -149,7 +149,7 @@ If you want to place TTRSS under a subdirectory, such as `https://mydomain.com/t
 
 Awesome TTRSS automatically keeps up with TTRSS by mirroring the official releases, this means update can be issued frequently.
 
-[TTRSS stopped releasing tags](https://community.tt-rss.org/t/versioning-changes-for-trunk/2974). `wangqiru/ttrss:latest` will sync with [TTRSS' master branch](https://git.tt-rss.org/fox/tt-rss) periodically.
+[TTRSS stopped releasing tags](https://community.tt-rss.org/t/versioning-changes-for-trunk/2974). `wangqiru/ttrss:latest` will sync with [TTRSS' main branch](https://git.tt-rss.org/fox/tt-rss) periodically.
 
 ### Manual Update
 
@@ -199,7 +199,7 @@ This section demonstrates the steps to upgrade Postgres major version (from 12.x
    docker exec postgres pg_dumpall -c -U YourUsername > export.sql
    ```
 1. Delete the Postgres data volume `~/postgres/data/`.
-1. Update your docker-compose file (**Note that the `DB_NAME` must not be changed**) with `database.postgres` section in the the latest [docker-compose.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/master/docker-compose.yml), and bring it up:
+1. Update your docker-compose file (**Note that the `DB_NAME` must not be changed**) with `database.postgres` section in the the latest [docker-compose.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.yml), and bring it up:
    ```bash
    docker-compose up -d
    ```
@@ -209,7 +209,7 @@ This section demonstrates the steps to upgrade Postgres major version (from 12.x
    ```
 1. Test if everything works fine, and now you may remove the backup in step 2.
 
-The legacy docker-compose file (supports Postgres 12) is [archived as docker-compose.pg12.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/master/docker-compose.pg12.yml), and will no longer be maintained.
+The legacy docker-compose file (supports Postgres 12) is [archived as docker-compose.pg12.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.pg12.yml), and will no longer be maintained.
 
 ## Plugins
 
@@ -346,3 +346,5 @@ Refer to [Wallabag v2](https://github.com/joshp23/ttrss-to-wallabag-v2)。
 MIT
 
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FHenryQW%2FAwesome-TTRSS.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FHenryQW%2FAwesome-TTRSS?ref=badge_large)
+
+<!-- test github actions -->

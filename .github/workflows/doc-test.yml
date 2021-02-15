@@ -2,13 +2,13 @@ name: "[tester] CI for docs"
 
 on:
   pull_request:
-    branches: master
+    branches: main
     paths:
       - "docs/**"
   push:
     branches:
       - "*"
-      - "!master"
+      - "!main"
     paths:
       - "docs/**"
 
@@ -21,6 +21,6 @@ jobs:
       - name: Set up node
         uses: actions/setup-node@v1
         with:
-          node-version: "13.x"
+          node-version: "15.x"
       - name: Build vuepress docs
         run: npm install && npm run docs:build

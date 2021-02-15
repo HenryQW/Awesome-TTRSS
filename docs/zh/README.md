@@ -36,7 +36,7 @@ docker run -it --name ttrss --restart=always \
 
 ### 通过 docker-compose 部署
 
-[docker-compose.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/master/docker-compose.yml) 包含了 4 个镜像：
+[docker-compose.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.yml) 包含了 4 个镜像：
 
 1. [TTRSS](https://hub.docker.com/r/wangqiru/ttrss)
 1. [PostgreSQL](https://hub.docker.com/_/postgres)
@@ -45,7 +45,7 @@ docker run -it --name ttrss --restart=always \
 
 #### 步骤
 
-1. 下载 [docker-compose.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/master/docker-compose.yml) 至任意目录。
+1. 下载 [docker-compose.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.yml) 至任意目录。
 1. 更改 `docker-compose.yml` 中的设置，请务必更改 postgres 用户密码。
 1. 通过终端在同目录下运行 `docker-compose up -d` 后等待部署完成。
 1. 默认通过 181 端口访问 TTRSS，默认账户：`admin` 密码：`password`，请第一时间更改。
@@ -149,7 +149,7 @@ server {
 
 Awesome TTRSS 会自动监控 TTRSS 官方更新并与之同步，这意味着更新会比较频繁。
 
-[TTRSS 官方不再释出 tag](https://community.tt-rss.org/t/versioning-changes-for-trunk/2974)。 `wangqiru/ttrss:latest` 会与 [官方 master branch](https://git.tt-rss.org/fox/tt-rss) 同步。
+[TTRSS 官方不再释出 tag](https://community.tt-rss.org/t/versioning-changes-for-trunk/2974)。 `wangqiru/ttrss:latest` 会与 [官方 main branch](https://git.tt-rss.org/fox/tt-rss) 同步。
 
 ### 手动更新
 
@@ -199,7 +199,7 @@ Postgres 大版本更新需要额外的步骤来确保服务正常运行。
    docker exec postgres pg_dumpall -c -U 数据库用户名 > export.sql
    ```
 1. 删除 Postgres 数据卷 `~/postgres/data/`。
-1. 根据最新 [docker-compose.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/master/docker-compose.yml) 中的`database.postgres` 部份来更新你的 docker-compose 文件（**注意 `DB_NAME` 不可更改**），并启动：
+1. 根据最新 [docker-compose.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.yml) 中的`database.postgres` 部份来更新你的 docker-compose 文件（**注意 `DB_NAME` 不可更改**），并启动：
    ```bash
    docker-compose up -d
    ```
@@ -209,7 +209,7 @@ Postgres 大版本更新需要额外的步骤来确保服务正常运行。
    ```
 1. 测试所有服务是否正常工作，现在你可以移除步骤二中的备份了。
 
-旧版 docker-compose（支持 Postgres 12）已经被 [归档为 docker-compose.pg12.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/master/docker-compose.pg12.yml)，且不再维护。
+旧版 docker-compose（支持 Postgres 12）已经被 [归档为 docker-compose.pg12.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.pg12.yml)，且不再维护。
 
 ## 插件
 

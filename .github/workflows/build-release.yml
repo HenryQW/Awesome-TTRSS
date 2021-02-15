@@ -5,12 +5,15 @@ on:
     types: build
   push:
     branches:
-      - master
+      - main
       - dev
     paths:
       - "src/**"
       - "Dockerfile"
       - "docker-entrypoint.sh"
+  pull_request:
+    branches:
+      - main
 
 jobs:
   release:
@@ -23,7 +26,7 @@ jobs:
         run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
       - name: Set tag
         id: tag
-        run: if [ "${GITHUB_REF#refs/*/}" == "master" ]; then echo ::set-output name=branch::latest; else echo ::set-output name=branch::${GITHUB_REF#refs/*/}; fi
+        run: if [ "${GITHUB_REF#refs/*/}" == "main" ]; then echo ::set-output name=branch::latest; else echo ::set-output name=branch::${GITHUB_REF#refs/*/}; fi
       - name: Dockerhub login
         env:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}

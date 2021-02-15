@@ -1,4 +1,4 @@
-FROM alpine:3 AS builder
+FROM docker.io/alpine:3 AS builder
 
 # Download ttrss via git
 WORKDIR /var/www
@@ -69,7 +69,7 @@ RUN mkdir nginx_xaccel && \
   curl -sL https://git.tt-rss.org/fox/ttrss-nginx-xaccel/archive/master.tar.gz | \
   tar xzvpf - --strip-components=2 -C nginx_xaccel ttrss-nginx-xaccel
 
-FROM alpine:3.12
+FROM docker.io/php:8-fpm-alpine
 
 LABEL maintainer="Henry<hi@henry.wang>"
 
@@ -78,6 +78,7 @@ WORKDIR /var/www
 COPY ./docker-entrypoint.sh /docker-entrypoint.sh
 COPY src/wait-for.sh /wait-for.sh
 COPY src/ttrss.nginx.conf /etc/nginx/nginx.conf
+COPY src/ttrss.php.conf /usr/local/etc/php-fpm.d/ttrss-php.conf
 COPY src/initialize.php /initialize.php
 COPY src/s6/ /etc/s6/
 
@@ -87,21 +88,25 @@ ENV SELF_URL_PATH http://localhost:181
 ENV DB_NAME ttrss
 ENV DB_USER ttrss
 ENV DB_PASS ttrss
+ENV PHP_EXTENTIONS intl pcntl pgsql pdo_pgsql zip
 
 # Install dependencies
-RUN chmod -x /wait-for.sh && chmod -x /docker-entrypoint.sh && apk add --update --no-cache git nginx s6 curl \
-  php7 php7-intl php7-fpm php7-cli php7-curl php7-fileinfo \
-  php7-mbstring php7-gd php7-json php7-dom php7-pcntl php7-posix \
-  php7-pgsql php7-mcrypt php7-session php7-pdo php7-pdo_pgsql \
-  ca-certificates && rm -rf /var/cache/apk/* \
+RUN chmod -x /wait-for.sh && chmod -x /docker-entrypoint.sh \
+  && apk add --update --no-cache nginx s6 git icu-libs libpq libzip libpng jpeg zlib libwebp \
+  # https://github.com/docker-php/issues/1055#issuecomment-693370957
+  && apk add --virtual=.build-dependencies --update --no-cache \
+  icu-dev libpng-dev jpeg-dev zlib-dev libwebp-dev postgresql-dev libzip-dev \
+  && NPROC=$(getconf _NPROCESSORS_ONLN) \
+  && docker-php-ext-configure gd --enable-gd=shared --with-jpeg --with-webp \
+  && docker-php-ext-install ${PHP_EXTENTIONS} \
+  && apk del .build-dependencies \
+  && rm -rf /var/cache/apk/* \
   # Update libiconv as the default version is too low
-  && apk add gnu-libiconv --update-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ --allow-untrusted \
-  && rm -rf /var/www 
+  && apk add gnu-libiconv --update --no-cache --repository https://dl-cdn.alpinelinux.org/alpine/edge/community/ \
+  && rm -rf /var/www
 
 # Copy TTRSS and plugins
 COPY --from=builder /var/www /var/www
-
-ENV LD_PRELOAD /usr/lib/preloadable_libiconv.so php
 
 # Install GNU libc (aka glibc) and set C.UTF-8 locale as default.
 # https://github.com/Docker-Hub-frolvlad/docker-alpine-glibc/blob/master/Dockerfile
@@ -137,7 +142,7 @@ RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases
   "$ALPINE_GLIBC_BASE_PACKAGE_FILENAME" \
   "$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
   "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME" && \
-  chown nobody:nginx -R /var/www
+  chown www-data:www-data -R /var/www
 
 EXPOSE 80
 
