@@ -73,6 +73,7 @@ WORKDIR /var/www
 COPY ./docker-entrypoint.sh /docker-entrypoint.sh
 COPY src/wait-for.sh /wait-for.sh
 COPY src/ttrss.nginx.conf /etc/nginx/nginx.conf
+COPY src/ttrss.php.conf /usr/local/etc/php-fpm.d/ttrss-php.conf
 COPY src/initialize.php /initialize.php
 COPY src/s6/ /etc/s6/
 
@@ -82,18 +83,16 @@ ENV SELF_URL_PATH http://localhost:181
 ENV DB_NAME ttrss
 ENV DB_USER ttrss
 ENV DB_PASS ttrss
-ENV PHP_EXTENTIONS intl curl fileinfo mbstring dom pcntl posix \
-  pgsql session pdo pdo_pgsql zip
+ENV PHP_EXTENTIONS intl pcntl pgsql pdo_pgsql zip
 
 # Install dependencies
 RUN chmod -x /wait-for.sh && chmod -x /docker-entrypoint.sh \
   && apk add --update --no-cache nginx s6 git icu-libs libpq libzip \
   # https://github.com/docker-php/issues/1055#issuecomment-693370957
-  && apk add --virtual=.build-dependencies --update --no-cache icu-dev curl-dev \
-  oniguruma-dev libpng-dev postgresql-dev libzip-dev libxml2-dev \
+  && apk add --virtual=.build-dependencies --update --no-cache icu-dev libpng-dev postgresql-dev libzip-dev \
   && NPROC=$(getconf _NPROCESSORS_ONLN) \
   && docker-php-ext-configure gd --enable-gd \
-  && docker-php-ext-install -j${NPROC} ${PHP_EXTENTIONS} \
+  && docker-php-ext-install ${PHP_EXTENTIONS} \
   && apk del .build-dependencies \
   && rm -rf /var/cache/apk/* \
   # Update libiconv as the default version is too low
@@ -137,7 +136,7 @@ RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases
   "$ALPINE_GLIBC_BASE_PACKAGE_FILENAME" \
   "$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
   "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME" && \
-  chown nobody:nginx -R /var/www
+  chown www-data:www-data -R /var/www
 
 EXPOSE 80
 
