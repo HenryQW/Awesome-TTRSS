@@ -2,13 +2,13 @@ name: "[tester] CI for docs"
 
 on:
   pull_request:
-    branches: master
+    branches: main
     paths:
       - "docs/**"
   push:
     branches:
       - "*"
-      - "!master"
+      - "!main"
     paths:
       - "docs/**"
 
