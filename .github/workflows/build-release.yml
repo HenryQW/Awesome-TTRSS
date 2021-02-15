@@ -11,9 +11,6 @@ on:
       - "src/**"
       - "Dockerfile"
       - "docker-entrypoint.sh"
-  pull_request:
-    branches:
-      - main
 
 jobs:
   release:
