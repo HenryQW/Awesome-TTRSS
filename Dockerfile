@@ -87,11 +87,12 @@ ENV PHP_EXTENTIONS intl pcntl pgsql pdo_pgsql zip
 
 # Install dependencies
 RUN chmod -x /wait-for.sh && chmod -x /docker-entrypoint.sh \
-  && apk add --update --no-cache nginx s6 git icu-libs libpq libzip \
+  && apk add --update --no-cache nginx s6 git icu-libs libpq libzip libpng jpeg zlib libwebp \
   # https://github.com/docker-php/issues/1055#issuecomment-693370957
-  && apk add --virtual=.build-dependencies --update --no-cache icu-dev libpng-dev postgresql-dev libzip-dev \
+  && apk add --virtual=.build-dependencies --update --no-cache \
+  icu-dev libpng-dev jpeg-dev zlib-dev libwebp-dev postgresql-dev libzip-dev \
   && NPROC=$(getconf _NPROCESSORS_ONLN) \
-  && docker-php-ext-configure gd --enable-gd \
+  && docker-php-ext-configure gd --enable-gd=shared --with-jpeg --with-webp \
   && docker-php-ext-install ${PHP_EXTENTIONS} \
   && apk del .build-dependencies \
   && rm -rf /var/cache/apk/* \
