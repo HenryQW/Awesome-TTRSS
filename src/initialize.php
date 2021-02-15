@@ -22,6 +22,8 @@ $config['SINGLE_USER_MODE'] = filter_var(env('SINGLE_USER_MODE'), FILTER_VALIDAT
 $config['LOG_DESTINATION'] = env('LOG_DESTINATION');
 $config['FEED_LOG_QUIET'] = filter_var(env('FEED_LOG_QUIET'), FILTER_VALIDATE_BOOLEAN);
 
+$config['NGINX_XACCEL_PREFIX'] = "";
+
 $log_daemon = '/etc/s6/update-daemon/run';
 
 $str = $config['FEED_LOG_QUIET'] ? preg_replace('/.php$/m', '.php --quiet', file_get_contents($log_daemon)) : preg_replace('/.php --quiet$/m', '.php', file_get_contents($log_daemon));
