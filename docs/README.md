@@ -346,3 +346,5 @@ Refer to [Wallabag v2](https://github.com/joshp23/ttrss-to-wallabag-v2)。
 MIT
 
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FHenryQW%2FAwesome-TTRSS.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FHenryQW%2FAwesome-TTRSS?ref=badge_large)
+
+<!-- test github actions -->
