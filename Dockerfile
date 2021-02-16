@@ -1,4 +1,4 @@
-FROM alpine:3 AS builder
+FROM docker.io/alpine:3 AS builder
 
 # Download ttrss via git
 WORKDIR /var/www
@@ -64,7 +64,7 @@ RUN curl -sL https://github.com/levito/tt-rss-feedly-theme/archive/master.tar.gz
 RUN curl -sL https://github.com/DIYgod/ttrss-theme-rsshub/archive/master.tar.gz | \
   tar xzvpf - --strip-components=2 -C . ttrss-theme-rsshub-master/dist/rsshub.css
 
-FROM alpine:3.12
+FROM docker.io/alpine:3
 
 LABEL maintainer="Henry<hi@henry.wang>"
 
