@@ -15,8 +15,6 @@ $config['DB_NAME'] = env('DB_NAME');
 $config['DB_USER'] = env('DB_USER');
 $config['DB_PASS'] = env('DB_PASS');
 
-$config['PHP_EXECUTABLE'] = '/usr/local/bin/php';
-
 $config['PLUGINS'] = env('ENABLE_PLUGINS');
 $config['SESSION_COOKIE_LIFETIME'] = env('SESSION_COOKIE_LIFETIME') * 3600;
 $config['SINGLE_USER_MODE'] = filter_var(env('SINGLE_USER_MODE'), FILTER_VALIDATE_BOOLEAN);
