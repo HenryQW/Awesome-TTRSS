@@ -12,7 +12,7 @@ WORKDIR /var/www/plugins.local
 
 ## Fever
 RUN mkdir /var/www/plugins/fever && \
-  curl -sL https://github.com/HenryQW/tinytinyrss-fever-plugin/archive/master.tar.gz | \
+  curl -sL https://github.com/DigitalDJ/tinytinyrss-fever-plugin/archive/master.tar.gz | \
   tar xzvpf - --strip-components=1 -C /var/www/plugins/fever tinytinyrss-fever-plugin-master
 
 ## Mercury Fulltext

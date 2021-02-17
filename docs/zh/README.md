@@ -230,7 +230,7 @@ Postgres 大版本更新需要额外的步骤来确保服务正常运行。
 
 <img src="https://share.henry.wang/ubHtDz/uxyKk68jqY+" width="400">
 
-### [Fever API](https://github.com/HenryQW/tinytinyrss-fever-plugin)
+### [Fever API](https://github.com/DigitalDJ/tinytinyrss-fever-plugin)
 
 提供 Fever API 支持。
 
@@ -321,7 +321,7 @@ Postgres 大版本更新需要额外的步骤来确保服务正常运行。
 
 ## 使用建议
 
-- 推荐使用 [RSSHub](https://docs。rsshub。app/) 来发现更多有趣的订阅源。
+- 推荐使用 [RSSHub](https://docs.rsshub.app/) 来发现更多有趣的订阅源。
 - 对于 iOS 和 macOS 用户，内置的 [Fever API 模拟插件](#fever-api) 提供 [Reeder 4](http://reederapp.com/) 后端支持。
 - 对于 Linux 用户，内置的 [FeedReader API](#feedreader-api) 提供 [FeedReader](https://jangernert.github.io/FeedReader/) 后端支持。
 

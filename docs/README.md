@@ -230,7 +230,7 @@ Use `service.mercury:3000` for Mercury instance deployed via Awesome-TTRSS.
 
 <img src="https://share.henry.wang/ubHtDz/uxyKk68jqY+" width="400">
 
-### [Fever API](https://github.com/HenryQW/tinytinyrss-fever-plugin)
+### [Fever API](https://github.com/DigitalDJ/tinytinyrss-fever-plugin)
 
 Provide Fever API simulate.
 
@@ -324,8 +324,8 @@ Refer to [Wallabag v2](https://github.com/joshp23/ttrss-to-wallabag-v2)。
 ## Recommendation
 
 - [RSSHub](https://docs.rsshub.app/en/) is an interesting place for discovering RSS feeds.
-- For iOS and macOS user, the integrated [Fever plugin](https://github.com/HenryQW/tinytinyrss-fever-plugin) supplies [Reeder 4](http://reederapp.com/) backend support.
-- For Android user, the integrated [Fever plugin](https://github.com/HenryQW/tinytinyrss-fever-plugin) supplies [News+](http://github.com/noinnion/newsplus/) backend support.
+- For iOS and macOS user, the integrated [Fever plugin](https://github.com/DigitalDJ/tinytinyrss-fever-plugin) supplies [Reeder 4](http://reederapp.com/) backend support.
+- For Android user, the integrated [Fever plugin](https://github.com/DigitalDJ/tinytinyrss-fever-plugin) supplies [News+](http://github.com/noinnion/newsplus/) backend support.
 - For Linux user, the integrated [FeedReader API](https://github.com/jangernert/FeedReader/tree/master/data/tt-rss-feedreader-plugin) supplies [FeedReader](https://jangernert.github.io/FeedReader/) backend support.
 
 ## Support and Help
