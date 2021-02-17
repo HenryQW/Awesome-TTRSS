@@ -28,6 +28,12 @@ $str = $config['FEED_LOG_QUIET'] ? preg_replace('/.php$/m', '.php --quiet', file
 
 file_put_contents($log_daemon, $str);
 
+// Wait for the db connection
+$i = 1;
+while (!dbcheckconn($config) && $i <= 10) {
+    sleep(3);
+    $i++;
+}
 if (dbcheckconn($config)) {
     $pdo = dbconnect($config);
 
