@@ -64,7 +64,7 @@ RUN curl -sL https://github.com/levito/tt-rss-feedly-theme/archive/master.tar.gz
 RUN curl -sL https://github.com/DIYgod/ttrss-theme-rsshub/archive/master.tar.gz | \
   tar xzvpf - --strip-components=2 -C . ttrss-theme-rsshub-master/dist/rsshub.css
 
-FROM docker.io/alpine:3.12
+FROM docker.io/alpine:3
 
 LABEL maintainer="Henry<hi@henry.wang>"
 
@@ -90,13 +90,13 @@ RUN chmod -x /wait-for.sh && chmod -x /docker-entrypoint.sh && apk add --update 
   php7-pgsql php7-mcrypt php7-session php7-pdo php7-pdo_pgsql \
   ca-certificates && rm -rf /var/cache/apk/* \
   # Update libiconv as the default version is too low
-  && apk add gnu-libiconv --update-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ --allow-untrusted \
-  && rm -rf /var/www 
+  && apk add gnu-libiconv=1.15-r3 --update --no-cache --repository https://dl-cdn.alpinelinux.org/alpine/edge/community/ \
+  && rm -rf /var/www
+
+ENV LD_PRELOAD /usr/lib/preloadable_libiconv.so php
 
 # Copy TTRSS and plugins
 COPY --from=builder /var/www /var/www
-
-ENV LD_PRELOAD /usr/lib/preloadable_libiconv.so php
 
 # Install GNU libc (aka glibc) and set C.UTF-8 locale as default.
 # https://github.com/Docker-Hub-frolvlad/docker-alpine-glibc/blob/master/Dockerfile
