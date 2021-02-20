@@ -85,10 +85,10 @@ ENV DB_PASS ttrss
 
 # Install dependencies
 RUN chmod -x /wait-for.sh && chmod -x /docker-entrypoint.sh && apk add --update --no-cache git nginx s6 curl \
-  php7 php7-intl php7-fpm php7-cli php7-curl php7-fileinfo \
-  php7-mbstring php7-gd php7-json php7-dom php7-pcntl php7-posix \
-  php7-pgsql php7-mcrypt php7-session php7-pdo php7-pdo_pgsql \
-  ca-certificates && rm -rf /var/cache/apk/* \
+  php8 php8-intl php8-fpm php8-cli php8-curl php8-fileinfo \
+  php8-mbstring php8-gd php8-json php8-dom php8-pcntl php8-posix \
+  php8-pgsql php8-session php8-pdo php8-pdo_pgsql \
+  ca-certificates && ln -s /usr/bin/php8 /usr/bin/php && rm -rf /var/cache/apk/* \
   # Update libiconv as the default version is too low
   && apk add gnu-libiconv=1.15-r3 --update --no-cache --repository https://dl-cdn.alpinelinux.org/alpine/edge/community/ \
   && rm -rf /var/www

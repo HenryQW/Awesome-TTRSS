@@ -3,7 +3,7 @@ services:
   service.rss:
     build:
       context: .
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     container_name: ttrss
     ports:
       - 181:80
