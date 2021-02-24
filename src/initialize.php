@@ -62,19 +62,20 @@ if (dbcheckconn($config)) {
             unset($pdo);
         }
     }
-    $contents = file_get_contents($confpath);
+    $contents = "<?php\r\n\r\n";
     foreach ($config as $name => $value) {
-        $contents = preg_replace('/(define\s*\(\'' . $name . '\',\s*)(.*)(\);)/', '$1"' . $value . '"$3', $contents);
+        $contents .= "\tputenv('TTRSS_" . $name . '='. $value . "');";
+        $contents .= "\r\n";
     }
 
     if (getenv('HTTP_PROXY') !== false) {
-        $contents .= "\r\n\t";
-        $contents .= "define('_HTTP_PROXY', '"  . env('HTTP_PROXY') . "');";
+        $contents .= "\tputenv('TTRSS_HTTP_PROXY="  . env('HTTP_PROXY') . "');";
+        $contents .= "\r\n";
     }
 
     if (getenv('DISABLE_USER_IN_DAYS') !== false) {
-        $contents .= "\r\n\t";
-        $contents .= "define('DAEMON_UPDATE_LOGIN_LIMIT', "  . env('DISABLE_USER_IN_DAYS') . ");";
+        $contents .= "\tputenv('TTRSS_DAEMON_UPDATE_LOGIN_LIMIT="  . env('DISABLE_USER_IN_DAYS') . ");";
+        $contents .= "\r\n";
     }
 
 

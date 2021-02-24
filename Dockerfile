@@ -4,8 +4,7 @@ FROM docker.io/alpine:3 AS builder
 WORKDIR /var/www
 RUN apk add --update tar curl git \
   && rm -rf /var/www/* \
-  && git clone https://git.tt-rss.org/fox/tt-rss --depth=1 /var/www \
-  && cp config.php-dist config.php
+  && git clone https://git.tt-rss.org/fox/tt-rss --depth=1 /var/www
 
 # Download plugins
 WORKDIR /var/www/plugins.local
