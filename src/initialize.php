@@ -18,15 +18,8 @@ $config['DB_PASS'] = env('DB_PASS');
 $config['PLUGINS'] = env('ENABLE_PLUGINS');
 $config['SESSION_COOKIE_LIFETIME'] = env('SESSION_COOKIE_LIFETIME') * 3600;
 $config['SINGLE_USER_MODE'] = filter_var(env('SINGLE_USER_MODE'), FILTER_VALIDATE_BOOLEAN);
-
 $config['LOG_DESTINATION'] = env('LOG_DESTINATION');
-$config['FEED_LOG_QUIET'] = filter_var(env('FEED_LOG_QUIET'), FILTER_VALIDATE_BOOLEAN);
 
-$log_daemon = '/etc/s6/update-daemon/run';
-
-$str = $config['FEED_LOG_QUIET'] ? preg_replace('/.php$/m', '.php --quiet', file_get_contents($log_daemon)) : preg_replace('/.php --quiet$/m', '.php', file_get_contents($log_daemon));
-
-file_put_contents($log_daemon, $str);
 
 // Wait for the db connection
 $i = 1;
