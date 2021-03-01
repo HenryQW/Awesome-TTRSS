@@ -23,22 +23,23 @@ $config['LOG_DESTINATION'] = env('LOG_DESTINATION');
 
 // Wait for the db connection
 $i = 1;
-while (!dbcheckconn($config) && $i <= 10) {
+while (!checkConnection(true) && $i <= 10) {
     sleep(3);
     $i++;
 }
-if (dbcheckconn($config)) {
-    $pdo = dbconnect($config);
+if (checkConnection(true)) {
+    $pdo = connectDatabase(true);
 
-    if (!dbcheckdb($config)) {
+    if (!checkConnection(false)) {
         echo 'Database not found, creating.'. PHP_EOL ;
 
-        $pdo = dbconnect($config);
+        $pdo = connectDatabase(true);
         $pdo -> exec('CREATE DATABASE ' . ($config['DB_NAME']) . ' WITH OWNER ' . ($config['DB_USER']));
 
         unset($pdo);
 
-        $pdo = dbexist($config);
+        $pdo = connectDatabase(false);
+
         try {
             $pdo->query('SELECT 1 FROM ttrss_feeds');
         } catch (PDOException $e) {
@@ -93,49 +94,35 @@ function error($text)
     exit(1);
 }
 
-function dbconnect($config)
+function connectDatabase($create)
 {
-    $map = array('host' => 'HOST', 'port' => 'PORT');
-    $dsn = 'pgsql:dbname=postgres;';
+    // Create the database
+    if ($create) {
+        $map = array('host' => 'HOST', 'port' => 'PORT');
+        $dsn = 'pgsql:dbname=postgres;';
+    }
+    // Seed tables
+    else {
+        $map = array('host' => 'HOST', 'port' => 'PORT' , 'dbname' =>'NAME');
+        $dsn = 'pgsql:';
+    }
+    
     foreach ($map as $d => $h) {
-        if (isset($config['DB_' . $h])) {
-            $dsn .= $d . '=' . $config['DB_' . $h] . ';';
+        if (getenv('DB_' . $h)!==null) {
+            $dsn .= $d . '=' . getenv('DB_' . $h) . ';';
         }
     }
-    $pdo = new \PDO($dsn, $config['DB_USER'], $config['DB_PASS']);
+
+    $pdo = new PDO($dsn, getenv('DB_USER'), getenv('DB_PASS'));
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
     return $pdo;
 }
 
-function dbcheckconn($config)
+function checkConnection($create)
 {
     try {
-        dbconnect($config);
-        return true;
-    } catch (PDOException $e) {
-        echo $e;
-        return false;
-    }
-}
-
-function dbexist($config)
-{
-    $map = array('host' => 'HOST', 'port' => 'PORT' , 'dbname' =>'NAME');
-    $dsn = 'pgsql:';
-    foreach ($map as $d => $h) {
-        if (isset($config['DB_' . $h])) {
-            $dsn .= $d . '=' . $config['DB_' . $h] . ';';
-        }
-    }
-    $pdo = new \PDO($dsn, $config['DB_USER'], $config['DB_PASS']);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    return $pdo;
-}
-
-function dbcheckdb($config)
-{
-    try {
-        dbexist($config);
+        connectDatabase($create);
         return true;
     } catch (PDOException $e) {
         echo $e;
