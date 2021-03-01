@@ -18,34 +18,28 @@ $config['DB_PASS'] = env('DB_PASS');
 $config['PLUGINS'] = env('ENABLE_PLUGINS');
 $config['SESSION_COOKIE_LIFETIME'] = env('SESSION_COOKIE_LIFETIME') * 3600;
 $config['SINGLE_USER_MODE'] = filter_var(env('SINGLE_USER_MODE'), FILTER_VALIDATE_BOOLEAN);
-
 $config['LOG_DESTINATION'] = env('LOG_DESTINATION');
-$config['FEED_LOG_QUIET'] = filter_var(env('FEED_LOG_QUIET'), FILTER_VALIDATE_BOOLEAN);
 
-$log_daemon = '/etc/s6/update-daemon/run';
-
-$str = $config['FEED_LOG_QUIET'] ? preg_replace('/.php$/m', '.php --quiet', file_get_contents($log_daemon)) : preg_replace('/.php --quiet$/m', '.php', file_get_contents($log_daemon));
-
-file_put_contents($log_daemon, $str);
 
 // Wait for the db connection
 $i = 1;
-while (!dbcheckconn($config) && $i <= 10) {
+while (!checkConnection(true) && $i <= 10) {
     sleep(3);
     $i++;
 }
-if (dbcheckconn($config)) {
-    $pdo = dbconnect($config);
+if (checkConnection(true)) {
+    $pdo = connectDatabase(true);
 
-    if (!dbcheckdb($config)) {
+    if (!checkConnection(false)) {
         echo 'Database not found, creating.'. PHP_EOL ;
 
-        $pdo = dbconnect($config);
+        $pdo = connectDatabase(true);
         $pdo -> exec('CREATE DATABASE ' . ($config['DB_NAME']) . ' WITH OWNER ' . ($config['DB_USER']));
 
         unset($pdo);
 
-        $pdo = dbexist($config);
+        $pdo = connectDatabase(false);
+
         try {
             $pdo->query('SELECT 1 FROM ttrss_feeds');
         } catch (PDOException $e) {
@@ -62,19 +56,20 @@ if (dbcheckconn($config)) {
             unset($pdo);
         }
     }
-    $contents = file_get_contents($confpath);
+    $contents = "<?php\r\n\r\n";
     foreach ($config as $name => $value) {
-        $contents = preg_replace('/(define\s*\(\'' . $name . '\',\s*)(.*)(\);)/', '$1"' . $value . '"$3', $contents);
+        $contents .= "\tputenv('TTRSS_" . $name . '='. $value . "');";
+        $contents .= "\r\n";
     }
 
     if (getenv('HTTP_PROXY') !== false) {
-        $contents .= "\r\n\t";
-        $contents .= "define('_HTTP_PROXY', '"  . env('HTTP_PROXY') . "');";
+        $contents .= "\tputenv('TTRSS_HTTP_PROXY="  . env('HTTP_PROXY') . "');";
+        $contents .= "\r\n";
     }
 
     if (getenv('DISABLE_USER_IN_DAYS') !== false) {
-        $contents .= "\r\n\t";
-        $contents .= "define('DAEMON_UPDATE_LOGIN_LIMIT', "  . env('DISABLE_USER_IN_DAYS') . ");";
+        $contents .= "\tputenv('TTRSS_DAEMON_UPDATE_LOGIN_LIMIT="  . env('DISABLE_USER_IN_DAYS') . ");";
+        $contents .= "\r\n";
     }
 
 
@@ -99,49 +94,35 @@ function error($text)
     exit(1);
 }
 
-function dbconnect($config)
+function connectDatabase($create)
 {
-    $map = array('host' => 'HOST', 'port' => 'PORT');
-    $dsn = 'pgsql:dbname=postgres;';
+    // Create the database
+    if ($create) {
+        $map = array('host' => 'HOST', 'port' => 'PORT');
+        $dsn = 'pgsql:dbname=postgres;';
+    }
+    // Seed tables
+    else {
+        $map = array('host' => 'HOST', 'port' => 'PORT' , 'dbname' =>'NAME');
+        $dsn = 'pgsql:';
+    }
+    
     foreach ($map as $d => $h) {
-        if (isset($config['DB_' . $h])) {
-            $dsn .= $d . '=' . $config['DB_' . $h] . ';';
+        if (getenv('DB_' . $h)!==null) {
+            $dsn .= $d . '=' . getenv('DB_' . $h) . ';';
         }
     }
-    $pdo = new \PDO($dsn, $config['DB_USER'], $config['DB_PASS']);
+
+    $pdo = new PDO($dsn, getenv('DB_USER'), getenv('DB_PASS'));
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
     return $pdo;
 }
 
-function dbcheckconn($config)
+function checkConnection($create)
 {
     try {
-        dbconnect($config);
-        return true;
-    } catch (PDOException $e) {
-        echo $e;
-        return false;
-    }
-}
-
-function dbexist($config)
-{
-    $map = array('host' => 'HOST', 'port' => 'PORT' , 'dbname' =>'NAME');
-    $dsn = 'pgsql:';
-    foreach ($map as $d => $h) {
-        if (isset($config['DB_' . $h])) {
-            $dsn .= $d . '=' . $config['DB_' . $h] . ';';
-        }
-    }
-    $pdo = new \PDO($dsn, $config['DB_USER'], $config['DB_PASS']);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    return $pdo;
-}
-
-function dbcheckdb($config)
-{
-    try {
-        dbexist($config);
+        connectDatabase($create);
         return true;
     } catch (PDOException $e) {
         echo $e;
