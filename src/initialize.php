@@ -68,7 +68,7 @@ if (checkConnection(true)) {
     }
 
     if (getenv('DISABLE_USER_IN_DAYS') !== false) {
-        $contents .= "\tputenv('TTRSS_DAEMON_UPDATE_LOGIN_LIMIT="  . env('DISABLE_USER_IN_DAYS') . ");";
+        $contents .= "\tputenv('TTRSS_DAEMON_UPDATE_LOGIN_LIMIT="  . env('DISABLE_USER_IN_DAYS') . "');";
         $contents .= "\r\n";
     }
 
