@@ -18,7 +18,7 @@ fi
 if [ "$FEED_LOG_QUIET" != "true" ]; then
     sed -i -r "s/--quiet/ /" /etc/s6/update-daemon/run
 else
-    sed -i -r "s/.php/.php --quiet/" /etc/s6/update-daemon/run
+    sed -i -r "s/\.php/.php --quiet/" /etc/s6/update-daemon/run
 fi
 
 if [ -n "$DB_USER_FILE" ]; then DB_USER="$(cat $DB_USER_FILE)"; fi
