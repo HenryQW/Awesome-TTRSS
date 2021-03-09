@@ -44,7 +44,8 @@ if (checkConnection(true)) {
             $pdo->query('SELECT 1 FROM ttrss_feeds');
         } catch (PDOException $e) {
             echo 'Database table not found, applying schema... ' . PHP_EOL;
-            $schema = file_get_contents('schema/ttrss_schema_pgsql.sql');
+            $schema = file_get_contents('sql/pgsql/schema.sql');
+
             $schema = preg_replace('/--(.*?);/', '', $schema);
             $schema = preg_replace('/[\r\n]/', ' ', $schema);
             $schema = trim($schema, ' ;');
