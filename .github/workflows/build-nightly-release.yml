@@ -32,3 +32,4 @@ jobs:
           --output "type=image,push=true" \
           --file ./Dockerfile . \
           --tag $(echo "${DOCKER_USERNAME}" | tr '[:upper:]' '[:lower:]')/ttrss:nightly-${{ steps.date.outputs.date }}
+          --tag $(echo "${DOCKER_USERNAME}" | tr '[:upper:]' '[:lower:]')/ttrss:nightly
