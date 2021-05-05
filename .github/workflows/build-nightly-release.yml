@@ -31,5 +31,5 @@ jobs:
           --platform=linux/amd64,linux/arm/v7,linux/arm64 \
           --output "type=image,push=true" \
           --file ./Dockerfile . \
-          --tag $(echo "${DOCKER_USERNAME}" | tr '[:upper:]' '[:lower:]')/ttrss:nightly-${{ steps.date.outputs.date }}
+          --tag $(echo "${DOCKER_USERNAME}" | tr '[:upper:]' '[:lower:]')/ttrss:nightly-${{ steps.date.outputs.date }} \
           --tag $(echo "${DOCKER_USERNAME}" | tr '[:upper:]' '[:lower:]')/ttrss:nightly
