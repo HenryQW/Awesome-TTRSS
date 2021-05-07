@@ -37,6 +37,11 @@ RUN mkdir api_newsplus && \
 ## FeedReader API
 ADD https://raw.githubusercontent.com/jangernert/FeedReader/master/data/tt-rss-feedreader-plugin/api_feedreader/init.php api_feedreader/
 
+## Feedstatistics
+RUN mkdir feedstatistics && \
+  curl -sL https://github.com/jsoares/ttrss-plugin-feedstatistics/archive/master.tar.gz | \
+  tar xzvpf - --strip-components=1 -C feedstatistics ttrss-plugin-feedstatistics-master
+
 ## Options per feed
 RUN mkdir options_per_feed && \
   curl -sL https://github.com/sergey-dryabzhinsky/options_per_feed/archive/master.tar.gz | \

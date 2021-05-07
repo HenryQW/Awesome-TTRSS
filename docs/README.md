@@ -268,6 +268,12 @@ System plugin, enabled by adding `api_feedreader` to the environment variable **
 
 Refer to [FeedReader API](https://github.com/jangernert/FeedReader/tree/master/data/tt-rss-feedreader-plugin) for more details.
 
+### [Feedstatistics](https://github.com/DIYgod/ttrss-plugin-remove-iframe-sandbox)
+
+Provide a statistics pane to the feed preferences tab, including both a Google Reader-style one line summary and a table of statistics per feed.
+
+Refer to [Feedstatistics](https://github.com/DIYgod/ttrss-plugin-remove-iframe-sandbox) for more details.
+
 ### [News+ API](https://github.com/voidstern/tt-rss-newsplus-plugin/)
 
 Provide a faster two-way synchronization for Android App [News+](http://github.com/noinnion/newsplus/) and iOS App [Fiery Feeds](http://cocoacake.net/apps/fiery/) with TTRSS.
