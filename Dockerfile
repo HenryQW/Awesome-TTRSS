@@ -89,7 +89,7 @@ RUN chmod -x /wait-for.sh && chmod -x /docker-entrypoint.sh && apk add --update 
   php8-pgsql php8-session php8-pdo php8-pdo_pgsql \
   ca-certificates && ln -s /usr/bin/php8 /usr/bin/php && rm -rf /var/cache/apk/* \
   # Update libiconv as the default version is too low
-  && apk add gnu-libiconv=1.15-r3 --update --no-cache --repository https://dl-cdn.alpinelinux.org/alpine/edge/community/ \
+  && apk add gnu-libiconv --update --no-cache --repository https://dl-cdn.alpinelinux.org/alpine/edge/community/ \
   && rm -rf /var/www
 
 ENV LD_PRELOAD /usr/lib/preloadable_libiconv.so php
