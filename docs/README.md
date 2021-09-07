@@ -65,10 +65,10 @@ docker run -it --name ttrss --restart=always \
 - ALLOW_PORTS: comma-separated port numbers, eg:`1200,3000`. Allow subscription of non-'80,443' port feed. **🔴 Use with caution.**
 - SESSION_COOKIE_LIFETIME: the expiry time in hours for your login session cookie in hours, default to `24` hours
 - HTTP_PROXY: `ip:port`, the global proxy for your TTRSS instance, to set proxy on a per feed basis, use [Options per Feed](#options-per-feed)
-- SINGLE_USER_MODE: `true` will enable single user mode and disable user authentication, which means login will not be required. **Please only enable this under a secure environment**
 - DISABLE_USER_IN_DAYS: disable feed update for inactive users after X days without login, until the user performs a login
-- LOG_DESTINATION: error log destination to use, `sql` uses internal logging that can be read in Preferences -> System, `syslog` uses system log, blank value uses PHP logging. default to `sql`
 - FEED_LOG_QUIET: `true` will disable the printing of feed updating logs
+
+For more environment variables, please refer to the [official tt-rss repo](https://git.tt-rss.org/fox/tt-rss/src/branch/master/classes/config.php).
 
 ### Configure HTTPS
 
@@ -213,6 +213,10 @@ The legacy docker-compose file (supports Postgres 12) is [archived as docker-com
 
 ## Plugins
 
+### [Effective Config](https://git.tt-rss.org/fox/ttrss-prefs-effective-config)
+
+Enable via Preferences → Plugins, and navigate to Preferences → System → Effective Config for viewing all live environment variables of your TTRSS instance.
+
 ### [Mercury Fulltext Extraction](https://github.com/HenryQW/mercury_fulltext)
 
 Fetch fulltext of articles via a self-hosted Mercury Parser API. A separate Mercury Parser API is required, the example [docker-compose](#deployment-via-docker-compose) has already included [such a server](https://github.com/HenryQW/mercury-parser-api).
@@ -232,7 +236,7 @@ Use `service.mercury:3000` for Mercury instance deployed via Awesome-TTRSS.
 
 ### [Fever API](https://github.com/DigitalDJ/tinytinyrss-fever-plugin)
 
-Provide Fever API simulate.
+Provide Fever API simulation.
 
 #### Steps
 

@@ -65,10 +65,10 @@ docker run -it --name ttrss --restart=always \
 - ALLOW_PORTS: 逗号分隔端口号，如`1200,3000`。允许订阅非 80,443 端口的源。**🔴 谨慎使用。**
 - SESSION_COOKIE_LIFETIME: 使用网页版登陆时 cookie 过期时间，单位为小时，默认为 `24` 小时
 - HTTP_PROXY: `ip:port`, TTRSS 实例的全局代理，为源地址添加单独代理请使用 [Options per Feed](#options-per-feed)
-- SINGLE_USER_MODE: `true` 为开启单用户模式，同时关闭用户认证，无需登录即可使用。**请仅在安全环境下开启**
 - DISABLE_USER_IN_DAYS: 当用户 X 天后没有登录后，停止为其自动更新订阅源，直至用户再次登陆
-- LOG_DESTINATION: 日志路径，`sql` 日志存入数据库，可在 偏好设置 --> 系统 中查看，`syslog` 日志存入系统日志，空值为使用 PHP 日志。默认为 `sql`
-- FEED_LOG_QUIET: `true` 禁用订阅源更新所产生的日志打印
+- FEED_LOG_QUIET: true 禁用订阅源更新所产生的日志打印
+
+更多环境变量，参见 [官方 tt-rss](https://git.tt-rss.org/fox/tt-rss/src/branch/master/classes/config.php)。
 
 ### 配置 HTTPS
 
@@ -212,6 +212,10 @@ Postgres 大版本更新需要额外的步骤来确保服务正常运行。
 旧版 docker-compose（支持 Postgres 12）已经被 [归档为 docker-compose.pg12.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.pg12.yml)，且不再维护。
 
 ## 插件
+
+### [Effective Config](https://git.tt-rss.org/fox/ttrss-prefs-effective-config)
+
+在设置 → 插件中启用该插件后，可以在设置 → 系统 → Effective Config 界面中查看当前部署的所有环境变量。
 
 ### [Mercury 全文获取](https://github.com/HenryQW/mercury_fulltext)
 
