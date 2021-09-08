@@ -15,24 +15,20 @@ $config['DB_PASS'] = env('DB_PASS');
 $config['DB_PORT'] = env('DB_PORT');
 $config['SELF_URL_PATH'] = env('SELF_URL_PATH');
 
-$config['SINGLE_USER_MODE'] = filter_var(env('SINGLE_USER_MODE'), FILTER_VALIDATE_BOOLEAN);
+
 $config['PLUGINS'] = env('ENABLE_PLUGINS');
 $config['SESSION_COOKIE_LIFETIME'] = env('SESSION_COOKIE_LIFETIME') * 3600;
 
 
-$config['SIMPLE_UPDATE_MODE'] = filter_var(env('SIMPLE_UPDATE_MODE'), FILTER_VALIDATE_BOOLEAN);
 $config['PHP_EXECUTABLE'] = env('PHP_EXECUTABLE');
 $config['LOCK_DIRECTORY'] = env('LOCK_DIRECTORY');
 $config['CACHE_DIR'] = env('CACHE_DIR');
 $config['ICONS_DIR'] = env('ICONS_DIR');
 $config['ICONS_URL'] = env('ICONS_URL');
-$config['AUTH_AUTO_CREATE'] = filter_var(env('AUTH_AUTO_CREATE'), FILTER_VALIDATE_BOOLEAN);
-$config['AUTH_AUTO_LOGIN'] = filter_var(env('AUTH_AUTO_LOGIN'), FILTER_VALIDATE_BOOLEAN);
 $config['FORCE_ARTICLE_PURGE'] = env('FORCE_ARTICLE_PURGE');
 $config['SMTP_FROM_NAME'] = env('SMTP_FROM_NAME');
 $config['SMTP_FROM_ADDRESS'] = env('SMTP_FROM_ADDRESS');
 $config['DIGEST_SUBJECT'] = env('DIGEST_SUBJECT');
-$config['CHECK_FOR_UPDATES'] = filter_var(env('CHECK_FOR_UPDATES'), FILTER_VALIDATE_BOOLEAN);
 $config['LOG_DESTINATION'] = env('LOG_DESTINATION');
 $config['LOCAL_OVERRIDE_STYLESHEET'] = env('LOCAL_OVERRIDE_STYLESHEET');
 $config['LOCAL_OVERRIDE_JS'] = env('LOCAL_OVERRIDE_JS');
@@ -50,14 +46,20 @@ $config['MAX_FAVICON_FILE_SIZE'] = env('MAX_FAVICON_FILE_SIZE');
 $config['CACHE_MAX_DAYS'] = env('CACHE_MAX_DAYS');
 $config['MAX_CONDITIONAL_INTERVAL'] = env('MAX_CONDITIONAL_INTERVAL');
 $config['DAEMON_UNSUCCESSFUL_DAYS_LIMIT'] = env('DAEMON_UNSUCCESSFUL_DAYS_LIMIT');
-$config['LOG_SENT_MAIL'] = filter_var(env('LOG_SENT_MAIL'), FILTER_VALIDATE_BOOLEAN);
 $config['HTTP_PROXY'] = env('HTTP_PROXY');
 $config['FORBID_PASSWORD_CHANGES'] = env('FORBID_PASSWORD_CHANGES');
 $config['SESSION_NAME'] = env('SESSION_NAME');
-$config['CHECK_FOR_PLUGIN_UPDATES'] = filter_var(env('CHECK_FOR_PLUGIN_UPDATES'), FILTER_VALIDATE_BOOLEAN);
-$config['ENABLE_PLUGIN_INSTALLER'] = filter_var(env('ENABLE_PLUGIN_INSTALLER'), FILTER_VALIDATE_BOOLEAN);
 $config['AUTH_MIN_INTERVAL'] = env('AUTH_MIN_INTERVAL');
 $config['HTTP_USER_AGENT'] = env('HTTP_USER_AGENT');
+$config['LOG_SENT_MAIL'] = env_bool('LOG_SENT_MAIL');
+
+$config['AUTH_AUTO_CREATE'] = env_bool('AUTH_AUTO_CREATE');
+$config['AUTH_AUTO_LOGIN'] = env_bool('AUTH_AUTO_LOGIN');
+$config['CHECK_FOR_UPDATES'] = env_bool('CHECK_FOR_UPDATES');
+$config['CHECK_FOR_PLUGIN_UPDATES'] = env_bool('CHECK_FOR_PLUGIN_UPDATES');
+$config['ENABLE_PLUGIN_INSTALLER'] = env_bool('ENABLE_PLUGIN_INSTALLER');
+$config['SINGLE_USER_MODE'] = env_bool('SINGLE_USER_MODE');
+$config['SIMPLE_UPDATE_MODE'] = env_bool('SIMPLE_UPDATE_MODE');
 
 // Wait for the db connection
 $i = 1;
@@ -118,6 +120,17 @@ function env($name, $default = null)
     $v = getenv($name) ?: $default;
 
     return $v;
+}
+
+function env_bool($name)
+{
+    $v = env($name);
+
+    if($v!==null){
+        return filter_var($v, FILTER_VALIDATE_BOOLEAN);
+    }
+
+    return null;
 }
 
 function connectDatabase($create)
