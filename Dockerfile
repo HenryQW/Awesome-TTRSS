@@ -60,6 +60,11 @@ RUN mkdir wallabag_v2 && \
 # Download themes
 WORKDIR /var/www/themes.local
 
+# Fix safari: TypeError: window.requestIdleCallback is not a function
+# https://community.tt-rss.org/t/typeerror-window-requestidlecallback-is-not-a-function/1755/26
+# https://github.com/pladaria/requestidlecallback-polyfill
+COPY src/local-overrides.js local-overrides.js
+
 ## Feedly
 RUN curl -sL https://github.com/levito/tt-rss-feedly-theme/archive/master.tar.gz | \
   tar xzvpf - --strip-components=1 --wildcards -C . tt-rss-feedly-theme-master/feedly*.css tt-rss-feedly-theme-master/feedly/fonts
@@ -79,11 +84,6 @@ COPY src/wait-for.sh /wait-for.sh
 COPY src/ttrss.nginx.conf /etc/nginx/nginx.conf
 COPY src/initialize.php /initialize.php
 COPY src/s6/ /etc/s6/
-
-# Fix safari: TypeError: window.requestIdleCallback is not a function
-# https://community.tt-rss.org/t/typeerror-window-requestidlecallback-is-not-a-function/1755/26
-# https://github.com/pladaria/requestidlecallback-polyfill
-COPY src/local-overrides.js  themes.local/local-overrides.js
 
 # Open up ports to bypass ttrss strict port checks, USE WITH CAUTION
 ENV ALLOW_PORTS="80,443"
