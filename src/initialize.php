@@ -51,8 +51,15 @@ $config['FORBID_PASSWORD_CHANGES'] = env('FORBID_PASSWORD_CHANGES');
 $config['SESSION_NAME'] = env('SESSION_NAME');
 $config['AUTH_MIN_INTERVAL'] = env('AUTH_MIN_INTERVAL');
 $config['HTTP_USER_AGENT'] = env('HTTP_USER_AGENT');
-$config['LOG_SENT_MAIL'] = env_bool('LOG_SENT_MAIL');
+$config['SMTP_SERVER'] = env('SMTP_SERVER');
+$config['SMTP_LOGIN'] = env('SMTP_LOGIN');
+$config['SMTP_PASSWORD'] = env('SMTP_PASSWORD');
+$config['SMTP_SECURE'] = env('SMTP_SECURE');
+$config['SMTP_SKIP_CERT_CHECKS'] = env('SMTP_SKIP_CERT_CHECKS');
+$config['SMTP_CA_FILE'] = env('SMTP_CA_FILE');
+$config['NGINX_XACCEL_PREFIX'] = env('NGINX_XACCEL_PREFIX');
 
+$config['LOG_SENT_MAIL'] = env_bool('LOG_SENT_MAIL');
 $config['AUTH_AUTO_CREATE'] = env_bool('AUTH_AUTO_CREATE');
 $config['AUTH_AUTO_LOGIN'] = env_bool('AUTH_AUTO_LOGIN');
 $config['CHECK_FOR_UPDATES'] = env_bool('CHECK_FOR_UPDATES');
@@ -60,6 +67,7 @@ $config['CHECK_FOR_PLUGIN_UPDATES'] = env_bool('CHECK_FOR_PLUGIN_UPDATES');
 $config['ENABLE_PLUGIN_INSTALLER'] = env_bool('ENABLE_PLUGIN_INSTALLER');
 $config['SINGLE_USER_MODE'] = env_bool('SINGLE_USER_MODE');
 $config['SIMPLE_UPDATE_MODE'] = env_bool('SIMPLE_UPDATE_MODE');
+$config['IMG_HASH_SQL_FUNCTION'] = env_bool('IMG_HASH_SQL_FUNCTION');
 
 // Wait for the db connection
 $i = 1;
