@@ -24,12 +24,12 @@ Awesome TTRSS 支持多架构 <Badge text="x86 ✓" vertical="top" type="tip"/><
 
 ```bash
 docker run -it --name ttrss --restart=always \
--e SELF_URL_PATH = [ TTRSS 实例地址 ]  \
--e DB_HOST = [ 数据库地址 ]  \
--e DB_PORT= [ 数据库端口 ]  \
--e DB_NAME = [ 数据库名称 ]  \
--e DB_USER = [ 数据库用户名 ]  \
--e DB_PASS = [ 数据库密码 ]  \
+-e SELF_URL_PATH=[ TTRSS 实例地址 ]  \
+-e DB_HOST=[ 数据库地址 ]  \
+-e DB_PORT=[ 数据库端口 ]  \
+-e DB_NAME=[ 数据库名称 ]  \
+-e DB_USER=[ 数据库用户名 ]  \
+-e DB_PASS=[ 数据库密码 ]  \
 -p [ 容器对外映射端口 ]:80  \
 -d wangqiru/ttrss
 ```

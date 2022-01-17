@@ -24,12 +24,12 @@ Awesome TTRSS supports multiple architectures <Badge text="x86 ✓" vertical="to
 
 ```bash
 docker run -it --name ttrss --restart=always \
--e SELF_URL_PATH = [ your public URL ]  \
--e DB_HOST = [ your DB address ]  \
--e DB_PORT= [ your DB port ]  \
--e DB_NAME = [ your DB name ]  \
--e DB_USER = [ your DB user ]  \
--e DB_PASS = [ your DB password ]  \
+-e SELF_URL_PATH=[ your public URL ]  \
+-e DB_HOST=[ your DB address ]  \
+-e DB_PORT=[ your DB port ]  \
+-e DB_NAME=[ your DB name ]  \
+-e DB_USER=[ your DB user ]  \
+-e DB_PASS=[ your DB password ]  \
 -p [ public port ]:80  \
 -d wangqiru/ttrss
 ```
