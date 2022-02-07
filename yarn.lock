@@ -1250,12 +1250,12 @@
     "@vuepress/types" "1.9.7"
     lodash.debounce "^4.0.8"
 
-"@vuepress/plugin-back-to-top@1.9.5":
-  version "1.9.5"
-  resolved "https://registry.yarnpkg.com/@vuepress/plugin-back-to-top/-/plugin-back-to-top-1.9.5.tgz#61e2f5aa84f07306843db5e13f53a386aa89e443"
-  integrity sha512-zcESgBsH5EYQLUN+EtxDYKHyPmZXIgLEReaKU8ddRaMxzodMXW84WtCmsc0En/P9wkf4SOXZkmWllH53rZWrzQ==
+"@vuepress/plugin-back-to-top@1.9.7":
+  version "1.9.7"
+  resolved "https://registry.yarnpkg.com/@vuepress/plugin-back-to-top/-/plugin-back-to-top-1.9.7.tgz#249a76d79f1e0c8c71a2804485ad0245837e6bfd"
+  integrity sha512-DM1S+Q8Xn/i+zhe4zThekxb1M2abfKLklg/NKtQloklHKdNdVfk+EcxWYNmNfSii+ymDWaaG8lmH0xjVhy0iXw==
   dependencies:
-    "@vuepress/types" "1.9.5"
+    "@vuepress/types" "1.9.7"
     lodash.debounce "^4.0.8"
 
 "@vuepress/plugin-google-analytics@1.9.7":
@@ -1341,15 +1341,6 @@
     stylus-loader "^3.0.2"
     vuepress-plugin-container "^2.0.2"
     vuepress-plugin-smooth-scroll "^0.0.3"
-
-"@vuepress/types@1.9.5":
-  version "1.9.5"
-  resolved "https://registry.yarnpkg.com/@vuepress/types/-/types-1.9.5.tgz#9fe265fac3236cd5f9c01216553825461d5eca9b"
-  integrity sha512-fu1Wyi+cPFyn7nfxNH4MVvU5glYvRB0RMI7besq9kiI/KkZJPb2G1hITopECJOGk+6G/cOU/iSdUDUHH4GQLgA==
-  dependencies:
-    "@types/markdown-it" "^10.0.0"
-    "@types/webpack-dev-server" "^3"
-    webpack-chain "^6.0.0"
 
 "@vuepress/types@1.9.7":
   version "1.9.7"
