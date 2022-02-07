@@ -44,7 +44,7 @@ ADD https://raw.githubusercontent.com/jangernert/FeedReader/master/data/tt-rss-f
 
 ## Options per feed
 RUN mkdir options_per_feed && \
-  curl -sL https://github.com/sergey-dryabzhinsky/options_per_feed/archive/master.tar.gz | \
+  curl -sL https://github.com/dimon222/options_per_feed/archive/refs/heads/feature/upgrade_to_latest.tar.gz | \
   tar xzvpf - --strip-components=1 -C options_per_feed options_per_feed-master
 
 ## Remove iframe sandbox
