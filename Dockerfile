@@ -59,8 +59,8 @@ RUN mkdir wallabag_v2 && \
 
 ## ff_xmllint
 RUN mkdir ff_xmllint && \
-  curl -sL https://github.com/fastcat/tt-rss-ff-xmllint/archive/master.tar.gz | \
-  tar xzvpf - --strip-components=1 -C ff_xmllint tt-rss-ff-xmllint-master
+  curl -sL https://github.com/jordemort/tt-rss-ff-xmllint/archive/fix-ajax.tar.gz | \
+  tar xzvpf - --strip-components=1 -C ff_xmllint tt-rss-ff-xmllint-fix-ajax
 
 # Download themes
 WORKDIR /var/www/themes.local
@@ -99,7 +99,7 @@ ENV DB_PASS ttrss
 
 # Install dependencies
 RUN chmod -x /wait-for.sh && chmod -x /docker-entrypoint.sh && apk add --update --no-cache git nginx s6 curl sudo \
-  libxml2-utils tidyhtml \
+  libxml2-utils moreutils tidyhtml \
   php8 php8-fpm php8-pdo php8-pgsql php8-pdo_pgsql \
   php8-gd php8-mbstring php8-intl php8-xml php8-curl \
   php8-session php8-tokenizer php8-dom php8-fileinfo \
