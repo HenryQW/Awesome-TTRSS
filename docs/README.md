@@ -190,32 +190,36 @@ Sometimes breaking changes will be introduced to further optimize Awesome TTRSS.
 This section demonstrates the steps to upgrade Postgres major version (from 12.x to 13.x) or migrate from other images to postgres:alpine.
 
 1. Stop all the service containers:
+
    ```bash
    docker-compose stop
    ```
+
 1. Copy the Postgres data volume `~/postgres/data/` (or the location specified in your docker-compose file) to somewhere else as a backup, **THIS IS IMPORTANT**.
 1. Use the following command to dump all your data:
+
    ```bash
    docker exec postgres pg_dumpall -c -U YourUsername > export.sql
    ```
+
 1. Delete the Postgres data volume `~/postgres/data/`.
 1. Update your docker-compose file (**Note that the `DB_NAME` must not be changed**) with `database.postgres` section in the the latest [docker-compose.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.yml), and bring it up:
+
    ```bash
    docker-compose up -d
    ```
+
 1. Use the following command to restore all your data:
+
    ```bash
    cat export.sql | docker exec -i postgres psql -U YourUsername
    ```
+
 1. Test if everything works fine, and now you may remove the backup in step 2.
 
 The legacy docker-compose file (supports Postgres 12) is [archived as docker-compose.pg12.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.pg12.yml), and will no longer be maintained.
 
 ## Plugins
-
-### [Effective Config](https://git.tt-rss.org/fox/ttrss-prefs-effective-config)
-
-Enable via Preferences → Plugins, and navigate to Preferences → System → Effective Config for viewing all live environment variables of your TTRSS instance.
 
 ### [Mercury Fulltext Extraction](https://github.com/HenryQW/mercury_fulltext)
 

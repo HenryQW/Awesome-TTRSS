@@ -9,11 +9,6 @@ RUN apk add --update tar curl git \
 # Download plugins
 WORKDIR /var/www/plugins.local
 
-## Effective Config
-RUN mkdir prefs_effective_config && \
-  curl -sL https://git.tt-rss.org/fox/ttrss-prefs-effective-config/archive/master.tar.gz | \
-  tar xzvpf - --strip-components=1 -C prefs_effective_config
-
 ## Fever
 RUN mkdir /var/www/plugins/fever && \
   curl -sL https://github.com/DigitalDJ/tinytinyrss-fever-plugin/archive/master.tar.gz | \

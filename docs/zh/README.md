@@ -190,32 +190,36 @@ Postgres 大版本更新需要额外的步骤来确保服务正常运行。
 这些步骤演示了如何进行 Postgres 大版本更新（从 12.x 至 13.x），或者从其他镜像迁移至 postgres:alpine。
 
 1. 停止所有服务容器：
+
    ```bash
    docker-compose stop
    ```
+
 1. 复制 Postgres 数据卷 `~/postgres/data/`（或者你在 docker-compose 中指定的目录）至其他任何地方作为备份，这非常重要！
 1. 执行如下命令来导出所有数据：
+
    ```bash
    docker exec postgres pg_dumpall -c -U 数据库用户名 > export.sql
    ```
+
 1. 删除 Postgres 数据卷 `~/postgres/data/`。
 1. 根据最新 [docker-compose.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.yml) 中的`database.postgres` 部份来更新你的 docker-compose 文件（**注意 `DB_NAME` 不可更改**），并启动：
+
    ```bash
    docker-compose up -d
    ```
+
 1. 执行如下命令来导入所有数据：
+
    ```bash
    cat export.sql | docker exec -i postgres psql -U 数据库用户名
    ```
+
 1. 测试所有服务是否正常工作，现在你可以移除步骤二中的备份了。
 
 旧版 docker-compose（支持 Postgres 12）已经被 [归档为 docker-compose.pg12.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.pg12.yml)，且不再维护。
 
 ## 插件
-
-### [Effective Config](https://git.tt-rss.org/fox/ttrss-prefs-effective-config)
-
-在设置 → 插件中启用该插件后，可以在设置 → 系统 → Effective Config 界面中查看当前部署的所有环境变量。
 
 ### [Mercury 全文获取](https://github.com/HenryQW/mercury_fulltext)
 
