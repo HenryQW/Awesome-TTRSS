@@ -89,7 +89,7 @@ ENV DB_PASS ttrss
 
 # Install dependencies
 RUN chmod -x /wait-for.sh && chmod -x /docker-entrypoint.sh && apk add --update --no-cache git nginx s6 curl sudo \
-  php8 php8-fpm php8-pdo php8-pgsql php8-pdo_pgsql \
+  php8 php8-fpm php8-pdo php8-pgsql php8-pdo_pgsql php8-openssl \
   php8-gd php8-mbstring php8-intl php8-xml php8-curl \
   php8-session php8-tokenizer php8-dom php8-fileinfo \
   php8-json php8-iconv php8-pcntl php8-posix php8-zip php8-exif \
