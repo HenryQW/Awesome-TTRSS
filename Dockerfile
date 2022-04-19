@@ -137,7 +137,8 @@ RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases
   "$ALPINE_GLIBC_BASE_PACKAGE_FILENAME" \
   "$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
   "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME" && \
-  chown nobody:nginx -R /var/www
+  chown nobody:nginx -R /var/www && \
+  git config --global --add safe.directory /var/www
 
 EXPOSE 80
 
