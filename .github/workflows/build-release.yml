@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Set date
         id: date
         run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
@@ -30,11 +30,10 @@ jobs:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         run: |
           echo "${DOCKER_PASSWORD}" | docker login --username ${DOCKER_USERNAME} --password-stdin
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
       - name: Set up Docker Buildx
-        id: buildx
-        uses: crazy-max/ghaction-docker-buildx@v1
-        with:
-          buildx-version: latest
+        uses: docker/setup-buildx-action@v1
       - name: Build dockerfile (with push)
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}

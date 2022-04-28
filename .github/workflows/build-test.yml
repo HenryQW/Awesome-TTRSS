@@ -2,7 +2,8 @@ name: "[tester] CI for tests"
 
 on:
   pull_request:
-    branches: main
+    branches:
+      - "master"
     paths:
       - "src/**"
       - "Dockerfile"
@@ -21,12 +22,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
       - name: Set up Docker Buildx
-        id: buildx
-        uses: crazy-max/ghaction-docker-buildx@master
-        with:
-          buildx-version: latest
+        uses: docker/setup-buildx-action@v1
       - name: Build dockerfile (without push)
         run: |
           docker buildx build \

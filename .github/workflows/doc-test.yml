@@ -2,7 +2,8 @@ name: "[tester] CI for docs"
 
 on:
   pull_request:
-    branches: main
+    branches:
+      - main
     paths:
       - "docs/**"
   push:
@@ -11,16 +12,34 @@ on:
       - "!main"
     paths:
       - "docs/**"
+      - "package.json"
+      - "yarn.lock"
+      - "Dockerfile"
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Set up node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: "15.x"
+          cache: "npm"
       - name: Build vuepress docs
         run: npm install && npm run docs:build
+
+  automerge:
+    needs: test
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
+    steps:
+      - uses: fastify/github-action-merge-dependabot@v3
+        if: >-
+          ${{ github.actor == 'dependabot[bot]' && github.event_name ==
+          'pull_request' }}
+          with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
