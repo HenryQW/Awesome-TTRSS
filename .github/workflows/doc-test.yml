@@ -6,6 +6,9 @@ on:
       - main
     paths:
       - "docs/**"
+      - "package.json"
+      - "yarn.lock"
+      - "Dockerfile"
   push:
     branches:
       - "*"
@@ -41,5 +44,5 @@ jobs:
         if: >-
           ${{ github.actor == 'dependabot[bot]' && github.event_name ==
           'pull_request' }}
-          with:
+        with:
           github-token: ${{ secrets.GITHUB_TOKEN }}

@@ -6,6 +6,8 @@ on:
       - main
     paths:
       - "docs/**"
+      - "package.json"
+      - "yarn.lock"
 
 jobs:
   test:
