@@ -77,7 +77,7 @@ TTRSS 容器自身不负责使用 HTTPS 加密通信。参见下方的样例自�
 ```nginx
 # Caddyfile
 ttrssdev.henry.wang {
-    reverse_proxy service.ttrss:80
+    reverse_proxy 127.0.0.1:181
     encode zstd gzip
 }
 ```

@@ -77,7 +77,7 @@ TTRSS container itself doesn't handle HTTPS traffic. Examples of configuring a C
 ```nginx
 # Caddyfile
 ttrssdev.henry.wang {
-    reverse_proxy service.ttrss:80
+    reverse_proxy 127.0.0.1:181
     encode zstd gzip
 }
 ```
