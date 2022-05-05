@@ -163,7 +163,7 @@ service.mercury:
 
 ## 数据库更新或迁移
 
-Postgres 大版本更新需要额外的步骤来确保服务正常运行。
+Postgres 大版本更新 (13->14) 需要额外的步骤来确保服务正常运行。
 为了更好地优化 Awesome TTRSS，有时候可能会推出一些破坏性更新。
 
 ### 步骤
@@ -197,8 +197,6 @@ Postgres 大版本更新需要额外的步骤来确保服务正常运行。
    ```
 
 1. 测试所有服务是否正常工作，现在你可以移除步骤二中的备份了。
-
-旧版 docker-compose（支持 Postgres 12）已经被 [归档为 docker-compose.pg12.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.pg12.yml)，且不再维护。
 
 ## 插件
 

@@ -163,7 +163,7 @@ service.mercury:
 
 ## Database Upgrade or Migration
 
-Postgres major upgrades will require some manual operations.
+Postgres major version upgrades (13->14) will require some manual operations.
 Sometimes breaking changes will be introduced to further optimize Awesome TTRSS.
 
 ### Steps
@@ -197,8 +197,6 @@ This section demonstrates the steps to upgrade Postgres major version (from 12.x
    ```
 
 1. Test if everything works fine, and now you may remove the backup in step 2.
-
-The legacy docker-compose file (supports Postgres 12) is [archived as docker-compose.pg12.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.pg12.yml), and will no longer be maintained.
 
 ## Plugins
 
