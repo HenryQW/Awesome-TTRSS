@@ -72,9 +72,18 @@ For more environment variables, please refer to the [official tt-rss repo](https
 
 ### Configure HTTPS
 
-TTRSS container itself doesn't handle HTTPS traffic. An example of configuring an Nginx reverse proxy with free SSL certificate from [Let's Encrypt](https://letsencrypt.org/) is shown below:
+TTRSS container itself doesn't handle HTTPS traffic. Examples of configuring a Caddy or an Nginx reverse proxy with free SSL certificate from [Let's Encrypt](https://letsencrypt.org/) are shown below:
 
 ```nginx
+# Caddyfile
+ttrssdev.henry.wang {
+    reverse_proxy service.ttrss:80
+    encode zstd gzip
+}
+```
+
+```nginx
+# nginx.conf
 upstream ttrssdev {
     server 127.0.0.1:181;
 }
@@ -92,9 +101,6 @@ server {
 
     ssl_certificate /etc/letsencrypt/live/ttrssdev.henry.wang/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/ttrssdev.henry.wang/privkey.pem;
-
-    access_log /var/log/nginx/ttrssdev_access.log combined;
-    error_log  /var/log/nginx/ttrssdev_error.log;
 
     location / {
         proxy_redirect off;
@@ -116,31 +122,6 @@ server {
         proxy_temp_file_write_size  64k;
     }
 }
-```
-
-If you want to place TTRSS under a subdirectory, such as `https://mydomain.com/ttrss`, please refer to the following：
-
-```nginx
-    location /ttrss/ {
-        rewrite /ttrss/(.*) /$1 break;
-        proxy_redirect https://$http_host https://$http_host/ttrss;
-        proxy_pass http://ttrssdev;
-
-        proxy_set_header  Host                $http_host;
-        proxy_set_header  X-Real-IP           $remote_addr;
-        proxy_set_header  X-Forwarded-Ssl     on;
-        proxy_set_header  X-Forwarded-For     $proxy_add_x_forwarded_for;
-        proxy_set_header  X-Forwarded-Proto   $scheme;
-        proxy_set_header  X-Frame-Options     SAMEORIGIN;
-
-        client_max_body_size        100m;
-        client_body_buffer_size     128k;
-
-        proxy_buffer_size           4k;
-        proxy_buffers               4 32k;
-        proxy_busy_buffers_size     64k;
-        proxy_temp_file_write_size  64k;
-    }
 ```
 
 **🔴 Please note that [the value in you `SELF_URL_PATH` should be changed as well.](#supported-environment-variables)**
