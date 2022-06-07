@@ -19,14 +19,14 @@ services:
       - database_only
     stdin_open: true
     tty: true
-    restart: always
+    restart: unless-stopped
 
   service.mercury: # set Mercury Parser API endpoint to `service.mercury:3000` on TTRSS plugin setting page
     image: wangqiru/mercury-parser-api:latest
     networks:
       - public_access
       - service_only
-    restart: always
+    restart: unless-stopped
 
   service.opencc: # set OpenCC API endpoint to `service.opencc:3000` on TTRSS plugin setting page
     image: wangqiru/opencc-api-server:latest
@@ -34,7 +34,7 @@ services:
       - NODE_ENV=production
     networks:
       - service_only
-    restart: always
+    restart: unless-stopped
 
   database.postgres:
     image: postgres:13-alpine
@@ -46,7 +46,7 @@ services:
       - ~/postgres/data/:/var/lib/postgresql/data # persist postgres data to ~/postgres/data/ on the host
     networks:
       - database_only
-    restart: always
+    restart: unless-stopped
 
   # utility.watchtower:
   #   image: containrrr/watchtower:latest
