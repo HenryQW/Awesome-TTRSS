@@ -3,12 +3,14 @@ services:
   service.rss:
     image: wangqiru/ttrss:latest
     ports:
-      - 181:80
+      - "${PORT}:80"
+    env_file:
+      - awesome.env
     environment:
-      - SELF_URL_PATH=http://localhost:181/ # please change to your own domain
-      - DB_PASS=ttrss # use the same password defined in `database.postgres`
-      - PUID=1000
-      - PGID=1000
+      - "SELF_URL_PATH=${SELF_URL_PATH:?err}" # please change to your own domain
+      - "DB_PASS=${DB_PASS:?err}" # use the same password defined in `database.postgres`
+      - "PUID=${PUID:-1000}"
+      - "PGID=${PGID:-1000}"
     volumes:
       - feed-icons:/var/www/feed-icons/
     networks:
@@ -36,8 +38,10 @@ services:
 
   database.postgres:
     image: postgres:13-alpine
+    env_file:
+      - awesome.env
     environment:
-      - POSTGRES_PASSWORD=ttrss # feel free to change the password
+      - "POSTGRES_PASSWORD=${DB_PASS:?err}" # feel free to change the password
     volumes:
       - ~/postgres/data/:/var/lib/postgresql/data # persist postgres data to ~/postgres/data/ on the host
     networks:
