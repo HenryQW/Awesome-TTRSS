@@ -20,6 +20,10 @@ services:
     stdin_open: true
     tty: true
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "-I", "http://localhost:${PORT}"]
+    depends_on:
+      - "database.postgres"
 
   service.mercury: # set Mercury Parser API endpoint to `service.mercury:3000` on TTRSS plugin setting page
     image: wangqiru/mercury-parser-api:latest
@@ -47,6 +51,9 @@ services:
     networks:
       - database_only
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+
 
   # utility.watchtower:
   #   image: containrrr/watchtower:latest
