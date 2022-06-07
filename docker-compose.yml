@@ -2,7 +2,6 @@ version: "3"
 services:
   service.rss:
     image: wangqiru/ttrss:latest
-    container_name: ttrss
     ports:
       - 181:80
     environment:
@@ -22,7 +21,6 @@ services:
 
   service.mercury: # set Mercury Parser API endpoint to `service.mercury:3000` on TTRSS plugin setting page
     image: wangqiru/mercury-parser-api:latest
-    container_name: mercury
     networks:
       - public_access
       - service_only
@@ -30,7 +28,6 @@ services:
 
   service.opencc: # set OpenCC API endpoint to `service.opencc:3000` on TTRSS plugin setting page
     image: wangqiru/opencc-api-server:latest
-    container_name: opencc
     environment:
       - NODE_ENV=production
     networks:
@@ -39,7 +36,6 @@ services:
 
   database.postgres:
     image: postgres:13-alpine
-    container_name: postgres
     environment:
       - POSTGRES_PASSWORD=ttrss # feel free to change the password
     volumes:
@@ -49,7 +45,6 @@ services:
     restart: always
 
   # utility.watchtower:
-  #   container_name: watchtower
   #   image: containrrr/watchtower:latest
   #   volumes:
   #     - /var/run/docker.sock:/var/run/docker.sock
