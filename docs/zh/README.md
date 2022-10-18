@@ -211,7 +211,7 @@ Postgres 大版本更新 (13->14) 需要额外的步骤来确保服务正常运�
 1. 在设置中填入 Mercury Parser API 地址
    ![填入 Mercury Parser API 地址](https://share.henry.wang/9HJemY/BlTnDhuUGC+)
 
-使用 Awesome-TTRSS 部署的 OpenCC 可填写`service.mercury:3000`。
+使用 Awesome-TTRSS 部署的 mercury 可填写`service.mercury:3000`。
 
 #### 全文提取按钮
 
