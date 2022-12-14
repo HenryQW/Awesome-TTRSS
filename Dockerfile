@@ -1,4 +1,4 @@
-FROM docker.io/alpine:3.16 AS builder
+FROM docker.io/alpine:3 AS builder
 
 # Download ttrss via git
 WORKDIR /var/www
@@ -75,7 +75,7 @@ RUN curl -sL https://github.com/levito/tt-rss-feedly-theme/archive/master.tar.gz
 RUN curl -sL https://github.com/DIYgod/ttrss-theme-rsshub/archive/master.tar.gz | \
   tar xzvpf - --strip-components=2 -C . ttrss-theme-rsshub-master/dist/rsshub.css
 
-FROM docker.io/alpine:3.16
+FROM docker.io/alpine:3
 
 LABEL maintainer="Henry<hi@henry.wang>"
 
@@ -96,11 +96,11 @@ ENV DB_PASS ttrss
 
 # Install dependencies
 RUN chmod -x /wait-for.sh && chmod -x /docker-entrypoint.sh && apk add --update --no-cache git nginx s6 curl sudo \
-  php8 php8-fpm php8-phar \
-  php8-pdo php8-gd php8-pgsql php8-pdo_pgsql php8-xmlwriter \
-  php8-mbstring php8-intl php8-xml php8-curl php8-simplexml \
-  php8-session php8-tokenizer php8-dom php8-fileinfo php8-ctype \
-  php8-json php8-iconv php8-pcntl php8-posix php8-zip php8-exif php8-openssl \
+  php81 php81-fpm php81-phar \
+  php81-pdo php81-gd php81-pgsql php81-pdo_pgsql php81-xmlwriter \
+  php81-mbstring php81-intl php81-xml php81-curl php81-simplexml \
+  php81-session php81-tokenizer php81-dom php81-fileinfo php81-ctype \
+  php81-json php81-iconv php81-pcntl php81-posix php81-zip php81-exif php81-openssl \
   ca-certificates && rm -rf /var/cache/apk/* \
   # Update libiconv as the default version is too low
   # Do not bump this dependency https://gitlab.alpinelinux.org/alpine/aports/-/issues/12328
