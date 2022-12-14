@@ -68,6 +68,11 @@ $config['ENABLE_PLUGIN_INSTALLER'] = env_bool('ENABLE_PLUGIN_INSTALLER');
 $config['SINGLE_USER_MODE'] = env_bool('SINGLE_USER_MODE');
 $config['SIMPLE_UPDATE_MODE'] = env_bool('SIMPLE_UPDATE_MODE');
 $config['IMG_HASH_SQL_FUNCTION'] = env_bool('IMG_HASH_SQL_FUNCTION');
+$config['CACHE_S3_ENDPOINT'] = env_bool('CACHE_S3_ENDPOINT');
+$config['CACHE_S3_BUCKET'] = env_bool('CACHE_S3_BUCKET');
+$config['CACHE_S3_REGION'] = env_bool('CACHE_S3_REGION');
+$config['CACHE_S3_ACCESS_KEY'] = env_bool('CACHE_S3_ACCESS_KEY');
+$config['CACHE_S3_SECRET_KEY'] = env_bool('CACHE_S3_SECRET_KEY');
 
 // Wait for the db connection
 $i = 1;
