@@ -2,6 +2,8 @@ FROM docker.io/alpine:3.16 AS builder
 
 # Download ttrss via git
 WORKDIR /var/www
+# https://stackoverflow.com/questions/36996046/how-to-prevent-dockerfile-caching-git-clone
+ADD https://dev.tt-rss.org/api/v1/repos/tt-rss/tt-rss/git/refs/heads/master /var/www/ttrss-version
 RUN apk add --update tar curl git \
   && rm -rf /var/www/* \
   && git clone https://git.tt-rss.org/fox/tt-rss --depth=1 /var/www
