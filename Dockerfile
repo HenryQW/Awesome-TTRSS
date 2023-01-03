@@ -51,6 +51,11 @@ RUN mkdir remove_iframe_sandbox && \
 RUN mkdir wallabag_v2 && \
   curl -sL https://github.com/joshp23/ttrss-to-wallabag-v2/archive/master.tar.gz | \
   tar xzvpf - --strip-components=2 -C wallabag_v2 ttrss-to-wallabag-v2-master/wallabag_v2
+  
+## Auth OIDC
+RUN mkdir auth_oidc && \
+  curl -sL https://dev.tt-rss.org/tt-rss/ttrss-auth-oidc/archive/master.tar.gz | \
+  tar xzvpf - --strip-components=1 -C auth_oidc ttrss-auth-oidc-master
 
 # Download themes
 WORKDIR /var/www/themes.local
