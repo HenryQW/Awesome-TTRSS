@@ -13,7 +13,7 @@
     "docker:build": "docker rm ttrss -f && docker-compose -f docker-compose.dev.yml up -d --build && docker logs ttrss -f"
   },
   "devDependencies": {
-    "@vuepress/plugin-back-to-top": "1.9.7",
+    "@vuepress/plugin-back-to-top": "1.9.8",
     "@vuepress/plugin-google-analytics": "1.9.7",
     "vuepress": "1.9.7"
   }
