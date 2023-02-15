@@ -297,6 +297,23 @@ Save articles to Wallabag.
 
 Refer to [Wallabag v2](https://github.com/joshp23/ttrss-to-wallabag-v2)。
 
+### [Auth OIDC](https://dev.tt-rss.org/tt-rss/ttrss-auth-oidc)
+
+This is a system plugin, that allow users to connect through an oidc provider, like Keycloak, to TTRSS. 
+
+System plugin, enabled by adding `auth_oidc` to the environment variable **ENABLE_PLUGINS**.
+
+Then add the following environments variables with according values : 
+
+    ```yaml
+        AUTH_OIDC_NAME: 'IDP provider name displayed'
+        AUTH_OIDC_URL: 'https://oidc.hostname.com'
+        AUTH_OIDC_CLIENT_ID: 'test-rss'
+        AUTH_OIDC_CLIENT_SECRET: 'your-secret-token'
+    ```
+    
+Refer to [Auth OIDC](https://dev.tt-rss.org/tt-rss/ttrss-auth-oidc) for more details.
+
 ## Themes
 
 ### [Feedly](https://github.com/levito/tt-rss-feedly-theme)
