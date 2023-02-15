@@ -3,7 +3,6 @@
 ![Docker Pulls](https://img.shields.io/docker/pulls/wangqiru/ttrss.svg)
 ![Docker Stars](https://img.shields.io/docker/stars/wangqiru/ttrss.svg)
 ![Docker Automated build](https://img.shields.io/docker/automated/wangqiru/ttrss.svg)
-![Docker Build Status](https://img.shields.io/docker/build/wangqiru/ttrss.svg)
 ![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FHenryQW%2FAwesome-TTRSS.svg?type=shield)
 
 ## 关于

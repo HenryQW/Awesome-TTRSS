@@ -1,7 +1,7 @@
 const glob = require("glob");
 
 // function for loading all MD files in a directory
-const getChildren = function(parent_path, dir) {
+const getChildren = function (parent_path, dir) {
   return glob
     .sync(parent_path + "/" + dir + "/*.md")
     .map(path => {
@@ -22,7 +22,7 @@ module.exports = {
   dest: "./docs/.vuepress/dist",
   plugins: {
     "@vuepress/google-analytics": {
-      ga: "UA-77456302-4"
+      ga: "G-S0X56ZZMQB"
     },
     "@vuepress/back-to-top": true
   },
