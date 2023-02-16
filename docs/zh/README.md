@@ -3,7 +3,6 @@
 ![Docker Pulls](https://img.shields.io/docker/pulls/wangqiru/ttrss.svg)
 ![Docker Stars](https://img.shields.io/docker/stars/wangqiru/ttrss.svg)
 ![Docker Automated build](https://img.shields.io/docker/automated/wangqiru/ttrss.svg)
-![Docker Build Status](https://img.shields.io/docker/build/wangqiru/ttrss.svg)
 ![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FHenryQW%2FAwesome-TTRSS.svg?type=shield)
 
 ## 关于
@@ -68,7 +67,7 @@ docker run -it --name ttrss --restart=always \
 - DISABLE_USER_IN_DAYS: 当用户 X 天后没有登录后，停止为其自动更新订阅源，直至用户再次登陆
 - FEED_LOG_QUIET: true 禁用订阅源更新所产生的日志打印
 
-更多环境变量，参见 [官方 tt-rss](https://git.tt-rss.org/fox/tt-rss/src/branch/master/classes/config.php)。
+更多环境变量，参见 [官方 tt-rss](https://git.tt-rss.org/fox/tt-rss.git/tree/classes/config.php)。
 
 ### 配置 HTTPS
 

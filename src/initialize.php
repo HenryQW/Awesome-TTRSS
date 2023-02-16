@@ -58,6 +58,10 @@ $config['SMTP_SECURE'] = env('SMTP_SECURE');
 $config['SMTP_SKIP_CERT_CHECKS'] = env('SMTP_SKIP_CERT_CHECKS');
 $config['SMTP_CA_FILE'] = env('SMTP_CA_FILE');
 $config['NGINX_XACCEL_PREFIX'] = env('NGINX_XACCEL_PREFIX');
+$config['AUTH_OIDC_NAME'] = env('AUTH_OIDC_NAME');
+$config['AUTH_OIDC_URL'] = env('AUTH_OIDC_URL');
+$config['AUTH_OIDC_CLIENT_ID'] = env('AUTH_OIDC_CLIENT_ID');
+$config['AUTH_OIDC_CLIENT_SECRET'] = env('AUTH_OIDC_CLIENT_SECRET');
 
 $config['LOG_SENT_MAIL'] = env_bool('LOG_SENT_MAIL');
 $config['AUTH_AUTO_CREATE'] = env_bool('AUTH_AUTO_CREATE');

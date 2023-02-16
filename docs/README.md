@@ -3,7 +3,6 @@
 ![Docker Pulls](https://img.shields.io/docker/pulls/wangqiru/ttrss.svg)
 ![Docker Stars](https://img.shields.io/docker/stars/wangqiru/ttrss.svg)
 ![Docker Automated build](https://img.shields.io/docker/automated/wangqiru/ttrss.svg)
-![Docker Build Status](https://img.shields.io/docker/build/wangqiru/ttrss.svg)
 ![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FHenryQW%2FAwesome-TTRSS.svg?type=shield)
 
 ## About
@@ -68,7 +67,7 @@ docker run -it --name ttrss --restart=always \
 - DISABLE_USER_IN_DAYS: disable feed update for inactive users after X days without login, until the user performs a login
 - FEED_LOG_QUIET: `true` will disable the printing of feed updating logs
 
-For more environment variables, please refer to the [official tt-rss repo](https://git.tt-rss.org/fox/tt-rss/src/branch/master/classes/config.php).
+For more environment variables, please refer to the [official tt-rss repo](https://git.tt-rss.org/fox/tt-rss.git/tree/classes/config.php).
 
 ### Configure HTTPS
 
@@ -297,6 +296,23 @@ Refer to [Remove iframe sandbox](https://github.com/DIYgod/ttrss-plugin-remove-i
 Save articles to Wallabag.
 
 Refer to [Wallabag v2](https://github.com/joshp23/ttrss-to-wallabag-v2)。
+
+### [Auth OIDC](https://dev.tt-rss.org/tt-rss/ttrss-auth-oidc)
+
+This is a system plugin, that allow users to connect through an oidc provider, like Keycloak, to TTRSS. 
+
+System plugin, enabled by adding `auth_oidc` to the environment variable **ENABLE_PLUGINS**.
+
+Then add the following environments variables with according values : 
+
+    ```yaml
+        AUTH_OIDC_NAME: 'IDP provider name displayed'
+        AUTH_OIDC_URL: 'https://oidc.hostname.com'
+        AUTH_OIDC_CLIENT_ID: 'test-rss'
+        AUTH_OIDC_CLIENT_SECRET: 'your-secret-token'
+    ```
+    
+Refer to [Auth OIDC](https://dev.tt-rss.org/tt-rss/ttrss-auth-oidc) for more details.
 
 ## Themes
 
