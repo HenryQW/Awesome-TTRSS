@@ -55,7 +55,7 @@ RUN mkdir wallabag_v2 && \
 ## Auth OIDC
 RUN mkdir auth_oidc && \
   curl -sL https://dev.tt-rss.org/tt-rss/ttrss-auth-oidc/archive/master.tar.gz | \
-  tar xzvpf - --strip-components=1 -C auth_oidc ttrss-auth-oidc-master
+  tar xz -C auth_oidc --strip-components=1
 
 # Download themes
 WORKDIR /var/www/themes.local
