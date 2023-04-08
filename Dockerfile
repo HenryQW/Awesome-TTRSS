@@ -53,9 +53,7 @@ RUN mkdir wallabag_v2 && \
   tar xzvpf - --strip-components=2 -C wallabag_v2 ttrss-to-wallabag-v2-master/wallabag_v2
   
 ## Auth OIDC
-RUN mkdir auth_oidc && \
-  curl -sL https://dev.tt-rss.org/tt-rss/ttrss-auth-oidc/archive/master.tar.gz | \
-  tar xz -C auth_oidc --strip-components=1
+RUN git clone --depth 1 https://gitlab.tt-rss.org/tt-rss/plugins/ttrss-auth-oidc.git auth_oidc
 
 # Download themes
 WORKDIR /var/www/themes.local
