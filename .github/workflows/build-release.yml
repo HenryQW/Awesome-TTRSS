@@ -4,9 +4,6 @@ on:
   repository_dispatch:
     types: build
   push:
-    branches:
-      - main
-      - dev
     paths:
       - "src/**"
       - "Dockerfile"
