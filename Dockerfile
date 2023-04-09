@@ -3,7 +3,7 @@ FROM docker.io/alpine:3 AS builder
 # Download ttrss via git
 WORKDIR /var/www
 # https://stackoverflow.com/questions/36996046/how-to-prevent-dockerfile-caching-git-clone
-ADD https://dev.tt-rss.org/api/v1/repos/tt-rss/tt-rss/git/refs/heads/master /var/www/ttrss-version
+ADD https://gitlab.tt-rss.org/api/v4/projects/20/repository/branches/master /var/www/ttrss-version
 RUN apk add --update tar curl git \
   && rm -rf /var/www/* \
   && git clone https://git.tt-rss.org/fox/tt-rss --depth=1 /var/www
@@ -56,8 +56,8 @@ RUN mkdir wallabag_v2 && \
   
 ## Auth OIDC
 RUN mkdir auth_oidc && \
-  curl -sL https://dev.tt-rss.org/tt-rss/ttrss-auth-oidc/archive/master.tar.gz | \
-  tar xzvpf - --strip-components=1 -C auth_oidc ttrss-auth-oidc
+  curl -sL https://gitlab.tt-rss.org/tt-rss/plugins/ttrss-auth-oidc/-/archive/master/ttrss-auth-oidc-master.tar.gz | \
+  tar xzvpf - --strip-components=1 -C auth_oidc ttrss-auth-oidc-master
 
 # Download themes
 WORKDIR /var/www/themes.local
@@ -65,7 +65,10 @@ WORKDIR /var/www/themes.local
 # Fix safari: TypeError: window.requestIdleCallback is not a function
 # https://community.tt-rss.org/t/typeerror-window-requestidlecallback-is-not-a-function/1755/26
 # https://github.com/pladaria/requestidlecallback-polyfill
-COPY src/local-overrides.js local-overrides.js
+# COPY src/local-overrides.js local-overrides.js
+# this polyfill is added to tt-rss after 1 years 7 months
+# https://github.com/HenryQW/Awesome-TTRSS/commit/1b077f26f8c40ce7dd7b2a0cf2263a3537118e07
+# https://gitlab.tt-rss.org/tt-rss/tt-rss/-/commit/31ef788e02339452fa6241277e17f85067c33ba0
 
 ## Feedly
 RUN curl -sL https://github.com/levito/tt-rss-feedly-theme/archive/master.tar.gz | \
