@@ -37,7 +37,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: wangqiru/ttrss
+          images: ${{ secrets.DOCKER_USERNAME }}/ttrss
           tags: |
             latest
             type=schedule,pattern=latest-{{date 'YYYY-MM-DD'}}
