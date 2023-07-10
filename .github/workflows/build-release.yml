@@ -30,9 +30,10 @@ jobs:
         with:
           images: ${{ secrets.DOCKER_USERNAME }}/ttrss
           tags: |
-            type=raw,value=latest,enable={{is_default_branch}}
-            type=raw,value=latest-{{date 'YYYY-MM-DD'}},enable={{is_default_branch}}
-            type=ref,event=branch,suffix=-{{date 'YYYY-MM-DD'}},enable=${{ github.ref != format('refs/heads/{0}', 'main') }}
+            type=raw,value=latest,enable={{ is_default_branch }}
+            type=raw,value=latest-{{ date 'YYYY-MM-DD' }},enable={{ is_default_branch }}
+            type=ref,event=branch,enable=${{ github.ref != format('refs/heads/{0}', 'main') }}
+            type=ref,event=branch,suffix=-{{ date 'YYYY-MM-DD' }},enable=${{ github.ref != format('refs/heads/{0}', 'main') }}
           flavor: latest=false
 
       - name: Build dockerfile (with push)

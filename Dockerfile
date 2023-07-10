@@ -99,16 +99,20 @@ ENV DB_PASS ttrss
 
 # Install dependencies
 RUN chmod -x /wait-for.sh && chmod -x /docker-entrypoint.sh && apk add --update --no-cache git nginx s6 curl sudo \
-  php81 php81-fpm php81-phar \
-  php81-pdo php81-gd php81-pgsql php81-pdo_pgsql php81-xmlwriter \
+  php81 php81-fpm php81-phar php81-sockets php81-pecl-apcu \
+  php81-pdo php81-gd php81-pgsql php81-pdo_pgsql php81-xmlwriter php81-opcache \
   php81-mbstring php81-intl php81-xml php81-curl php81-simplexml \
   php81-session php81-tokenizer php81-dom php81-fileinfo php81-ctype \
   php81-json php81-iconv php81-pcntl php81-posix php81-zip php81-exif php81-openssl \
+  # fork only deps
+  php81-gmp php81-pecl-imagick \
   ca-certificates && rm -rf /var/cache/apk/* \
   # Update libiconv as the default version is too low
   # Do not bump this dependency https://gitlab.alpinelinux.org/alpine/aports/-/issues/12328
   && apk add gnu-libiconv=1.15-r3 --update --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.13/community/ \
-  && rm -rf /var/www
+  && rm -rf /var/www \
+  # fork only changes
+  && echo -e "opcache.enable_cli=1\nopcache.jit=1255\nopcache.jit_buffer_size=64M" >> /etc/php81/php.ini
 
 ENV LD_PRELOAD /usr/lib/preloadable_libiconv.so php
 
