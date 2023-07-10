@@ -99,16 +99,20 @@ ENV DB_PASS ttrss
 
 # Install dependencies
 RUN chmod -x /wait-for.sh && chmod -x /docker-entrypoint.sh && apk add --update --no-cache git nginx s6 curl sudo \
-  php8 php8-fpm php8-phar \
-  php8-pdo php8-gd php8-pgsql php8-pdo_pgsql php8-xmlwriter \
+  php8 php8-fpm php8-phar php8-sockets php8-pecl-apcu \
+  php8-pdo php8-gd php8-pgsql php8-pdo_pgsql php8-xmlwriter php8-opcache \
   php8-mbstring php8-intl php8-xml php8-curl php8-simplexml \
   php8-session php8-tokenizer php8-dom php8-fileinfo php8-ctype \
   php8-json php8-iconv php8-pcntl php8-posix php8-zip php8-exif php8-openssl \
+  # fork only deps
+  php8-gmp php8-pecl-imagick \
   ca-certificates && rm -rf /var/cache/apk/* \
   # Update libiconv as the default version is too low
   # Do not bump this dependency https://gitlab.alpinelinux.org/alpine/aports/-/issues/12328
   && apk add gnu-libiconv=1.15-r3 --update --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.13/community/ \
-  && rm -rf /var/www
+  && rm -rf /var/www \
+  # fork only changes
+  && echo -e "opcache.enable_cli=1\nopcache.jit=1255\nopcache.jit_buffer_size=64M" >> /etc/php8/php.ini
 
 ENV LD_PRELOAD /usr/lib/preloadable_libiconv.so php
 
