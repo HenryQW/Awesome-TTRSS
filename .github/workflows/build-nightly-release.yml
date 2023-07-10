@@ -26,8 +26,10 @@ jobs:
         with:
           images: ${{ secrets.DOCKER_USERNAME }}/ttrss
           tags: |
-            type=raw,value=nightly
-            type=raw,value=nightly-{{date 'YYYY-MM-DD'}}
+            type=raw,value=nightly,enable={{ is_default_branch }}
+            type=raw,value=nightly-{{ date 'YYYY-MM-DD' }},enable={{ is_default_branch }}
+            type=raw,value={{ branch }}-nightly,enable=${{ github.ref != format('refs/heads/{0}', 'main') }}
+            type=raw,value={{ branch }}-nightly-{{date 'YYYY-MM-DD'}},enable=${{ github.ref != format('refs/heads/{0}', 'main') }}
           flavor: latest=false
       - name: Build dockerfile (with push)
         uses: docker/build-push-action@v3
