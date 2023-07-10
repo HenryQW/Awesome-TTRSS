@@ -3,6 +3,7 @@ name: "[builder] CI for releases"
 on:
   repository_dispatch:
     types: build
+  workflow_dispatch: ~
   push:
     paths:
       - "src/**"
