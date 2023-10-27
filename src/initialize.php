@@ -3,7 +3,7 @@
 
 $confpath = '/var/www/config.php';
 
-// For configs, see https://git.tt-rss.org/fox/tt-rss/src/branch/master/classes/config.php
+// For configs, see https://git.tt-rss.org/fox/tt-rss/src/branch/master/classes/Config.php
 
 $config = array();
 
