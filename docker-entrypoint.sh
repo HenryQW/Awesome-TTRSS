@@ -2,17 +2,17 @@
 
 set -e
 
-# reset previously modified urlhelper.php, in case ALLOW_PORTS is updated
-git checkout -- /var/www/classes/urlhelper.php
+# reset previously modified UrlHelper.php, in case ALLOW_PORTS is updated
+git checkout -- /var/www/classes/UrlHelper.php
 
 if [ "$ALLOW_PORTS" != "80,443" ]; then
     # open ports in the env
     ALLOW_PORTS="80, 443, $ALLOW_PORTS, ''"
-    sed -i -r "s/(80, 443).*?('')/$ALLOW_PORTS/" /var/www/classes/urlhelper.php
+    sed -i -r "s/(80, 443).*?('')/$ALLOW_PORTS/" /var/www/classes/UrlHelper.php
 
     # modify BL to include ports
     CODE="if (isset(\$parts['port'])) \$tmp .= ':' . \$parts['port']; \n"
-    sed -i "/if (isset(\$parts\['path'\]))/i $CODE" /var/www/classes/urlhelper.php
+    sed -i "/if (isset(\$parts\['path'\]))/i $CODE" /var/www/classes/UrlHelper.php
 fi
 
 if [ "$FEED_LOG_QUIET" != "true" ]; then
