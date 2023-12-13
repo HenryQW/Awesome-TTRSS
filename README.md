@@ -15,9 +15,5 @@
 
 ## Donation 捐赠
 
-| PayPal                                                                                                                                                                       | 微信赞赏 WeChat Pay                                                 | OpenCollective                                                     |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| [![paypal](https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MTM5L6T4PHRQS&source=url) | <img src="https://share.henry.wang/IKaxAW/duFgAuOnmk+" width="200"> | [💰OpenCollective page](https://opencollective.com/Awesome-TTRSS/) |
-
 **Please consider donations to support [TTRSS](https://tt-rss.org/) directly.**
 **请考虑直接捐助支持[TTRSS](https://tt-rss.org/).**
