@@ -25,6 +25,6 @@ if [ -n "$DB_USER_FILE" ]; then DB_USER="$(cat $DB_USER_FILE)"; fi
 
 if [ -n "$DB_PASS_FILE" ]; then DB_PASS="$(cat $DB_PASS_FILE)"; fi
 
-sh /wait-for.sh $DB_HOST:$DB_PORT -- php82 /initialize.php && sudo -E -u nobody php82 /var/www/update.php --update-schema=force-yes && exec s6-svscan /etc/s6/
+sh /wait-for.sh $DB_HOST:$DB_PORT -- php /initialize.php && sudo -E -u nobody php /var/www/update.php --update-schema=force-yes && exec s6-svscan /etc/s6/
 
 exec "$@"
