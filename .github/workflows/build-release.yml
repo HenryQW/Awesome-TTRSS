@@ -27,7 +27,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Set tag
         id: tag
-        uses: docker/metadata-action@v4
+        uses: docker/metadata-action@v5
         with:
           images: ${{ secrets.DOCKER_USERNAME }}/ttrss
           tags: |
