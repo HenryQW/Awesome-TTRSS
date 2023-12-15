@@ -99,20 +99,22 @@ ENV DB_PASS ttrss
 
 # Install dependencies
 RUN chmod -x /wait-for.sh && chmod -x /docker-entrypoint.sh && apk add --update --no-cache git nginx s6 curl sudo \
-  php82 php82-fpm php82-phar php82-sockets php82-pecl-apcu \
-  php82-pdo php82-gd php82-pgsql php82-pdo_pgsql php82-xmlwriter php82-opcache \
-  php82-mbstring php82-intl php82-xml php82-curl php82-simplexml \
-  php82-session php82-tokenizer php82-dom php82-fileinfo php82-ctype \
-  php82-json php82-iconv php82-pcntl php82-posix php82-zip php82-exif php82-openssl \
+  php83 php83-fpm php83-phar php83-sockets php83-pecl-apcu \
+  php83-pdo php83-gd php83-pgsql php83-pdo_pgsql php83-xmlwriter php83-opcache \
+  php83-mbstring php83-intl php83-xml php83-curl php83-simplexml \
+  php83-session php83-tokenizer php83-dom php83-fileinfo php83-ctype \
+  php83-json php83-iconv php83-pcntl php83-posix php83-zip php83-exif php83-openssl \
   # fork only deps
-  php82-gmp php82-pecl-imagick \
+  php83-gmp \
+  # php83-pecl-imagick \ # do not install until https://github.com/Imagick/imagick/pull/641 is merged
   ca-certificates && rm -rf /var/cache/apk/* \
   # Update libiconv as the default version is too low
   # Do not bump this dependency https://gitlab.alpinelinux.org/alpine/aports/-/issues/12328
   && apk add gnu-libiconv=1.15-r3 --update --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.13/community/ \
   && rm -rf /var/www \
   # fork only changes
-  && echo -e "opcache.enable_cli=1\nopcache.jit=1255\nopcache.jit_buffer_size=64M" >> /etc/php82/php.ini
+  && echo -e "opcache.enable_cli=1\nopcache.jit=1255\nopcache.jit_buffer_size=64M" >> /etc/php83/php.ini \
+  && ln -s /usr/bin/php83 /usr/bin/php
 
 ENV LD_PRELOAD /usr/lib/preloadable_libiconv.so php
 
