@@ -112,7 +112,8 @@ RUN chmod -x /wait-for.sh && chmod -x /docker-entrypoint.sh && apk add --update 
   && apk add gnu-libiconv=1.15-r3 --update --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.13/community/ \
   && rm -rf /var/www \
   # fork only changes
-  && echo -e "opcache.enable_cli=1\nopcache.jit=1255\nopcache.jit_buffer_size=64M" >> /etc/php81/php.ini
+  && echo -e "opcache.enable_cli=1\nopcache.jit=1255\nopcache.jit_buffer_size=64M" >> /etc/php81/php.ini \
+  && ln -s /usr/bin/php81 /usr/bin/php
 
 ENV LD_PRELOAD /usr/lib/preloadable_libiconv.so php
 
