@@ -103,7 +103,8 @@ RUN chmod -x /wait-for.sh && chmod -x /docker-entrypoint.sh && apk add --update 
   # Update libiconv as the default version is too low
   # Do not bump this dependency https://gitlab.alpinelinux.org/alpine/aports/-/issues/12328
   && apk add gnu-libiconv=1.15-r3 --update --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.13/community/ \
-  && rm -rf /var/www
+  && rm -rf /var/www \
+  && ln -s /usr/bin/php81 /usr/bin/php
 
 ENV LD_PRELOAD /usr/lib/preloadable_libiconv.so php
 
