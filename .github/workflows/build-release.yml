@@ -12,6 +12,7 @@ on:
       - "src/**"
       - "Dockerfile"
       - "docker-entrypoint.sh"
+      - ".github/workflows/build-release.yml"
 
 jobs:
   release:

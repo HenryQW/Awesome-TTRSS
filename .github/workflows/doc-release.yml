@@ -8,6 +8,7 @@ on:
       - "docs/**"
       - "package.json"
       - "pnpm-lock.yaml"
+      - ".github/workflows/doc-release.yml"
 
 jobs:
   test:
@@ -23,7 +24,15 @@ jobs:
         with:
           node-version: lts/*
           cache: "pnpm"
+      - name: Install dependencies
+        run: pnpm install
       - name: Build vuepress docs
-        env:
-          CI_TOKEN: ${{ secrets.CI_TOKEN }}
-        run: pnpm install && pnpm run docs:build && bash deploy-doc.sh
+        run: pnpm run docs:build
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/.vuepress/dist
+          user_name: 'github-actions[bot]'
+          user_email: '41898282+github-actions[bot]@users.noreply.github.com'
+          keep_files: true

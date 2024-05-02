@@ -8,6 +8,7 @@ on:
       - "src/**"
       - "Dockerfile"
       - "docker-entrypoint.sh"
+      - ".github/workflows/build-test.yml"
   push:
     branches:
       - "*"

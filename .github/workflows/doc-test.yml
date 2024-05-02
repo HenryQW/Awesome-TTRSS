@@ -9,6 +9,7 @@ on:
       - "package.json"
       - "pnpm-lock.yaml"
       - "Dockerfile"
+      - ".github/workflows/doc-test.yml"
   push:
     branches:
       - "*"
@@ -18,6 +19,7 @@ on:
       - "package.json"
       - "pnpm-lock.yaml"
       - "Dockerfile"
+      - ".github/workflows/doc-test.yml"
 
 jobs:
   test:
@@ -33,8 +35,10 @@ jobs:
         with:
           node-version: lts/*
           cache: "pnpm"
+      - name: Install dependencies
+        run: pnpm install
       - name: Build vuepress docs
-        run: pnpm install && pnpm run docs:build
+        run: pnpm run docs:build
 
   automerge:
     needs: test
