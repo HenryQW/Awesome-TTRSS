@@ -26,4 +26,4 @@ jobs:
       - name: Build vuepress docs
         env:
           CI_TOKEN: ${{ secrets.CI_TOKEN }}
-        run: npm install && npm run docs:build && bash deploy-doc.sh
+        run: pnpm install && pnpm run docs:build && bash deploy-doc.sh

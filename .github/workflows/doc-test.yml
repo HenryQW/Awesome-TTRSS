@@ -34,7 +34,7 @@ jobs:
           node-version: lts/*
           cache: "pnpm"
       - name: Build vuepress docs
-        run: npm install && npm run docs:build
+        run: pnpm install && pnpm run docs:build
 
   automerge:
     needs: test
