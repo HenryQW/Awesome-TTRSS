@@ -3,7 +3,7 @@
 vuepress/
 node_modules/
 docs/
-yarn.lock
+pnpm-lock.yaml
 package.json
 renovate.json
 deploy-doc.sh

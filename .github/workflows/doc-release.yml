@@ -7,7 +7,7 @@ on:
     paths:
       - "docs/**"
       - "package.json"
-      - "yarn.lock"
+      - "pnpm-lock.yaml"
 
 jobs:
   test:
@@ -15,12 +15,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 8
       - name: Set up node
         uses: actions/setup-node@v4
         with:
-          node-version: "15.x"
-          cache: "npm"
+          node-version: lts/*
+          cache: "pnpm"
       - name: Build vuepress docs
         env:
           CI_TOKEN: ${{ secrets.CI_TOKEN }}
-        run: npm install && npm run docs:build && bash deploy-doc.sh
+        run: pnpm install && pnpm run docs:build && bash deploy-doc.sh
