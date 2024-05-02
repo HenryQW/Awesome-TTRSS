@@ -5,6 +5,9 @@ on:
     types: build
   workflow_dispatch: ~
   push:
+    branches:
+      - main
+      - dev
     paths:
       - "src/**"
       - "Dockerfile"
