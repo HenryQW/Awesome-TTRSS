@@ -130,7 +130,7 @@ ENV DB_PASS=ttrss
 ENV DB_NAME=ttrss
 
 # Some default settings
-ENV SELF_URL_PATH=http://localhost:181/
+ENV SELF_URL_PATH=http://localhost:181
 ENV ENABLE_PLUGINS=auth_internal,fever
 ENV SESSION_COOKIE_LIFETIME=24
 ENV SINGLE_USER_MODE=false

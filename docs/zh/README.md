@@ -33,22 +33,22 @@ docker run -it --name ttrss --restart=always \
 -d wangqiru/ttrss
 ```
 
-### 通过 docker-compose 部署
+### 通过 Docker Compose 部署
 
 [docker-compose.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.yml) 包含了 4 个镜像：
 
 1. [TTRSS](https://hub.docker.com/r/wangqiru/ttrss)
-1. [PostgreSQL](https://hub.docker.com/_/postgres)
-1. [Mercury Parser API](https://hub.docker.com/r/wangqiru/mercury-parser-api)
-1. [OpenCC API](https://hub.docker.com/r/wangqiru/opencc-api-server) <Badge text="arm32v7 ✗" vertical="top" type="error"/><Badge text="arm64v8 ✗" vertical="top" type="error"/>
+2. [PostgreSQL](https://hub.docker.com/_/postgres)
+3. [Mercury Parser API](https://hub.docker.com/r/wangqiru/mercury-parser-api)
+4. [OpenCC API](https://hub.docker.com/r/wangqiru/opencc-api-server) <Badge text="arm32v7 ✗" vertical="top" type="error"/><Badge text="arm64v8 ✗" vertical="top" type="error"/>
 
 #### 步骤
 
 1. 下载 [docker-compose.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.yml) 至任意目录。
-1. 更改 `docker-compose.yml` 中的设置，请务必更改 postgres 用户密码。
-1. 通过终端在同目录下运行 `docker-compose up -d` 后等待部署完成。
-1. 默认通过 181 端口访问 TTRSS，默认账户：`admin` 密码：`password`，请第一时间更改。
-1. `wangqiru/mercury-parser-api` 及 `wangqiru/opencc-api-server` 为支持高级功能而加入的可选服务类容器，删除不会影响 TTRSS 基础功能。
+2. 更改 `docker-compose.yml` 中的设置，请务必更改 postgres 用户密码。
+3. 通过终端在同目录下运行 `docker compose up -d` 后等待部署完成。
+4. 默认通过 181 端口访问 TTRSS，默认账户：`admin` 密码：`password`，请第一时间更改。
+5. `wangqiru/mercury-parser-api` 及 `wangqiru/opencc-api-server` 为支持高级功能而加入的可选服务类容器，删除不会影响 TTRSS 基础功能。
 
 ### 支持的环境变量列表
 
@@ -139,12 +139,12 @@ Awesome TTRSS 会自动监控 TTRSS 官方更新并与之同步，这意味着�
     docker pull wangqiru/ttrss:latest
     # docker pull wangqiru/mercury-parser-api:latest
     # docker pull wangqiru/opencc-api-server:latest
-    docker-compose up -d # 如果您没有使用 docker-compose，我确信您知道该怎么做。
+    docker compose up -d # 如果您没有使用 docker compose，我确信您知道该怎么做。
 ```
 
 ### 自动更新
 
-[样例 docker-compose](#通过-docker-compose-部署） 中包含了 [Watchtower](https://github.com/containrrr/watchtower)，它会自动拉取并更新您所有的服务容器 （包括当前系统上运行的非 Awesome TTRSS 服务的容器）。该服务默认关闭，**启用前请确认它将不会影响您其他的服务容器。**
+[样例 Docker Compose](#通过-docker-compose-部署) 中包含了 [Watchtower](https://github.com/containrrr/watchtower)，它会自动拉取并更新您所有的服务容器 （包括当前系统上运行的非 Awesome TTRSS 服务的容器）。该服务默认关闭，**启用前请确认它将不会影响您其他的服务容器。**
 
 您也可以设置 watchtower 忽略您的其他容器：
 
@@ -162,52 +162,58 @@ service.mercury:
 
 ## 数据库更新或迁移
 
-Postgres 大版本更新 (13->14) 需要额外的步骤来确保服务正常运行。
+Postgres 大版本更新 (15->16) 需要额外的步骤来确保服务正常运行。
 为了更好地优化 Awesome TTRSS，有时候可能会推出一些破坏性更新。
 
 ### 步骤
 
-这些步骤演示了如何进行 Postgres 大版本更新（从 12.x 至 13.x），或者从其他镜像迁移至 postgres:alpine。
+::: warning
+
+在升级时，请勿跳过多个大版本，例如直接从 13.x 升级到 16.x 是不支援的，并可能导致数据丢失。
+
+:::
+
+这些步骤演示了如何进行 Postgres 大版本更新（从 15.x 至 16.x），或者从其他镜像迁移至 postgres:alpine。
 
 1. 停止所有服务容器：
 
    ```bash
-   docker-compose stop
+   docker compose stop
    ```
 
-1. 复制 Postgres 数据卷 `~/postgres/data/`（或者你在 docker-compose 中指定的目录）至其他任何地方作为备份，这非常重要！
-1. 执行如下命令来导出所有数据：
+2. 复制 Postgres 数据卷 `~/postgres/data/`（或者你在 Docker Compose 中指定的目录）至其他任何地方作为备份，这非常重要！
+3. 执行如下命令来导出所有数据：
 
    ```bash
    docker exec postgres pg_dumpall -c -U 数据库用户名 > export.sql
    ```
 
-1. 删除 Postgres 数据卷 `~/postgres/data/`。
-1. 根据最新 [docker-compose.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.yml) 中的`database.postgres` 部份来更新你的 docker-compose 文件（**注意 `DB_NAME` 不可更改**），并启动：
+4. 删除 Postgres 数据卷 `~/postgres/data/`。
+5. 根据最新 [docker-compose.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.yml) 中的`database.postgres` 部份来更新你的 Docker Compose 文件（**注意 `DB_NAME` 不可更改**），并启动：
 
    ```bash
-   docker-compose up -d
+   docker compose up -d
    ```
 
-1. 执行如下命令来导入所有数据：
+6. 执行如下命令来导入所有数据：
 
    ```bash
    cat export.sql | docker exec -i postgres psql -U 数据库用户名
    ```
 
-1. 测试所有服务是否正常工作，现在你可以移除步骤二中的备份了。
+7. 测试所有服务是否正常工作，现在你可以移除步骤二中的备份了。
 
 ## 插件
 
 ### [Mercury 全文获取](https://github.com/HenryQW/mercury_fulltext)
 
-全文内容提取插件，配合单独的 Mercury Parser API 服务器使用。[样例 docker-compose](#通过-docker-compose-部署） 中已经包含了 [HenryQW/mercury-parser-api](https://github.com/HenryQW/mercury-parser-api) 服务器。
+全文内容提取插件，配合单独的 Mercury Parser API 服务器使用。[样例 Docker Compose](#通过-docker-compose-部署) 中已经包含了 [HenryQW/mercury-parser-api](https://github.com/HenryQW/mercury-parser-api) 服务器。
 
 #### 设置步骤
 
 1. 在设置中启用 `mercury-fulltext` 插件
    ![启用 Mercury](https://share.henry.wang/92AGp5/x9xYB93cnX+)
-1. 在设置中填入 Mercury Parser API 地址
+2. 在设置中填入 Mercury Parser API 地址
    ![填入 Mercury Parser API 地址](https://share.henry.wang/9HJemY/BlTnDhuUGC+)
 
 使用 Awesome-TTRSS 部署的 mercury 可填写`service.mercury:3000`。
@@ -224,20 +230,20 @@ Postgres 大版本更新 (13->14) 需要额外的步骤来确保服务正常运�
 
 1. 在设置中启用 API。
    ![启用 API](https://share.henry.wang/X2AnXi/bVVDg9mGDm+)
-1. 在插件设置中设置 Fever 密码。
+2. 在插件设置中设置 Fever 密码。
    ![设置 Fever 密码](https://share.henry.wang/HspODo/xRSbZQheVN+)
-1. 在支持 Fever 的阅读器用，使用 `https://[您的地址]/plugins/fever` 作为服务器地址。使用您的账号和步骤 2 中的密码登录。
-1. 由于该插件使用未加盐的 MD5 加密密码进行通信，强烈建议 [开启 HTTPS](#配置-https)。
+3. 在支持 Fever 的阅读器用，使用 `https://[您的地址]/plugins/fever` 作为服务器地址。使用您的账号和步骤 2 中的密码登录。
+4. 由于该插件使用未加盐的 MD5 加密密码进行通信，强烈建议 [开启 HTTPS](#配置-https)。
 
 ### [OpenCC 繁简转换](https://github.com/HenryQW/ttrss_opencc) <Badge text="arm32v7 ✗" vertical="top" type="error"/><Badge text="arm64v8 ✗" vertical="top" type="error"/>
 
-使用 [OpenCC](https://github.com/BYVoid/OpenCC) 为 TTRSS 提供中文繁转简的插件，需要配合单独的 OpenCC API 服务器使用。[样例 docker-compose](#通过-docker-compose-部署） 中已经包含了 [HenryQW/OpenCC.henry.wang](https://github.com/HenryQW/OpenCC.henry.wang) 服务器。
+使用 [OpenCC](https://github.com/BYVoid/OpenCC) 为 TTRSS 提供中文繁转简的插件，需要配合单独的 OpenCC API 服务器使用。[样例 Docker Compose](#通过-docker-compose-部署) 中已经包含了 [HenryQW/OpenCC.henry.wang](https://github.com/HenryQW/OpenCC.henry.wang) 服务器。
 
 #### 设置步骤
 
 1. 在设置中启用 `opencc` 插件
    ![启用 opencc](https://share.henry.wang/EvN5Nl/2RHNnMV2iP+)
-1. 在设置中填入 OpenCC API 地址
+2. 在设置中填入 OpenCC API 地址
    ![填入 OpenCC API 地址](https://share.henry.wang/pePHAz/oWXX3I18hW+)
 
 使用 Awesome-TTRSS 部署的 OpenCC 可填写`service.opencc:3000`。
@@ -287,7 +293,7 @@ Postgres 大版本更新 (13->14) 需要额外的步骤来确保服务正常运�
 该插件与 `Fever API` 不能同时作为全局插件启用。如果您同时需要两者：
 
 1. 在环境变量 `ENABLE_PLUGINS` 中移除 `fever` 并添加 `remove_iframe_sandbox` 作为全局插件启用。
-1. 在登陆 TTRSS 后，通过设置将 `Fever API` 作为本地插件启用。
+2. 在登陆 TTRSS 后，通过设置将 `Fever API` 作为本地插件启用。
 
 :::
 
