@@ -33,22 +33,22 @@ docker run -it --name ttrss --restart=always \
 -d wangqiru/ttrss
 ```
 
-### Deployment via docker-compose
+### Deployment via Docker Compose
 
 [docker-compose.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.yml) include 4 docker images:
 
 1. [TTRSS](https://hub.docker.com/r/wangqiru/ttrss)
-1. [PostgreSQL](https://hub.docker.com/_/postgres)
-1. [Mercury Parser API](https://hub.docker.com/r/wangqiru/mercury-parser-api)
-1. [OpenCC API](https://hub.docker.com/r/wangqiru/opencc-api-server) <Badge text="arm32v7 ✗" vertical="top" type="error"/><Badge text="arm64v8 ✗" vertical="top" type="error"/>
+2. [PostgreSQL](https://hub.docker.com/_/postgres)
+3. [Mercury Parser API](https://hub.docker.com/r/wangqiru/mercury-parser-api)
+4. [OpenCC API](https://hub.docker.com/r/wangqiru/opencc-api-server) <Badge text="arm32v7 ✗" vertical="top" type="error"/><Badge text="arm64v8 ✗" vertical="top" type="error"/>
 
 #### Steps
 
 1. Download [docker-compose.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.yml) to any directory.
-1. Read `docker-compose.yml` and change the settings (please ensure you have changed the password for postgres).
-1. Run `docker-compose up -d` and wait for the deployment to finish.
-1. Access ttrss via port 181, with default credentials `admin` and `password`, please change them asap.
-1. `wangqiru/mercury-parser-api` and `wangqiru/opencc-api-server` are optional service containers to support additional features, removing them will not affect TTRSS's basic functionalities.
+2. Read `docker-compose.yml` and change the settings (please ensure you have changed the password for postgres).
+3. Run `docker compose up -d` and wait for the deployment to finish.
+4. Access ttrss via port 181, with default credentials `admin` and `password`, please change them asap.
+5. `wangqiru/mercury-parser-api` and `wangqiru/opencc-api-server` are optional service containers to support additional features, removing them will not affect TTRSS's basic functionalities.
 
 ### Supported Environment Variables
 
@@ -139,12 +139,12 @@ You can fetch the latest image manually:
 docker pull wangqiru/ttrss:latest
 # docker pull wangqiru/mercury-parser-api:latest
 # docker pull wangqiru/opencc-api-server:latest
-docker-compose up -d # If you didn't use docker-compose, I'm sure you know what to do.
+docker compose up -d # If you didn't use docker compose, I'm sure you know what to do.
 ```
 
 ### Auto Update
 
-The example [docker-compose](#deployment-via-docker-compose) includes [Watchtower](https://github.com/containrrr/watchtower), which automatically pulls all containers included in Awesome TTRSS (and other containers running on your system) and refreshes your running services. By default, it's disabled, **make sure it will not affect your other service containers before enabling this.**
+The example [Docker Compose](#deployment-via-docker-compose) includes [Watchtower](https://github.com/containrrr/watchtower), which automatically pulls all containers included in Awesome TTRSS (and other containers running on your system) and refreshes your running services. By default, it's disabled, **make sure it will not affect your other service containers before enabling this.**
 
 To exclude images, check the following for disabling auto update for containers:
 
@@ -162,52 +162,58 @@ service.mercury:
 
 ## Database Upgrade or Migration
 
-Postgres major version upgrades (13->14) will require some manual operations.
+Postgres major version upgrades (15->16) will require some manual operations.
 Sometimes breaking changes will be introduced to further optimize Awesome TTRSS.
 
 ### Steps
 
-This section demonstrates the steps to upgrade Postgres major version (from 12.x to 13.x) or migrate from other images to postgres:alpine.
+::: warning
+
+Do not skip multiple major versions when upgrading Postgres, for example, upgrading from 13.x to 16.x directly is not supported and may cause data loss.
+
+:::
+
+This section demonstrates the steps to upgrade Postgres major version (from 15.x to 16.x) or migrate from other images to postgres:alpine.
 
 1. Stop all the service containers:
 
    ```bash
-   docker-compose stop
+   docker compose stop
    ```
 
-1. Copy the Postgres data volume `~/postgres/data/` (or the location specified in your docker-compose file) to somewhere else as a backup, **THIS IS IMPORTANT**.
-1. Use the following command to dump all your data:
+2. Copy the Postgres data volume `~/postgres/data/` (or the location specified in your Docker Compose file) to somewhere else as a backup, **THIS IS IMPORTANT**.
+3. Use the following command to dump all your data:
 
    ```bash
    docker exec postgres pg_dumpall -c -U YourUsername > export.sql
    ```
 
-1. Delete the Postgres data volume `~/postgres/data/`.
-1. Update your docker-compose file (**Note that the `DB_NAME` must not be changed**) with `database.postgres` section in the the latest [docker-compose.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.yml), and bring it up:
+4. Delete the Postgres data volume `~/postgres/data/`.
+5. Update your Docker Compose file (**Note that the `DB_NAME` must not be changed**) with `database.postgres` section in the the latest [docker-compose.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.yml), and bring it up:
 
    ```bash
-   docker-compose up -d
+   docker compose up -d
    ```
 
-1. Use the following command to restore all your data:
+6. Use the following command to restore all your data:
 
    ```bash
    cat export.sql | docker exec -i postgres psql -U YourUsername
    ```
 
-1. Test if everything works fine, and now you may remove the backup in step 2.
+7. Test if everything works fine, and now you may remove the backup in step 2.
 
 ## Plugins
 
 ### [Mercury Fulltext Extraction](https://github.com/HenryQW/mercury_fulltext)
 
-Fetch fulltext of articles via a self-hosted Mercury Parser API. A separate Mercury Parser API is required, the example [docker-compose](#deployment-via-docker-compose) has already included [such a server](https://github.com/HenryQW/mercury-parser-api).
+Fetch fulltext of articles via a self-hosted Mercury Parser API. A separate Mercury Parser API is required, the example [Docker Compose](#deployment-via-docker-compose) has already included [such a server](https://github.com/HenryQW/mercury-parser-api).
 
 #### Steps
 
 1. Enable `mercury-fulltext` plugin in preference
    ![enable Mercury](https://share.henry.wang/92AGp5/x9xYB93cnX+)
-1. Enter Mercury Parser API endpoint
+2. Enter Mercury Parser API endpoint
    ![enter Mercury Parser API endpoint](https://share.henry.wang/9HJemY/BlTnDhuUGC+)
 
 Use `service.mercury:3000` for Mercury instance deployed via Awesome-TTRSS.
@@ -224,20 +230,20 @@ Provide Fever API simulation.
 
 1. Enable API in preference
    ![enable API](https://share.henry.wang/X2AnXi/bVVDg9mGDm+)
-1. Enter a password for Fever in preference
+2. Enter a password for Fever in preference
    ![enter a Fever password](https://share.henry.wang/HspODo/xRSbZQheVN+)
-1. In supported RSS readers, use `https://[your url]/plugins/fever` as the target server address, with your account and the password set in Step 2.
-1. The plugin communicates with TTRSS using an unsalted MD5 hash, [using HTTPS](#configure-https) is strongly recommended.
+3. In supported RSS readers, use `https://[your url]/plugins/fever` as the target server address, with your account and the password set in Step 2.
+4. The plugin communicates with TTRSS using an unsalted MD5 hash, [using HTTPS](#configure-https) is strongly recommended.
 
 ### [OpenCC Simp-Trad Chinese Conversion](https://github.com/HenryQW/ttrss_opencc) <Badge text="arm32v7 ✗" vertical="top" type="error"/><Badge text="arm64v8 ✗" vertical="top" type="error"/>
 
-Conversion between Traditional and Simplified Chinese via [OpenCC](https://github.com/BYVoid/OpenCC) , a separate [OpenCC API Server](https://github.com/HenryQW/OpenCC.henry.wang) is required. the example [docker-compose](#deployment-via-docker-compose) has already included [such a server](https://github.com/HenryQW/OpenCC.henry.wang).
+Conversion between Traditional and Simplified Chinese via [OpenCC](https://github.com/BYVoid/OpenCC) , a separate [OpenCC API Server](https://github.com/HenryQW/OpenCC.henry.wang) is required. the example [Docker Compose](#deployment-via-docker-compose) has already included [such a server](https://github.com/HenryQW/OpenCC.henry.wang).
 
 #### Steps
 
 1. Enable `opencc` plugin in preference
    ![enable opencc](https://share.henry.wang/EvN5Nl/2RHNnMV2iP+)
-1. Enter OpenCC API endpoint
+2. Enter OpenCC API endpoint
    ![enter OpenCC API endpoint](https://share.henry.wang/pePHAz/oWXX3I18hW+)
 
 Use `service.opencc:3000` for OpenCC instance deployed via Awesome-TTRSS.
@@ -283,7 +289,7 @@ If you are getting data via fever api, enable it by adding `remove_iframe_sandbo
 This plugin cannot be enabled in conjunction with `Fever API` as global plugins, if you require both plugins:
 
 1. In `ENABLE_PLUGINS` replace `fever` with `remove_iframe_sandbox` to enable this as a global plugin.
-1. Enable `Fever API` in the TTRSS preferences panel after login, as a local plugin.
+2. Enable `Fever API` in the TTRSS preferences panel after login, as a local plugin.
 
 :::
 

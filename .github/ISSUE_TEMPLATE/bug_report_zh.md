@@ -14,11 +14,11 @@ assignees: ''
 请善用搜索引擎。
 
 **部署方法**
- - Docker 或 docker-compose
+ - Docker 或 Docker Compose
  - 使用的镜像版本 [如 latest, nightly, 19.8]
 
 **部署环境**
- - 操作系统: [如 Ubuntu 18.04]
+ - 操作系统: [如 Ubuntu 24.04]
  - 浏览器: [如 chrome, safari]
 
 **复现步骤**

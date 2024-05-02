@@ -8,7 +8,7 @@ services:
     ports:
       - 181:80
     environment:
-      - SELF_URL_PATH=http://localhost:181/ # please change to your own domain
+      - SELF_URL_PATH=http://localhost:181 # please change to your own domain
       - DB_PASS=ttrss # use the same password defined in `database.postgres`
       - PUID=1000
       - PGID=1000
@@ -17,7 +17,7 @@ services:
     restart: always
 
   database.postgres:
-    image: postgres:13-alpine
+    image: postgres:16-alpine
     container_name: postgres
     environment:
       - POSTGRES_PASSWORD=ttrss # feel free to change the password

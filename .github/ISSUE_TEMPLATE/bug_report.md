@@ -14,11 +14,11 @@ A clear and concise description of what the bug is.
 Please google it now.
 
 **Deployment method**
- - Docker or docker-compose
+ - Docker or Docker Compose
  - Version of the image used [e.g. latest, nightly, 19.8]
 
 **Deployment environment**
- - OS: [e.g. Ubuntu 18.04]
+ - OS: [e.g. Ubuntu 24.04]
  - Browser: [e.g. chrome, safari]
 
 **To Reproduce**
