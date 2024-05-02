@@ -22,14 +22,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v1
+        uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
+        uses: docker/setup-buildx-action@v3
       - name: Build dockerfile (without push)
-        run: |
-          docker buildx build \
-          --platform=linux/amd64,linux/arm/v7,linux/arm64 \
-          --output "type=image,push=false" \
-          --file ./Dockerfile .
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          platforms: linux/amd64,linux/arm/v7,linux/arm64

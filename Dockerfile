@@ -1,7 +1,9 @@
-FROM docker.io/alpine:3 AS builder
+FROM docker.io/alpine:3.19 AS builder
 
 # Download ttrss via git
 WORKDIR /var/www
+# https://stackoverflow.com/questions/36996046/how-to-prevent-dockerfile-caching-git-clone
+ADD https://gitlab.tt-rss.org/api/v4/projects/20/repository/branches/master /var/www/ttrss-version
 RUN apk add --update tar curl git \
   && rm -rf /var/www/* \
   && git clone https://git.tt-rss.org/fox/tt-rss --depth=1 /var/www
@@ -63,7 +65,10 @@ WORKDIR /var/www/themes.local
 # Fix safari: TypeError: window.requestIdleCallback is not a function
 # https://community.tt-rss.org/t/typeerror-window-requestidlecallback-is-not-a-function/1755/26
 # https://github.com/pladaria/requestidlecallback-polyfill
-COPY src/local-overrides.js local-overrides.js
+# COPY src/local-overrides.js local-overrides.js
+# this polyfill is added to tt-rss after 1 years 7 months
+# https://github.com/HenryQW/Awesome-TTRSS/commit/1b077f26f8c40ce7dd7b2a0cf2263a3537118e07
+# https://gitlab.tt-rss.org/tt-rss/tt-rss/-/commit/31ef788e02339452fa6241277e17f85067c33ba0
 
 ## Feedly
 RUN curl -sL https://github.com/levito/tt-rss-feedly-theme/archive/master.tar.gz | \
@@ -73,7 +78,7 @@ RUN curl -sL https://github.com/levito/tt-rss-feedly-theme/archive/master.tar.gz
 RUN curl -sL https://github.com/DIYgod/ttrss-theme-rsshub/archive/master.tar.gz | \
   tar xzvpf - --strip-components=2 -C . ttrss-theme-rsshub-master/dist/rsshub.css
 
-FROM docker.io/alpine:3
+FROM docker.io/alpine:3.19
 
 LABEL maintainer="Henry<hi@henry.wang>"
 
@@ -94,11 +99,12 @@ ENV DB_PASS ttrss
 
 # Install dependencies
 RUN chmod -x /wait-for.sh && chmod -x /docker-entrypoint.sh && apk add --update --no-cache git nginx s6 curl sudo \
-  php81 php81-fpm php81-phar \
-  php81-pdo php81-gd php81-pgsql php81-pdo_pgsql php81-xmlwriter \
+  php81 php81-fpm php81-phar php81-sockets php81-pecl-apcu \
+  php81-pdo php81-gd php81-pgsql php81-pdo_pgsql php81-xmlwriter php81-opcache \
   php81-mbstring php81-intl php81-xml php81-curl php81-simplexml \
   php81-session php81-tokenizer php81-dom php81-fileinfo php81-ctype \
   php81-json php81-iconv php81-pcntl php81-posix php81-zip php81-exif php81-openssl \
+  php81-gmp php81-pecl-imagick \
   ca-certificates && rm -rf /var/cache/apk/* \
   # Update libiconv as the default version is too low
   # Do not bump this dependency https://gitlab.alpinelinux.org/alpine/aports/-/issues/12328
@@ -111,45 +117,8 @@ ENV LD_PRELOAD /usr/lib/preloadable_libiconv.so php
 # Copy TTRSS and plugins
 COPY --from=builder /var/www /var/www
 
-# Install GNU libc (aka glibc) and set C.UTF-8 locale as default.
-# https://github.com/Docker-Hub-frolvlad/docker-alpine-glibc/blob/master/Dockerfile
-
-ENV LANG=C.UTF-8
-
-RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases/download" && \
-  ALPINE_GLIBC_PACKAGE_VERSION="2.34-r0" && \
-  ALPINE_GLIBC_BASE_PACKAGE_FILENAME="glibc-$ALPINE_GLIBC_PACKAGE_VERSION.apk" && \
-  ALPINE_GLIBC_BIN_PACKAGE_FILENAME="glibc-bin-$ALPINE_GLIBC_PACKAGE_VERSION.apk" && \
-  ALPINE_GLIBC_I18N_PACKAGE_FILENAME="glibc-i18n-$ALPINE_GLIBC_PACKAGE_VERSION.apk" && \
-  apk add --no-cache --virtual=.build-dependencies wget && \
-  wget https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub -O /etc/apk/keys/sgerrand.rsa.pub && \
-  wget \
-  "$ALPINE_GLIBC_BASE_URL/$ALPINE_GLIBC_PACKAGE_VERSION/$ALPINE_GLIBC_BASE_PACKAGE_FILENAME" \
-  "$ALPINE_GLIBC_BASE_URL/$ALPINE_GLIBC_PACKAGE_VERSION/$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
-  "$ALPINE_GLIBC_BASE_URL/$ALPINE_GLIBC_PACKAGE_VERSION/$ALPINE_GLIBC_I18N_PACKAGE_FILENAME" && \
-  mv /etc/nsswitch.conf /etc/nsswitch.conf.bak && \
-  # force overwrite: https://github.com/sgerrand/alpine-pkg-glibc/issues/185
-  apk add --no-cache --force-overwrite \
-  "$ALPINE_GLIBC_BASE_PACKAGE_FILENAME" \
-  "$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
-  "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME" && \
-  \
-  mv /etc/nsswitch.conf.bak /etc/nsswitch.conf && \
-  rm "/etc/apk/keys/sgerrand.rsa.pub" && \
-  (/usr/glibc-compat/bin/localedef --force --inputfile POSIX --charmap UTF-8 "$LANG" || true) && \
-  echo "export LANG=$LANG" > /etc/profile.d/locale.sh && \
-  \
-  apk del glibc-i18n && \
-  \
-  rm "/root/.wget-hsts" && \
-  apk del .build-dependencies && \
-  rm -rf /var/cache/apk/* && \
-  rm \
-  "$ALPINE_GLIBC_BASE_PACKAGE_FILENAME" \
-  "$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
-  "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME" && \
-  chown nobody:nginx -R /var/www && \
-  git config --global --add safe.directory /var/www
+RUN chown nobody:nginx -R /var/www \
+  && git config --global --add safe.directory /var/www
 
 EXPOSE 80
 
