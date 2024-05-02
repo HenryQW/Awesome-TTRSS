@@ -32,7 +32,7 @@ jobs:
             type=raw,value={{ branch }}-nightly-{{date 'YYYY-MM-DD'}},enable=${{ github.ref != format('refs/heads/{0}', 'main') }}
           flavor: latest=false
       - name: Build dockerfile (with push)
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v5
         with:
           context: .
           push: true
