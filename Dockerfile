@@ -59,6 +59,11 @@ RUN mkdir auth_oidc && \
   curl -sL https://gitlab.tt-rss.org/tt-rss/plugins/ttrss-auth-oidc/-/archive/master/ttrss-auth-oidc-master.tar.gz | \
   tar xzvpf - --strip-components=1 -C auth_oidc ttrss-auth-oidc-master
 
+## FreshAPI
+RUN mkdir /var/www/plugins/freshapi && \
+  curl -sL https://github.com/eric-pierce/freshapi/archive/master.tar.gz | \
+  tar xzvpf - --strip-components=1 -C /var/www/plugins/freshapi freshapi-master
+
 # Download themes
 WORKDIR /var/www/themes.local
 
