@@ -222,6 +222,19 @@ Postgres 大版本更新 (15->16) 需要额外的步骤来确保服务正常运�
 
 <img src="https://share.henry.wang/ubHtDz/uxyKk68jqY+" width="400">
 
+### [FreshRSS / Google Reader API](https://github.com/eric-pierce/freshapi)
+
+FreshRSS / Google Reader API插件，用于小型RSS
+
+#### Steps
+
+1. 导航到Tiny Tiny RSS中的“首选项”菜单，然后选中 “General” “Enable API”下的框
+   ![enable API](https://private-user-images.githubusercontent.com/551464/366939059-f79e6fe3-bfb0-4989-a0fb-0bda4ac8b84d.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjcxMDYzNjMsIm5iZiI6MTcyNzEwNjA2MywicGF0aCI6Ii81NTE0NjQvMzY2OTM5MDU5LWY3OWU2ZmUzLWJmYjAtNDk4OS1hMGZiLTBiZGE0YWM4Yjg0ZC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwOTIzJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDkyM1QxNTQxMDNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0yYzJiNDE4ZjkwMDEwOTAzOWY3NWZkNTVlZDMzMmFmNTY0OTM5N2VkODlkNGIwYWZkM2Y0ODNhZTFkOGJhZDdiJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.f78G7IsKszUMGS99y1ZPIpEwVjiwr3CaorTYKE-EXBI)
+2. 偏好，打开插件菜单并启用 “freshapi”
+   ![enable FreshAPI](https://private-user-images.githubusercontent.com/551464/366939183-68260e5f-bcb8-4e14-a416-3d31104d9006.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjcxMDYzNjMsIm5iZiI6MTcyNzEwNjA2MywicGF0aCI6Ii81NTE0NjQvMzY2OTM5MTgzLTY4MjYwZTVmLWJjYjgtNGUxNC1hNDE2LTNkMzExMDRkOTAwNi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwOTIzJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDkyM1QxNTQxMDNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT00YzkzNGRhNzcyMTQ1MWQ2Yjc1ZmVlY2VkYzY1YmE0MDY3OTE2Mzc2MDU2N2IyZDFjMjE3MDVhODNmYzE5YTE3JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.L8Y8AVEEXSCsT48xqWBEujvhZrOPwEwI0jfQz_OKdgI)
+4. 配置移动应用程序时，请选择 “FreshRSS”或 “Google Reader API”。根据您的设置，您需要将客户指向TT-RSS安装。如果您使用子域来主持TT-RSS，请使用 ```https://yoursubdomain.yourdomain.com/plugins.local/freshapi/api/greader.php``` .如果您在根域上运行，请使用 ```https://yourdomain.com/plugins.local/freshapi/api/greader.php```
+5. 使用您的标准TT-RSS用户名和密码。如果您启用了2个因子身份验证（2FA）生成并使用应用程序密码。与所有处理身份验证的插件一样，强烈建议使用 [开启 HTTPS](#配置-https)。
+
 ### [Fever API](https://github.com/DigitalDJ/tinytinyrss-fever-plugin)
 
 提供 Fever API 支持。

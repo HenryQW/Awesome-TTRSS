@@ -222,6 +222,19 @@ Use `service.mercury:3000` for Mercury instance deployed via Awesome-TTRSS.
 
 <img src="https://share.henry.wang/ubHtDz/uxyKk68jqY+" width="400">
 
+### [FreshRSS / Google Reader API](https://github.com/eric-pierce/freshapi)
+
+A FreshRSS / Google Reader API Plugin for Tiny-Tiny RSS
+
+#### Steps
+
+1. Navigate to the Preferences menu in Tiny Tiny RSS, and check the box under "General" titled "Enable API" 
+   ![enable API](https://private-user-images.githubusercontent.com/551464/366939059-f79e6fe3-bfb0-4989-a0fb-0bda4ac8b84d.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjcxMDYzNjMsIm5iZiI6MTcyNzEwNjA2MywicGF0aCI6Ii81NTE0NjQvMzY2OTM5MDU5LWY3OWU2ZmUzLWJmYjAtNDk4OS1hMGZiLTBiZGE0YWM4Yjg0ZC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwOTIzJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDkyM1QxNTQxMDNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0yYzJiNDE4ZjkwMDEwOTAzOWY3NWZkNTVlZDMzMmFmNTY0OTM5N2VkODlkNGIwYWZkM2Y0ODNhZTFkOGJhZDdiJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.f78G7IsKszUMGS99y1ZPIpEwVjiwr3CaorTYKE-EXBI)
+2. In Preferences, open the Plugin menu and enable "freshapi" 
+   ![enable FreshAPI](https://private-user-images.githubusercontent.com/551464/366939183-68260e5f-bcb8-4e14-a416-3d31104d9006.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjcxMDYzNjMsIm5iZiI6MTcyNzEwNjA2MywicGF0aCI6Ii81NTE0NjQvMzY2OTM5MTgzLTY4MjYwZTVmLWJjYjgtNGUxNC1hNDE2LTNkMzExMDRkOTAwNi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwOTIzJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDkyM1QxNTQxMDNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT00YzkzNGRhNzcyMTQ1MWQ2Yjc1ZmVlY2VkYzY1YmE0MDY3OTE2Mzc2MDU2N2IyZDFjMjE3MDVhODNmYzE5YTE3JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.L8Y8AVEEXSCsT48xqWBEujvhZrOPwEwI0jfQz_OKdgI)
+4. When configuring your mobile app, select either "FreshRSS" or "Google Reader API". You'll need to point your client to your TT-RSS installation, depending on your setup. If you're using a subdomain to host TT-RSS then use ```https://yoursubdomain.yourdomain.com/plugins.local/freshapi/api/greader.php```. If you're running on the root domain, use ```https://yourdomain.com/plugins.local/freshapi/api/greader.php``` as the server URL.
+5. Use your standard TT-RSS username and password. If you've enabled 2 Factor Authentication (2FA) generate and use an App Password. As with all plugins which handle authentication, [using HTTPS](#configure-https) is strongly recommended.
+
 ### [Fever API](https://github.com/DigitalDJ/tinytinyrss-fever-plugin)
 
 Provide Fever API simulation.

@@ -60,9 +60,9 @@ RUN mkdir auth_oidc && \
   tar xzvpf - --strip-components=1 -C auth_oidc ttrss-auth-oidc-master
 
 ## FreshAPI
-RUN mkdir /var/www/plugins/freshapi && \
+RUN mkdir freshapi && \
   curl -sL https://github.com/eric-pierce/freshapi/archive/master.tar.gz | \
-  tar xzvpf - --strip-components=1 -C /var/www/plugins/freshapi freshapi-master
+  tar xzvpf - --strip-components=1 -C freshapi freshapi-master
 
 # Download themes
 WORKDIR /var/www/themes.local
