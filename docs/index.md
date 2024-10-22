@@ -1,9 +1,6 @@
 # 🐋 Awesome TTRSS
 
-![Docker Pulls](https://img.shields.io/docker/pulls/wangqiru/ttrss.svg)
-![Docker Stars](https://img.shields.io/docker/stars/wangqiru/ttrss.svg)
-![Docker Automated build](https://img.shields.io/docker/automated/wangqiru/ttrss.svg)
-![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FHenryQW%2FAwesome-TTRSS.svg?type=shield)
+![Docker Pulls](https://img.shields.io/docker/pulls/wangqiru/ttrss.svg) ![Docker Stars](https://img.shields.io/docker/stars/wangqiru/ttrss.svg) ![Docker Automated build](https://img.shields.io/docker/automated/wangqiru/ttrss.svg) ![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FHenryQW%2FAwesome-TTRSS.svg?type=shield)
 
 ## About
 
@@ -19,7 +16,7 @@ A VPS is highly recommended to host your Awesome TTRSS instance, a VPS can be ob
 
 Awesome TTRSS supports multiple architectures <Badge text="x86 ✓" vertical="top" type="tip"/><Badge text="arm32v7 ✓" vertical="top" type="tip"/><Badge text="arm64v8 ✓" vertical="top" type="tip"/>, except the OpenCC API.
 
-### Deployment via docker
+### Deployment via Docker
 
 ```bash
 docker run -it --name ttrss --restart=always \
@@ -40,7 +37,7 @@ docker run -it --name ttrss --restart=always \
 1. [TTRSS](https://hub.docker.com/r/wangqiru/ttrss)
 2. [PostgreSQL](https://hub.docker.com/_/postgres)
 3. [Mercury Parser API](https://hub.docker.com/r/wangqiru/mercury-parser-api)
-4. [OpenCC API](https://hub.docker.com/r/wangqiru/opencc-api-server) <Badge text="arm32v7 ✗" vertical="top" type="error"/><Badge text="arm64v8 ✗" vertical="top" type="error"/>
+4. [OpenCC API](https://hub.docker.com/r/wangqiru/opencc-api-server) <Badge text="arm32v7 ✗" vertical="top" type="danger"/><Badge text="arm64v8 ✗" vertical="top" type="danger"/>
 
 #### Steps
 
@@ -52,28 +49,28 @@ docker run -it --name ttrss --restart=always \
 
 ### Supported Environment Variables
 
-- SELF_URL_PATH: the url to your TTRSS instance. **🔴 Please note that this value should be consistent with the URL you see in your browser address bar, otherwise TTRSS will not start.**
-- DB_HOST: the address of your database
-- DB_PORT: the port of your database
-- DB_NAME: the name of your database
-- DB_USER: the user of your Database
-- DB_PASS: the password of your database
-- DB_USER_FILE: Docker Secrets support(alternative to DB_USER), the file containing the user of your database
-- DB_PASS_FILE: Docker Secrets support(alternative to DB_PASS), the file containing the password of your database
-- ENABLE_PLUGINS: the plugins you'd like to enable as global plugins, note that `auth_internal` is required
-- ALLOW_PORTS: comma-separated port numbers, eg:`1200,3000`. Allow subscription of non-'80,443' port feed. **🔴 Use with caution.**
-- SESSION_COOKIE_LIFETIME: the expiry time in hours for your login session cookie in hours, default to `24` hours
-- HTTP_PROXY: `ip:port`, the global proxy for your TTRSS instance, to set proxy on a per feed basis, use [Options per Feed](#options-per-feed)
-- DISABLE_USER_IN_DAYS: disable feed update for inactive users after X days without login, until the user performs a login
-- FEED_LOG_QUIET: `true` will disable the printing of feed updating logs
+- `SELF_URL_PATH`: The url to your TTRSS instance. **🔴 Please note that this value should be consistent with the URL you see in your browser address bar, otherwise TTRSS will not start.**
+- `DB_HOST`: The address of your database
+- `DB_PORT`: The port of your database
+- `DB_NAME`: The name of your database
+- `DB_USER`: The user of your Database
+- `DB_PASS`: The password of your database
+- `DB_USER_FILE`: Docker Secrets support(alternative to DB_USER), the file containing the user of your database
+- `DB_PASS_FILE`: Docker Secrets support(alternative to DB_PASS), the file containing the password of your database
+- `ENABLE_PLUGINS`: The plugins you'd like to enable as global plugins, note that `auth_internal` is required
+- `ALLOW_PORTS`: Comma-separated port numbers, eg: `1200,3000`. Allow subscription of non-'80,443' port feed. **🔴 Use with caution.**
+- `SESSION_COOKIE_LIFETIME`: the expiry time in hours for your login session cookie in hours, default to `24` hours
+- `HTTP_PROXY`: In format of `ip:port`, the global proxy for your TTRSS instance, to set proxy on a per feed basis, use [Options per Feed](#options-per-feed)
+- `DISABLE_USER_IN_DAYS`: Disable feed update for inactive users after X days without login, until the user performs a login
+- `FEED_LOG_QUIET`: `true` will disable the printing of feed updating logs
 
-For more environment variables, please refer to the [official tt-rss repo](https://git.tt-rss.org/fox/tt-rss.git/tree/classes/config.php).
+For more environment variables, please refer to the [official tt-rss repo](https://gitlab.tt-rss.org/tt-rss/tt-rss/-/blob/master/classes/Config.php).
 
 ### Configure HTTPS
 
 TTRSS container itself doesn't handle HTTPS traffic. Examples of configuring a Caddy or an Nginx reverse proxy with free SSL certificate from [Let's Encrypt](https://letsencrypt.org/) are shown below:
 
-```nginx
+```shell
 # Caddyfile
 ttrssdev.henry.wang {
     reverse_proxy 127.0.0.1:181
@@ -81,7 +78,7 @@ ttrssdev.henry.wang {
 }
 ```
 
-```nginx
+```shell
 # nginx.conf
 upstream ttrssdev {
     server 127.0.0.1:181;
@@ -129,7 +126,7 @@ server {
 
 Awesome TTRSS automatically keeps up with TTRSS by mirroring the official releases, this means update can be issued frequently.
 
-[TTRSS stopped releasing tags](https://community.tt-rss.org/t/versioning-changes-for-trunk/2974). `wangqiru/ttrss:latest` will sync with [TTRSS' main branch](https://git.tt-rss.org/fox/tt-rss) periodically.
+Since [TTRSS stopped releasing tags](https://community.tt-rss.org/t/versioning-changes-for-trunk/2974), `wangqiru/ttrss:latest` will sync with [TTRSS' main branch](https://gitlab.tt-rss.org/tt-rss/tt-rss) periodically.
 
 ### Manual Update
 
@@ -220,7 +217,7 @@ Use `service.mercury:3000` for Mercury instance deployed via Awesome-TTRSS.
 
 #### Extraction Button
 
-<img src="https://share.henry.wang/ubHtDz/uxyKk68jqY+" width="400">
+<img src="https://share.henry.wang/ubHtDz/uxyKk68jqY+" width="400" loading="lazy">
 
 ### [FreshRSS / Google Reader API](https://github.com/eric-pierce/freshapi)
 
@@ -228,12 +225,12 @@ A FreshRSS / Google Reader API Plugin for Tiny-Tiny RSS
 
 #### Steps
 
-1. Navigate to the Preferences menu in Tiny Tiny RSS, and check the box under "General" titled "Enable API" 
+1. Navigate to the Preferences menu in Tiny Tiny RSS, and check the box under "General" titled "Enable API"
    ![enable API](https://private-user-images.githubusercontent.com/551464/366939059-f79e6fe3-bfb0-4989-a0fb-0bda4ac8b84d.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjcxMDYzNjMsIm5iZiI6MTcyNzEwNjA2MywicGF0aCI6Ii81NTE0NjQvMzY2OTM5MDU5LWY3OWU2ZmUzLWJmYjAtNDk4OS1hMGZiLTBiZGE0YWM4Yjg0ZC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwOTIzJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDkyM1QxNTQxMDNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0yYzJiNDE4ZjkwMDEwOTAzOWY3NWZkNTVlZDMzMmFmNTY0OTM5N2VkODlkNGIwYWZkM2Y0ODNhZTFkOGJhZDdiJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.f78G7IsKszUMGS99y1ZPIpEwVjiwr3CaorTYKE-EXBI)
-2. In Preferences, open the Plugin menu and enable "freshapi" 
+2. In Preferences, open the Plugin menu and enable "freshapi"
    ![enable FreshAPI](https://private-user-images.githubusercontent.com/551464/366939183-68260e5f-bcb8-4e14-a416-3d31104d9006.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjcxMDYzNjMsIm5iZiI6MTcyNzEwNjA2MywicGF0aCI6Ii81NTE0NjQvMzY2OTM5MTgzLTY4MjYwZTVmLWJjYjgtNGUxNC1hNDE2LTNkMzExMDRkOTAwNi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwOTIzJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDkyM1QxNTQxMDNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT00YzkzNGRhNzcyMTQ1MWQ2Yjc1ZmVlY2VkYzY1YmE0MDY3OTE2Mzc2MDU2N2IyZDFjMjE3MDVhODNmYzE5YTE3JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.L8Y8AVEEXSCsT48xqWBEujvhZrOPwEwI0jfQz_OKdgI)
-4. When configuring your mobile app, select either "FreshRSS" or "Google Reader API". You'll need to point your client to your TT-RSS installation, depending on your setup. If you're using a subdomain to host TT-RSS then use ```https://yoursubdomain.yourdomain.com/plugins.local/freshapi/api/greader.php```. If you're running on the root domain, use ```https://yourdomain.com/plugins.local/freshapi/api/greader.php``` as the server URL.
-5. Use your standard TT-RSS username and password. If you've enabled 2 Factor Authentication (2FA) generate and use an App Password. As with all plugins which handle authentication, [using HTTPS](#configure-https) is strongly recommended.
+3. When configuring your mobile app, select either "FreshRSS" or "Google Reader API". You'll need to point your client to your TT-RSS installation, depending on your setup. If you're using a subdomain to host TT-RSS then use ```https://yoursubdomain.yourdomain.com/plugins.local/freshapi/api/greader.php```. If you're running on the root domain, use ```https://yourdomain.com/plugins.local/freshapi/api/greader.php``` as the server URL.
+4. Use your standard TT-RSS username and password. If you've enabled 2 Factor Authentication (2FA) generate and use an App Password. As with all plugins which handle authentication, [using HTTPS](#configure-https) is strongly recommended.
 
 ### [Fever API](https://github.com/DigitalDJ/tinytinyrss-fever-plugin)
 
@@ -248,22 +245,22 @@ Provide Fever API simulation.
 3. In supported RSS readers, use `https://[your url]/plugins/fever` as the target server address, with your account and the password set in Step 2.
 4. The plugin communicates with TTRSS using an unsalted MD5 hash, [using HTTPS](#configure-https) is strongly recommended.
 
-### [OpenCC Simp-Trad Chinese Conversion](https://github.com/HenryQW/ttrss_opencc) <Badge text="arm32v7 ✗" vertical="top" type="error"/><Badge text="arm64v8 ✗" vertical="top" type="error"/>
+### [OpenCC Simp-Trad Chinese Conversion](https://github.com/HenryQW/ttrss_opencc) <Badge text="arm32v7 ✗" vertical="top" type="danger"/><Badge text="arm64v8 ✗" vertical="top" type="danger"/>
 
-Conversion between Traditional and Simplified Chinese via [OpenCC](https://github.com/BYVoid/OpenCC) , a separate [OpenCC API Server](https://github.com/HenryQW/OpenCC.henry.wang) is required. the example [Docker Compose](#deployment-via-docker-compose) has already included [such a server](https://github.com/HenryQW/OpenCC.henry.wang).
+Conversion between Traditional and Simplified Chinese via [OpenCC](https://github.com/BYVoid/OpenCC) , a separate [OpenCC API Server](https://github.com/HenryQW/OpenCC.henry.wang) is required. The example [Docker Compose](#deployment-via-docker-compose) has already included [such a server](https://github.com/HenryQW/OpenCC.henry.wang).
 
 #### Steps
 
 1. Enable `opencc` plugin in preference
    ![enable opencc](https://share.henry.wang/EvN5Nl/2RHNnMV2iP+)
-2. Enter OpenCC API endpoint
+2. Enter OpenCC API endpoint <br>
    ![enter OpenCC API endpoint](https://share.henry.wang/pePHAz/oWXX3I18hW+)
 
 Use `service.opencc:3000` for OpenCC instance deployed via Awesome-TTRSS.
 
 #### Conversion Button
 
-<img src="https://share.henry.wang/30kbTr/lSaHKXk5NT+" width="400">
+<img src="https://share.henry.wang/30kbTr/lSaHKXk5NT+" width="400" loading="lazy">
 
 ### [FeedReader API](https://github.com/jangernert/FeedReader/tree/master/data/tt-rss-feedreader-plugin)
 
@@ -318,19 +315,19 @@ Refer to [Wallabag v2](https://github.com/joshp23/ttrss-to-wallabag-v2)。
 
 ### [Auth OIDC](https://dev.tt-rss.org/tt-rss/ttrss-auth-oidc)
 
-This is a system plugin, that allow users to connect through an oidc provider, like Keycloak, to TTRSS. 
+This is a system plugin, that allow users to connect through an OpenID Connect provider, like Keycloak, to TTRSS.
 
-System plugin, enabled by adding `auth_oidc` to the environment variable **ENABLE_PLUGINS**.
+Enable it by adding `auth_oidc` to the environment variable **ENABLE_PLUGINS**.
 
-Then add the following environments variables with according values : 
+Then add the following environments variables with according values :
 
-    ```yaml
-        AUTH_OIDC_NAME: 'IDP provider name displayed'
-        AUTH_OIDC_URL: 'https://oidc.hostname.com'
-        AUTH_OIDC_CLIENT_ID: 'test-rss'
-        AUTH_OIDC_CLIENT_SECRET: 'your-secret-token'
-    ```
-    
+```yaml
+AUTH_OIDC_NAME: 'IDP provider name displayed'
+AUTH_OIDC_URL: 'https://oidc.hostname.com'
+AUTH_OIDC_CLIENT_ID: 'test-rss'
+AUTH_OIDC_CLIENT_SECRET: 'your-secret-token'
+```
+
 Refer to [Auth OIDC](https://dev.tt-rss.org/tt-rss/ttrss-auth-oidc) for more details.
 
 ## Themes
@@ -341,7 +338,7 @@ Refer to [Auth OIDC](https://dev.tt-rss.org/tt-rss/ttrss-auth-oidc) for more det
 
 ### [RSSHub](https://github.com/DIYgod/ttrss-theme-rsshub)
 
-![RssHub](https://share.henry.wang/E5Lifa/1ykvdTWuew+)
+![RSSHub](https://share.henry.wang/E5Lifa/1ykvdTWuew+)
 
 ## Recommendation
 
@@ -361,7 +358,7 @@ Refer to [Auth OIDC](https://dev.tt-rss.org/tt-rss/ttrss-auth-oidc) for more det
 
 | PayPal                                                                                                                                                                       | WeChat Pay                                                          | OpenCollective                                                     |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| [![paypal](https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MTM5L6T4PHRQS&source=url) | <img src="https://share.henry.wang/IKaxAW/duFgAuOnmk+" width="200"> | [💰OpenCollective page](https://opencollective.com/Awesome-TTRSS/) |
+| [![paypal](https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MTM5L6T4PHRQS&source=url) | <img src="https://share.henry.wang/IKaxAW/duFgAuOnmk+" width="200" loading="lazy"> | [💰OpenCollective page](https://opencollective.com/Awesome-TTRSS/) |
 
 ## License
 

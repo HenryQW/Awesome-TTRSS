@@ -3,7 +3,7 @@
 
 $confpath = '/var/www/config.php';
 
-// For configs, see https://git.tt-rss.org/fox/tt-rss/src/branch/master/classes/Config.php
+// For configs, see https://gitlab.tt-rss.org/tt-rss/tt-rss/-/blob/master/classes/Config.php
 
 $config = array();
 
@@ -162,7 +162,7 @@ function connectDatabase($create)
         $map = array('host' => 'HOST', 'port' => 'PORT' , 'dbname' =>'NAME');
         $dsn = 'pgsql:';
     }
-    
+
     foreach ($map as $d => $h) {
         if (getenv('DB_' . $h)!==null) {
             $dsn .= $d . '=' . getenv('DB_' . $h) . ';';

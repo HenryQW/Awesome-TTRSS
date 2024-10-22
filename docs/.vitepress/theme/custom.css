@@ -1,0 +1,25 @@
+@media (min-width: 1440px) {
+    .VPDoc:not(.has-sidebar) .container {
+      max-width: 1284px !important;
+    }
+    .VPDoc:not(.has-sidebar) .content {
+      max-width: 1044px !important;
+    }
+}
+
+.VPDoc.has-aside .content-container {
+    max-width: 980px !important;
+}
+
+.aside-container {
+    width: 316px !important;
+}
+
+img {
+    margin-top: 0.8rem;
+    display: inline-block;
+}
+
+.VPNavBarTitle span {
+    color: #e16723;
+}

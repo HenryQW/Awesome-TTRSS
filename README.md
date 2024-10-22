@@ -2,7 +2,6 @@
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/wangqiru/ttrss.svg)](https://hub.docker.com/r/wangqiru/ttrss)
 [![Docker Stars](https://img.shields.io/docker/stars/wangqiru/ttrss.svg)](https://hub.docker.com/r/wangqiru/ttrss)
-
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FHenryQW%2FAwesome-TTRSS.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FHenryQW%2FAwesome-TTRSS?ref=badge_shield)
 
 🐋 Awesome TTRSS aims to provide a powerful **Dockerized all-in-one** solution for [Tiny Tiny RSS](https://tt-rss.org/), an open source RSS feed reader and aggregator written in PHP, with enhanced user experience via simplified deployment and a list of curated plugins. You may sponsor Awesome TTRSS via its [💰OpenCollective page](https://opencollective.com/Awesome-TTRSS/).
