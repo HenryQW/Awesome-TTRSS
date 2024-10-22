@@ -1,6 +1,5 @@
 .github/
 .vscode/
-vuepress/
 node_modules/
 docs/
 pnpm-lock.yaml

@@ -1,9 +1,6 @@
 # 🐋 Awesome TTRSS
 
-![Docker Pulls](https://img.shields.io/docker/pulls/wangqiru/ttrss.svg)
-![Docker Stars](https://img.shields.io/docker/stars/wangqiru/ttrss.svg)
-![Docker Automated build](https://img.shields.io/docker/automated/wangqiru/ttrss.svg)
-![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FHenryQW%2FAwesome-TTRSS.svg?type=shield)
+![Docker Pulls](https://img.shields.io/docker/pulls/wangqiru/ttrss.svg) ![Docker Stars](https://img.shields.io/docker/stars/wangqiru/ttrss.svg) ![Docker Automated build](https://img.shields.io/docker/automated/wangqiru/ttrss.svg) ![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FHenryQW%2FAwesome-TTRSS.svg?type=shield)
 
 ## 关于
 
@@ -40,7 +37,7 @@ docker run -it --name ttrss --restart=always \
 1. [TTRSS](https://hub.docker.com/r/wangqiru/ttrss)
 2. [PostgreSQL](https://hub.docker.com/_/postgres)
 3. [Mercury Parser API](https://hub.docker.com/r/wangqiru/mercury-parser-api)
-4. [OpenCC API](https://hub.docker.com/r/wangqiru/opencc-api-server) <Badge text="arm32v7 ✗" vertical="top" type="error"/><Badge text="arm64v8 ✗" vertical="top" type="error"/>
+4. [OpenCC API](https://hub.docker.com/r/wangqiru/opencc-api-server) <Badge text="arm32v7 ✗" vertical="top" type="danger"/><Badge text="arm64v8 ✗" vertical="top" type="danger"/>
 
 #### 步骤
 
@@ -52,28 +49,28 @@ docker run -it --name ttrss --restart=always \
 
 ### 支持的环境变量列表
 
-- SELF_URL_PATH: TTRSS 实例地址。**🔴 请注意，该变量值必须与你在浏览器中用于访问 TTRSS 的 URL 保持完全一致，否则 TTRSS 将无法启动。**
-- DB_HOST: 数据库地址
-- DB_PORT: 数据库端口
-- DB_NAME: 数据库名字
-- DB_USER: 数据库用户名
-- DB_PASS: 数据库密码
-- DB_USER_FILE: Docker Secrets 支持（替代 DB_USE），包含数据库用户名的文件
-- DB_PASS_FILE: Docker Secrets 支持（替代 DB_PASS），包含数据库密码的文件
-- ENABLE_PLUGINS: 全局启用的插件名称，其中 `auth_internal` 为必须启用的登录插件
-- ALLOW_PORTS: 逗号分隔端口号，如`1200,3000`。允许订阅非 80,443 端口的源。**🔴 谨慎使用。**
-- SESSION_COOKIE_LIFETIME: 使用网页版登陆时 cookie 过期时间，单位为小时，默认为 `24` 小时
-- HTTP_PROXY: `ip:port`, TTRSS 实例的全局代理，为源地址添加单独代理请使用 [Options per Feed](#options-per-feed)
-- DISABLE_USER_IN_DAYS: 当用户 X 天后没有登录后，停止为其自动更新订阅源，直至用户再次登陆
-- FEED_LOG_QUIET: true 禁用订阅源更新所产生的日志打印
+- `SELF_URL_PATH`: TTRSS 实例地址。**🔴 请注意，该变量值必须与你在浏览器中用于访问 TTRSS 的 URL 保持完全一致，否则 TTRSS 将无法启动。**
+- `DB_HOST`: 数据库地址
+- `DB_PORT`: 数据库端口
+- `DB_NAME`: 数据库名字
+- `DB_USER`: 数据库用户名
+- `DB_PASS`: 数据库密码
+- `DB_USER_FILE`: Docker Secrets 支持（替代 DB_USE），包含数据库用户名的文件
+- `DB_PASS_FILE`: Docker Secrets 支持（替代 DB_PASS），包含数据库密码的文件
+- `ENABLE_PLUGINS`: 全局启用的插件名称，其中 `auth_internal` 为必须启用的登录插件
+- `ALLOW_PORTS`: 逗号分隔端口号，如`1200,3000`。允许订阅非 80,443 端口的源。**🔴 谨慎使用。**
+- `SESSION_COOKIE_LIFETIME`: 使用网页版登陆时 cookie 过期时间，单位为小时，默认为 `24` 小时
+- `HTTP_PROXY`: `ip:port`, TTRSS 实例的全局代理，为源地址添加单独代理请使用 [Options per Feed](#options-per-feed)
+- `DISABLE_USER_IN_DAYS`: 当用户 X 天后没有登录后，停止为其自动更新订阅源，直至用户再次登陆
+- `FEED_LOG_QUIET`: `true` 禁用订阅源更新所产生的日志打印
 
-更多环境变量，参见 [官方 tt-rss](https://git.tt-rss.org/fox/tt-rss.git/tree/classes/config.php)。
+更多环境变量，参见 [官方 tt-rss](https://gitlab.tt-rss.org/tt-rss/tt-rss/-/blob/master/classes/Config.php)。
 
 ### 配置 HTTPS
 
 TTRSS 容器自身不负责使用 HTTPS 加密通信。参见下方的样例自行配置 Caddy 或 Nginx 反向代理。使用 [Let's Encrypt](https://letsencrypt.org/) 可以获取免费 SSL 证书。
 
-```nginx
+```shell
 # Caddyfile
 ttrssdev.henry.wang {
     reverse_proxy 127.0.0.1:181
@@ -81,7 +78,7 @@ ttrssdev.henry.wang {
 }
 ```
 
-```nginx
+```shell
 # nginx.conf
 upstream ttrssdev {
     server 127.0.0.1:181;
@@ -129,7 +126,7 @@ server {
 
 Awesome TTRSS 会自动监控 TTRSS 官方更新并与之同步，这意味着更新会比较频繁。
 
-[TTRSS 官方不再释出 tag](https://community.tt-rss.org/t/versioning-changes-for-trunk/2974)。 `wangqiru/ttrss:latest` 会与 [官方 main branch](https://git.tt-rss.org/fox/tt-rss) 同步。
+[TTRSS 官方不再释出 tag](https://community.tt-rss.org/t/versioning-changes-for-trunk/2974)。 `wangqiru/ttrss:latest` 会与 [官方 main branch](https://gitlab.tt-rss.org/tt-rss/tt-rss) 同步。
 
 ### 手动更新
 
@@ -220,20 +217,20 @@ Postgres 大版本更新 (15->16) 需要额外的步骤来确保服务正常运�
 
 #### 全文提取按钮
 
-<img src="https://share.henry.wang/ubHtDz/uxyKk68jqY+" width="400">
+<img src="https://share.henry.wang/ubHtDz/uxyKk68jqY+" width="400" loading="lazy">
 
 ### [FreshRSS / Google Reader API](https://github.com/eric-pierce/freshapi)
 
-FreshRSS / Google Reader API插件，用于小型RSS
+FreshRSS / Google Reader API 插件，用于 Tiny-Tiny RSS
 
 #### Steps
 
-1. 导航到Tiny Tiny RSS中的“首选项”菜单，然后选中 “General” “Enable API”下的框
+1. 导航到 Tiny Tiny RSS 中的“首选项”菜单，然后选中 “General” “Enable API”下的框
    ![enable API](https://private-user-images.githubusercontent.com/551464/366939059-f79e6fe3-bfb0-4989-a0fb-0bda4ac8b84d.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjcxMDYzNjMsIm5iZiI6MTcyNzEwNjA2MywicGF0aCI6Ii81NTE0NjQvMzY2OTM5MDU5LWY3OWU2ZmUzLWJmYjAtNDk4OS1hMGZiLTBiZGE0YWM4Yjg0ZC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwOTIzJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDkyM1QxNTQxMDNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0yYzJiNDE4ZjkwMDEwOTAzOWY3NWZkNTVlZDMzMmFmNTY0OTM5N2VkODlkNGIwYWZkM2Y0ODNhZTFkOGJhZDdiJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.f78G7IsKszUMGS99y1ZPIpEwVjiwr3CaorTYKE-EXBI)
 2. 偏好，打开插件菜单并启用 “freshapi”
    ![enable FreshAPI](https://private-user-images.githubusercontent.com/551464/366939183-68260e5f-bcb8-4e14-a416-3d31104d9006.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjcxMDYzNjMsIm5iZiI6MTcyNzEwNjA2MywicGF0aCI6Ii81NTE0NjQvMzY2OTM5MTgzLTY4MjYwZTVmLWJjYjgtNGUxNC1hNDE2LTNkMzExMDRkOTAwNi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwOTIzJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDkyM1QxNTQxMDNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT00YzkzNGRhNzcyMTQ1MWQ2Yjc1ZmVlY2VkYzY1YmE0MDY3OTE2Mzc2MDU2N2IyZDFjMjE3MDVhODNmYzE5YTE3JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.L8Y8AVEEXSCsT48xqWBEujvhZrOPwEwI0jfQz_OKdgI)
-4. 配置移动应用程序时，请选择 “FreshRSS”或 “Google Reader API”。根据您的设置，您需要将客户指向TT-RSS安装。如果您使用子域来主持TT-RSS，请使用 ```https://yoursubdomain.yourdomain.com/plugins.local/freshapi/api/greader.php``` .如果您在根域上运行，请使用 ```https://yourdomain.com/plugins.local/freshapi/api/greader.php```
-5. 使用您的标准TT-RSS用户名和密码。如果您启用了2个因子身份验证（2FA）生成并使用应用程序密码。与所有处理身份验证的插件一样，强烈建议使用 [开启 HTTPS](#配置-https)。
+3. 配置移动应用程序时，请选择 “FreshRSS”或 “Google Reader API”。根据您的设置，您需要将客户指向 TT-RSS 安装。如果您使用子域来主持 TT-RSS，请使用 ```https://yoursubdomain.yourdomain.com/plugins.local/freshapi/api/greader.php``` .如果您在根域上运行，请使用 ```https://yourdomain.com/plugins.local/freshapi/api/greader.php```
+4. 使用您的标准 TT-RSS 用户名和密码。如果您启用了 2 个因子身份验证（2FA）生成并使用应用程序密码。与所有处理身份验证的插件一样，强烈建议使用 [开启 HTTPS](#配置-https)。
 
 ### [Fever API](https://github.com/DigitalDJ/tinytinyrss-fever-plugin)
 
@@ -248,7 +245,7 @@ FreshRSS / Google Reader API插件，用于小型RSS
 3. 在支持 Fever 的阅读器用，使用 `https://[您的地址]/plugins/fever` 作为服务器地址。使用您的账号和步骤 2 中的密码登录。
 4. 由于该插件使用未加盐的 MD5 加密密码进行通信，强烈建议 [开启 HTTPS](#配置-https)。
 
-### [OpenCC 繁简转换](https://github.com/HenryQW/ttrss_opencc) <Badge text="arm32v7 ✗" vertical="top" type="error"/><Badge text="arm64v8 ✗" vertical="top" type="error"/>
+### [OpenCC 繁简转换](https://github.com/HenryQW/ttrss_opencc) <Badge text="arm32v7 ✗" vertical="top" type="danger"/><Badge text="arm64v8 ✗" vertical="top" type="danger"/>
 
 使用 [OpenCC](https://github.com/BYVoid/OpenCC) 为 TTRSS 提供中文繁转简的插件，需要配合单独的 OpenCC API 服务器使用。[样例 Docker Compose](#通过-docker-compose-部署) 中已经包含了 [HenryQW/OpenCC.henry.wang](https://github.com/HenryQW/OpenCC.henry.wang) 服务器。
 
@@ -256,14 +253,14 @@ FreshRSS / Google Reader API插件，用于小型RSS
 
 1. 在设置中启用 `opencc` 插件
    ![启用 opencc](https://share.henry.wang/EvN5Nl/2RHNnMV2iP+)
-2. 在设置中填入 OpenCC API 地址
+2. 在设置中填入 OpenCC API 地址 <br>
    ![填入 OpenCC API 地址](https://share.henry.wang/pePHAz/oWXX3I18hW+)
 
 使用 Awesome-TTRSS 部署的 OpenCC 可填写`service.opencc:3000`。
 
 #### 转换按钮
 
-<img src="https://share.henry.wang/30kbTr/lSaHKXk5NT+" width="400">
+<img src="https://share.henry.wang/30kbTr/lSaHKXk5NT+" width="400" loading="lazy">
 
 ### [FeedReader API](https://github.com/jangernert/FeedReader/tree/master/data/tt-rss-feedreader-plugin)
 
@@ -293,12 +290,6 @@ FreshRSS / Google Reader API插件，用于小型RSS
 
 使用指南见 [Options per Feed](https://github.com/sergey-dryabzhinsky/options_per_feed)。
 
-### [Wallabag v2](https://github.com/joshp23/ttrss-to-wallabag-v2)
-
-保存文章至 Wallabag。
-
-使用指南见 [Wallabag v2](https://github.com/joshp23/ttrss-to-wallabag-v2)。
-
 ### [Remove iframe sandbox](https://github.com/DIYgod/ttrss-plugin-remove-iframe-sandbox)
 
 ::: warning 注意
@@ -314,6 +305,29 @@ FreshRSS / Google Reader API插件，用于小型RSS
 
 使用指南见 [Remove iframe sandbox](https://github.com/DIYgod/ttrss-plugin-remove-iframe-sandbox)。
 
+### [Wallabag v2](https://github.com/joshp23/ttrss-to-wallabag-v2)
+
+保存文章至 Wallabag。
+
+使用指南见 [Wallabag v2](https://github.com/joshp23/ttrss-to-wallabag-v2)。
+
+### [Auth OIDC](https://dev.tt-rss.org/tt-rss/ttrss-auth-oidc)
+
+这是一个系统插件，允许用户通过 OpenID Connect 提供程序（如 Keycloak）连接到 TTRSS。
+
+通过将 `auth_oidc` 添加到环境变量 **ENABLE_PLUGINS** 来启用。
+
+然后添加以下环境变量及相应的值：
+
+```yaml
+AUTH_OIDC_NAME: '显示的 IDP 提供程序名称'
+AUTH_OIDC_URL: 'https://oidc.hostname.com'
+AUTH_OIDC_CLIENT_ID: 'test-rss'
+AUTH_OIDC_CLIENT_SECRET: 'your-secret-token'
+```
+
+有关更多详细信息，请参阅 [Auth OIDC](https://dev.tt-rss.org/tt-rss/ttrss-auth-oidc)。
+
 ## 主题
 
 ### [Feedly](https://github.com/levito/tt-rss-feedly-theme)
@@ -322,7 +336,7 @@ FreshRSS / Google Reader API插件，用于小型RSS
 
 ### [RSSHub](https://github.com/DIYgod/ttrss-theme-rsshub)
 
-![RssHub](https://share.henry.wang/E5Lifa/1ykvdTWuew+)
+![RSSHub](https://share.henry.wang/E5Lifa/1ykvdTWuew+)
 
 ## 使用建议
 
@@ -341,7 +355,7 @@ FreshRSS / Google Reader API插件，用于小型RSS
 
 | PayPal                                                                                                                                                                       | 微信赞赏                                                            | OpenCollective                                                     |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| [![paypal](https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MTM5L6T4PHRQS&source=url) | <img src="https://share.henry.wang/IKaxAW/duFgAuOnmk+" width="200"> | [💰OpenCollective page](https://opencollective.com/Awesome-TTRSS/) |
+| [![paypal](https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MTM5L6T4PHRQS&source=url) | <img src="https://share.henry.wang/IKaxAW/duFgAuOnmk+" width="200" loading="lazy"> | [💰OpenCollective page](https://opencollective.com/Awesome-TTRSS/) |
 
 ## 许可
 

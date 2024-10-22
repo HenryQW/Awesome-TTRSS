@@ -37,7 +37,7 @@ jobs:
           cache: "pnpm"
       - name: Install dependencies
         run: pnpm install
-      - name: Build vuepress docs
+      - name: Build vitepress docs
         run: pnpm run docs:build
 
   automerge:
@@ -49,7 +49,6 @@ jobs:
     steps:
       - uses: fastify/github-action-merge-dependabot@v3
         if: >-
-          ${{ github.actor == 'dependabot[bot]' && github.event_name ==
-          'pull_request' }}
+          ${{ github.actor == 'dependabot[bot]' && github.event_name == 'pull_request' }}
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
