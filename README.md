@@ -15,4 +15,4 @@
 ## Donation 捐赠
 
 **Please consider donations to support [TTRSS](https://tt-rss.org/) directly.**
-**请考虑直接捐助支持[TTRSS](https://tt-rss.org/).**
+**请考虑直接捐助支持 [TTRSS](https://tt-rss.org/).**

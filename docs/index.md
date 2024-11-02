@@ -12,7 +12,7 @@
 
 ## Deployment
 
-A VPS is highly recommended to host your Awesome TTRSS instance, a VPS can be obtained from as little as \$5/month at [DigitalOcean](https://m.do.co/c/d6ef3c80105c). Alternatively, you may request for personalized support, fully-managed service or fully-managed VPS via sponsoring Awesome TTRSS on its [💰OpenCollective page](https://opencollective.com/Awesome-TTRSS/).
+A VPS is highly recommended to host your Awesome TTRSS instance, a VPS can be obtained from as little as \$5/month at [DigitalOcean](https://m.do.co/c/d6ef3c80105c).
 
 Awesome TTRSS supports multiple architectures <Badge text="x86 ✓" vertical="top" type="tip"/><Badge text="arm32v7 ✓" vertical="top" type="tip"/><Badge text="arm64v8 ✓" vertical="top" type="tip"/>, except the OpenCC API.
 
@@ -357,16 +357,13 @@ For more information on configuring RSSHub, please refer to [RSSHub Docs](https:
 
 ## Support and Help
 
-- You may request for personalized support via sponsoring Awesome TTRSS on its [💰OpenCollective page](https://opencollective.com/Awesome-TTRSS/).
 - Read [this guide](https://henry.wang/2018/04/25/ttrss-docker-plugins-guide.html) might help.
 - Open an issue via [GitHub issue](https://github.com/HenryQW/Awesome-TTRSS/issues).
 - [Direct donation to TTRSS](https://tt-rss.org/).
 
 ## Donation
 
-| PayPal                                                                                                                                                                       | WeChat Pay                                                                         | OpenCollective                                                     |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| [![paypal](https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MTM5L6T4PHRQS&source=url) | <img src="https://share.henry.wang/IKaxAW/duFgAuOnmk+" width="200" loading="lazy"> | [💰OpenCollective page](https://opencollective.com/Awesome-TTRSS/) |
+**Please consider donations to support [TTRSS](https://tt-rss.org/) directly.**
 
 ## License
 

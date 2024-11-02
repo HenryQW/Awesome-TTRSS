@@ -12,7 +12,7 @@
 
 ## 部署
 
-推荐使用一台 VPS 来部署您的 Awesome TTRSS 实例，[DigitalOcean](https://m.do.co/c/d6ef3c80105c) 提供高性价比的 VPS 仅需 \$5/月。除此之外，通过 Awesome TTRSS 的 [💰OpenCollective 页面](https://opencollective.com/Awesome-TTRSS/) 进行赞助，即可获得定制支持，全托管服务，全托管 VPS 等私人服务。
+推荐使用一台 VPS 来部署您的 Awesome TTRSS 实例，[DigitalOcean](https://m.do.co/c/d6ef3c80105c) 提供高性价比的 VPS 仅需 \$5/月。
 
 Awesome TTRSS 支持多架构 <Badge text="x86 ✓" vertical="top" type="tip"/><Badge text="arm32v7 ✓" vertical="top" type="tip"/><Badge text="arm64v8 ✓" vertical="top" type="tip"/>（暂不包括 OpenCC API）。
 
@@ -353,16 +353,13 @@ AUTH_OIDC_CLIENT_SECRET: "your-secret-token"
 
 ## 支持与帮助
 
-- 通过 Awesome TTRSS 的 [💰OpenCollective 页面](https://opencollective.com/Awesome-TTRSS/) 进行赞助，即可获得私人定制支持。
 - 阅读此 [指南](https://henry.wang/2018/04/25/ttrss-docker-plugins-guide.html) 可能会有帮助。
 - 通过 [GitHub issue](https://github.com/HenryQW/Awesome-TTRSS/issues) 提交问题。
 - [直接捐助支持](https://tt-rss.org/)。
 
 ## 捐赠
 
-| PayPal                                                                                                                                                                       | 微信赞赏                                                                           | OpenCollective                                                     |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| [![paypal](https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MTM5L6T4PHRQS&source=url) | <img src="https://share.henry.wang/IKaxAW/duFgAuOnmk+" width="200" loading="lazy"> | [💰OpenCollective page](https://opencollective.com/Awesome-TTRSS/) |
+**请考虑直接捐助支持 [TTRSS](https://tt-rss.org/).**
 
 ## 许可
 
