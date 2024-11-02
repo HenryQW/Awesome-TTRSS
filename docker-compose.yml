@@ -1,6 +1,5 @@
-version: "3"
 services:
-  service.rss:
+  service.ttrss:
     image: wangqiru/ttrss:latest
     container_name: ttrss
     ports:
@@ -18,7 +17,15 @@ services:
       - database_only
     stdin_open: true
     tty: true
+    depends_on:
+      - database.postgres
     restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:80 || exit 1"]
+      start_period: 30s
+      interval: 30s
+      timeout: 10s
+      retries: 5
 
   service.mercury: # set Mercury Parser API endpoint to `service.mercury:3000` on TTRSS plugin setting page
     image: wangqiru/mercury-parser-api:latest
@@ -39,7 +46,6 @@ services:
 
   database.postgres:
     image: postgres:16-alpine
-    container_name: postgres
     environment:
       - POSTGRES_PASSWORD=ttrss # feel free to change the password
     volumes:
@@ -47,6 +53,12 @@ services:
     networks:
       - database_only
     restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      start_period: 30s
+      interval: 30s
+      timeout: 10s
+      retries: 5
 
   # utility.watchtower:
   #   container_name: watchtower
@@ -65,7 +77,9 @@ services:
   #     NODE_ENV: production
   #     DEBUG_INFO: false
   #     LOGGER_LEVEL: error
-  #     NO_LOGFILES: true
+  #     NO_LOGFILES: true    
+  #   networks:
+  #     - service_only
   #   expose:
   #     - 3000
   #   restart: unless-stopped
