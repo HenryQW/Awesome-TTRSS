@@ -38,6 +38,7 @@ docker run -it --name ttrss --restart=always \
 2. [PostgreSQL](https://hub.docker.com/_/postgres)
 3. [Mercury Parser API](https://hub.docker.com/r/wangqiru/mercury-parser-api)
 4. [OpenCC API](https://hub.docker.com/r/wangqiru/opencc-api-server) <Badge text="arm32v7 ✗" vertical="top" type="danger"/><Badge text="arm64v8 ✗" vertical="top" type="danger"/>
+5. [RSSHub](https://docs.rsshub.app/)
 
 #### Steps
 
@@ -229,7 +230,7 @@ A FreshRSS / Google Reader API Plugin for Tiny-Tiny RSS
    ![enable API](https://private-user-images.githubusercontent.com/551464/366939059-f79e6fe3-bfb0-4989-a0fb-0bda4ac8b84d.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjcxMDYzNjMsIm5iZiI6MTcyNzEwNjA2MywicGF0aCI6Ii81NTE0NjQvMzY2OTM5MDU5LWY3OWU2ZmUzLWJmYjAtNDk4OS1hMGZiLTBiZGE0YWM4Yjg0ZC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwOTIzJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDkyM1QxNTQxMDNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0yYzJiNDE4ZjkwMDEwOTAzOWY3NWZkNTVlZDMzMmFmNTY0OTM5N2VkODlkNGIwYWZkM2Y0ODNhZTFkOGJhZDdiJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.f78G7IsKszUMGS99y1ZPIpEwVjiwr3CaorTYKE-EXBI)
 2. In Preferences, open the Plugin menu and enable "freshapi"
    ![enable FreshAPI](https://private-user-images.githubusercontent.com/551464/366939183-68260e5f-bcb8-4e14-a416-3d31104d9006.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjcxMDYzNjMsIm5iZiI6MTcyNzEwNjA2MywicGF0aCI6Ii81NTE0NjQvMzY2OTM5MTgzLTY4MjYwZTVmLWJjYjgtNGUxNC1hNDE2LTNkMzExMDRkOTAwNi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwOTIzJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDkyM1QxNTQxMDNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT00YzkzNGRhNzcyMTQ1MWQ2Yjc1ZmVlY2VkYzY1YmE0MDY3OTE2Mzc2MDU2N2IyZDFjMjE3MDVhODNmYzE5YTE3JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.L8Y8AVEEXSCsT48xqWBEujvhZrOPwEwI0jfQz_OKdgI)
-3. When configuring your mobile app, select either "FreshRSS" or "Google Reader API". You'll need to point your client to your TT-RSS installation, depending on your setup. If you're using a subdomain to host TT-RSS then use ```https://yoursubdomain.yourdomain.com/plugins.local/freshapi/api/greader.php```. If you're running on the root domain, use ```https://yourdomain.com/plugins.local/freshapi/api/greader.php``` as the server URL.
+3. When configuring your mobile app, select either "FreshRSS" or "Google Reader API". You'll need to point your client to your TT-RSS installation, depending on your setup. If you're using a subdomain to host TT-RSS then use `https://yoursubdomain.yourdomain.com/plugins.local/freshapi/api/greader.php`. If you're running on the root domain, use `https://yourdomain.com/plugins.local/freshapi/api/greader.php` as the server URL.
 4. Use your standard TT-RSS username and password. If you've enabled 2 Factor Authentication (2FA) generate and use an App Password. As with all plugins which handle authentication, [using HTTPS](#configure-https) is strongly recommended.
 
 ### [Fever API](https://github.com/DigitalDJ/tinytinyrss-fever-plugin)
@@ -322,13 +323,20 @@ Enable it by adding `auth_oidc` to the environment variable **ENABLE_PLUGINS**.
 Then add the following environments variables with according values :
 
 ```yaml
-AUTH_OIDC_NAME: 'IDP provider name displayed'
-AUTH_OIDC_URL: 'https://oidc.hostname.com'
-AUTH_OIDC_CLIENT_ID: 'test-rss'
-AUTH_OIDC_CLIENT_SECRET: 'your-secret-token'
+AUTH_OIDC_NAME: "IDP provider name displayed"
+AUTH_OIDC_URL: "https://oidc.hostname.com"
+AUTH_OIDC_CLIENT_ID: "test-rss"
+AUTH_OIDC_CLIENT_SECRET: "your-secret-token"
 ```
 
 Refer to [Auth OIDC](https://dev.tt-rss.org/tt-rss/ttrss-auth-oidc) for more details.
+
+## RSSHub
+
+There is a minimal integration of [RSSHub](https://docs.rsshub.app) in the example [Docker Compose](https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.yml).
+Once enabled, you can add RSS feeds from RSSHub via internal URL (docker service discovery), for example: `http://service.rsshub:3000/bbc`.
+
+For more information on configuring RSSHub, please refer to [RSSHub Docs](https://docs.rsshub.app/).
 
 ## Themes
 
@@ -356,8 +364,8 @@ Refer to [Auth OIDC](https://dev.tt-rss.org/tt-rss/ttrss-auth-oidc) for more det
 
 ## Donation
 
-| PayPal                                                                                                                                                                       | WeChat Pay                                                          | OpenCollective                                                     |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| PayPal                                                                                                                                                                       | WeChat Pay                                                                         | OpenCollective                                                     |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
 | [![paypal](https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MTM5L6T4PHRQS&source=url) | <img src="https://share.henry.wang/IKaxAW/duFgAuOnmk+" width="200" loading="lazy"> | [💰OpenCollective page](https://opencollective.com/Awesome-TTRSS/) |
 
 ## License

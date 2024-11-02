@@ -38,6 +38,7 @@ docker run -it --name ttrss --restart=always \
 2. [PostgreSQL](https://hub.docker.com/_/postgres)
 3. [Mercury Parser API](https://hub.docker.com/r/wangqiru/mercury-parser-api)
 4. [OpenCC API](https://hub.docker.com/r/wangqiru/opencc-api-server) <Badge text="arm32v7 ✗" vertical="top" type="danger"/><Badge text="arm64v8 ✗" vertical="top" type="danger"/>
+5. [RSSHub](https://docs.rsshub.app/)
 
 #### 步骤
 
@@ -141,7 +142,7 @@ Awesome TTRSS 会自动监控 TTRSS 官方更新并与之同步，这意味着�
 
 ### 自动更新
 
-[样例 Docker Compose](#通过-docker-compose-部署) 中包含了 [Watchtower](https://github.com/containrrr/watchtower)，它会自动拉取并更新您所有的服务容器 （包括当前系统上运行的非 Awesome TTRSS 服务的容器）。该服务默认关闭，**启用前请确认它将不会影响您其他的服务容器。**
+[样例 Docker Compose](#通过-docker-compose-部署） 中包含了 [Watchtower](https://github.com/containrrr/watchtower)，它会自动拉取并更新您所有的服务容器 （包括当前系统上运行的非 Awesome TTRSS 服务的容器）。该服务默认关闭，**启用前请确认它将不会影响您其他的服务容器。**
 
 您也可以设置 watchtower 忽略您的其他容器：
 
@@ -204,7 +205,7 @@ Postgres 大版本更新 (15->16) 需要额外的步骤来确保服务正常运�
 
 ### [Mercury 全文获取](https://github.com/HenryQW/mercury_fulltext)
 
-全文内容提取插件，配合单独的 Mercury Parser API 服务器使用。[样例 Docker Compose](#通过-docker-compose-部署) 中已经包含了 [HenryQW/mercury-parser-api](https://github.com/HenryQW/mercury-parser-api) 服务器。
+全文内容提取插件，配合单独的 Mercury Parser API 服务器使用。[样例 Docker Compose](#通过-docker-compose-部署） 中已经包含了 [HenryQW/mercury-parser-api](https://github.com/HenryQW/mercury-parser-api) 服务器。
 
 #### 设置步骤
 
@@ -229,7 +230,7 @@ FreshRSS / Google Reader API 插件，用于 Tiny-Tiny RSS
    ![enable API](https://private-user-images.githubusercontent.com/551464/366939059-f79e6fe3-bfb0-4989-a0fb-0bda4ac8b84d.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjcxMDYzNjMsIm5iZiI6MTcyNzEwNjA2MywicGF0aCI6Ii81NTE0NjQvMzY2OTM5MDU5LWY3OWU2ZmUzLWJmYjAtNDk4OS1hMGZiLTBiZGE0YWM4Yjg0ZC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwOTIzJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDkyM1QxNTQxMDNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0yYzJiNDE4ZjkwMDEwOTAzOWY3NWZkNTVlZDMzMmFmNTY0OTM5N2VkODlkNGIwYWZkM2Y0ODNhZTFkOGJhZDdiJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.f78G7IsKszUMGS99y1ZPIpEwVjiwr3CaorTYKE-EXBI)
 2. 偏好，打开插件菜单并启用 “freshapi”
    ![enable FreshAPI](https://private-user-images.githubusercontent.com/551464/366939183-68260e5f-bcb8-4e14-a416-3d31104d9006.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjcxMDYzNjMsIm5iZiI6MTcyNzEwNjA2MywicGF0aCI6Ii81NTE0NjQvMzY2OTM5MTgzLTY4MjYwZTVmLWJjYjgtNGUxNC1hNDE2LTNkMzExMDRkOTAwNi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwOTIzJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDkyM1QxNTQxMDNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT00YzkzNGRhNzcyMTQ1MWQ2Yjc1ZmVlY2VkYzY1YmE0MDY3OTE2Mzc2MDU2N2IyZDFjMjE3MDVhODNmYzE5YTE3JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.L8Y8AVEEXSCsT48xqWBEujvhZrOPwEwI0jfQz_OKdgI)
-3. 配置移动应用程序时，请选择 “FreshRSS”或 “Google Reader API”。根据您的设置，您需要将客户指向 TT-RSS 安装。如果您使用子域来主持 TT-RSS，请使用 ```https://yoursubdomain.yourdomain.com/plugins.local/freshapi/api/greader.php``` .如果您在根域上运行，请使用 ```https://yourdomain.com/plugins.local/freshapi/api/greader.php```
+3. 配置移动应用程序时，请选择 “FreshRSS”或 “Google Reader API”。根据您的设置，您需要将客户指向 TT-RSS 安装。如果您使用子域来主持 TT-RSS，请使用 `https://yoursubdomain.yourdomain.com/plugins.local/freshapi/api/greader.php` . 如果您在根域上运行，请使用 `https://yourdomain.com/plugins.local/freshapi/api/greader.php`
 4. 使用您的标准 TT-RSS 用户名和密码。如果您启用了 2 个因子身份验证（2FA）生成并使用应用程序密码。与所有处理身份验证的插件一样，强烈建议使用 [开启 HTTPS](#配置-https)。
 
 ### [Fever API](https://github.com/DigitalDJ/tinytinyrss-fever-plugin)
@@ -247,7 +248,7 @@ FreshRSS / Google Reader API 插件，用于 Tiny-Tiny RSS
 
 ### [OpenCC 繁简转换](https://github.com/HenryQW/ttrss_opencc) <Badge text="arm32v7 ✗" vertical="top" type="danger"/><Badge text="arm64v8 ✗" vertical="top" type="danger"/>
 
-使用 [OpenCC](https://github.com/BYVoid/OpenCC) 为 TTRSS 提供中文繁转简的插件，需要配合单独的 OpenCC API 服务器使用。[样例 Docker Compose](#通过-docker-compose-部署) 中已经包含了 [HenryQW/OpenCC.henry.wang](https://github.com/HenryQW/OpenCC.henry.wang) 服务器。
+使用 [OpenCC](https://github.com/BYVoid/OpenCC) 为 TTRSS 提供中文繁转简的插件，需要配合单独的 OpenCC API 服务器使用。[样例 Docker Compose](#通过-docker-compose-部署） 中已经包含了 [HenryQW/OpenCC.henry.wang](https://github.com/HenryQW/OpenCC.henry.wang) 服务器。
 
 #### 设置步骤
 
@@ -320,13 +321,19 @@ FreshRSS / Google Reader API 插件，用于 Tiny-Tiny RSS
 然后添加以下环境变量及相应的值：
 
 ```yaml
-AUTH_OIDC_NAME: '显示的 IDP 提供程序名称'
-AUTH_OIDC_URL: 'https://oidc.hostname.com'
-AUTH_OIDC_CLIENT_ID: 'test-rss'
-AUTH_OIDC_CLIENT_SECRET: 'your-secret-token'
+AUTH_OIDC_NAME: "显示的 IDP 提供程序名称"
+AUTH_OIDC_URL: "https://oidc.hostname.com"
+AUTH_OIDC_CLIENT_ID: "test-rss"
+AUTH_OIDC_CLIENT_SECRET: "your-secret-token"
 ```
 
 有关更多详细信息，请参阅 [Auth OIDC](https://dev.tt-rss.org/tt-rss/ttrss-auth-oidc)。
+
+## RSSHub
+
+在示例的 [Docker Compose](https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.yml) 中集成了一个最小化的 [RSSHub](https://docs.rsshub.app) URL（Docker 服务发现）添加来自 RSSHub 的 RSS 源，例如：`http://service.rsshub:3000/bbc`。
+
+有关配置 RSSHub 的更多信息，请参考 [RSSHub 文档](https://docs.rsshub.app/)。
 
 ## 主题
 
@@ -353,8 +360,8 @@ AUTH_OIDC_CLIENT_SECRET: 'your-secret-token'
 
 ## 捐赠
 
-| PayPal                                                                                                                                                                       | 微信赞赏                                                            | OpenCollective                                                     |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| PayPal                                                                                                                                                                       | 微信赞赏                                                                           | OpenCollective                                                     |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
 | [![paypal](https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MTM5L6T4PHRQS&source=url) | <img src="https://share.henry.wang/IKaxAW/duFgAuOnmk+" width="200" loading="lazy"> | [💰OpenCollective page](https://opencollective.com/Awesome-TTRSS/) |
 
 ## 许可

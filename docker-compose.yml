@@ -58,6 +58,18 @@ services:
   #     - WATCHTOWER_POLL_INTERVAL=86400
   #   restart: always
 
+  # service.rsshub:
+  #   container_name: rsshub
+  #   image: diygod/rsshub:latest
+  #   environment:
+  #     NODE_ENV: production
+  #     DEBUG_INFO: false
+  #     LOGGER_LEVEL: error
+  #     NO_LOGFILES: true
+  #   expose:
+  #     - 3000
+  #   restart: unless-stopped
+
 volumes:
   feed-icons:
 
