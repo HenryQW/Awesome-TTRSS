@@ -3,7 +3,7 @@ name: "[tester] CI for tests"
 on:
   pull_request:
     branches:
-      - "master"
+      - "main"
     paths:
       - "src/**"
       - "Dockerfile"
@@ -33,3 +33,5 @@ jobs:
         with:
           context: .
           platforms: linux/amd64,linux/arm/v7,linux/arm64
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
