@@ -11,58 +11,40 @@ RUN apk add --update tar curl git \
 # Download plugins
 WORKDIR /var/www/plugins.local
 
-## Fever
-RUN mkdir /var/www/plugins/fever && \
+RUN mkdir /var/www/plugins/fever mercury_fulltext feediron opencc api_newsplus options_per_feed remove_iframe_sandbox wallabag_v2 auth_oidc freshapi && \
+  ## Fever
   curl -sL https://github.com/DigitalDJ/tinytinyrss-fever-plugin/archive/master.tar.gz | \
-  tar xzvpf - --strip-components=1 -C /var/www/plugins/fever tinytinyrss-fever-plugin-master
-
-## Mercury Fulltext
-RUN mkdir mercury_fulltext && \
+  tar xzvpf - --strip-components=1 -C /var/www/plugins/fever tinytinyrss-fever-plugin-master && \
+  ## Mercury Fulltext
   curl -sL https://github.com/HenryQW/mercury_fulltext/archive/master.tar.gz | \
-  tar xzvpf - --strip-components=1 -C mercury_fulltext mercury_fulltext-master
-
-## Feediron
-RUN mkdir feediron && \
+  tar xzvpf - --strip-components=1 -C mercury_fulltext mercury_fulltext-master && \
+  ## Feediron
   curl -sL https://github.com/feediron/ttrss_plugin-feediron/archive/master.tar.gz | \
-  tar xzvpf - --strip-components=1 -C feediron ttrss_plugin-feediron-master
-
-## OpenCC
-RUN mkdir opencc && \
+  tar xzvpf - --strip-components=1 -C feediron ttrss_plugin-feediron-master && \
+  ## OpenCC
   curl -sL https://github.com/HenryQW/ttrss_opencc/archive/master.tar.gz | \
-  tar xzvpf - --strip-components=1 -C opencc ttrss_opencc-master
-
-## News+ API
-RUN mkdir api_newsplus && \
+  tar xzvpf - --strip-components=1 -C opencc ttrss_opencc-master && \
+  ## News+ API
   curl -sL https://github.com/voidstern/tt-rss-newsplus-plugin/archive/master.tar.gz | \
-  tar xzvpf - --strip-components=2 -C api_newsplus  tt-rss-newsplus-plugin-master/api_newsplus
+  tar xzvpf - --strip-components=2 -C api_newsplus tt-rss-newsplus-plugin-master/api_newsplus && \
+  ## Options per feed
+  curl -sL https://github.com/sergey-dryabzhinsky/options_per_feed/archive/master.tar.gz | \
+  tar xzvpf - --strip-components=1 -C options_per_feed options_per_feed-master && \
+  ## Remove iframe sandbox
+  curl -sL https://github.com/DIYgod/ttrss-plugin-remove-iframe-sandbox/archive/master.tar.gz | \
+  tar xzvpf - --strip-components=1 -C remove_iframe_sandbox ttrss-plugin-remove-iframe-sandbox-master && \
+  ## Wallabag
+  curl -sL https://github.com/joshp23/ttrss-to-wallabag-v2/archive/master.tar.gz | \
+  tar xzvpf - --strip-components=2 -C wallabag_v2 ttrss-to-wallabag-v2-master/wallabag_v2 && \
+  ## Auth OIDC
+  curl -sL https://gitlab.tt-rss.org/tt-rss/plugins/ttrss-auth-oidc/-/archive/master/ttrss-auth-oidc-master.tar.gz | \
+  tar xzvpf - --strip-components=1 -C auth_oidc ttrss-auth-oidc-master && \
+  ## FreshAPI
+  curl -sL https://github.com/eric-pierce/freshapi/archive/master.tar.gz | \
+  tar xzvpf - --strip-components=1 -C freshapi freshapi-master
 
 ## FeedReader API
 ADD https://raw.githubusercontent.com/jangernert/FeedReader/master/data/tt-rss-feedreader-plugin/api_feedreader/init.php api_feedreader/
-
-## Options per feed
-RUN mkdir options_per_feed && \
-  curl -sL https://github.com/sergey-dryabzhinsky/options_per_feed/archive/master.tar.gz | \
-  tar xzvpf - --strip-components=1 -C options_per_feed options_per_feed-master
-
-## Remove iframe sandbox
-RUN mkdir remove_iframe_sandbox && \
-  curl -sL https://github.com/DIYgod/ttrss-plugin-remove-iframe-sandbox/archive/master.tar.gz | \
-  tar xzvpf - --strip-components=1 -C remove_iframe_sandbox ttrss-plugin-remove-iframe-sandbox-master
-
-## Wallabag
-RUN mkdir wallabag_v2 && \
-  curl -sL https://github.com/joshp23/ttrss-to-wallabag-v2/archive/master.tar.gz | \
-  tar xzvpf - --strip-components=2 -C wallabag_v2 ttrss-to-wallabag-v2-master/wallabag_v2
-
-## Auth OIDC
-RUN mkdir auth_oidc && \
-  curl -sL https://gitlab.tt-rss.org/tt-rss/plugins/ttrss-auth-oidc/-/archive/master/ttrss-auth-oidc-master.tar.gz | \
-  tar xzvpf - --strip-components=1 -C auth_oidc ttrss-auth-oidc-master
-
-## FreshAPI
-RUN mkdir freshapi && \
-  curl -sL https://github.com/eric-pierce/freshapi/archive/master.tar.gz | \
-  tar xzvpf - --strip-components=1 -C freshapi freshapi-master
 
 # Download themes
 WORKDIR /var/www/themes.local
@@ -77,11 +59,13 @@ WORKDIR /var/www/themes.local
 
 ## Feedly
 RUN curl -sL https://github.com/levito/tt-rss-feedly-theme/archive/master.tar.gz | \
-  tar xzvpf - --strip-components=1 --wildcards -C . tt-rss-feedly-theme-master/feedly*.css tt-rss-feedly-theme-master/feedly/fonts
-
-## RSSHub
-RUN curl -sL https://github.com/DIYgod/ttrss-theme-rsshub/archive/master.tar.gz | \
-  tar xzvpf - --strip-components=2 -C . ttrss-theme-rsshub-master/dist/rsshub.css
+  tar xzvpf - --strip-components=1 --wildcards -C . tt-rss-feedly-theme-master/feedly*.css tt-rss-feedly-theme-master/feedly/fonts && \
+  ## RSSHub
+  curl -sL https://github.com/DIYgod/ttrss-theme-rsshub/archive/master.tar.gz | \
+  tar xzvpf - --strip-components=2 -C . ttrss-theme-rsshub-master/dist/rsshub.css && \
+  ## Feedlish
+  curl -sL https://github.com/Gravemind/tt-rss-feedlish-theme/archive/master.tar.gz | \
+  tar xzvpf - --strip-components=1 --wildcards -C . tt-rss-feedlish-theme-master/feedlish*.css
 
 FROM docker.io/alpine:3.21
 
@@ -97,13 +81,13 @@ COPY src/s6/ /etc/s6/
 
 # Open up ports to bypass ttrss strict port checks, USE WITH CAUTION
 ENV ALLOW_PORTS="80,443"
-ENV SELF_URL_PATH http://localhost:181
-ENV DB_NAME ttrss
-ENV DB_USER ttrss
-ENV DB_PASS ttrss
+ENV SELF_URL_PATH=http://localhost:181
+ENV DB_NAME=ttrss
+ENV DB_USER=ttrss
+ENV DB_PASS=ttrss
 
 # Install dependencies
-RUN chmod -x /wait-for.sh && chmod -x /docker-entrypoint.sh && apk add --update --no-cache git nginx s6 curl sudo \
+RUN chmod -x /wait-for.sh && chmod -x /docker-entrypoint.sh && apk add --update --no-cache git nginx s6 curl sudo tzdata \
   php82 php82-fpm php82-ctype php82-curl php82-dom php82-exif php82-fileinfo php82-gd php82-iconv php82-intl php82-json php82-mbstring php82-opcache \
   php82-openssl php82-pcntl php82-pdo php82-pdo_pgsql php82-pgsql php82-phar php82-pecl-apcu php82-posix php82-session php82-simplexml php82-sockets php82-tokenizer php82-xml php82-xmlwriter php82-zip \
   php82-gmp php82-pecl-imagick \
@@ -114,7 +98,7 @@ RUN chmod -x /wait-for.sh && chmod -x /docker-entrypoint.sh && apk add --update 
   && rm -rf /var/www \
   && ln -s /usr/bin/php82 /usr/bin/php
 
-ENV LD_PRELOAD /usr/lib/preloadable_libiconv.so php
+ENV LD_PRELOAD="/usr/lib/preloadable_libiconv.so php"
 
 # Copy TTRSS and plugins
 COPY --from=builder /var/www /var/www
