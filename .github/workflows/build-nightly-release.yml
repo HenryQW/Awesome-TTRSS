@@ -15,6 +15,7 @@ jobs:
       id-token: write
       contents: read
       attestations: write
+      packages: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -66,9 +67,8 @@ jobs:
 
       - name: Attest
         uses: actions/attest-build-provenance@v2
-        id: attest
         with:
           subject-name: |
-            docker.io/${{ vars.DOCKER_USERNAME }}/ttrss
+            ${{ vars.DOCKER_USERNAME }}/ttrss
             ${{ env.REGISTRY }}/${{ github.repository }}
           subject-digest: ${{ steps.push.outputs.digest }}
