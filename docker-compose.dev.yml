@@ -1,4 +1,3 @@
-version: "3"
 services:
   service.rss:
     build:
@@ -17,7 +16,7 @@ services:
     restart: always
 
   database.postgres:
-    image: postgres:16-alpine
+    image: postgres:17-alpine
     container_name: postgres
     environment:
       - POSTGRES_PASSWORD=ttrss # feel free to change the password
