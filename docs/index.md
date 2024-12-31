@@ -331,6 +331,12 @@ AUTH_OIDC_CLIENT_SECRET: "your-secret-token"
 
 Refer to [Auth OIDC](https://dev.tt-rss.org/tt-rss/ttrss-auth-oidc) for more details.
 
+### [OpenAI Auto Labels](https://github.com/fangd123/ttrss-openai-auto-labels)
+
+Automatically label your Tiny Tiny RSS articles using OpenAI's GPT models. This plugin analyzes article content and suggests relevant labels based on existing tags and content analysis.
+
+Refer to [ttrss-openai-auto-labels](https://github.com/fangd123/ttrss-openai-auto-labels)
+
 ## RSSHub
 
 There is a minimal integration of [RSSHub](https://docs.rsshub.app) in the example [Docker Compose](https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.yml).

@@ -329,6 +329,12 @@ AUTH_OIDC_CLIENT_SECRET: "your-secret-token"
 
 有关更多详细信息，请参阅 [Auth OIDC](https://dev.tt-rss.org/tt-rss/ttrss-auth-oidc)。
 
+### [OpenAI Auto Labels](https://github.com/fangd123/ttrss-openai-auto-labels)
+
+使用 OpenAI 的 GPT 模型为您的 Tiny Tiny RSS 文章自动添加标签。该插件通过分析文章内容，基于现有标签和内容分析来推荐相关标签。
+
+使用指南见 [ttrss-openai-auto-labels](https://github.com/fangd123/ttrss-openai-auto-labels)
+
 ## RSSHub
 
 在示例的 [Docker Compose](https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.yml) 中集成了一个最小化的 [RSSHub](https://docs.rsshub.app) URL（Docker 服务发现）添加来自 RSSHub 的 RSS 源，例如：`http://service.rsshub:3000/bbc`。
