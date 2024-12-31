@@ -41,10 +41,10 @@ RUN mkdir /var/www/plugins/fever mercury_fulltext feediron opencc api_newsplus o
   tar xzvpf - --strip-components=1 -C auth_oidc ttrss-auth-oidc-master && \
   ## FreshAPI
   curl -sL https://github.com/eric-pierce/freshapi/archive/master.tar.gz | \
-  tar xzvpf - --strip-components=1 -C freshapi freshapi-master
+  tar xzvpf - --strip-components=1 -C freshapi freshapi-master && \
   ### OpenAI Auto Labels
-  curl -sL https://github.com/fangd123/ttrss-openai-auto-labels/archive/master.tar.gz | \
-  tar xzvpf - --strip-components=1 -C openai_auto_labels openai_auto_labels-master
+  curl -sL https://github.com/fangd123/ttrss-openai-auto-labels/archive/main.tar.gz | \
+  tar xzvpf - --strip-components=1 -C openai_auto_labels ttrss-openai-auto-labels-main
 
 ## FeedReader API
 ADD https://raw.githubusercontent.com/jangernert/FeedReader/master/data/tt-rss-feedreader-plugin/api_feedreader/init.php api_feedreader/
