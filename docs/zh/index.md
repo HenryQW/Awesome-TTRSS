@@ -65,7 +65,7 @@ docker run -it --name ttrss --restart=always \
 - `DISABLE_USER_IN_DAYS`: 当用户 X 天后没有登录后，停止为其自动更新订阅源，直至用户再次登陆
 - `FEED_LOG_QUIET`: `true` 禁用订阅源更新所产生的日志打印
 
-更多环境变量，参见 [官方 tt-rss](https://gitlab.tt-rss.org/tt-rss/tt-rss/-/blob/master/classes/Config.php)。
+更多环境变量，参见 [官方 tt-rss 文档](https://tt-rss.org/ttrss-docs/classes/Config.html)。
 
 ### 配置 HTTPS
 

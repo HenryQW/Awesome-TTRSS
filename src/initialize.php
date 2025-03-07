@@ -15,23 +15,27 @@ $config['DB_PASS'] = env('DB_PASS');
 $config['DB_PORT'] = env('DB_PORT');
 $config['SELF_URL_PATH'] = env('SELF_URL_PATH');
 
-
-$config['PLUGINS'] = env('ENABLE_PLUGINS');
-$config['SESSION_COOKIE_LIFETIME'] = env('SESSION_COOKIE_LIFETIME') * 3600;
-
-
+$config['SINGLE_USER_MODE'] = env_bool('SINGLE_USER_MODE');
+$config['SIMPLE_UPDATE_MODE'] = env_bool('SIMPLE_UPDATE_MODE');
 $config['PHP_EXECUTABLE'] = env('PHP_EXECUTABLE');
 $config['LOCK_DIRECTORY'] = env('LOCK_DIRECTORY');
 $config['CACHE_DIR'] = env('CACHE_DIR');
 $config['ICONS_DIR'] = env('ICONS_DIR');
-$config['ICONS_URL'] = env('ICONS_URL');
+$config['AUTH_AUTO_CREATE'] = env_bool('AUTH_AUTO_CREATE');
+$config['AUTH_AUTO_LOGIN'] = env_bool('AUTH_AUTO_LOGIN');
 $config['FORCE_ARTICLE_PURGE'] = env('FORCE_ARTICLE_PURGE');
+$config['SESSION_COOKIE_LIFETIME'] = env('SESSION_COOKIE_LIFETIME') * 3600;
+
 $config['SMTP_FROM_NAME'] = env('SMTP_FROM_NAME');
 $config['SMTP_FROM_ADDRESS'] = env('SMTP_FROM_ADDRESS');
 $config['DIGEST_SUBJECT'] = env('DIGEST_SUBJECT');
+
+$config['CHECK_FOR_UPDATES'] = env_bool('CHECK_FOR_UPDATES');
+$config['PLUGINS'] = env('ENABLE_PLUGINS');
 $config['LOG_DESTINATION'] = env('LOG_DESTINATION');
 $config['LOCAL_OVERRIDE_STYLESHEET'] = env('LOCAL_OVERRIDE_STYLESHEET');
 $config['LOCAL_OVERRIDE_JS'] = env('LOCAL_OVERRIDE_JS');
+
 $config['DAEMON_MAX_CHILD_RUNTIME'] = env('DAEMON_MAX_CHILD_RUNTIME');
 $config['DAEMON_MAX_JOBS'] = env('DAEMON_MAX_JOBS');
 $config['FEED_FETCH_TIMEOUT'] = env('FEED_FETCH_TIMEOUT');
@@ -46,32 +50,36 @@ $config['MAX_FAVICON_FILE_SIZE'] = env('MAX_FAVICON_FILE_SIZE');
 $config['CACHE_MAX_DAYS'] = env('CACHE_MAX_DAYS');
 $config['MAX_CONDITIONAL_INTERVAL'] = env('MAX_CONDITIONAL_INTERVAL');
 $config['DAEMON_UNSUCCESSFUL_DAYS_LIMIT'] = env('DAEMON_UNSUCCESSFUL_DAYS_LIMIT');
+
+$config['LOG_SENT_MAIL'] = env_bool('LOG_SENT_MAIL');
 $config['HTTP_PROXY'] = env('HTTP_PROXY');
-$config['FORBID_PASSWORD_CHANGES'] = env('FORBID_PASSWORD_CHANGES');
+$config['FORBID_PASSWORD_CHANGES'] = env_bool('FORBID_PASSWORD_CHANGES');
 $config['SESSION_NAME'] = env('SESSION_NAME');
+$config['CHECK_FOR_PLUGIN_UPDATES'] = env_bool('CHECK_FOR_PLUGIN_UPDATES');
+$config['ENABLE_PLUGIN_INSTALLER'] = env_bool('ENABLE_PLUGIN_INSTALLER');
 $config['AUTH_MIN_INTERVAL'] = env('AUTH_MIN_INTERVAL');
 $config['HTTP_USER_AGENT'] = env('HTTP_USER_AGENT');
+$config['HTTP_429_THROTTLE_INTERVAL'] = env('HTTP_429_THROTTLE_INTERVAL');
+// Plugins
+// ttrss-mailer-smtp https://gitlab.tt-rss.org/tt-rss/plugins/ttrss-mailer-smtp
 $config['SMTP_SERVER'] = env('SMTP_SERVER');
 $config['SMTP_LOGIN'] = env('SMTP_LOGIN');
 $config['SMTP_PASSWORD'] = env('SMTP_PASSWORD');
 $config['SMTP_SECURE'] = env('SMTP_SECURE');
-$config['SMTP_SKIP_CERT_CHECKS'] = env('SMTP_SKIP_CERT_CHECKS');
+$config['SMTP_SKIP_CERT_CHECKS'] = env_bool('SMTP_SKIP_CERT_CHECKS');
 $config['SMTP_CA_FILE'] = env('SMTP_CA_FILE');
+// ttrss-nginx-xaccel https://gitlab.tt-rss.org/tt-rss/plugins/ttrss-nginx-xaccel
 $config['NGINX_XACCEL_PREFIX'] = env('NGINX_XACCEL_PREFIX');
+// ttrss-auth-oidc https://gitlab.tt-rss.org/tt-rss/plugins/ttrss-auth-oidc
 $config['AUTH_OIDC_NAME'] = env('AUTH_OIDC_NAME');
 $config['AUTH_OIDC_URL'] = env('AUTH_OIDC_URL');
 $config['AUTH_OIDC_CLIENT_ID'] = env('AUTH_OIDC_CLIENT_ID');
 $config['AUTH_OIDC_CLIENT_SECRET'] = env('AUTH_OIDC_CLIENT_SECRET');
-
-$config['LOG_SENT_MAIL'] = env_bool('LOG_SENT_MAIL');
-$config['AUTH_AUTO_CREATE'] = env_bool('AUTH_AUTO_CREATE');
-$config['AUTH_AUTO_LOGIN'] = env_bool('AUTH_AUTO_LOGIN');
-$config['CHECK_FOR_UPDATES'] = env_bool('CHECK_FOR_UPDATES');
-$config['CHECK_FOR_PLUGIN_UPDATES'] = env_bool('CHECK_FOR_PLUGIN_UPDATES');
-$config['ENABLE_PLUGIN_INSTALLER'] = env_bool('ENABLE_PLUGIN_INSTALLER');
-$config['SINGLE_USER_MODE'] = env_bool('SINGLE_USER_MODE');
-$config['SIMPLE_UPDATE_MODE'] = env_bool('SIMPLE_UPDATE_MODE');
+$config['AUTH_OIDC_VALIDATE_INTERVAL'] = env('AUTH_OIDC_VALIDATE_INTERVAL');
+$config['AUTH_OIDC_CLIENT_USERNAME_CLAIM'] = env('AUTH_OIDC_CLIENT_USERNAME_CLAIM');
+// ttrss-perceptual-image-hash https://gitlab.tt-rss.org/tt-rss/plugins/ttrss-perceptual-image-hash
 $config['IMG_HASH_SQL_FUNCTION'] = env_bool('IMG_HASH_SQL_FUNCTION');
+// ttrss-cache-s3 https://gitlab.tt-rss.org/tt-rss/plugins/ttrss-cache-s3
 $config['CACHE_S3_ENDPOINT'] = env('CACHE_S3_ENDPOINT');
 $config['CACHE_S3_BUCKET'] = env('CACHE_S3_BUCKET');
 $config['CACHE_S3_REGION'] = env('CACHE_S3_REGION');
