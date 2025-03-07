@@ -65,7 +65,7 @@ docker run -it --name ttrss --restart=always \
 - `DISABLE_USER_IN_DAYS`: Disable feed update for inactive users after X days without login, until the user performs a login
 - `FEED_LOG_QUIET`: `true` will disable the printing of feed updating logs
 
-For more environment variables, please refer to the [official tt-rss repo](https://gitlab.tt-rss.org/tt-rss/tt-rss/-/blob/master/classes/Config.php).
+For more environment variables, please refer to the [official tt-rss documentation](https://tt-rss.org/ttrss-docs/classes/Config.html).
 
 ### Configure HTTPS
 
