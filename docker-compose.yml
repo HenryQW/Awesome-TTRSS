@@ -10,7 +10,7 @@ services:
       - PUID=1000
       - PGID=1000
     volumes:
-      - feed-icons:/var/www/feed-icons/
+      - feed-icons:/var/www/cache/feed-icons/
     networks:
       - public_access
       - service_only
