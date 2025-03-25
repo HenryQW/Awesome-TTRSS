@@ -10,7 +10,7 @@ services:
       - PUID=1000
       - PGID=1000
     volumes:
-      - feed-icons:/var/www/feed-icons/
+      - cache:/var/www/cache/
     networks:
       - public_access
       - service_only
@@ -77,7 +77,7 @@ services:
   #     NODE_ENV: production
   #     DEBUG_INFO: false
   #     LOGGER_LEVEL: error
-  #     NO_LOGFILES: true    
+  #     NO_LOGFILES: true
   #   networks:
   #     - service_only
   #   expose:
@@ -85,7 +85,7 @@ services:
   #   restart: unless-stopped
 
 volumes:
-  feed-icons:
+  cache:
 
 networks:
   public_access: # Provide the access for ttrss UI
