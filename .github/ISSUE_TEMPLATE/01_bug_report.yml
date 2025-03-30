@@ -1,0 +1,106 @@
+name: 🐞 Bug report
+description: Create a report to help us improve
+title: "[BUG]: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: Describe the bug
+      description: A clear and concise description of what the bug is.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: googled
+    attributes:
+      label: Have you googled?
+      options:
+      - label: Yes
+        required: true
+
+  - type: dropdown
+    id: deployment-method
+    attributes:
+      label: Deployment method
+      options:
+        - Docker
+        - Docker Compose
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: image-version
+    attributes:
+      label: Version of the image used
+      description: e.g. latest, nightly, 19.8
+    validations:
+      required: true
+
+  - type: input
+    id: os
+    attributes:
+      label: Host Operating System
+      description: e.g. Ubuntu 24.04
+    validations:
+      required: true
+
+  - type: input
+    id: browser
+    attributes:
+      label: Browser
+      description: e.g. Chrome, Safari
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction-steps
+    attributes:
+      label: To Reproduce
+      description: Steps to reproduce the behavior
+      placeholder: |
+        1. Go to '...'
+        2. Click on '....'
+        3. Scroll down to '....'
+        4. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected behavior
+      description: A clear and concise description of what you expected to happen.
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: If applicable, add screenshots to help explain your problem.
+    validations:
+      required: false
+
+  - type: textarea
+    id: error-logs
+    attributes:
+      label: Error logs
+      description: When the error occurs, execute `docker logs ttrss --tail 100` to obtain the error logs and paste the relevant logs here.
+      render: shell
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Add any other context about the problem here.
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!

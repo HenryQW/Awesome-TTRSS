@@ -1,0 +1,33 @@
+name: ✨ 新需求
+description: 为项目提供新点子
+title: "[Feature] "
+labels: ['enhancement']
+body:
+  - type: textarea
+    id: problem-description
+    attributes:
+      label: 该功能能够解决的问题
+      description: 简洁明了地描述该需求能解决的问题。
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution-description
+    attributes:
+      label: 形容理想的解决方案
+      description: 简洁明了地描述所需要的解决方案。
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: 其他
+      description: 任何有助于解决方案开发的信息，如：某插件已实现相关功能。
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        感谢您花时间提出新功能建议！

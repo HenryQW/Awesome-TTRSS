@@ -1,0 +1,106 @@
+name: 🐞 Bug 提交
+description: 提交详细报告有助于 bug 修复
+title: "[BUG]: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: Bug 描述
+      description: 简洁明了地描述这个 bug。
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: googled
+    attributes:
+      label: 你谷歌/百度了吗？
+      options:
+      - label: Yes
+        required: true
+
+  - type: dropdown
+    id: deployment-method
+    attributes:
+      label: 部署方法
+      options:
+        - Docker
+        - Docker Compose
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: image-version
+    attributes:
+      label: 镜像版本
+      description: e.g. latest, nightly, 19.8
+    validations:
+      required: true
+
+  - type: input
+    id: os
+    attributes:
+      label: 部署环境
+      description: e.g. Ubuntu 24.04
+    validations:
+      required: true
+
+  - type: input
+    id: browser
+    attributes:
+      label: 浏览器
+      description: e.g. Chrome, Safari
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction-steps
+    attributes:
+      label: 复现步骤
+      description: 复现该 bug 的详细步骤
+      placeholder: |
+        1. 打开 '...'
+        2. 点击 '....'
+        3. 滑动至 '....'
+        4. 发现错误
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: 预期结果
+      description: 简洁明了地描述正确的预期结果该是怎样的。
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: 截屏
+      description: 如果可以提供截屏将有助于 bug 修复。
+    validations:
+      required: false
+
+  - type: textarea
+    id: error-logs
+    attributes:
+      label: 错误日志
+      description: 当错误发生时，通过终端执行 `docker logs ttrss --tail 100` 获取日志，并将**相关错误日志**粘贴于此处。
+      render: shell
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: 其他
+      description: 任何有助于 bug 修复的信息。
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        感谢您花时间填写这份错误报告！
