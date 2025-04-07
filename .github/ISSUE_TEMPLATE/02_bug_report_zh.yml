@@ -16,7 +16,7 @@ body:
     attributes:
       label: 你谷歌/百度了吗？
       options:
-      - label: Yes
+      - label: 是
         required: true
 
   - type: dropdown

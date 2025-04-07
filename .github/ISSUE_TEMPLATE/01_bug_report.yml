@@ -16,7 +16,7 @@ body:
     attributes:
       label: Have you googled?
       options:
-      - label: Yes
+      - label: 'Yes'
         required: true
 
   - type: dropdown
