@@ -19,7 +19,7 @@
     "textlint:fix": "textlint \"**/*.md\" --fix"
   },
   "devDependencies": {
-    "textlint": "14.7.2",
+    "textlint": "14.8.4",
     "textlint-rule-en-capitalization": "2.0.3",
     "textlint-rule-ja-space-between-half-and-full-width": "2.4.2",
     "vitepress": "1.6.3"
@@ -32,6 +32,8 @@
       "is-core-module": "npm:@nolyfill/is-core-module@^1",
       "regexp.prototype.flags": "npm:@nolyfill/regexp.prototype.flags@^1",
       "safe-buffer": "npm:@nolyfill/safe-buffer@^1",
+      "safer-buffer": "npm:@nolyfill/safer-buffer@^1",
+      "side-channel": "npm:@nolyfill/side-channel@^1",
       "typedarray": "npm:@nolyfill/typedarray@^1"
     }
   }
