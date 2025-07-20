@@ -19,7 +19,6 @@ $config['SINGLE_USER_MODE'] = env_bool('SINGLE_USER_MODE');
 $config['PHP_EXECUTABLE'] = env('PHP_EXECUTABLE');
 $config['LOCK_DIRECTORY'] = env('LOCK_DIRECTORY');
 $config['CACHE_DIR'] = env('CACHE_DIR');
-$config['ICONS_DIR'] = env('ICONS_DIR');
 $config['AUTH_AUTO_CREATE'] = env_bool('AUTH_AUTO_CREATE');
 $config['AUTH_AUTO_LOGIN'] = env_bool('AUTH_AUTO_LOGIN');
 $config['FORCE_ARTICLE_PURGE'] = env('FORCE_ARTICLE_PURGE');
