@@ -7,7 +7,6 @@ $confpath = '/var/www/config.php';
 
 $config = array();
 
-$config['DB_TYPE'] = 'pgsql';
 $config['DB_HOST'] = env('DB_HOST');
 $config['DB_USER'] = env('DB_USER');
 $config['DB_NAME'] = env('DB_NAME');
