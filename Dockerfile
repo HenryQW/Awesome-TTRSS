@@ -37,8 +37,7 @@ RUN mkdir /var/www/plugins/fever mercury_fulltext feediron opencc api_newsplus o
   curl -sL https://github.com/joshp23/ttrss-to-wallabag-v2/archive/master.tar.gz | \
   tar xzvpf - --strip-components=2 -C wallabag_v2 ttrss-to-wallabag-v2-master/wallabag_v2 && \
   ## Auth OIDC
-  curl -sL https://gitlab.tt-rss.org/tt-rss/plugins/ttrss-auth-oidc/-/archive/master/ttrss-auth-oidc-master.tar.gz | \
-  tar xzvpf - --strip-components=1 -C auth_oidc ttrss-auth-oidc-master && \
+  git clone https://git.tt-rss.org/fox/ttrss-auth-oidc.git/ --depth=1 auth_oidc && \
   ## FreshAPI
   curl -sL https://github.com/eric-pierce/freshapi/archive/master.tar.gz | \
   tar xzvpf - --strip-components=1 -C freshapi freshapi-master
