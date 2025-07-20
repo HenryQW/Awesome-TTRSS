@@ -16,7 +16,6 @@ $config['DB_SSLMODE'] = env('DB_SSLMODE');
 $config['SELF_URL_PATH'] = env('SELF_URL_PATH');
 
 $config['SINGLE_USER_MODE'] = env_bool('SINGLE_USER_MODE');
-$config['SIMPLE_UPDATE_MODE'] = env_bool('SIMPLE_UPDATE_MODE');
 $config['PHP_EXECUTABLE'] = env('PHP_EXECUTABLE');
 $config['LOCK_DIRECTORY'] = env('LOCK_DIRECTORY');
 $config['CACHE_DIR'] = env('CACHE_DIR');
