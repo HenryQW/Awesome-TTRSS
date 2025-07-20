@@ -13,6 +13,7 @@ $config['DB_USER'] = env('DB_USER');
 $config['DB_NAME'] = env('DB_NAME');
 $config['DB_PASS'] = env('DB_PASS');
 $config['DB_PORT'] = env('DB_PORT');
+$config['DB_SSLMODE'] = env('DB_SSLMODE');
 $config['SELF_URL_PATH'] = env('SELF_URL_PATH');
 
 $config['SINGLE_USER_MODE'] = env_bool('SINGLE_USER_MODE');
@@ -162,12 +163,12 @@ function connectDatabase($create)
 {
     // Create the database
     if ($create) {
-        $map = array('host' => 'HOST', 'port' => 'PORT');
+        $map = array('host' => 'HOST', 'port' => 'PORT', 'sslmode' => 'SSLMODE');
         $dsn = 'pgsql:dbname=postgres;';
     }
     // Seed tables
     else {
-        $map = array('host' => 'HOST', 'port' => 'PORT' , 'dbname' =>'NAME');
+        $map = array('host' => 'HOST', 'port' => 'PORT' , 'dbname' =>'NAME', 'sslmode' => 'SSLMODE');
         $dsn = 'pgsql:';
     }
 
