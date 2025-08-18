@@ -56,6 +56,7 @@ docker run -it --name ttrss --restart=always \
 - `DB_NAME`: 数据库名字
 - `DB_USER`: 数据库用户名
 - `DB_PASS`: 数据库密码
+- `DB_SSLMODE`: 数据库 SSL 连接模式，默认为 `prefer`
 - `DB_USER_FILE`: Docker Secrets 支持（替代 DB_USE），包含数据库用户名的文件
 - `DB_PASS_FILE`: Docker Secrets 支持（替代 DB_PASS），包含数据库密码的文件
 - `ENABLE_PLUGINS`: 全局启用的插件名称，其中 `auth_internal` 为必须启用的登录插件
