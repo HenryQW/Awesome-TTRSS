@@ -1,95 +1,63 @@
-services:
-  service.ttrss:
-    image: wangqiru/ttrss:latest
-    container_name: ttrss
-    ports:
-      - 181:80
-    environment:
-      - SELF_URL_PATH=http://localhost:181 # please change to your own domain
-      - DB_PASS=ttrss # use the same password defined in `database.postgres`
-      - PUID=1000
-      - PGID=1000
-    volumes:
-      - cache:/var/www/cache/
-    networks:
-      - public_access
-      - service_only
-      - database_only
-    stdin_open: true
-    tty: true
-    depends_on:
-      - database.postgres
-    restart: always
-    healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:80 || exit 1"]
-      start_period: 30s
-      interval: 30s
-      timeout: 10s
-      retries: 5
+ttrss:
+  image: wangqiru/ttrss:latest
+  container_name: ttrss
+  # ports:
+  #  - "8199:80"
+  environment:
+    - SELF_URL_PATH=https://98.142.142.133.16clouds.com/ttrss
+    - DB_PASS=ttrss
+    - DB_HOST=postgres
+    - DB_NAME=postgres
+    - DB_USER=postgres
+    - PUID=1000
+    - PGID=1000
+  volumes:
+    - cache:/var/www/cache/
+  links:
+    - postgres
+      # - mercury
+    - rsshub
+  stdin_open: true
+  tty: true
+  restart: always
 
-  service.mercury: # set Mercury Parser API endpoint to `service.mercury:3000` on TTRSS plugin setting page
-    image: wangqiru/mercury-parser-api:latest
-    container_name: mercury
-    networks:
-      - public_access
-      - service_only
-    restart: always
+  # mercury:
+  # image: wangqiru/mercury-parser-api:latest
+  # container_name: mercury
+  # restart: always
 
-  service.opencc: # set OpenCC API endpoint to `service.opencc:3000` on TTRSS plugin setting page
-    image: wangqiru/opencc-api-server:latest
-    container_name: opencc
-    environment:
-      - NODE_ENV=production
-    networks:
-      - service_only
-    restart: always
+postgres:
+  image: postgres:16-alpine
+  container_name: postgres
+  environment:
+    - POSTGRES_PASSWORD=ttrss
+  volumes:
+    - ~/postgres/data/:/var/lib/postgresql/data
+  restart: always
 
-  database.postgres:
-    image: postgres:16-alpine
-    environment:
-      - POSTGRES_PASSWORD=ttrss # feel free to change the password
-    volumes:
-      - ~/postgres/data/:/var/lib/postgresql/data # persist postgres data to ~/postgres/data/ on the host
-    networks:
-      - database_only
-    restart: always
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
-      start_period: 30s
-      interval: 30s
-      timeout: 10s
-      retries: 5
 
-  # utility.watchtower:
-  #   container_name: watchtower
-  #   image: containrrr/watchtower:latest
-  #   volumes:
-  #     - /var/run/docker.sock:/var/run/docker.sock
-  #   environment:
-  #     - WATCHTOWER_CLEANUP=true
-  #     - WATCHTOWER_POLL_INTERVAL=86400
-  #   restart: always
+# Uncomment the following if you want to enable watchtower
+# watchtower:
+#   container_name: watchtower
+#   image: containrrr/watchtower:latest
+#   volumes:
+#     - /var/run/docker.sock:/var/run/docker.sock
+#   environment:
+#     - WATCHTOWER_CLEANUP=true
+#     - WATCHTOWER_POLL_INTERVAL=86400
+#   restart: always
 
-  # service.rsshub:
-  #   container_name: rsshub
-  #   image: diygod/rsshub:latest
-  #   environment:
-  #     NODE_ENV: production
-  #     DEBUG_INFO: false
-  #     LOGGER_LEVEL: error
-  #     NO_LOGFILES: true
-  #   networks:
-  #     - service_only
-  #   expose:
-  #     - 3000
-  #   restart: unless-stopped
+rsshub:
+  container_name: rsshub
+  image: diygod/rsshub:latest
+  environment:
+    - NODE_ENV=production
+    - DEBUG_INFO=false
+    - LOGGER_LEVEL=info
+    - PORT=80
+    - NO_LOGFILES=true
+  restart: unless-stopped
+  expose:
+    - 80
 
-volumes:
-  cache:
 
-networks:
-  public_access: # Provide the access for ttrss UI
-  service_only: # Provide the communication network between services only
-    internal: true
-  database_only: # Provide the communication between ttrss and database only
-    internal: true
