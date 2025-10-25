@@ -56,6 +56,7 @@ docker run -it --name ttrss --restart=always \
 - `DB_NAME`: The name of your database
 - `DB_USER`: The user of your Database
 - `DB_PASS`: The password of your database
+- `DB_SSLMODE`: The SSL mode for database connection, default is `prefer`
 - `DB_USER_FILE`: Docker Secrets support(alternative to DB_USER), the file containing the user of your database
 - `DB_PASS_FILE`: Docker Secrets support(alternative to DB_PASS), the file containing the password of your database
 - `ENABLE_PLUGINS`: The plugins you'd like to enable as global plugins, note that `auth_internal` is required
