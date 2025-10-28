@@ -3,7 +3,7 @@
 
 $confpath = '/var/www/config.php';
 
-// For configs, see https://gitlab.tt-rss.org/tt-rss/tt-rss/-/blob/master/classes/Config.php
+// For configs, see https://github.com/tt-rss/tt-rss/blob/main/classes/Config.php
 
 $config = array();
 
@@ -75,25 +75,25 @@ $config['SCHEDULE_EXPIRE_LOCK_FILES'] = env('SCHEDULE_EXPIRE_LOCK_FILES');
 $config['SCHEDULE_SEND_HEADLINES_DIGESTS'] = env('SCHEDULE_SEND_HEADLINES_DIGESTS');
 
 // Plugins
-// ttrss-mailer-smtp https://gitlab.tt-rss.org/tt-rss/plugins/ttrss-mailer-smtp
+// ttrss-mailer-smtp https://github.com/tt-rss/tt-rss-plugin-mailer-smtp
 $config['SMTP_SERVER'] = env('SMTP_SERVER');
 $config['SMTP_LOGIN'] = env('SMTP_LOGIN');
 $config['SMTP_PASSWORD'] = env('SMTP_PASSWORD');
 $config['SMTP_SECURE'] = env('SMTP_SECURE');
 $config['SMTP_SKIP_CERT_CHECKS'] = env_bool('SMTP_SKIP_CERT_CHECKS');
 $config['SMTP_CA_FILE'] = env('SMTP_CA_FILE');
-// ttrss-nginx-xaccel https://gitlab.tt-rss.org/tt-rss/plugins/ttrss-nginx-xaccel
+// ttrss-nginx-xaccel https://github.com/tt-rss/tt-rss-plugin-nginx-xaccel
 $config['NGINX_XACCEL_PREFIX'] = env('NGINX_XACCEL_PREFIX');
-// ttrss-auth-oidc https://gitlab.tt-rss.org/tt-rss/plugins/ttrss-auth-oidc
+// ttrss-auth-oidc https://github.com/tt-rss/tt-rss-plugin-auth-oidc
 $config['AUTH_OIDC_NAME'] = env('AUTH_OIDC_NAME');
 $config['AUTH_OIDC_URL'] = env('AUTH_OIDC_URL');
 $config['AUTH_OIDC_CLIENT_ID'] = env('AUTH_OIDC_CLIENT_ID');
 $config['AUTH_OIDC_CLIENT_SECRET'] = env('AUTH_OIDC_CLIENT_SECRET');
 $config['AUTH_OIDC_VALIDATE_INTERVAL'] = env('AUTH_OIDC_VALIDATE_INTERVAL');
 $config['AUTH_OIDC_CLIENT_USERNAME_CLAIM'] = env('AUTH_OIDC_CLIENT_USERNAME_CLAIM');
-// ttrss-perceptual-image-hash https://gitlab.tt-rss.org/tt-rss/plugins/ttrss-perceptual-image-hash
+// ttrss-perceptual-image-hash https://github.com/tt-rss/tt-rss-plugin-perceptual-image-hash
 $config['IMG_HASH_SQL_FUNCTION'] = env_bool('IMG_HASH_SQL_FUNCTION');
-// ttrss-cache-s3 https://gitlab.tt-rss.org/tt-rss/plugins/ttrss-cache-s3
+// ttrss-cache-s3 https://github.com/tt-rss/tt-rss-plugin-cache-s3
 $config['CACHE_S3_ENDPOINT'] = env('CACHE_S3_ENDPOINT');
 $config['CACHE_S3_BUCKET'] = env('CACHE_S3_BUCKET');
 $config['CACHE_S3_REGION'] = env('CACHE_S3_REGION');

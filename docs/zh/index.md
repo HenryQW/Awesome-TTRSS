@@ -66,7 +66,7 @@ docker run -it --name ttrss --restart=always \
 - `DISABLE_USER_IN_DAYS`: 当用户 X 天后没有登录后，停止为其自动更新订阅源，直至用户再次登陆
 - `FEED_LOG_QUIET`: `true` 禁用订阅源更新所产生的日志打印
 
-更多环境变量，参见 [官方 tt-rss 文档](https://tt-rss.org/ttrss-docs/classes/Config.html)。
+更多环境变量，参见 [官方 tt-rss 文档](https://github.com/tt-rss/tt-rss/blob/main/classes/Config.php)。
 
 ### 配置 HTTPS
 
@@ -128,7 +128,7 @@ server {
 
 Awesome TTRSS 会自动监控 TTRSS 官方更新并与之同步，这意味着更新会比较频繁。
 
-[TTRSS 官方不再释出 tag](https://community.tt-rss.org/t/versioning-changes-for-trunk/2974)。 `wangqiru/ttrss:latest` 会与 [官方 main branch](https://gitlab.tt-rss.org/tt-rss/tt-rss) 同步。
+[TTRSS 官方不再释出 tag](https://community.tt-rss.org/t/versioning-changes-for-trunk/2974)。 `wangqiru/ttrss:latest` 会与 [官方 main branch](https://github.com/tt-rss/tt-rss) 同步。
 
 ### 手动更新
 
@@ -313,7 +313,7 @@ FreshRSS / Google Reader API 插件，用于 Tiny-Tiny RSS
 
 使用指南见 [Wallabag v2](https://github.com/joshp23/ttrss-to-wallabag-v2)。
 
-### [Auth OIDC](https://dev.tt-rss.org/tt-rss/ttrss-auth-oidc)
+### [Auth OIDC](https://github.com/tt-rss/tt-rss-plugin-auth-oidc)
 
 这是一个系统插件，允许用户通过 OpenID Connect 提供程序（如 Keycloak）连接到 TTRSS。
 
@@ -328,7 +328,7 @@ AUTH_OIDC_CLIENT_ID: "test-rss"
 AUTH_OIDC_CLIENT_SECRET: "your-secret-token"
 ```
 
-有关更多详细信息，请参阅 [Auth OIDC](https://dev.tt-rss.org/tt-rss/ttrss-auth-oidc)。
+有关更多详细信息，请参阅 [Auth OIDC](https://github.com/tt-rss/tt-rss-plugin-auth-oidc)。
 
 ## RSSHub
 
