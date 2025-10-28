@@ -62,7 +62,7 @@ docker run -it --name ttrss --restart=always \
 - `ENABLE_PLUGINS`: 全局启用的插件名称，其中 `auth_internal` 为必须启用的登录插件
 - `ALLOW_PORTS`: 逗号分隔端口号，如`1200,3000`。允许订阅非 80,443 端口的源。**🔴 谨慎使用。**
 - `SESSION_COOKIE_LIFETIME`: 使用网页版登陆时 cookie 过期时间，单位为小时，默认为 `24` 小时
-- `HTTP_PROXY`: `ip:port`, TTRSS 实例的全局代理，为源地址添加单独代理请使用 [Options per Feed](#options-per-feed)
+- `HTTP_PROXY`: `ip:port`, TTRSS 实例的全局代理。为源地址添加单独代理请使用 [Options per Feed](#options-per-feed)
 - `DISABLE_USER_IN_DAYS`: 当用户 X 天后没有登录后，停止为其自动更新订阅源，直至用户再次登陆
 - `FEED_LOG_QUIET`: `true` 禁用订阅源更新所产生的日志打印
 
@@ -128,14 +128,20 @@ server {
 
 Awesome TTRSS 会自动监控 TTRSS 官方更新并与之同步，这意味着更新会比较频繁。
 
-[TTRSS 官方不再释出 tag](https://community.tt-rss.org/t/versioning-changes-for-trunk/2974)。 `wangqiru/ttrss:latest` 会与 [官方 main branch](https://github.com/tt-rss/tt-rss) 同步。
+[TTRSS 官方不再释出 tag](https://community.tt-rss.org/t/versioning-changes-for-trunk/2974)。 `wangqiru/ttrss:nightly` 会与 [官方 main branch](https://github.com/tt-rss/tt-rss) 同步。
+
+::: warning
+
+`latest` 标签的镜像仅在 [Awesome-TTRSS](https://github.com/HenryQW/Awesome-TTRSS) 发生更改时发布，它不会定期与 TTRSS 上游同步。同时不推荐从 `nightly` 切换到 `latest`，因为可能导致数据丢失。
+
+:::
 
 ### 手动更新
 
 通过以下命令进行手动更新：
 
 ```bash
-    docker pull wangqiru/ttrss:latest
+    docker pull wangqiru/ttrss:nightly
     # docker pull wangqiru/mercury-parser-api:latest
     # docker pull wangqiru/opencc-api-server:latest
     docker compose up -d # 如果您没有使用 docker compose，我确信您知道该怎么做。
