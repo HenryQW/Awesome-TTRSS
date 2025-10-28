@@ -3,11 +3,10 @@ FROM docker.io/alpine:3.22 AS builder
 # Download ttrss via git
 WORKDIR /var/www
 # https://stackoverflow.com/questions/36996046/how-to-prevent-dockerfile-caching-git-clone
-ADD https://gitlab.tt-rss.org/api/v4/projects/20/repository/branches/master /var/www/ttrss-version
+ADD https://api.github.com/repos/tt-rss/tt-rss/git/refs/heads/main /var/www/ttrss-version
 RUN apk add --update tar curl git \
   && rm -rf /var/www/* \
-  && git clone https://github.com/tt-rss/tt-rss /var/www \
-  && git checkout c67b943aa894b90103c4752ac430958886b996b2
+  && git clone https://github.com/tt-rss/tt-rss --depth=1 /var/www
 
 # Download plugins
 WORKDIR /var/www/plugins.local
@@ -29,7 +28,7 @@ RUN mkdir /var/www/plugins/fever mercury_fulltext feediron opencc api_newsplus o
   curl -sL https://github.com/voidstern/tt-rss-newsplus-plugin/archive/master.tar.gz | \
   tar xzvpf - --strip-components=2 -C api_newsplus tt-rss-newsplus-plugin-master/api_newsplus && \
   ## Options per feed
-  curl -sL https://github.com/sergey-dryabzhinsky/options_per_feed/archive/master.tar.gz | \
+  curl -sL https://github.com/entekadesign/options_per_feed/archive/master.tar.gz | \
   tar xzvpf - --strip-components=1 -C options_per_feed options_per_feed-master && \
   ## Remove iframe sandbox
   curl -sL https://github.com/DIYgod/ttrss-plugin-remove-iframe-sandbox/archive/master.tar.gz | \
@@ -38,7 +37,8 @@ RUN mkdir /var/www/plugins/fever mercury_fulltext feediron opencc api_newsplus o
   curl -sL https://github.com/joshp23/ttrss-to-wallabag-v2/archive/master.tar.gz | \
   tar xzvpf - --strip-components=2 -C wallabag_v2 ttrss-to-wallabag-v2-master/wallabag_v2 && \
   ## Auth OIDC
-  git clone https://git.tt-rss.org/fox/ttrss-auth-oidc.git/ --depth=1 auth_oidc && \
+  curl -sL https://github.com/tt-rss/tt-rss-plugin-auth-oidc/archive/main.tar.gz | \
+  tar xzvpf - --strip-components=1 -C auth_oidc tt-rss-plugin-auth-oidc-main && \
   ## FreshAPI
   curl -sL https://github.com/eric-pierce/freshapi/archive/master.tar.gz | \
   tar xzvpf - --strip-components=1 -C freshapi freshapi-master && \
@@ -54,7 +54,7 @@ WORKDIR /var/www/themes.local
 # COPY src/local-overrides.js local-overrides.js
 # this polyfill is added to tt-rss after 1 years 7 months
 # https://github.com/HenryQW/Awesome-TTRSS/commit/1b077f26f8c40ce7dd7b2a0cf2263a3537118e07
-# https://gitlab.tt-rss.org/tt-rss/tt-rss/-/commit/31ef788e02339452fa6241277e17f85067c33ba0
+# https://github.com/tt-rss/tt-rss/commit/31ef788e02339452fa6241277e17f85067c33ba0
 
 ## Feedly
 RUN curl -sL https://github.com/levito/tt-rss-feedly-theme/archive/master.tar.gz | \
@@ -104,7 +104,7 @@ COPY --from=builder /var/www /var/www
 
 RUN chown nobody:nginx -R /var/www \
   && git config --global --add safe.directory /var/www \
-  # https://gitlab.tt-rss.org/tt-rss/tt-rss/-/merge_requests/156
+  # https://github.com/tt-rss/tt-rss/commit/f57bb8ec244c39615d4ab247a7016aded11080a2
   && chown -R nobody:nginx /root
 
 EXPOSE 80

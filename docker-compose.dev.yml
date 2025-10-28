@@ -16,7 +16,7 @@ services:
     restart: always
 
   database.postgres:
-    image: postgres:17-alpine
+    image: postgres:18-alpine
     container_name: postgres
     environment:
       - POSTGRES_PASSWORD=ttrss # feel free to change the password

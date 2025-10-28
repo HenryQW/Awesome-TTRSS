@@ -62,11 +62,11 @@ docker run -it --name ttrss --restart=always \
 - `ENABLE_PLUGINS`: The plugins you'd like to enable as global plugins, note that `auth_internal` is required
 - `ALLOW_PORTS`: Comma-separated port numbers, eg: `1200,3000`. Allow subscription of non-'80,443' port feed. **🔴 Use with caution.**
 - `SESSION_COOKIE_LIFETIME`: the expiry time in hours for your login session cookie in hours, default to `24` hours
-- `HTTP_PROXY`: In format of `ip:port`, the global proxy for your TTRSS instance, to set proxy on a per feed basis, use [Options per Feed](#options-per-feed)
+- `HTTP_PROXY`: In format of `ip:port`, the global proxy for your TTRSS instance. To set proxy on a per feed basis, use [Options per Feed](#options-per-feed)
 - `DISABLE_USER_IN_DAYS`: Disable feed update for inactive users after X days without login, until the user performs a login
 - `FEED_LOG_QUIET`: `true` will disable the printing of feed updating logs
 
-For more environment variables, please refer to the [official tt-rss documentation](https://tt-rss.org/ttrss-docs/classes/Config.html).
+For more environment variables, please refer to the [official tt-rss documentation](https://github.com/tt-rss/tt-rss/blob/main/classes/Config.php).
 
 ### Configure HTTPS
 
@@ -128,14 +128,20 @@ server {
 
 Awesome TTRSS automatically keeps up with TTRSS by mirroring the official releases, this means update can be issued frequently.
 
-Since [TTRSS stopped releasing tags](https://community.tt-rss.org/t/versioning-changes-for-trunk/2974), `wangqiru/ttrss:latest` will sync with [TTRSS' main branch](https://gitlab.tt-rss.org/tt-rss/tt-rss) periodically.
+Since [TTRSS stopped releasing tags](https://community.tt-rss.org/t/versioning-changes-for-trunk/2974), `wangqiru/ttrss:nightly` will sync with [TTRSS' main branch](https://github.com/tt-rss/tt-rss) periodically.
+
+::: warning
+
+The `latest` tagged image is only released when there are changes in [Awesome-TTRSS](https://github.com/HenryQW/Awesome-TTRSS) itself, it will not sync with TTRSS upstream periodically. Moving from `nightly` to `latest` is not recommended as it may cause data loss.
+
+:::
 
 ### Manual Update
 
 You can fetch the latest image manually:
 
 ```bash
-docker pull wangqiru/ttrss:latest
+docker pull wangqiru/ttrss:nightly
 # docker pull wangqiru/mercury-parser-api:latest
 # docker pull wangqiru/opencc-api-server:latest
 docker compose up -d # If you didn't use docker compose, I'm sure you know what to do.
@@ -315,7 +321,7 @@ Save articles to Wallabag.
 
 Refer to [Wallabag v2](https://github.com/joshp23/ttrss-to-wallabag-v2)。
 
-### [Auth OIDC](https://dev.tt-rss.org/tt-rss/ttrss-auth-oidc)
+### [Auth OIDC](https://github.com/tt-rss/tt-rss-plugin-auth-oidc)
 
 This is a system plugin, that allow users to connect through an OpenID Connect provider, like Keycloak, to TTRSS.
 
@@ -330,7 +336,7 @@ AUTH_OIDC_CLIENT_ID: "test-rss"
 AUTH_OIDC_CLIENT_SECRET: "your-secret-token"
 ```
 
-Refer to [Auth OIDC](https://dev.tt-rss.org/tt-rss/ttrss-auth-oidc) for more details.
+Refer to [Auth OIDC](https://github.com/tt-rss/tt-rss-plugin-auth-oidc) for more details.
 
 ## RSSHub
 
