@@ -7,20 +7,18 @@ $confpath = '/var/www/config.php';
 
 $config = array();
 
-$config['DB_TYPE'] = 'pgsql';
 $config['DB_HOST'] = env('DB_HOST');
 $config['DB_USER'] = env('DB_USER');
 $config['DB_NAME'] = env('DB_NAME');
 $config['DB_PASS'] = env('DB_PASS');
 $config['DB_PORT'] = env('DB_PORT');
+$config['DB_SSLMODE'] = env('DB_SSLMODE');
 $config['SELF_URL_PATH'] = env('SELF_URL_PATH');
 
 $config['SINGLE_USER_MODE'] = env_bool('SINGLE_USER_MODE');
-$config['SIMPLE_UPDATE_MODE'] = env_bool('SIMPLE_UPDATE_MODE');
 $config['PHP_EXECUTABLE'] = env('PHP_EXECUTABLE');
 $config['LOCK_DIRECTORY'] = env('LOCK_DIRECTORY');
 $config['CACHE_DIR'] = env('CACHE_DIR');
-$config['ICONS_DIR'] = env('ICONS_DIR');
 $config['AUTH_AUTO_CREATE'] = env_bool('AUTH_AUTO_CREATE');
 $config['AUTH_AUTO_LOGIN'] = env_bool('AUTH_AUTO_LOGIN');
 $config['FORCE_ARTICLE_PURGE'] = env('FORCE_ARTICLE_PURGE');
@@ -38,16 +36,20 @@ $config['LOCAL_OVERRIDE_JS'] = env('LOCAL_OVERRIDE_JS');
 
 $config['DAEMON_MAX_CHILD_RUNTIME'] = env('DAEMON_MAX_CHILD_RUNTIME');
 $config['DAEMON_MAX_JOBS'] = env('DAEMON_MAX_JOBS');
+
 $config['FEED_FETCH_TIMEOUT'] = env('FEED_FETCH_TIMEOUT');
 $config['FEED_FETCH_NO_CACHE_TIMEOUT'] = env('FEED_FETCH_NO_CACHE_TIMEOUT');
 $config['FILE_FETCH_TIMEOUT'] = env('FILE_FETCH_TIMEOUT');
 $config['FILE_FETCH_CONNECT_TIMEOUT'] = env('FILE_FETCH_CONNECT_TIMEOUT');
+
 $config['DAEMON_FEED_LIMIT'] = env('DAEMON_FEED_LIMIT');
 $config['DAEMON_SLEEP_INTERVAL'] = env('DAEMON_SLEEP_INTERVAL');
+
 $config['MAX_CACHE_FILE_SIZE'] = env('MAX_CACHE_FILE_SIZE');
 $config['MAX_DOWNLOAD_FILE_SIZE'] = env('MAX_DOWNLOAD_FILE_SIZE');
 $config['MAX_FAVICON_FILE_SIZE'] = env('MAX_FAVICON_FILE_SIZE');
 $config['CACHE_MAX_DAYS'] = env('CACHE_MAX_DAYS');
+
 $config['MAX_CONDITIONAL_INTERVAL'] = env('MAX_CONDITIONAL_INTERVAL');
 $config['DAEMON_UNSUCCESSFUL_DAYS_LIMIT'] = env('DAEMON_UNSUCCESSFUL_DAYS_LIMIT');
 
@@ -60,6 +62,18 @@ $config['ENABLE_PLUGIN_INSTALLER'] = env_bool('ENABLE_PLUGIN_INSTALLER');
 $config['AUTH_MIN_INTERVAL'] = env('AUTH_MIN_INTERVAL');
 $config['HTTP_USER_AGENT'] = env('HTTP_USER_AGENT');
 $config['HTTP_429_THROTTLE_INTERVAL'] = env('HTTP_429_THROTTLE_INTERVAL');
+$config['DISABLE_LOGIN_FORM'] = env_bool('DISABLE_LOGIN_FORM');
+$config['ENCRYPTION_KEY'] = env('ENCRYPTION_KEY');
+
+$config['SCHEDULE_PURGE_ORPHANS'] = env('SCHEDULE_PURGE_ORPHANS');
+$config['SCHEDULE_DISK_CACHE_EXPIRE_ALL'] = env('SCHEDULE_DISK_CACHE_EXPIRE_ALL');
+$config['SCHEDULE_DISABLE_FAILED_FEEDS'] = env('SCHEDULE_DISABLE_FAILED_FEEDS');
+$config['SCHEDULE_CLEANUP_FEED_ICONS'] = env('SCHEDULE_CLEANUP_FEED_ICONS');
+$config['SCHEDULE_LOG_DAEMON_UPDATE_LOGIN_LIMIT_USERS'] = env('SCHEDULE_LOG_DAEMON_UPDATE_LOGIN_LIMIT_USERS');
+$config['SCHEDULE_EXPIRE_ERROR_LOG'] = env('SCHEDULE_EXPIRE_ERROR_LOG');
+$config['SCHEDULE_EXPIRE_LOCK_FILES'] = env('SCHEDULE_EXPIRE_LOCK_FILES');
+$config['SCHEDULE_SEND_HEADLINES_DIGESTS'] = env('SCHEDULE_SEND_HEADLINES_DIGESTS');
+
 // Plugins
 // ttrss-mailer-smtp https://gitlab.tt-rss.org/tt-rss/plugins/ttrss-mailer-smtp
 $config['SMTP_SERVER'] = env('SMTP_SERVER');
@@ -162,12 +176,12 @@ function connectDatabase($create)
 {
     // Create the database
     if ($create) {
-        $map = array('host' => 'HOST', 'port' => 'PORT');
+        $map = array('host' => 'HOST', 'port' => 'PORT', 'sslmode' => 'SSLMODE');
         $dsn = 'pgsql:dbname=postgres;';
     }
     // Seed tables
     else {
-        $map = array('host' => 'HOST', 'port' => 'PORT' , 'dbname' =>'NAME');
+        $map = array('host' => 'HOST', 'port' => 'PORT' , 'dbname' =>'NAME', 'sslmode' => 'SSLMODE');
         $dsn = 'pgsql:';
     }
 

@@ -6,7 +6,8 @@ WORKDIR /var/www
 ADD https://gitlab.tt-rss.org/api/v4/projects/20/repository/branches/master /var/www/ttrss-version
 RUN apk add --update tar curl git \
   && rm -rf /var/www/* \
-  && git clone https://git.tt-rss.org/fox/tt-rss --depth=1 /var/www
+  && git clone https://github.com/tt-rss/tt-rss /var/www \
+  && git checkout c67b943aa894b90103c4752ac430958886b996b2
 
 # Download plugins
 WORKDIR /var/www/plugins.local
@@ -102,7 +103,9 @@ ENV LD_PRELOAD="/usr/lib/preloadable_libiconv.so php"
 COPY --from=builder /var/www /var/www
 
 RUN chown nobody:nginx -R /var/www \
-  && git config --global --add safe.directory /var/www
+  && git config --global --add safe.directory /var/www \
+  # https://gitlab.tt-rss.org/tt-rss/tt-rss/-/merge_requests/156
+  && chown -R nobody:nginx /root
 
 EXPOSE 80
 
@@ -110,8 +113,9 @@ EXPOSE 80
 ENV DB_HOST=database.postgres
 ENV DB_PORT=5432
 ENV DB_USER=postgres
-ENV DB_PASS=ttrss
 ENV DB_NAME=ttrss
+ENV DB_PASS=ttrss
+ENV DB_SSLMODE=prefer
 
 # Some default settings
 ENV SELF_URL_PATH=http://localhost:181
