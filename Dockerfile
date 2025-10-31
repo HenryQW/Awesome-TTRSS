@@ -6,7 +6,9 @@ WORKDIR /var/www
 ADD https://api.github.com/repos/tt-rss/tt-rss/git/refs/heads/main /var/www/ttrss-version
 RUN apk add --update tar curl git \
   && rm -rf /var/www/* \
-  && git clone https://github.com/tt-rss/tt-rss --depth=1 /var/www
+  && git clone https://github.com/tt-rss/tt-rss --depth=1 /var/www \
+  && rm -rf /var/www/tests \
+  && find /var/www -mindepth 1 -maxdepth 1 -name ".*" ! -name ".git" -exec rm -rf {} +
 
 # Download plugins
 WORKDIR /var/www/plugins.local
