@@ -85,17 +85,26 @@ ENV DB_NAME=ttrss
 ENV DB_USER=ttrss
 ENV DB_PASS=ttrss
 
+ENV PHP_SUFFIX=82
+
 # Install dependencies
-RUN chmod -x /wait-for.sh && chmod -x /docker-entrypoint.sh && apk add --update --no-cache git nginx s6 curl sudo tzdata \
-  php82 php82-fpm php82-ctype php82-curl php82-dom php82-exif php82-fileinfo php82-gd php82-iconv php82-intl php82-json php82-mbstring php82-opcache \
-  php82-openssl php82-pcntl php82-pdo php82-pdo_pgsql php82-phar php82-pecl-apcu php82-posix php82-session php82-simplexml php82-sockets php82-tokenizer php82-xml php82-xmlwriter php82-zip \
-  php82-gmp php82-pecl-imagick \
+RUN chmod -x /wait-for.sh && chmod -x /docker-entrypoint.sh \
+  && set -eux \
+  && PHP_PACKAGES="fpm ctype curl dom exif fileinfo gd iconv intl json mbstring opcache \
+  openssl pcntl pdo pdo_pgsql phar pecl-apcu posix session simplexml sockets sodium tokenizer xml xmlwriter zip \
+  gmp pecl-imagick" \
+  && EXT_LIST="" \
+  && for p in $PHP_PACKAGES; do \
+       EXT_LIST="$EXT_LIST php${PHP_SUFFIX}-$p"; \
+     done \
+  && apk add --update --no-cache git nginx s6 curl sudo tzdata \
+  php${PHP_SUFFIX} $EXT_LIST \
   ca-certificates && rm -rf /var/cache/apk/* \
   # Update libiconv as the default version is too low
   # Do not bump this dependency https://gitlab.alpinelinux.org/alpine/aports/-/issues/12328
   && apk add gnu-libiconv=1.15-r3 --update --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.13/community/ \
   && rm -rf /var/www \
-  && ln -s /usr/bin/php82 /usr/bin/php
+  && ln -s /usr/bin/php${PHP_SUFFIX} /usr/bin/php
 
 ENV LD_PRELOAD="/usr/lib/preloadable_libiconv.so php"
 
