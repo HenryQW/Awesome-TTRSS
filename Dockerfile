@@ -103,7 +103,7 @@ COPY src/s6/ /etc/s6/
 RUN chmod -x /wait-for.sh && chmod -x /docker-entrypoint.sh \
   && set -ex \
   && PHP_PACKAGES="fpm ctype curl dom exif fileinfo gd iconv intl json mbstring opcache \
-  openssl pcntl pdo pdo_pgsql phar pecl-apcu posix session simplexml sockets sodium tokenizer xml xmlwriter zip \
+  openssl pcntl pdo pdo_pgsql pecl-apcu phar posix session simplexml sockets sodium tokenizer xml xmlwriter zip \
   gmp pecl-imagick" \
   && EXT_LIST="" \
   && for p in $PHP_PACKAGES; do \
