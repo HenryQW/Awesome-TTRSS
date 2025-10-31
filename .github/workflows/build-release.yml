@@ -88,6 +88,7 @@ jobs:
 
       - name: Attest
         uses: actions/attest-build-provenance@v3
+        if: ${{ github.event_name != 'pull_request' }}
         with:
           subject-name: |
             ${{ vars.DOCKER_USERNAME }}/ttrss
