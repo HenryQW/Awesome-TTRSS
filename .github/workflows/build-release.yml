@@ -4,10 +4,18 @@ on:
   repository_dispatch:
     types: build
   workflow_dispatch: ~
+  schedule:
+    - cron: "0 0 * * *"
   push:
     branches:
       - main
       - dev
+    paths:
+      - "src/**"
+      - "Dockerfile"
+      - "docker-entrypoint.sh"
+      - ".github/workflows/build-release.yml"
+  pull_request:
     paths:
       - "src/**"
       - "Dockerfile"
@@ -56,10 +64,14 @@ jobs:
             ${{ vars.DOCKER_USERNAME }}/ttrss
             ${{ env.REGISTRY }}/${{ github.repository }}
           tags: |
-            type=raw,value=latest,enable={{ is_default_branch }}
-            type=raw,value=latest-{{ date 'YYYY-MM-DD' }},enable={{ is_default_branch }}
-            type=ref,event=branch,enable=${{ github.ref != format('refs/heads/{0}', 'main') }}
-            type=ref,event=branch,suffix=-{{ date 'YYYY-MM-DD' }},enable=${{ github.ref != format('refs/heads/{0}', 'main') }}
+            # latest
+            type=raw,value=latest,enable=${{ github.event_name != 'schedule' && github.ref_name == 'main' }}
+            type=raw,value=latest-{{ date 'YYYY-MM-DD' }},enable=${{ github.event_name != 'schedule' && github.ref_name == 'main' }}
+            type=ref,event=branch,enable=${{ github.event_name != 'schedule' && github.ref_name != 'main' }}
+            type=ref,event=branch,suffix=-{{ date 'YYYY-MM-DD' }},enable=${{ github.event_name != 'schedule' && github.ref_name != 'main' }}
+            # nightly
+            type=raw,value=nightly,enable=${{ (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || github.event_name == 'repository_dispatch') && github.ref_name == 'main' }}
+            type=raw,value=nightly-{{ date 'YYYY-MM-DD' }},enable=${{ (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || github.event_name == 'repository_dispatch') && github.ref_name == 'main' }}
           flavor: latest=false
 
       - name: Build dockerfile (with push)
@@ -67,7 +79,7 @@ jobs:
         id: push
         with:
           context: .
-          push: true
+          push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.tag.outputs.tags }}
           labels: ${{ steps.tag.outputs.labels }}
           platforms: linux/amd64,linux/arm/v7,linux/arm64
