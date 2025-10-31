@@ -6,7 +6,9 @@ WORKDIR /var/www
 ADD https://api.github.com/repos/tt-rss/tt-rss/git/refs/heads/main /var/www/ttrss-version
 RUN apk add --update tar curl git \
   && rm -rf /var/www/* \
-  && git clone https://github.com/tt-rss/tt-rss --depth=1 /var/www
+  && git clone https://github.com/tt-rss/tt-rss --depth=1 /var/www \
+  && rm -rf /var/www/tests \
+  && find /var/www -mindepth 1 -maxdepth 1 -name ".*" ! -name ".git" -exec rm -rf {} +
 
 # Download plugins
 WORKDIR /var/www/plugins.local
@@ -70,45 +72,6 @@ FROM docker.io/alpine:3.22
 
 LABEL maintainer="Henry<hi@henry.wang>"
 
-WORKDIR /var/www
-
-COPY ./docker-entrypoint.sh /docker-entrypoint.sh
-COPY src/wait-for.sh /wait-for.sh
-COPY src/ttrss.nginx.conf /etc/nginx/nginx.conf
-COPY src/initialize.php /initialize.php
-COPY src/s6/ /etc/s6/
-
-# Open up ports to bypass ttrss strict port checks, USE WITH CAUTION
-ENV ALLOW_PORTS="80,443"
-ENV SELF_URL_PATH=http://localhost:181
-ENV DB_NAME=ttrss
-ENV DB_USER=ttrss
-ENV DB_PASS=ttrss
-
-# Install dependencies
-RUN chmod -x /wait-for.sh && chmod -x /docker-entrypoint.sh && apk add --update --no-cache git nginx s6 curl sudo tzdata \
-  php82 php82-fpm php82-ctype php82-curl php82-dom php82-exif php82-fileinfo php82-gd php82-iconv php82-intl php82-json php82-mbstring php82-opcache \
-  php82-openssl php82-pcntl php82-pdo php82-pdo_pgsql php82-phar php82-pecl-apcu php82-posix php82-session php82-simplexml php82-sockets php82-tokenizer php82-xml php82-xmlwriter php82-zip \
-  php82-gmp php82-pecl-imagick \
-  ca-certificates && rm -rf /var/cache/apk/* \
-  # Update libiconv as the default version is too low
-  # Do not bump this dependency https://gitlab.alpinelinux.org/alpine/aports/-/issues/12328
-  && apk add gnu-libiconv=1.15-r3 --update --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.13/community/ \
-  && rm -rf /var/www \
-  && ln -s /usr/bin/php82 /usr/bin/php
-
-ENV LD_PRELOAD="/usr/lib/preloadable_libiconv.so php"
-
-# Copy TTRSS and plugins
-COPY --from=builder /var/www /var/www
-
-RUN chown nobody:nginx -R /var/www \
-  && git config --global --add safe.directory /var/www \
-  # https://github.com/tt-rss/tt-rss/commit/f57bb8ec244c39615d4ab247a7016aded11080a2
-  && chown -R nobody:nginx /root
-
-EXPOSE 80
-
 # Database default settings
 ENV DB_HOST=database.postgres
 ENV DB_PORT=5432
@@ -124,5 +87,50 @@ ENV SESSION_COOKIE_LIFETIME=24
 ENV SINGLE_USER_MODE=false
 ENV LOG_DESTINATION=sql
 ENV FEED_LOG_QUIET=false
+
+# Open up ports to bypass ttrss strict port checks, USE WITH CAUTION
+ENV ALLOW_PORTS="80,443"
+
+ENV PHP_SUFFIX=82
+
+WORKDIR /var/www
+
+COPY ./docker-entrypoint.sh /docker-entrypoint.sh
+COPY src/wait-for.sh /wait-for.sh
+COPY src/ttrss.nginx.conf /etc/nginx/nginx.conf
+COPY src/initialize.php /initialize.php
+COPY src/s6/ /etc/s6/
+
+# Install dependencies
+RUN set -ex \
+  && chmod -x /wait-for.sh && chmod -x /docker-entrypoint.sh \
+  && PHP_PACKAGES="fpm ctype curl dom exif fileinfo gd iconv intl json mbstring opcache \
+  openssl pcntl pdo pdo_pgsql pecl-apcu phar posix session simplexml sockets sodium tokenizer xml xmlwriter zip \
+  gmp pecl-imagick" \
+  && EXT_LIST="" \
+  && for p in $PHP_PACKAGES; do \
+       EXT_LIST="$EXT_LIST php${PHP_SUFFIX}-$p"; \
+     done \
+  && apk add --update --no-cache git nginx s6 curl sudo tzdata \
+  php${PHP_SUFFIX} $EXT_LIST \
+  ca-certificates && rm -rf /var/cache/apk/* \
+  # Update libiconv as the default version is too low
+  # Do not bump this dependency https://gitlab.alpinelinux.org/alpine/aports/-/issues/12328
+  && apk add gnu-libiconv=1.15-r3 --update --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.13/community/ \
+  # leftover files
+  && rm -rf /var/www \
+  && ln -s /usr/bin/php${PHP_SUFFIX} /usr/bin/php
+
+ENV LD_PRELOAD="/usr/lib/preloadable_libiconv.so php"
+
+# Copy TTRSS and plugins
+COPY --from=builder /var/www /var/www
+
+RUN chown nobody:nginx -R /var/www \
+  && git config --global --add safe.directory /var/www \
+  # https://github.com/tt-rss/tt-rss/commit/f57bb8ec244c39615d4ab247a7016aded11080a2
+  && chown -R nobody:nginx /root
+
+EXPOSE 80
 
 ENTRYPOINT ["sh", "/docker-entrypoint.sh"]
