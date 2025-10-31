@@ -3,6 +3,14 @@ name: "[doc] CI for docs"
 on:
   push:
     branches:
+      - "**"
+    paths:
+      - "docs/**"
+      - "package.json"
+      - "pnpm-lock.yaml"
+      - ".github/workflows/doc-release.yml"
+  pull_request:
+    branches:
       - main
     paths:
       - "docs/**"
@@ -18,7 +26,7 @@ jobs:
         uses: actions/checkout@v5
       - uses: pnpm/action-setup@v4
         with:
-          version: 9
+          version: 10
       - name: Set up node
         uses: actions/setup-node@v6
         with:
@@ -29,6 +37,7 @@ jobs:
       - name: Build vitepress docs
         run: pnpm run docs:build
       - name: Deploy
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -36,3 +45,15 @@ jobs:
           user_name: 'github-actions[bot]'
           user_email: '41898282+github-actions[bot]@users.noreply.github.com'
           keep_files: true
+
+  automerge:
+    if: github.actor == 'dependabot[bot]' && github.event_name == 'pull_request'
+    needs: test
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
+    steps:
+      - uses: fastify/github-action-merge-dependabot@v3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
