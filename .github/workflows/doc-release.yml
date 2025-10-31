@@ -19,7 +19,7 @@ on:
       - ".github/workflows/doc-release.yml"
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -48,7 +48,7 @@ jobs:
 
   automerge:
     if: github.actor == 'dependabot[bot]' && github.event_name == 'pull_request'
-    needs: test
+    needs: build
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
