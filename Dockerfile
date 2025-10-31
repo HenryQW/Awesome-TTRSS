@@ -70,6 +70,27 @@ FROM docker.io/alpine:3.22
 
 LABEL maintainer="Henry<hi@henry.wang>"
 
+# Database default settings
+ENV DB_HOST=database.postgres
+ENV DB_PORT=5432
+ENV DB_USER=postgres
+ENV DB_NAME=ttrss
+ENV DB_PASS=ttrss
+ENV DB_SSLMODE=prefer
+
+# Some default settings
+ENV SELF_URL_PATH=http://localhost:181
+ENV ENABLE_PLUGINS=auth_internal,fever
+ENV SESSION_COOKIE_LIFETIME=24
+ENV SINGLE_USER_MODE=false
+ENV LOG_DESTINATION=sql
+ENV FEED_LOG_QUIET=false
+
+# Open up ports to bypass ttrss strict port checks, USE WITH CAUTION
+ENV ALLOW_PORTS="80,443"
+
+ENV PHP_SUFFIX=82
+
 WORKDIR /var/www
 
 COPY ./docker-entrypoint.sh /docker-entrypoint.sh
@@ -77,15 +98,6 @@ COPY src/wait-for.sh /wait-for.sh
 COPY src/ttrss.nginx.conf /etc/nginx/nginx.conf
 COPY src/initialize.php /initialize.php
 COPY src/s6/ /etc/s6/
-
-# Open up ports to bypass ttrss strict port checks, USE WITH CAUTION
-ENV ALLOW_PORTS="80,443"
-ENV SELF_URL_PATH=http://localhost:181
-ENV DB_NAME=ttrss
-ENV DB_USER=ttrss
-ENV DB_PASS=ttrss
-
-ENV PHP_SUFFIX=82
 
 # Install dependencies
 RUN chmod -x /wait-for.sh && chmod -x /docker-entrypoint.sh \
@@ -118,21 +130,5 @@ RUN chown nobody:nginx -R /var/www \
   && chown -R nobody:nginx /root
 
 EXPOSE 80
-
-# Database default settings
-ENV DB_HOST=database.postgres
-ENV DB_PORT=5432
-ENV DB_USER=postgres
-ENV DB_NAME=ttrss
-ENV DB_PASS=ttrss
-ENV DB_SSLMODE=prefer
-
-# Some default settings
-ENV SELF_URL_PATH=http://localhost:181
-ENV ENABLE_PLUGINS=auth_internal,fever
-ENV SESSION_COOKIE_LIFETIME=24
-ENV SINGLE_USER_MODE=false
-ENV LOG_DESTINATION=sql
-ENV FEED_LOG_QUIET=false
 
 ENTRYPOINT ["sh", "/docker-entrypoint.sh"]
