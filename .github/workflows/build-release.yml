@@ -24,6 +24,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
+  IMAGE_NAME: ttrss
 
 jobs:
   release:
@@ -61,12 +62,13 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: |
-            ${{ vars.DOCKER_USERNAME }}/ttrss
+            ${{ vars.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}
             ${{ env.REGISTRY }}/${{ github.repository }}
           tags: |
             # latest
             type=raw,value=latest,enable=${{ github.event_name != 'schedule' && github.ref_name == 'main' }}
             type=raw,value=latest-{{ date 'YYYY-MM-DD' }},enable=${{ github.event_name != 'schedule' && github.ref_name == 'main' }}
+            # branch
             type=ref,event=branch,enable=${{ github.event_name != 'schedule' && github.ref_name != 'main' }}
             type=ref,event=branch,suffix=-{{ date 'YYYY-MM-DD' }},enable=${{ github.event_name != 'schedule' && github.ref_name != 'main' }}
             # nightly
@@ -91,6 +93,6 @@ jobs:
         if: ${{ github.event_name != 'pull_request' }}
         with:
           subject-name: |
-            ${{ vars.DOCKER_USERNAME }}/ttrss
+            ${{ vars.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}
             ${{ env.REGISTRY }}/${{ github.repository }}
           subject-digest: ${{ steps.push.outputs.digest }}
