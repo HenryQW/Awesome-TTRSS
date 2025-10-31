@@ -89,7 +89,7 @@ ENV PHP_SUFFIX=82
 
 # Install dependencies
 RUN chmod -x /wait-for.sh && chmod -x /docker-entrypoint.sh \
-  && set -eux \
+  && set -ex \
   && PHP_PACKAGES="fpm ctype curl dom exif fileinfo gd iconv intl json mbstring opcache \
   openssl pcntl pdo pdo_pgsql phar pecl-apcu posix session simplexml sockets sodium tokenizer xml xmlwriter zip \
   gmp pecl-imagick" \
@@ -103,7 +103,6 @@ RUN chmod -x /wait-for.sh && chmod -x /docker-entrypoint.sh \
   # Update libiconv as the default version is too low
   # Do not bump this dependency https://gitlab.alpinelinux.org/alpine/aports/-/issues/12328
   && apk add gnu-libiconv=1.15-r3 --update --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.13/community/ \
-  && rm -rf /var/www \
   && ln -s /usr/bin/php${PHP_SUFFIX} /usr/bin/php
 
 ENV LD_PRELOAD="/usr/lib/preloadable_libiconv.so php"
