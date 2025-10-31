@@ -3,15 +3,13 @@ name: "[doc] CI for docs"
 on:
   push:
     branches:
-      - "**"
+      - main
     paths:
       - "docs/**"
       - "package.json"
       - "pnpm-lock.yaml"
       - ".github/workflows/doc-release.yml"
   pull_request:
-    branches:
-      - main
     paths:
       - "docs/**"
       - "package.json"
