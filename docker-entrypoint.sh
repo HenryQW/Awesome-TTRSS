@@ -11,8 +11,9 @@ if [ "$ALLOW_PORTS" != "80,443" ]; then
     sed -i -r "s/(80, 443).*?('')/$ALLOW_PORTS/" /var/www/classes/UrlHelper.php
 
     # modify BL to include ports
-    CODE="if (isset(\$parts['port'])) \$tmp .= ':' . \$parts['port']; \n"
-    sed -i "/if (isset(\$parts\['path'\]))/i $CODE" /var/www/classes/UrlHelper.php
+    # no longer needed after Nov 7,2025 https://github.com/tt-rss/tt-rss/pull/122
+    # CODE="if (isset(\$parts['port'])) \$tmp .= ':' . \$parts['port']; \n"
+    # sed -i "/if (isset(\$parts\['path'\]))/i $CODE" /var/www/classes/UrlHelper.php
 fi
 
 if [ "$FEED_LOG_QUIET" != "true" ]; then
