@@ -9,6 +9,7 @@ if [ "$ALLOW_PORTS" != "80,443" ]; then
     # open ports in the env
     ALLOW_PORTS="80, 443, $ALLOW_PORTS, ''"
     sed -i -r "s/(80, 443).*?('')/$ALLOW_PORTS/" /var/www/classes/UrlHelper.php
+    sed -i -r "s/\$is_standard_port = \(\$port === null \|\| \$port === \$standard_port\);/\$is_standard_port = (\$port === null || in_array(\$port, [$ALLOW_PORTS]) || \$port === \$standard_port);/" /var/www/classes/UrlHelper.php
 
     # modify BL to include ports
     # no longer needed after Nov 7,2025 https://github.com/tt-rss/tt-rss/pull/122
