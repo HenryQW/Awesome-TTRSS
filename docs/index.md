@@ -45,7 +45,7 @@ docker run -it --name ttrss --restart=always \
 1. Download [docker-compose.yml](https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.yml) to any directory.
 2. Read `docker-compose.yml` and change the settings (please ensure you have changed the password for postgres).
 3. Run `docker compose up -d` and wait for the deployment to finish.
-4. Access ttrss via port 181, with default credentials `admin` and `password`, please change them asap.
+4. Access TTRSS via port 181, with default credentials `admin` and `password`, please change them asap.
 5. `wangqiru/mercury-parser-api` and `wangqiru/opencc-api-server` are optional service containers to support additional features, removing them will not affect TTRSS's basic functionalities.
 
 ### Supported Environment Variables
