@@ -91,7 +91,7 @@ ENV FEED_LOG_QUIET=false
 # Open up ports to bypass ttrss strict port checks, USE WITH CAUTION
 ENV ALLOW_PORTS="80,443"
 
-ENV PHP_SUFFIX=82
+ENV PHP_SUFFIX=83
 
 WORKDIR /var/www
 
