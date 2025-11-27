@@ -118,8 +118,7 @@ RUN set -ex \
   # Do not bump this dependency https://gitlab.alpinelinux.org/alpine/aports/-/issues/12328
   && apk add gnu-libiconv=1.15-r3 --update --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.13/community/ \
   # leftover files
-  && rm -rf /var/www \
-  && ln -s /usr/bin/php${PHP_SUFFIX} /usr/bin/php
+  && rm -rf /var/www
 
 ENV LD_PRELOAD="/usr/lib/preloadable_libiconv.so php"
 
