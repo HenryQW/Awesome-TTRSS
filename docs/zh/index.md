@@ -149,7 +149,7 @@ Awesome TTRSS 会自动监控 TTRSS 官方更新并与之同步，这意味着�
 
 ### 自动更新
 
-[样例 Docker Compose](#通过-docker-compose-部署） 中包含了 [Watchtower](https://github.com/containrrr/watchtower)，它会自动拉取并更新您所有的服务容器 （包括当前系统上运行的非 Awesome TTRSS 服务的容器）。该服务默认关闭，**启用前请确认它将不会影响您其他的服务容器。**
+[样例 Docker Compose](#通过-docker-compose-部署） 中包含了 [Watchtower](https://github.com/nicholas-fedor/watchtower)，它会自动拉取并更新您所有的服务容器 （包括当前系统上运行的非 Awesome TTRSS 服务的容器）。该服务默认关闭，**启用前请确认它将不会影响您其他的服务容器。**
 
 您也可以设置 watchtower 忽略您的其他容器：
 

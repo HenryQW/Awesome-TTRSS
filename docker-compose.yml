@@ -62,7 +62,7 @@ services:
 
   # utility.watchtower:
   #   container_name: watchtower
-  #   image: containrrr/watchtower:latest
+  #   image: nicholas-fedor/watchtower:latest
   #   volumes:
   #     - /var/run/docker.sock:/var/run/docker.sock
   #   environment:

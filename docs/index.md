@@ -149,7 +149,7 @@ docker compose up -d # If you didn't use docker compose, I'm sure you know what 
 
 ### Auto Update
 
-The example [Docker Compose](#deployment-via-docker-compose) includes [Watchtower](https://github.com/containrrr/watchtower), which automatically pulls all containers included in Awesome TTRSS (and other containers running on your system) and refreshes your running services. By default, it's disabled, **make sure it will not affect your other service containers before enabling this.**
+The example [Docker Compose](#deployment-via-docker-compose) includes [Watchtower](https://github.com/nicholas-fedor/watchtower), which automatically pulls all containers included in Awesome TTRSS (and other containers running on your system) and refreshes your running services. By default, it's disabled, **make sure it will not affect your other service containers before enabling this.**
 
 To exclude images, check the following for disabling auto update for containers:
 
