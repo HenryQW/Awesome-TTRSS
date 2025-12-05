@@ -91,7 +91,7 @@ ENV FEED_LOG_QUIET=false
 # Open up ports to bypass ttrss strict port checks, USE WITH CAUTION
 ENV ALLOW_PORTS="80,443"
 
-ENV PHP_SUFFIX=82
+ENV PHP_SUFFIX=83
 
 WORKDIR /var/www
 
@@ -117,9 +117,9 @@ RUN set -ex \
   # Update libiconv as the default version is too low
   # Do not bump this dependency https://gitlab.alpinelinux.org/alpine/aports/-/issues/12328
   && apk add gnu-libiconv=1.15-r3 --update --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.13/community/ \
+  && echo -e "opcache.enable_cli=1\nopcache.jit=1255\nopcache.jit_buffer_size=64M" >> /etc/php${PHP_SUFFIX}/php.ini \
   # leftover files
-  && rm -rf /var/www \
-  && ln -s /usr/bin/php${PHP_SUFFIX} /usr/bin/php
+  && rm -rf /var/www
 
 ENV LD_PRELOAD="/usr/lib/preloadable_libiconv.so php"
 
