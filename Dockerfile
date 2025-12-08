@@ -1,4 +1,4 @@
-FROM docker.io/alpine:3.22 AS builder
+FROM docker.io/alpine:3.23 AS builder
 
 # Download ttrss via git
 WORKDIR /var/www
@@ -68,7 +68,7 @@ RUN curl -sL https://github.com/levito/tt-rss-feedly-theme/archive/master.tar.gz
   curl -sL https://github.com/Gravemind/tt-rss-feedlish-theme/archive/master.tar.gz | \
   tar xzvpf - --strip-components=1 --wildcards -C . tt-rss-feedlish-theme-master/feedlish*.css
 
-FROM docker.io/alpine:3.22
+FROM docker.io/alpine:3.23
 
 LABEL maintainer="Henry<hi@henry.wang>"
 
