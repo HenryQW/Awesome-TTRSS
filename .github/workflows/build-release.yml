@@ -91,7 +91,7 @@ jobs:
           cache-to: type=gha,mode=max
 
       - name: Attest
-        uses: actions/attest-build-provenance@v3
+        uses: actions/attest@v4
         if: ${{ github.event_name != 'pull_request' }}
         with:
           subject-name: |
