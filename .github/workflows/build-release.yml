@@ -27,7 +27,39 @@ env:
   IMAGE_NAME: ttrss
 
 jobs:
+  check:
+    runs-on: ubuntu-slim
+    outputs:
+      cache-hit: ${{ steps.cache.outputs.cache-hit }}
+      upstream-sha: ${{ steps.upstream_sha.outputs.sha }}
+    steps:
+      - name: Fetch upstream tt-rss SHA
+        id: upstream_sha
+        run: |
+          SHA=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/tt-rss/tt-rss/git/refs/heads/main | jq -r '.object.sha')
+          echo "sha=$SHA" >> $GITHUB_OUTPUT
+          echo "Upstream SHA: $SHA"
+
+      - name: Cache build check
+        id: cache
+        uses: actions/cache@v5
+        with:
+          path: .build-cache
+          key: ttrss-build-${{ steps.upstream_sha.outputs.sha }}
+          restore-keys: |
+            ttrss-build-
+
+      - name: Cache status
+        run: |
+          if [ "${{ steps.cache.outputs.cache-hit }}" == "true" ]; then
+            echo "✓ Cache hit - build will be skipped"
+          else
+            echo "✗ Cache miss - build will proceed"
+          fi
+
   build:
+    needs: check
+    if: needs.check.outputs.cache-hit != 'true'
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -92,9 +124,21 @@ jobs:
 
       - name: Attest
         uses: actions/attest@v4
-        if: ${{ github.event_name != 'pull_request' }}
+        if: github.event_name != 'pull_request'
         with:
           subject-name: |
             ${{ vars.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}
             ${{ env.REGISTRY }}/${{ github.repository }}
           subject-digest: ${{ steps.push.outputs.digest }}
+
+      - name: Update build cache
+        run: |
+          mkdir -p .build-cache
+          echo "Build completed at $(date)" > .build-cache/last-build
+          echo "Upstream SHA: ${{ needs.check.outputs.upstream-sha }}" >> .build-cache/last-build
+
+      - name: Save build cache
+        uses: actions/cache/save@v5
+        with:
+          path: .build-cache
+          key: ttrss-build-${{ needs.check.outputs.upstream-sha }}
