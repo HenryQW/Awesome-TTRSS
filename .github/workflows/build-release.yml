@@ -52,9 +52,9 @@ jobs:
       - name: Cache status
         run: |
           if [ "${{ steps.cache.outputs.cache-hit }}" == "true" ]; then
-            echo "✓ Cache hit - build will be skipped"
+            echo "✅ Cache hit - build will be skipped"
           else
-            echo "✗ Cache miss - build will proceed"
+            echo "❌ Cache miss - build will proceed"
           fi
 
   build:
