@@ -341,7 +341,7 @@ Refer to [Auth OIDC](https://github.com/tt-rss/tt-rss-plugin-auth-oidc) for more
 ## RSSHub
 
 There is a minimal integration of [RSSHub](https://docs.rsshub.app) in the example [Docker Compose](https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.yml).
-Once enabled, you can add RSS feeds from RSSHub via internal URL (docker service discovery), for example: `http://service.rsshub:3000/bbc`.
+Once enabled, you can add RSS feeds from RSSHub via internal URL (docker service discovery), for example: `http://service.rsshub:1200/bbc`.
 
 For more information on configuring RSSHub, please refer to [RSSHub Docs](https://docs.rsshub.app/).
 

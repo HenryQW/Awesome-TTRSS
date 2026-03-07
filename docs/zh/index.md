@@ -338,7 +338,7 @@ AUTH_OIDC_CLIENT_SECRET: "your-secret-token"
 
 ## RSSHub
 
-在示例的 [Docker Compose](https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.yml) 中集成了一个最小化的 [RSSHub](https://docs.rsshub.app) URL（Docker 服务发现）添加来自 RSSHub 的 RSS 源，例如：`http://service.rsshub:3000/bbc`。
+在示例的 [Docker Compose](https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.yml) 中集成了一个最小化的 [RSSHub](https://docs.rsshub.app) URL（Docker 服务发现）添加来自 RSSHub 的 RSS 源，例如：`http://service.rsshub:1200/bbc`。
 
 有关配置 RSSHub 的更多信息，请参考 [RSSHub 文档](https://docs.rsshub.app/)。
 
