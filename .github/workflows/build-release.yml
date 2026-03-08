@@ -3,7 +3,13 @@ name: "[builder] CI for releases"
 on:
   repository_dispatch:
     types: build
-  workflow_dispatch: ~
+  workflow_dispatch:
+    inputs:
+      ignore-cache:
+        description: 'Ignore cache and force build (skip hash check)'
+        required: false
+        default: false
+        type: boolean
   schedule:
     - cron: "0 0 * * *"
   push:
@@ -59,7 +65,7 @@ jobs:
 
   build:
     needs: check
-    if: needs.check.outputs.cache-hit != 'true'
+    if: needs.check.outputs.cache-hit != 'true' || inputs.ignore-cache
     runs-on: ubuntu-latest
     permissions:
       id-token: write
