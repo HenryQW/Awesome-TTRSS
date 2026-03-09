@@ -99,7 +99,7 @@ jobs:
 
       - name: Set tag
         id: tag
-        uses: docker/metadata-action@v5
+        uses: docker/metadata-action@v6
         with:
           images: |
             ${{ vars.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}
