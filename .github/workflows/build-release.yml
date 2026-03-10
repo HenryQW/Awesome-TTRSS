@@ -117,7 +117,7 @@ jobs:
           flavor: latest=false
 
       - name: Build dockerfile (with push)
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         id: push
         with:
           context: .
