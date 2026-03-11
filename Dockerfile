@@ -59,8 +59,8 @@ WORKDIR /var/www/themes.local
 # https://github.com/tt-rss/tt-rss/commit/31ef788e02339452fa6241277e17f85067c33ba0
 
 ## Feedly
-RUN curl -sL https://github.com/levito/tt-rss-feedly-theme/archive/master.tar.gz | \
-  tar xzvpf - --strip-components=1 --wildcards -C . tt-rss-feedly-theme-master/feedly*.css tt-rss-feedly-theme-master/feedly/fonts && \
+RUN curl -sL https://github.com/TonyRL/tt-rss-feedly-theme/archive/dist.tar.gz | \
+  tar xzvpf - --strip-components=1 --wildcards -C . tt-rss-feedly-theme-dist/feedly*.css tt-rss-feedly-theme-dist/feedly/fonts && \
   ## RSSHub
   curl -sL https://github.com/DIYgod/ttrss-theme-rsshub/archive/master.tar.gz | \
   tar xzvpf - --strip-components=2 -C . ttrss-theme-rsshub-master/dist/rsshub.css && \
