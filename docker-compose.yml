@@ -15,16 +15,16 @@ ttrss:
     - cache:/var/www/cache/
   links:
     - postgres
-      # - mercury
+    - mercury
     - rsshub
   stdin_open: true
   tty: true
   restart: always
 
-  # mercury:
-  # image: wangqiru/mercury-parser-api:latest
-  # container_name: mercury
-  # restart: always
+mercury:
+  image: wangqiru/mercury-parser-api:latest
+  container_name: mercury
+  restart: always
 
 postgres:
   image: postgres:16-alpine
