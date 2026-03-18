@@ -29,6 +29,7 @@ export const shared = defineConfig({
 
   head: [
     ['link', { rel: 'dns-prefetch', href: 'https://share.henry.wang' }],
+    ['link', { rel: 'preconnect', href: 'https://share.henry.wang' }],
     ['script', { async: '', src: 'https://www.googletagmanager.com/gtag/js?id=G-S0X56ZZMQB' }],
     [
       'script',
