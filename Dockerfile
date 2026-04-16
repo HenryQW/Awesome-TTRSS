@@ -13,7 +13,7 @@ RUN apk add --update tar curl git \
 # Download plugins
 WORKDIR /var/www/plugins.local
 
-RUN mkdir /var/www/plugins/fever mercury_fulltext feediron opencc api_newsplus options_per_feed remove_iframe_sandbox wallabag_v2 auth_oidc freshapi api_feedreader && \
+RUN mkdir /var/www/plugins/fever mercury_fulltext feediron opencc api_newsplus options_per_feed remove_iframe_sandbox wallabag_v2 auth_oidc freshapi api_feedreader prefs_effective_config && \
   ## Fever
   curl -sL https://github.com/DigitalDJ/tinytinyrss-fever-plugin/archive/master.tar.gz | \
   tar xzvpf - --strip-components=1 -C /var/www/plugins/fever tinytinyrss-fever-plugin-master && \
@@ -45,7 +45,10 @@ RUN mkdir /var/www/plugins/fever mercury_fulltext feediron opencc api_newsplus o
   curl -sL https://github.com/eric-pierce/freshapi/archive/master.tar.gz | \
   tar xzvpf - --strip-components=1 -C freshapi freshapi-master && \
   ## FeedReader API
-  curl -sL https://raw.githubusercontent.com/jangernert/FeedReader/master/data/tt-rss-feedreader-plugin/api_feedreader/init.php -o api_feedreader/init.php
+  curl -sL https://raw.githubusercontent.com/jangernert/FeedReader/master/data/tt-rss-feedreader-plugin/api_feedreader/init.php -o api_feedreader/init.php && \
+  ## Effective Config
+  curl -sL https://github.com/tt-rss/tt-rss-plugin-prefs-effective-config/archive/main.tar.gz | \
+  tar xzvpf - --strip-components=1 -C prefs_effective_config tt-rss-plugin-prefs-effective-config-main
 
 # Download themes
 WORKDIR /var/www/themes.local
@@ -113,6 +116,7 @@ RUN set -ex \
      done \
   && apk add --update --no-cache git nginx s6 curl sudo tzdata \
   php${PHP_SUFFIX} $EXT_LIST \
+  imagemagick-svg \
   ca-certificates && rm -rf /var/cache/apk/* \
   # Update libiconv as the default version is too low
   # Do not bump this dependency https://gitlab.alpinelinux.org/alpine/aports/-/issues/12328

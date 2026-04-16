@@ -338,6 +338,10 @@ AUTH_OIDC_CLIENT_SECRET: "your-secret-token"
 
 Refer to [Auth OIDC](https://github.com/tt-rss/tt-rss-plugin-auth-oidc) for more details.
 
+### [Effective Config](https://github.com/tt-rss/tt-rss-plugin-prefs-effective-config)
+
+Enable via Preferences → Plugins, and navigate to Preferences → System → Effective Config for viewing all live environment variables of your TTRSS instance.
+
 ## RSSHub
 
 There is a minimal integration of [RSSHub](https://docs.rsshub.app) in the example [Docker Compose](https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.yml).
