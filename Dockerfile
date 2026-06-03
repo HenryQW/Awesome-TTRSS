@@ -116,7 +116,7 @@ RUN set -ex \
      done \
   && apk add --update --no-cache git nginx s6 curl sudo tzdata \
   php${PHP_SUFFIX} $EXT_LIST \
-  imagemagick-svg \
+  imagemagick-heic imagemagick-svg \
   ca-certificates && rm -rf /var/cache/apk/* \
   # Update libiconv as the default version is too low
   # Do not bump this dependency https://gitlab.alpinelinux.org/alpine/aports/-/issues/12328
