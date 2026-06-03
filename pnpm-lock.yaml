@@ -22,8 +22,8 @@ importers:
         specifier: 2.0.3
         version: 2.0.3
       textlint-rule-ja-space-between-half-and-full-width:
-        specifier: 2.4.2
-        version: 2.4.2
+        specifier: 3.0.0
+        version: 3.0.0
       vitepress:
         specifier: 2.0.0-alpha.17
         version: 2.0.0-alpha.17(postcss@8.5.8)
@@ -262,10 +262,6 @@ packages:
       '@cfworker/json-schema':
         optional: true
 
-  '@nolyfill/regexp.prototype.flags@1.0.44':
-    resolution: {integrity: sha512-/+2QxFmEhxBobW8xGXKO/KV2mBXF8OAkLwcd/fWVkqL4K7DOSZFQ4xvQQqEbdITcLWYTNTV4a6Xut4NmfwnAhg==}
-    engines: {node: '>=12.4.0'}
-
   '@nolyfill/safe-buffer@1.0.44':
     resolution: {integrity: sha512-SqlKXtlhNTDMeZKey9jnnuPhi8YTl1lJuEcY9zbm5i4Pqe79UJJ8IJ9oiD6DhgI8KjYc+HtLzpQJNRdNYqb/hw==}
     engines: {node: '>=12.4.0'}
@@ -273,9 +269,6 @@ packages:
   '@nolyfill/safer-buffer@1.0.44':
     resolution: {integrity: sha512-Ouw1fMwjAy1V4MpnDASfu1DCPgkP0nNFteiiWbFoEGSqa7Vnmkb6if2c522N2WcMk+RuaaabQbC1F1D4/kTXcg==}
     engines: {node: '>=12.4.0'}
-
-  '@nolyfill/shared@1.0.44':
-    resolution: {integrity: sha512-NI1zxDh4LYL7PYlKKCwojjuc5CEZslywrOTKBNyodjmWjRiZ4AlCMs3Gp+zDoPQPNkYCSQp/luNojHmJWWfCbw==}
 
   '@nolyfill/side-channel@1.0.44':
     resolution: {integrity: sha512-y3SvzjuY1ygnzWA4Krwx/WaJAsTMP11DN+e21A8Fa8PW1oDtVB5NSRW7LWurAiS2oKRkuCgcjTYMkBuBkcPCRg==}
@@ -436,9 +429,6 @@ packages:
 
   '@shikijs/vscode-textmate@10.0.2':
     resolution: {integrity: sha512-83yeghZ2xxin3Nj8z1NMd/NCuca+gsYXswywDy5bHvwlWL8tpTQmzGeUuHd9FC3E/SBEMvzJRwWEOz5gGes9Qg==}
-
-  '@textlint/ast-node-types@15.5.2':
-    resolution: {integrity: sha512-fCaOxoup5LIyBEo7R1oYWE7V4bSX0KQeHh66twon9e9usaLE3ijgF8QjYsR6joCssdeCHVd0wHm7ppsEyTr6vg==}
 
   '@textlint/ast-node-types@15.7.1':
     resolution: {integrity: sha512-Wii5UgUKFEh9Uv6wbq1zr4/Kf+dtjiUuzPrrXzKp8H+ifkvKNzi23V4Nz+6wVyHQn5T28AFuc8VH8OtzvGYecA==}
@@ -1090,9 +1080,6 @@ packages:
   markdown-table@2.0.0:
     resolution: {integrity: sha512-Ezda85ToJUBhM6WGaG6veasyym+Tbs3cMAw/ZhOPqXiYsr0jgocBV3j3nx+4lk47plLlIqjwuTm/ywVI+zjJ/A==}
 
-  match-index@1.0.3:
-    resolution: {integrity: sha512-1XjyBWqCvEFFUDW/MPv0RwbITRD4xQXOvKoPYtLDq8IdZTfdF/cQSo5Yn4qvhfSSZgjgkTFsqJD2wOUG4ovV8Q==}
-
   md5@2.3.0:
     resolution: {integrity: sha512-T1GITYmFaKuO91vxyoQMFETst+O71VUPEU3ze5GNzDm0OWdP8v1ziTaAEPUr/3kLsY3Sftgz242A1SetQiDL7g==}
 
@@ -1469,8 +1456,8 @@ packages:
   textlint-rule-helper@2.5.0:
     resolution: {integrity: sha512-QIbFPtyqLy0g5BJn8mryk9iHzGYicNaFIpLFPiEnb4RXxrEGeQ2W2aARQ9yEXLIAqo+OwK4ndWBAWkbgJEPzTQ==}
 
-  textlint-rule-ja-space-between-half-and-full-width@2.4.2:
-    resolution: {integrity: sha512-GqwSy0ivm4Q5Bok9LaOwfg+H1auLRMoMi2aY/7aSIrgvX/RD5aZ2Rk2lm3TTX42mR1UrQu8GDqktUEZfvQ913w==}
+  textlint-rule-ja-space-between-half-and-full-width@3.0.0:
+    resolution: {integrity: sha512-L1pxdF5TzhyAgwEjpI7fOkOgxVSclEHKW7UsLG6dQPRxzhdFs9ewWAsN4unYXtwpixWgqjYKTOQwClUT2Eb03g==}
 
   textlint@15.7.1:
     resolution: {integrity: sha512-T6WRImq6XBnf7kRUE401/gz4USDcrsr9ksDfpwspPAHcvlptsTmd5CrRuPc2brd6t93Z6xSGIGlvV4QAMUHx+A==}
@@ -1817,15 +1804,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@nolyfill/regexp.prototype.flags@1.0.44':
-    dependencies:
-      '@nolyfill/shared': 1.0.44
-
   '@nolyfill/safe-buffer@1.0.44': {}
 
   '@nolyfill/safer-buffer@1.0.44': {}
-
-  '@nolyfill/shared@1.0.44': {}
 
   '@nolyfill/side-channel@1.0.44': {}
 
@@ -1945,8 +1926,6 @@ snapshots:
       '@types/hast': 3.0.4
 
   '@shikijs/vscode-textmate@10.0.2': {}
-
-  '@textlint/ast-node-types@15.5.2': {}
 
   '@textlint/ast-node-types@15.7.1': {}
 
@@ -2652,10 +2631,6 @@ snapshots:
     dependencies:
       repeat-string: 1.6.1
 
-  match-index@1.0.3:
-    dependencies:
-      regexp.prototype.flags: '@nolyfill/regexp.prototype.flags@1.0.44'
-
   md5@2.3.0:
     dependencies:
       charenc: 0.0.2
@@ -3184,14 +3159,13 @@ snapshots:
 
   textlint-rule-helper@2.5.0:
     dependencies:
-      '@textlint/ast-node-types': 15.5.2
+      '@textlint/ast-node-types': 15.7.1
       structured-source: 4.0.0
       unist-util-visit: 2.0.3
 
-  textlint-rule-ja-space-between-half-and-full-width@2.4.2:
+  textlint-rule-ja-space-between-half-and-full-width@3.0.0:
     dependencies:
       '@textlint/regexp-string-matcher': 2.0.2
-      match-index: 1.0.3
       textlint-rule-helper: 2.5.0
 
   textlint@15.7.1:
