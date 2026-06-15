@@ -1,5 +1,5 @@
 #!/bin/sh
 
-PHP_SUFFIX=${PHP_SUFFIX:-84}
+PHP_SUFFIX=${PHP_SUFFIX:-85}
 
 exec "/usr/sbin/php-fpm${PHP_SUFFIX}" --nodaemonize

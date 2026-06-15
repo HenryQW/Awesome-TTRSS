@@ -94,7 +94,7 @@ ENV FEED_LOG_QUIET=false
 # Open up ports to bypass ttrss strict port checks, USE WITH CAUTION
 ENV ALLOW_PORTS="80,443"
 
-ENV PHP_SUFFIX=84
+ENV PHP_SUFFIX=85
 
 WORKDIR /var/www
 
@@ -107,7 +107,7 @@ COPY src/s6/ /etc/s6/
 # Install dependencies
 RUN set -ex \
   && chmod -x /wait-for.sh && chmod -x /docker-entrypoint.sh \
-  && PHP_PACKAGES="fpm ctype curl dom exif fileinfo gd iconv intl json mbstring opcache \
+  && PHP_PACKAGES="fpm ctype curl dom exif fileinfo gd iconv intl json mbstring \
   openssl pcntl pdo pdo_pgsql pecl-apcu phar posix session simplexml sockets sodium tokenizer xml xmlwriter zip \
   gmp pecl-imagick" \
   && EXT_LIST="" \
