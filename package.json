@@ -22,7 +22,7 @@
     "textlint": "15.7.1",
     "textlint-rule-en-capitalization": "2.0.3",
     "textlint-rule-ja-space-between-half-and-full-width": "3.0.2",
-    "vitepress": "2.0.0-alpha.17"
+    "vitepress": "2.0.0-alpha.18"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
