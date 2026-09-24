@@ -19,9 +19,9 @@
     "textlint:fix": "textlint \"**/*.md\" --fix"
   },
   "devDependencies": {
-    "textlint": "15.7.1",
+    "textlint": "15.8.0",
     "textlint-rule-en-capitalization": "2.0.3",
-    "textlint-rule-ja-space-between-half-and-full-width": "3.0.2",
+    "textlint-rule-ja-space-between-half-and-full-width": "3.0.3",
     "vitepress": "2.0.0-alpha.18"
   },
   "pnpm": {
