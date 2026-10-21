@@ -24,16 +24,5 @@
     "textlint-rule-ja-space-between-half-and-full-width": "3.0.3",
     "vitepress": "2.0.0-alpha.20"
   },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild"
-    ],
-    "overrides": {
-      "regexp.prototype.flags": "npm:@nolyfill/regexp.prototype.flags@^1",
-      "safe-buffer": "npm:@nolyfill/safe-buffer@^1",
-      "safer-buffer": "npm:@nolyfill/safer-buffer@^1",
-      "side-channel": "npm:@nolyfill/side-channel@^1",
-      "typedarray": "npm:@nolyfill/typedarray@^1"
-    }
-  }
+  "packageManager": "pnpm@12.14.0"
 }
