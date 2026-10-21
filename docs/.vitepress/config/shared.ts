@@ -1,5 +1,5 @@
 import { defineConfig } from 'vitepress';
-import { search as zhSearch } from './zh';
+import { search as zhSearch } from './zh.ts';
 
 // https://vitepress.dev/reference/site-config
 export const shared = defineConfig({
