@@ -180,8 +180,8 @@ importers:
         specifier: 2.0.3
         version: 2.0.3
       textlint-rule-ja-space-between-half-and-full-width:
-        specifier: 3.0.3
-        version: 3.0.3
+        specifier: 3.0.4
+        version: 3.0.4
       vitepress:
         specifier: 2.0.0-alpha.20
         version: 2.0.0-alpha.20(postcss@8.5.31)
@@ -1267,8 +1267,8 @@ packages:
   textlint-rule-helper@2.5.0:
     resolution: {integrity: sha512-QIbFPtyqLy0g5BJn8mryk9iHzGYicNaFIpLFPiEnb4RXxrEGeQ2W2aARQ9yEXLIAqo+OwK4ndWBAWkbgJEPzTQ==}
 
-  textlint-rule-ja-space-between-half-and-full-width@3.0.3:
-    resolution: {integrity: sha512-mcVsMEKfAj4HLIoxEydHJpC4mFIG1BiU5WhVtnA9N8DZKj5HxywZcHXCSGAVL724cWg66ccAFfBy4g9hBKdOUg==}
+  textlint-rule-ja-space-between-half-and-full-width@3.0.4:
+    resolution: {integrity: sha512-hFQcUdaZhNSNcMosod8JrUQY+sYpoBGx+FvKU7vFG1gyHU1d+nuqQAZpA9mK4UDgDVfkllErKTg3NEO5L+/1Zw==}
 
   textlint@15.8.0:
     resolution: {integrity: sha512-3xE8MknztkpEC5MYDO1lXhUDXx+uq45gdvZB16Xh80rX148NgUehSyWCc5ir2SBW0KVpzRRgU3EWAJZqsBfqtA==}
@@ -2588,7 +2588,7 @@ snapshots:
       structured-source: 4.0.0
       unist-util-visit: 2.0.3
 
-  textlint-rule-ja-space-between-half-and-full-width@3.0.3:
+  textlint-rule-ja-space-between-half-and-full-width@3.0.4:
     dependencies:
       '@textlint/regexp-string-matcher': 2.0.2
       textlint-rule-helper: 2.5.0
