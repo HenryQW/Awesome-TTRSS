@@ -21,7 +21,7 @@
   "devDependencies": {
     "textlint": "15.8.0",
     "textlint-rule-en-capitalization": "2.0.3",
-    "textlint-rule-ja-space-between-half-and-full-width": "3.0.3",
+    "textlint-rule-ja-space-between-half-and-full-width": "3.0.4",
     "vitepress": "2.0.0-alpha.20"
   },
   "packageManager": "pnpm@12.14.0"
