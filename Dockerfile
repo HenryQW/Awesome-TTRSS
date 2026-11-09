@@ -71,6 +71,11 @@ RUN curl -sL https://github.com/TonyRL/tt-rss-feedly-theme/archive/dist.tar.gz |
   curl -sL https://github.com/Gravemind/tt-rss-feedlish-theme/archive/master.tar.gz | \
   tar xzvpf - --strip-components=1 --wildcards -C . tt-rss-feedlish-theme-master/feedlish*.css
 
+# Fix #98, #238
+COPY src/preloadable_libiconv.c /tmp/
+RUN apk add --no-cache gcc musl-dev gnu-libiconv-dev \
+  && gcc -shared -fPIC -O2 -o /preloadable_libiconv.so /tmp/preloadable_libiconv.c -liconv
+
 FROM docker.io/alpine:3.24
 
 LABEL maintainer="Henry<hi@henry.wang>"
@@ -96,6 +101,8 @@ ENV ALLOW_PORTS="80,443"
 
 ENV PHP_SUFFIX=85
 
+ENV SCRIPT_ROOT=/var/www
+
 WORKDIR /var/www
 
 COPY ./docker-entrypoint.sh /docker-entrypoint.sh
@@ -114,18 +121,16 @@ RUN set -ex \
   && for p in $PHP_PACKAGES; do \
        EXT_LIST="$EXT_LIST php${PHP_SUFFIX}-$p"; \
      done \
-  && apk add --update --no-cache git nginx s6 curl sudo tzdata \
+  && apk add --update --no-cache git nginx s6 curl sudo tzdata gnu-libiconv \
   php${PHP_SUFFIX} $EXT_LIST \
   imagemagick-heic imagemagick-svg \
   ca-certificates && rm -rf /var/cache/apk/* \
-  # Update libiconv as the default version is too low
-  # Do not bump this dependency https://gitlab.alpinelinux.org/alpine/aports/-/issues/12328
-  && apk add gnu-libiconv=1.15-r3 --update --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.13/community/ \
   && if [ ! -e /usr/bin/php ]; then ln -s /usr/bin/php${PHP_SUFFIX} /usr/bin/php; fi \
   && echo -e "opcache.enable_cli=1\nopcache.jit=1255\nopcache.jit_buffer_size=64M" >> /etc/php${PHP_SUFFIX}/php.ini \
   # leftover files
   && rm -rf /var/www
 
+COPY --from=builder /preloadable_libiconv.so /usr/lib/preloadable_libiconv.so
 ENV LD_PRELOAD="/usr/lib/preloadable_libiconv.so php"
 
 # Copy TTRSS and plugins

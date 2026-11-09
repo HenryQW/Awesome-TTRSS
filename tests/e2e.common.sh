@@ -58,6 +58,12 @@ assert_feeds() {
   HIT=$(psql "SELECT count(*) FROM ttrss_entries WHERE title = '$TITLE'")
   [ "$HIT" = "1" ] || { echo "FAIL: GB18030 title not decoded (matches: $HIT)"; FAIL=1; }
 
+  VERSION=$(docker exec -w /var/www ttrss php -r 'require "vendor/autoload.php"; echo Config::get_version();')
+  echo "--- version: $VERSION"
+  case "$VERSION" in
+    ""|*Unsupported*) echo "FAIL: version string"; FAIL=1 ;;
+  esac
+
   [ "$FAIL" = "0" ] && echo "PASS"
   return "$FAIL"
 }
