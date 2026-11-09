@@ -1,19 +1,14 @@
 FROM docker.io/alpine:3.24 AS builder
 
-# Download ttrss via git
-WORKDIR /var/www
+RUN apk add --update tar curl git gcc musl-dev gnu-libiconv-dev
+
 # https://stackoverflow.com/questions/36996046/how-to-prevent-dockerfile-caching-git-clone
-ADD https://api.github.com/repos/tt-rss/tt-rss/git/refs/heads/main /var/www/ttrss-version
-RUN apk add --update tar curl git \
-  && rm -rf /var/www/* \
-  && git clone https://github.com/tt-rss/tt-rss --depth=1 /var/www \
-  && rm -rf /var/www/tests \
-  && find /var/www -mindepth 1 -maxdepth 1 -name ".*" ! -name ".git" -exec rm -rf {} +
+ADD https://api.github.com/repos/tt-rss/tt-rss/git/refs/heads/main /ttrss-version
 
 # Download plugins
 WORKDIR /var/www/plugins.local
 
-RUN mkdir /var/www/plugins/fever mercury_fulltext feediron opencc api_newsplus options_per_feed remove_iframe_sandbox wallabag_v2 auth_oidc freshapi api_feedreader prefs_effective_config && \
+RUN mkdir -p /var/www/plugins/fever mercury_fulltext feediron opencc api_newsplus options_per_feed remove_iframe_sandbox wallabag_v2 auth_oidc freshapi api_feedreader prefs_effective_config && \
   ## Fever
   curl -sL https://github.com/DigitalDJ/tinytinyrss-fever-plugin/archive/master.tar.gz | \
   tar xzvpf - --strip-components=1 -C /var/www/plugins/fever tinytinyrss-fever-plugin-master && \
@@ -73,8 +68,12 @@ RUN curl -sL https://github.com/TonyRL/tt-rss-feedly-theme/archive/dist.tar.gz |
 
 # Fix #98, #238
 COPY src/preloadable_libiconv.c /tmp/
-RUN apk add --no-cache gcc musl-dev gnu-libiconv-dev \
-  && gcc -shared -fPIC -O2 -o /preloadable_libiconv.so /tmp/preloadable_libiconv.c -liconv
+RUN gcc -shared -fPIC -O2 -o /preloadable_libiconv.so /tmp/preloadable_libiconv.c -liconv
+
+# Download ttrss via git
+RUN git clone https://github.com/tt-rss/tt-rss --depth=1 /ttrss \
+  && rm -rf /ttrss/tests \
+  && find /ttrss -mindepth 1 -maxdepth 1 -name ".*" ! -name ".git" -exec rm -rf {} +
 
 FROM docker.io/alpine:3.24
 
@@ -105,15 +104,8 @@ ENV SCRIPT_ROOT=/var/www
 
 WORKDIR /var/www
 
-COPY ./docker-entrypoint.sh /docker-entrypoint.sh
-COPY src/wait-for.sh /wait-for.sh
-COPY src/ttrss.nginx.conf /etc/nginx/nginx.conf
-COPY src/initialize.php /initialize.php
-COPY src/s6/ /etc/s6/
-
 # Install dependencies
 RUN set -ex \
-  && chmod -x /wait-for.sh && chmod -x /docker-entrypoint.sh \
   && PHP_PACKAGES="fpm ctype curl dom exif fileinfo gd iconv intl json mbstring \
   openssl pcntl pdo pdo_pgsql pecl-apcu phar posix session simplexml sockets sodium tokenizer xml xmlwriter zip \
   gmp pecl-imagick" \
@@ -130,14 +122,20 @@ RUN set -ex \
   # leftover files
   && rm -rf /var/www
 
+COPY --chmod=0644 ./docker-entrypoint.sh /docker-entrypoint.sh
+COPY --chmod=0644 src/wait-for.sh /wait-for.sh
+COPY src/ttrss.nginx.conf /etc/nginx/nginx.conf
+COPY src/initialize.php /initialize.php
+COPY src/s6/ /etc/s6/
+
 COPY --from=builder /preloadable_libiconv.so /usr/lib/preloadable_libiconv.so
 ENV LD_PRELOAD="/usr/lib/preloadable_libiconv.so php"
 
 # Copy TTRSS and plugins
-COPY --from=builder /var/www /var/www
+COPY --from=builder --chown=nobody:nginx /ttrss /var/www
+COPY --from=builder --chown=nobody:nginx /var/www /var/www
 
-RUN chown nobody:nginx -R /var/www \
-  && git config --global --add safe.directory /var/www \
+RUN git config --global --add safe.directory /var/www \
   # https://github.com/tt-rss/tt-rss/commit/f57bb8ec244c39615d4ab247a7016aded11080a2
   && chown -R nobody:nginx /root
 
