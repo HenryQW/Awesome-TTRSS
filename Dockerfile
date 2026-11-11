@@ -119,6 +119,7 @@ RUN set -ex \
   ca-certificates && rm -rf /var/cache/apk/* \
   && if [ ! -e /usr/bin/php ]; then ln -s /usr/bin/php${PHP_SUFFIX} /usr/bin/php; fi \
   && echo -e "opcache.enable_cli=1\nopcache.jit=1255\nopcache.jit_buffer_size=64M" >> /etc/php${PHP_SUFFIX}/php.ini \
+  && echo 'env[SCRIPT_ROOT] = $SCRIPT_ROOT' >> /etc/php${PHP_SUFFIX}/php-fpm.d/www.conf \
   # leftover files
   && rm -rf /var/www
 
