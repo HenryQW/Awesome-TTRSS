@@ -117,7 +117,7 @@ RUN set -ex \
   "php${PHP_SUFFIX}>=8.5.13-r0" "php${PHP_SUFFIX}-fpm>=8.5.13-r0" $EXT_LIST \
   imagemagick-heic imagemagick-svg \
   ca-certificates && rm -rf /var/cache/apk/* \
-  && apk info -v "php${PHP_SUFFIX}" "php${PHP_SUFFIX}-fpm" nginx \
+  && apk list --installed "php${PHP_SUFFIX}" "php${PHP_SUFFIX}-fpm" nginx \
   && if [ ! -e /usr/bin/php ]; then ln -s /usr/bin/php${PHP_SUFFIX} /usr/bin/php; fi \
   && echo -e "opcache.enable_cli=1\nopcache.jit=1255\nopcache.jit_buffer_size=64M" >> /etc/php${PHP_SUFFIX}/php.ini \
   && echo 'env[SCRIPT_ROOT] = $SCRIPT_ROOT' >> /etc/php${PHP_SUFFIX}/php-fpm.d/www.conf \
