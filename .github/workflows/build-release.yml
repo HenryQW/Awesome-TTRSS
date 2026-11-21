@@ -145,6 +145,7 @@ jobs:
           echo "Upstream SHA: ${{ needs.check.outputs.upstream-sha }}" >> .build-cache/last-build
 
       - name: Save build cache
+        if: github.event_name != 'pull_request' && needs.check.outputs.cache-hit != 'true'
         uses: actions/cache/save@v6
         with:
           path: .build-cache
