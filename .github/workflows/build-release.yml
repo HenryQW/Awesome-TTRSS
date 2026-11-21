@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       ignore-cache:
-        description: 'Ignore cache and force build (skip hash check)'
+        description: 'Force a build without reusing Docker layers'
         required: false
         default: false
         type: boolean
@@ -58,14 +58,14 @@ jobs:
       - name: Cache status
         run: |
           if [ "${{ steps.cache.outputs.cache-hit }}" == "true" ]; then
-            echo "✅ Cache hit - build will be skipped"
+            echo "✅ Upstream SHA already built; scheduled runs can skip this build"
           else
             echo "❌ Cache miss - build will proceed"
           fi
 
   build:
     needs: check
-    if: needs.check.outputs.cache-hit != 'true' || inputs.ignore-cache
+    if: github.event_name == 'pull_request' || github.event_name == 'push' || needs.check.outputs.cache-hit != 'true' || inputs.ignore-cache
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -112,8 +112,8 @@ jobs:
             type=ref,event=branch,enable=${{ github.event_name != 'schedule' && github.ref_name != 'main' }}
             type=ref,event=branch,suffix=-{{ date 'YYYY-MM-DD' }},enable=${{ github.event_name != 'schedule' && github.ref_name != 'main' }}
             # nightly
-            type=raw,value=nightly,enable=${{ (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || github.event_name == 'repository_dispatch') && github.ref_name == 'main' }}
-            type=raw,value=nightly-{{ date 'YYYY-MM-DD' }},enable=${{ (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || github.event_name == 'repository_dispatch') && github.ref_name == 'main' }}
+            type=raw,value=nightly,enable=${{ (github.event_name == 'schedule' || github.event_name == 'push' || github.event_name == 'workflow_dispatch' || github.event_name == 'repository_dispatch') && github.ref_name == 'main' }}
+            type=raw,value=nightly-{{ date 'YYYY-MM-DD' }},enable=${{ (github.event_name == 'schedule' || github.event_name == 'push' || github.event_name == 'workflow_dispatch' || github.event_name == 'repository_dispatch') && github.ref_name == 'main' }}
           flavor: latest=false
 
       - name: Build dockerfile (with push)
@@ -125,6 +125,7 @@ jobs:
           tags: ${{ steps.tag.outputs.tags }}
           labels: ${{ steps.tag.outputs.labels }}
           platforms: linux/amd64,linux/arm/v7,linux/arm64
+          no-cache: ${{ inputs.ignore-cache || false }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -144,6 +145,7 @@ jobs:
           echo "Upstream SHA: ${{ needs.check.outputs.upstream-sha }}" >> .build-cache/last-build
 
       - name: Save build cache
+        if: github.event_name != 'pull_request' && needs.check.outputs.cache-hit != 'true'
         uses: actions/cache/save@v6
         with:
           path: .build-cache

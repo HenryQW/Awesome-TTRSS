@@ -104,9 +104,9 @@ ENV SCRIPT_ROOT=/var/www
 
 WORKDIR /var/www
 
-# Install dependencies
+# Install dependencies. Keep PHP at or above the November 2026 security release.
 RUN set -ex \
-  && PHP_PACKAGES="fpm ctype curl dom exif fileinfo gd iconv intl json mbstring \
+  && PHP_PACKAGES="ctype curl dom exif fileinfo gd iconv intl json mbstring \
   openssl pcntl pdo pdo_pgsql pecl-apcu phar posix session simplexml sockets sodium tokenizer xml xmlwriter zip \
   gmp pecl-imagick" \
   && EXT_LIST="" \
@@ -114,9 +114,10 @@ RUN set -ex \
        EXT_LIST="$EXT_LIST php${PHP_SUFFIX}-$p"; \
      done \
   && apk add --update --no-cache git nginx s6 curl sudo tzdata gnu-libiconv \
-  php${PHP_SUFFIX} $EXT_LIST \
+  "php${PHP_SUFFIX}>=8.5.13-r0" "php${PHP_SUFFIX}-fpm>=8.5.13-r0" $EXT_LIST \
   imagemagick-heic imagemagick-svg \
   ca-certificates && rm -rf /var/cache/apk/* \
+  && apk list --installed "php${PHP_SUFFIX}" "php${PHP_SUFFIX}-fpm" nginx \
   && if [ ! -e /usr/bin/php ]; then ln -s /usr/bin/php${PHP_SUFFIX} /usr/bin/php; fi \
   && echo -e "opcache.enable_cli=1\nopcache.jit=1255\nopcache.jit_buffer_size=64M" >> /etc/php${PHP_SUFFIX}/php.ini \
   && echo 'env[SCRIPT_ROOT] = $SCRIPT_ROOT' >> /etc/php${PHP_SUFFIX}/php-fpm.d/www.conf \
